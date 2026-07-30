@@ -48,7 +48,7 @@ place a point on a sphere. The lore is invented to match the mood of each figure
 - **The Sunken Choir** (Cho) — A sunken choir of stones, still humming the half-chord that drowned them.
 - **The Foundered Ark** (Fka) — An ark that foundered before the mast was set; its keel still drifts through southern seas.
 - **The Last Cairn** (LCn) — A cairn raised by the last traveller to walk the southern road; no path returns to it.
-- **The Barnacled Sextant** (Sxt) — A figure of the invented sky, traced between 7 stars.
+- **The Barnacled Sextant** (Sxt) — A navigator's sextant dropped overboard and forgotten, now overgrown with barnacles that catch the southern light.
 
 Total constellations catalogued: **20**.
 
