@@ -1,152 +1,170 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-label="A sky invented by three agents">
 <rect width="1600" height="900" fill="#0b1026"/>
 <g stroke="#5c6f9c" stroke-width="1.1" opacity="0.75">
-<line x1="983.13" y1="186.45" x2="976.54" y2="179.69"/>
-<line x1="976.54" y1="179.69" x2="963.12" y2="155.19"/>
-<line x1="963.12" y1="155.19" x2="943.54" y2="141.28"/>
-<line x1="943.54" y1="141.28" x2="931.69" y2="170.09"/>
-<line x1="931.69" y1="170.09" x2="898.77" y2="147.62"/>
-<line x1="898.77" y1="147.62" x2="943.54" y2="141.28"/>
-<line x1="943.54" y1="141.28" x2="937.59" y2="101.57"/>
-<line x1="937.59" y1="101.57" x2="937.91" y2="70.00"/>
+<line x1="981.21" y1="193.19" x2="974.69" y2="186.50"/>
+<line x1="974.69" y1="186.50" x2="961.41" y2="162.25"/>
+<line x1="961.41" y1="162.25" x2="942.04" y2="148.49"/>
+<line x1="942.04" y1="148.49" x2="930.31" y2="177.00"/>
+<line x1="930.31" y1="177.00" x2="897.74" y2="154.77"/>
+<line x1="897.74" y1="154.77" x2="942.04" y2="148.49"/>
+<line x1="942.04" y1="148.49" x2="936.15" y2="109.20"/>
+<line x1="936.15" y1="109.20" x2="936.47" y2="77.96"/>
 </g>
-<circle cx="983.13" cy="186.45" r="2.96" fill="#ff9564"/>
-<circle cx="937.91" cy="70.00" r="2.28" fill="#ff9564"/>
-<circle cx="976.54" cy="179.69" r="5.62" fill="#c6d6ff"/>
-<circle cx="937.59" cy="101.57" r="3.38" fill="#ffc98a"/>
-<circle cx="963.12" cy="155.19" r="4.27" fill="#eaeeff"/>
-<circle cx="943.54" cy="141.28" r="6.53" fill="#a6c1ff"/>
-<circle cx="898.77" cy="147.62" r="4.63" fill="#fff3dd"/>
-<circle cx="931.69" cy="170.09" r="3.82" fill="#ffc98a"/>
-<text x="946.54" y="125.99" fill="#8fa3d0" font-size="15" font-family="Georgia, serif" text-anchor="middle">The Salt Crane</text>
+<circle cx="981.21" cy="193.19" r="2.96" fill="#ff9564"/>
+<circle cx="936.47" cy="77.96" r="2.28" fill="#ff9564"/>
+<circle cx="974.69" cy="186.50" r="5.62" fill="#c6d6ff"/>
+<circle cx="936.15" cy="109.20" r="3.38" fill="#ffc98a"/>
+<circle cx="961.41" cy="162.25" r="4.27" fill="#eaeeff"/>
+<circle cx="942.04" cy="148.49" r="6.53" fill="#a6c1ff"/>
+<circle cx="897.74" cy="154.77" r="4.63" fill="#fff3dd"/>
+<circle cx="930.31" cy="177.00" r="3.82" fill="#ffc98a"/>
+<text x="945.00" y="133.17" fill="#8fa3d0" font-size="15" font-family="Georgia, serif" text-anchor="middle">The Salt Crane</text>
 <g stroke="#5c6f9c" stroke-width="1.1" opacity="0.75">
-<line x1="897.09" y1="208.70" x2="890.84" y2="227.41"/>
-<line x1="890.84" y1="227.41" x2="876.14" y2="260.81"/>
-<line x1="890.84" y1="227.41" x2="862.87" y2="217.09"/>
-<line x1="876.14" y1="260.81" x2="852.40" y2="238.84"/>
-<line x1="862.87" y1="217.09" x2="852.40" y2="238.84"/>
-<line x1="862.87" y1="217.09" x2="846.01" y2="194.84"/>
-<line x1="852.40" y1="238.84" x2="823.72" y2="235.23"/>
-<line x1="846.01" y1="194.84" x2="823.72" y2="235.23"/>
+<line x1="896.07" y1="215.20" x2="889.89" y2="233.72"/>
+<line x1="889.89" y1="233.72" x2="875.34" y2="266.77"/>
+<line x1="889.89" y1="233.72" x2="862.21" y2="223.50"/>
+<line x1="875.34" y1="266.77" x2="851.85" y2="245.03"/>
+<line x1="862.21" y1="223.50" x2="851.85" y2="245.03"/>
+<line x1="862.21" y1="223.50" x2="845.53" y2="201.49"/>
+<line x1="851.85" y1="245.03" x2="823.47" y2="241.46"/>
+<line x1="845.53" y1="201.49" x2="823.47" y2="241.46"/>
 </g>
-<circle cx="846.01" cy="194.84" r="4.63" fill="#fff3dd"/>
-<circle cx="823.72" cy="235.23" r="3.49" fill="#ffc98a"/>
-<circle cx="897.09" cy="208.70" r="5.24" fill="#a6c1ff"/>
-<circle cx="890.84" cy="227.41" r="6.26" fill="#c6d6ff"/>
-<circle cx="876.14" cy="260.81" r="4.39" fill="#eaeeff"/>
-<circle cx="862.87" cy="217.09" r="2.96" fill="#ffc98a"/>
-<circle cx="852.40" cy="238.84" r="2.19" fill="#ff9564"/>
-<text x="864.15" y="208.13" fill="#8fa3d0" font-size="15" font-family="Georgia, serif" text-anchor="middle">The Broken Anvil</text>
+<circle cx="845.53" cy="201.49" r="4.63" fill="#fff3dd"/>
+<circle cx="823.47" cy="241.46" r="3.49" fill="#ffc98a"/>
+<circle cx="896.07" cy="215.20" r="5.24" fill="#a6c1ff"/>
+<circle cx="889.89" cy="233.72" r="6.26" fill="#c6d6ff"/>
+<circle cx="875.34" cy="266.77" r="4.39" fill="#eaeeff"/>
+<circle cx="862.21" cy="223.50" r="2.96" fill="#ffc98a"/>
+<circle cx="851.85" cy="245.03" r="2.19" fill="#ff9564"/>
+<text x="863.48" y="214.45" fill="#8fa3d0" font-size="15" font-family="Georgia, serif" text-anchor="middle">The Broken Anvil</text>
 <g stroke="#5c6f9c" stroke-width="1.1" opacity="0.75">
-<line x1="681.22" y1="361.83" x2="638.98" y2="334.76"/>
-<line x1="681.22" y1="361.83" x2="647.71" y2="402.57"/>
-<line x1="638.98" y1="334.76" x2="545.99" y2="291.33"/>
-<line x1="647.71" y1="402.57" x2="566.04" y2="479.27"/>
-<line x1="545.99" y1="291.33" x2="430.38" y2="252.79"/>
-<line x1="566.04" y1="479.27" x2="465.75" y2="558.22"/>
-<line x1="430.38" y1="252.79" x2="465.75" y2="558.22"/>
-<line x1="465.75" y1="558.22" x2="305.23" y2="530.27"/>
+<line x1="682.47" y1="366.73" x2="640.66" y2="339.94"/>
+<line x1="682.47" y1="366.73" x2="649.31" y2="407.05"/>
+<line x1="640.66" y1="339.94" x2="548.65" y2="296.97"/>
+<line x1="649.31" y1="407.05" x2="568.49" y2="482.94"/>
+<line x1="548.65" y1="296.97" x2="434.25" y2="258.83"/>
+<line x1="568.49" y1="482.94" x2="469.25" y2="561.07"/>
+<line x1="434.25" y1="258.83" x2="469.25" y2="561.07"/>
+<line x1="469.25" y1="561.07" x2="310.41" y2="533.41"/>
 </g>
-<circle cx="305.23" cy="530.27" r="2.02" fill="#ff9564"/>
-<circle cx="681.22" cy="361.83" r="5.11" fill="#c6d6ff"/>
-<circle cx="566.04" cy="479.27" r="4.39" fill="#ffc98a"/>
-<circle cx="545.99" cy="291.33" r="6.13" fill="#a6c1ff"/>
-<circle cx="465.75" cy="558.22" r="4.04" fill="#ffc98a"/>
-<circle cx="430.38" cy="252.79" r="2.47" fill="#ff9564"/>
-<circle cx="647.71" cy="402.57" r="3.06" fill="#fff3dd"/>
-<circle cx="638.98" cy="334.76" r="3.49" fill="#eaeeff"/>
-<text x="535.16" y="383.38" fill="#8fa3d0" font-size="15" font-family="Georgia, serif" text-anchor="middle">The Drowned Bell</text>
+<circle cx="310.41" cy="533.41" r="2.02" fill="#ff9564"/>
+<circle cx="682.47" cy="366.73" r="5.11" fill="#c6d6ff"/>
+<circle cx="568.49" cy="482.94" r="4.39" fill="#ffc98a"/>
+<circle cx="548.65" cy="296.97" r="6.13" fill="#a6c1ff"/>
+<circle cx="469.25" cy="561.07" r="4.04" fill="#ffc98a"/>
+<circle cx="434.25" cy="258.83" r="2.47" fill="#ff9564"/>
+<circle cx="649.31" cy="407.05" r="3.06" fill="#fff3dd"/>
+<circle cx="640.66" cy="339.94" r="3.49" fill="#eaeeff"/>
+<text x="537.94" y="387.87" fill="#8fa3d0" font-size="15" font-family="Georgia, serif" text-anchor="middle">The Drowned Bell</text>
 <g stroke="#5c6f9c" stroke-width="1.1" opacity="0.75">
-<line x1="912.31" y1="363.15" x2="943.64" y2="403.03"/>
-<line x1="912.31" y1="363.15" x2="869.64" y2="386.79"/>
-<line x1="869.64" y1="386.79" x2="824.80" y2="431.09"/>
-<line x1="943.64" y1="403.03" x2="917.31" y2="445.61"/>
-<line x1="917.31" y1="445.61" x2="880.10" y2="494.18"/>
-<line x1="869.64" y1="386.79" x2="889.37" y2="417.64"/>
-<line x1="889.37" y1="417.64" x2="917.31" y2="445.61"/>
-<line x1="889.37" y1="417.64" x2="872.54" y2="447.51"/>
-<line x1="824.80" y1="431.09" x2="880.10" y2="494.18"/>
+<line x1="911.13" y1="368.04" x2="942.14" y2="407.50"/>
+<line x1="911.13" y1="368.04" x2="868.91" y2="391.43"/>
+<line x1="868.91" y1="391.43" x2="824.55" y2="435.27"/>
+<line x1="942.14" y1="407.50" x2="916.08" y2="449.64"/>
+<line x1="916.08" y1="449.64" x2="879.26" y2="497.70"/>
+<line x1="868.91" y1="391.43" x2="888.44" y2="421.95"/>
+<line x1="888.44" y1="421.95" x2="916.08" y2="449.64"/>
+<line x1="888.44" y1="421.95" x2="871.78" y2="451.52"/>
+<line x1="824.55" y1="435.27" x2="879.26" y2="497.70"/>
 </g>
-<circle cx="869.64" cy="386.79" r="6.53" fill="#8fb2ff"/>
-<circle cx="912.31" cy="363.15" r="5.36" fill="#a6c1ff"/>
-<circle cx="880.10" cy="494.18" r="3.93" fill="#ffc98a"/>
-<circle cx="824.80" cy="431.09" r="2.76" fill="#fff3dd"/>
-<circle cx="917.31" cy="445.61" r="3.17" fill="#eaeeff"/>
-<circle cx="943.64" cy="403.03" r="3.71" fill="#c6d6ff"/>
-<circle cx="889.37" cy="417.64" r="4.63" fill="#ffc98a"/>
-<circle cx="872.54" cy="447.51" r="2.11" fill="#ff9564"/>
-<text x="888.71" y="405.63" fill="#8fa3d0" font-size="15" font-family="Georgia, serif" text-anchor="middle">The Amber Loom</text>
+<circle cx="868.91" cy="391.43" r="6.53" fill="#8fb2ff"/>
+<circle cx="911.13" cy="368.04" r="5.36" fill="#a6c1ff"/>
+<circle cx="879.26" cy="497.70" r="3.93" fill="#ffc98a"/>
+<circle cx="824.55" cy="435.27" r="2.76" fill="#fff3dd"/>
+<circle cx="916.08" cy="449.64" r="3.17" fill="#eaeeff"/>
+<circle cx="942.14" cy="407.50" r="3.71" fill="#c6d6ff"/>
+<circle cx="888.44" cy="421.95" r="4.63" fill="#ffc98a"/>
+<circle cx="871.78" cy="451.52" r="2.11" fill="#ff9564"/>
+<text x="887.78" y="409.88" fill="#8fa3d0" font-size="15" font-family="Georgia, serif" text-anchor="middle">The Amber Loom</text>
 <g stroke="#5c6f9c" stroke-width="1.1" opacity="0.75">
-<line x1="959.80" y1="429.36" x2="960.50" y2="464.77"/>
-<line x1="960.50" y1="464.77" x2="969.36" y2="528.14"/>
-<line x1="969.36" y1="528.14" x2="989.99" y2="606.92"/>
-<line x1="989.99" y1="606.92" x2="931.87" y2="690.43"/>
-<line x1="989.99" y1="606.92" x2="1062.14" y2="664.63"/>
-<line x1="931.87" y1="690.43" x2="1029.19" y2="830.00"/>
-<line x1="1062.14" y1="664.63" x2="1029.19" y2="830.00"/>
+<line x1="958.13" y1="433.56" x2="958.82" y2="468.59"/>
+<line x1="958.82" y1="468.59" x2="967.59" y2="531.30"/>
+<line x1="967.59" y1="531.30" x2="988.00" y2="609.26"/>
+<line x1="988.00" y1="609.26" x2="930.49" y2="691.89"/>
+<line x1="988.00" y1="609.26" x2="1059.40" y2="666.36"/>
+<line x1="930.49" y1="691.89" x2="1026.79" y2="830.00"/>
+<line x1="1059.40" y1="666.36" x2="1026.79" y2="830.00"/>
 </g>
-<circle cx="1062.14" cy="664.63" r="4.87" fill="#fff3dd"/>
-<circle cx="931.87" cy="690.43" r="2.96" fill="#ffc98a"/>
-<circle cx="960.50" cy="464.77" r="2.57" fill="#ff9564"/>
-<circle cx="959.80" cy="429.36" r="3.82" fill="#eaeeff"/>
-<circle cx="969.36" cy="528.14" r="5.87" fill="#a6c1ff"/>
-<circle cx="989.99" cy="606.92" r="4.27" fill="#c6d6ff"/>
-<circle cx="1029.19" cy="830.00" r="2.11" fill="#ff9564"/>
-<text x="986.12" y="584.04" fill="#8fa3d0" font-size="15" font-family="Georgia, serif" text-anchor="middle">The Ferryman's Oar</text>
+<circle cx="1059.40" cy="666.36" r="4.87" fill="#fff3dd"/>
+<circle cx="930.49" cy="691.89" r="2.96" fill="#ffc98a"/>
+<circle cx="958.82" cy="468.59" r="2.57" fill="#ff9564"/>
+<circle cx="958.13" cy="433.56" r="3.82" fill="#eaeeff"/>
+<circle cx="967.59" cy="531.30" r="5.87" fill="#a6c1ff"/>
+<circle cx="988.00" cy="609.26" r="4.27" fill="#c6d6ff"/>
+<circle cx="1026.79" cy="830.00" r="2.11" fill="#ff9564"/>
+<text x="984.17" y="586.42" fill="#8fa3d0" font-size="15" font-family="Georgia, serif" text-anchor="middle">The Ferryman's Oar</text>
 <g stroke="#5c6f9c" stroke-width="1.1" opacity="0.75">
-<line x1="1065.00" y1="396.32" x2="1064.48" y2="451.08"/>
-<line x1="1064.48" y1="451.08" x2="1137.07" y2="476.06"/>
-<line x1="1137.07" y1="476.06" x2="1126.49" y2="413.42"/>
-<line x1="1126.49" y1="413.42" x2="1065.00" y2="396.32"/>
-<line x1="1065.00" y1="396.32" x2="1137.07" y2="476.06"/>
-<line x1="1064.48" y1="451.08" x2="1126.49" y2="413.42"/>
-<line x1="1137.07" y1="476.06" x2="1185.31" y2="496.29"/>
-<line x1="1185.31" y1="496.29" x2="1170.99" y2="581.60"/>
-<line x1="1170.99" y1="581.60" x2="1294.77" y2="578.99"/>
-<line x1="1065.00" y1="396.32" x2="1026.24" y2="390.15"/>
+<line x1="1062.22" y1="400.86" x2="1061.71" y2="455.04"/>
+<line x1="1061.71" y1="455.04" x2="1133.54" y2="479.77"/>
+<line x1="1133.54" y1="479.77" x2="1123.07" y2="417.78"/>
+<line x1="1123.07" y1="417.78" x2="1062.22" y2="400.86"/>
+<line x1="1062.22" y1="400.86" x2="1133.54" y2="479.77"/>
+<line x1="1061.71" y1="455.04" x2="1123.07" y2="417.78"/>
+<line x1="1133.54" y1="479.77" x2="1181.28" y2="499.78"/>
+<line x1="1181.28" y1="499.78" x2="1167.10" y2="584.20"/>
+<line x1="1167.10" y1="584.20" x2="1289.59" y2="581.62"/>
+<line x1="1062.22" y1="400.86" x2="1023.87" y2="394.76"/>
 </g>
-<circle cx="1126.49" cy="413.42" r="4.63" fill="#a6c1ff"/>
-<circle cx="1137.07" cy="476.06" r="3.27" fill="#eaeeff"/>
-<circle cx="1185.31" cy="496.29" r="3.06" fill="#fff3dd"/>
-<circle cx="1170.99" cy="581.60" r="1.93" fill="#ff9564"/>
-<circle cx="1294.77" cy="578.99" r="3.71" fill="#ffc98a"/>
-<circle cx="1065.00" cy="396.32" r="6.26" fill="#8fb2ff"/>
-<circle cx="1026.24" cy="390.15" r="2.19" fill="#ff9564"/>
-<circle cx="1064.48" cy="451.08" r="4.04" fill="#c6d6ff"/>
-<text x="1133.79" y="454.99" fill="#8fa3d0" font-size="15" font-family="Georgia, serif" text-anchor="middle">The Ashen Kite</text>
+<circle cx="1123.07" cy="417.78" r="4.63" fill="#a6c1ff"/>
+<circle cx="1133.54" cy="479.77" r="3.27" fill="#eaeeff"/>
+<circle cx="1181.28" cy="499.78" r="3.06" fill="#fff3dd"/>
+<circle cx="1167.10" cy="584.20" r="1.93" fill="#ff9564"/>
+<circle cx="1289.59" cy="581.62" r="3.71" fill="#ffc98a"/>
+<circle cx="1062.22" cy="400.86" r="6.26" fill="#8fb2ff"/>
+<circle cx="1023.87" cy="394.76" r="2.19" fill="#ff9564"/>
+<circle cx="1061.71" cy="455.04" r="4.04" fill="#c6d6ff"/>
+<text x="1130.30" y="458.73" fill="#8fa3d0" font-size="15" font-family="Georgia, serif" text-anchor="middle">The Ashen Kite</text>
 <g stroke="#5c6f9c" stroke-width="1.1" opacity="0.75">
-<line x1="1168.04" y1="385.03" x2="1162.28" y2="360.42"/>
-<line x1="1162.28" y1="360.42" x2="1175.84" y2="342.54"/>
-<line x1="1168.04" y1="385.03" x2="1200.38" y2="374.43"/>
-<line x1="1175.84" y1="342.54" x2="1200.38" y2="374.43"/>
-<line x1="1200.38" y1="374.43" x2="1238.40" y2="379.73"/>
-<line x1="1238.40" y1="379.73" x2="1274.53" y2="409.53"/>
-<line x1="1175.84" y1="342.54" x2="1230.40" y2="329.82"/>
+<line x1="1164.19" y1="389.69" x2="1158.48" y2="365.34"/>
+<line x1="1158.48" y1="365.34" x2="1171.90" y2="347.64"/>
+<line x1="1164.19" y1="389.69" x2="1196.18" y2="379.20"/>
+<line x1="1171.90" y1="347.64" x2="1196.18" y2="379.20"/>
+<line x1="1196.18" y1="379.20" x2="1233.81" y2="384.44"/>
+<line x1="1233.81" y1="384.44" x2="1269.56" y2="413.94"/>
+<line x1="1171.90" y1="347.64" x2="1225.90" y2="335.06"/>
 </g>
-<circle cx="1200.38" cy="374.43" r="3.49" fill="#eaeeff"/>
-<circle cx="1230.40" cy="329.82" r="1.85" fill="#ff9564"/>
-<circle cx="1274.53" cy="409.53" r="3.27" fill="#ffc98a"/>
-<circle cx="1175.84" cy="342.54" r="5.49" fill="#a6c1ff"/>
-<circle cx="1168.04" cy="385.03" r="4.75" fill="#a6c1ff"/>
-<circle cx="1162.28" cy="360.42" r="3.82" fill="#c6d6ff"/>
-<circle cx="1238.40" cy="379.73" r="2.96" fill="#fff3dd"/>
-<text x="1207.12" y="350.79" fill="#8fa3d0" font-size="15" font-family="Georgia, serif" text-anchor="middle">The Hollow Chalice</text>
+<circle cx="1196.18" cy="379.20" r="3.49" fill="#eaeeff"/>
+<circle cx="1225.90" cy="335.06" r="1.85" fill="#ff9564"/>
+<circle cx="1269.56" cy="413.94" r="3.27" fill="#ffc98a"/>
+<circle cx="1171.90" cy="347.64" r="5.49" fill="#a6c1ff"/>
+<circle cx="1164.19" cy="389.69" r="4.75" fill="#a6c1ff"/>
+<circle cx="1158.48" cy="365.34" r="3.82" fill="#c6d6ff"/>
+<circle cx="1233.81" cy="384.44" r="2.96" fill="#fff3dd"/>
+<text x="1202.86" y="355.62" fill="#8fa3d0" font-size="15" font-family="Georgia, serif" text-anchor="middle">The Hollow Chalice</text>
 <g stroke="#5c6f9c" stroke-width="1.1" opacity="0.75">
-<line x1="1116.13" y1="258.27" x2="1178.72" y2="235.48"/>
-<line x1="1178.72" y1="235.48" x2="1157.85" y2="262.65"/>
-<line x1="1178.72" y1="235.48" x2="1146.65" y2="225.02"/>
-<line x1="1178.72" y1="235.48" x2="1239.62" y2="209.62"/>
-<line x1="1239.62" y1="209.62" x2="1233.26" y2="249.15"/>
-<line x1="1239.62" y1="209.62" x2="1201.34" y2="186.42"/>
+<line x1="1112.82" y1="264.25" x2="1174.75" y2="241.71"/>
+<line x1="1174.75" y1="241.71" x2="1154.10" y2="268.59"/>
+<line x1="1174.75" y1="241.71" x2="1143.02" y2="231.35"/>
+<line x1="1174.75" y1="241.71" x2="1235.02" y2="216.12"/>
+<line x1="1235.02" y1="216.12" x2="1228.72" y2="255.23"/>
+<line x1="1235.02" y1="216.12" x2="1197.14" y2="193.15"/>
 </g>
-<circle cx="1239.62" cy="209.62" r="3.93" fill="#eaeeff"/>
-<circle cx="1201.34" cy="186.42" r="2.11" fill="#ff9564"/>
-<circle cx="1233.26" cy="249.15" r="2.57" fill="#ffc98a"/>
-<circle cx="1116.13" cy="258.27" r="5.11" fill="#c6d6ff"/>
-<circle cx="1178.72" cy="235.48" r="4.27" fill="#a6c1ff"/>
-<circle cx="1146.65" cy="225.02" r="3.71" fill="#fff3dd"/>
-<circle cx="1157.85" cy="262.65" r="3.38" fill="#eaeeff"/>
-<text x="1181.94" y="214.37" fill="#8fa3d0" font-size="15" font-family="Georgia, serif" text-anchor="middle">The Pale Anchor</text>
+<circle cx="1235.02" cy="216.12" r="3.93" fill="#eaeeff"/>
+<circle cx="1197.14" cy="193.15" r="2.11" fill="#ff9564"/>
+<circle cx="1228.72" cy="255.23" r="2.57" fill="#ffc98a"/>
+<circle cx="1112.82" cy="264.25" r="5.11" fill="#c6d6ff"/>
+<circle cx="1174.75" cy="241.71" r="4.27" fill="#a6c1ff"/>
+<circle cx="1143.02" cy="231.35" r="3.71" fill="#fff3dd"/>
+<circle cx="1154.10" cy="268.59" r="3.38" fill="#eaeeff"/>
+<text x="1177.94" y="220.63" fill="#8fa3d0" font-size="15" font-family="Georgia, serif" text-anchor="middle">The Pale Anchor</text>
+<g stroke="#5c6f9c" stroke-width="1.1" opacity="0.75">
+<line x1="1081.55" y1="177.56" x2="1123.13" y2="96.12"/>
+<line x1="1081.55" y1="177.56" x2="1048.51" y2="175.96"/>
+<line x1="1048.51" y1="175.96" x2="1033.54" y2="152.11"/>
+<line x1="1033.54" y1="152.11" x2="1058.92" y2="119.46"/>
+<line x1="1058.92" y1="119.46" x2="1114.10" y2="70.00"/>
+<line x1="1114.10" y1="70.00" x2="1123.13" y2="96.12"/>
+<line x1="1072.23" y1="148.67" x2="1082.56" y2="105.85"/>
+</g>
+<circle cx="1114.10" cy="70.00" r="3.06" fill="#fff3dd"/>
+<circle cx="1048.51" cy="175.96" r="4.16" fill="#a6c1ff"/>
+<circle cx="1123.13" cy="96.12" r="3.60" fill="#eaeeff"/>
+<circle cx="1081.55" cy="177.56" r="4.87" fill="#c6d6ff"/>
+<circle cx="1033.54" cy="152.11" r="2.76" fill="#ffc98a"/>
+<circle cx="1058.92" cy="119.46" r="3.49" fill="#fff3dd"/>
+<circle cx="1072.23" cy="148.67" r="2.02" fill="#ff9564"/>
+<circle cx="1082.56" cy="105.85" r="1.69" fill="#ff9564"/>
+<text x="1076.82" y="112.72" fill="#8fa3d0" font-size="15" font-family="Georgia, serif" text-anchor="middle">The Quiet Harp</text>
 
-<!-- constellations=8 stars=60 segments=63 dropped_segments=0 skipped=none modules={'projection': 'starmap/projection.py', 'style': 'starmap/style.py', 'legend': 'fallback (none)'} -->
+<!-- constellations=9 stars=68 segments=70 dropped_segments=0 skipped=none modules={'projection': 'starmap/projection.py', 'style': 'starmap/style.py', 'legend': 'fallback (none)'} -->
 </svg>

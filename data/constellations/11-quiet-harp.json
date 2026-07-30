@@ -1,0 +1,23 @@
+{
+  "name": "The Quiet Harp",
+  "abbr": "Hrp",
+  "stars": [
+    {"id": "hrp-pillar-top", "ra": 326.0, "dec": 30.0, "mag": 1.7, "spectral": "A"},
+    {"id": "hrp-pillar-foot", "ra": 328.5, "dec": 6.0, "mag": 2.8, "spectral": "F"},
+    {"id": "hrp-neck", "ra": 337.0, "dec": 34.5, "mag": 2.3, "spectral": "B"},
+    {"id": "hrp-scroll", "ra": 345.0, "dec": 29.0, "mag": 3.6, "spectral": "K"},
+    {"id": "hrp-shoulder", "ra": 340.5, "dec": 18.0, "mag": 2.9, "spectral": "G"},
+    {"id": "hrp-base", "ra": 333.0, "dec": 2.0, "mag": 3.3, "spectral": "G"},
+    {"id": "hrp-string-a", "ra": 333.5, "dec": 24.0, "mag": 4.4, "spectral": "M"},
+    {"id": "hrp-string-b", "ra": 336.0, "dec": 12.5, "mag": 4.8, "spectral": "M"}
+  ],
+  "lines": [
+    ["hrp-pillar-top", "hrp-pillar-foot"],
+    ["hrp-pillar-top", "hrp-neck"],
+    ["hrp-neck", "hrp-scroll"],
+    ["hrp-scroll", "hrp-shoulder"],
+    ["hrp-shoulder", "hrp-base"],
+    ["hrp-base", "hrp-pillar-foot"],
+    ["hrp-string-a", "hrp-string-b"]
+  ]
+}
