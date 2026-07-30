@@ -1,4 +1,4 @@
-"""Graphic design module for the starmap rendering."""
+"""Graphic design module for starmap rendering - Task 08."""
 
 
 def star_colour(spectral: str) -> str:
