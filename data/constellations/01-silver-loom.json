@@ -1,0 +1,20 @@
+{
+  "name": "The Silver Loom",
+  "abbr": "Slm",
+  "stars": [
+    {"id": "slm-a", "ra": 5.2, "dec": 15.4, "mag": 1.4, "spectral": "B"},
+    {"id": "slm-b", "ra": 12.8, "dec": 28.1, "mag": 2.5, "spectral": "A"},
+    {"id": "slm-c", "ra": 22.1, "dec": 35.6, "mag": 3.1, "spectral": "F"},
+    {"id": "slm-d", "ra": 31.4, "dec": 22.8, "mag": 2.2, "spectral": "K"},
+    {"id": "slm-e", "ra": 36.9, "dec": 8.5, "mag": 4.0, "spectral": "M"},
+    {"id": "slm-f", "ra": 18.3, "dec": -12.3, "mag": 3.7, "spectral": "G"}
+  ],
+  "lines": [
+    ["slm-a", "slm-b"],
+    ["slm-b", "slm-c"],
+    ["slm-c", "slm-d"],
+    ["slm-d", "slm-e"],
+    ["slm-a", "slm-f"],
+    ["slm-f", "slm-d"]
+  ]
+}
