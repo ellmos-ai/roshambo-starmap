@@ -1,0 +1,21 @@
+{
+  "name": "The Quartz Comb",
+  "abbr": "Qco",
+  "stars": [
+    {"id": "qco-grip", "ra": 276.0, "dec": 52.0, "mag": 1.3, "spectral": "A"},
+    {"id": "qco-bar",  "ra": 270.0, "dec": 50.0, "mag": 1.8, "spectral": "B"},
+    {"id": "qco-t1",   "ra": 268.0, "dec": 44.0, "mag": 3.0, "spectral": "F"},
+    {"id": "qco-t2",   "ra": 270.0, "dec": 42.0, "mag": 3.4, "spectral": "G"},
+    {"id": "qco-t3",   "ra": 272.0, "dec": 42.0, "mag": 3.6, "spectral": "K"},
+    {"id": "qco-t4",   "ra": 274.0, "dec": 43.0, "mag": 3.3, "spectral": "G"},
+    {"id": "qco-t5",   "ra": 276.0, "dec": 45.0, "mag": 3.0, "spectral": "F"}
+  ],
+  "lines": [
+    ["qco-grip", "qco-bar"],
+    ["qco-bar", "qco-t1"],
+    ["qco-bar", "qco-t2"],
+    ["qco-bar", "qco-t3"],
+    ["qco-bar", "qco-t4"],
+    ["qco-bar", "qco-t5"]
+  ]
+}
