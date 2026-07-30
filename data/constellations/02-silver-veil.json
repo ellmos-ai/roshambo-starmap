@@ -1,0 +1,19 @@
+{
+  "name": "The Silver Veil",
+  "abbr": "SVl",
+  "stars": [
+    {"id": "svl-a", "ra": 42.5, "dec": 45.2, "mag": 1.4, "spectral": "A"},
+    {"id": "svl-b", "ra": 51.0, "dec": 38.6, "mag": 2.2, "spectral": "B"},
+    {"id": "svl-c", "ra": 62.4, "dec": 52.1, "mag": 3.1, "spectral": "F"},
+    {"id": "svl-d", "ra": 71.8, "dec": 33.7, "mag": 2.6, "spectral": "G"},
+    {"id": "svl-e", "ra": 77.2, "dec": 48.0, "mag": 3.8, "spectral": "K"},
+    {"id": "svl-f", "ra": 56.7, "dec": 25.4, "mag": 4.1, "spectral": "M"}
+  ],
+  "lines": [
+    ["svl-a", "svl-b"],
+    ["svl-b", "svl-c"],
+    ["svl-c", "svl-e"],
+    ["svl-b", "svl-d"],
+    ["svl-d", "svl-f"]
+  ]
+}
