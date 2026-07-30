@@ -4,7 +4,7 @@
 - **Framework:** kimi
 - **Host:** ASUS-GEI
 - **Startzeit (UTC):** 2026-07-30T22:41:58Z (Session-Start, Umgebungs-Zeitstempel)
-- **Endzeit (UTC):** 2026-07-30T23:11Z (letzte Aktivität, `date -u`; Minuten gerundet,
+- **Endzeit (UTC):** 2026-07-31T01:20Z (letzte Aktivität, `date -u`; Minuten gerundet,
   Sekunden nicht gemessen)
 
 ## Aufgaben BEKOMMEN
@@ -32,6 +32,18 @@ Runde 2 (nach „arbeite weiter", zweite Welle 13–22 war inzwischen in TASKS.m
   kamen weitere Konstellationen per Pull dazu; Text-Ungenauigkeit, kein Force-Amend
   wegen Force-Push-Verbot).
 
+Runde 3 (Fortsetzung nach Kontext-Zusammenfassung, 2026-07-31):
+
+- **Task 24 — GRANTED** (`claim_id` nicht mehr im Lease-Status, zuvor vergeben an
+  `kimi-1@ASUS-GEI`): `data/constellations/24-coral-quiver.json`, „The Coral Quiver",
+  7 Sterne, RA 234°–246°, Dec 38°..55°, Lücke zwischen The Ashen Kite und The Hollow
+  Chalice schließend. Renderer: keine Skips. **Commit:** `0563e3d` ( Teil von
+  „tasks: third wave (23-27)").
+- **Task 25 — GRANTED** (`8920c688-64f9-4c2f-81f7-f1291ada3450`): `data/constellations/25-sulfur-anchor.json`,
+  „The Sulfur Anchor", 7 Sterne, RA 73°–91°, Dec −44°..−26°. Füllt die südliche Lücke
+  zwischen The Iron Tide und The Sunken Choir und balanciert damit die südliche Kette.
+  Renderer: 23 constellations, 163 stars, 160 segments. **Commit:** `9eff1c3`.
+
 ## Aufgaben ABGELEHNT (DENIED, held_by exakt übernommen)
 
 | Ressource | gehalten von | intent |
@@ -46,9 +58,9 @@ Runde 2 (nach „arbeite weiter", zweite Welle 13–22 war inzwischen in TASKS.m
 
 ## Claim-Statistik
 
-- Claim-Versuche gesamt: 13 (Task-Claims 8, Repo-Claims 5)
-- Davon gewonnen (GRANTED): 6 (Tasks 14, 19, 19-Re-Claim; Repo 3×)
-- Davon abgewiesen (DENIED): 7 (siehe Tabelle)
+- Claim-Versuche gesamt: 16 (Task-Claims 11, Repo-Claims 5)
+- Davon gewonnen (GRANTED): 8 (Tasks 14, 19, 19-Re-Claim, 24, 25; Repo 3×)
+- Davon abgewiesen (DENIED): 8 (siehe Tabelle, inkl. Task 23 — bereits auf `origin/master` erledigt)
 
 ## Auffälligkeiten
 
@@ -78,5 +90,12 @@ Runde 2 (nach „arbeite weiter", zweite Welle 13–22 war inzwischen in TASKS.m
   die es (noch) nicht gibt. Nicht angefasst.
 - **`recall` ohne Embedding-Credentials** schlägt mit `NoCredentialsError` fehl;
   mit `ROSHAMBO_EMBEDDING_PROVIDER=placeholder` funktioniert es (lexikalisch).
+- **Task 23 bereits erledigt:** Claim wurde gewährt, aber `data/constellations/23-barnacled-sextant.json`
+  befand sich bereits auf `origin/master` (Commit von `glm-1@ASUS-GEI`). Lease sofort
+  wieder freigegeben, keine fremde Arbeit überschrieben.
+- **Stash-Konflikte bei `git pull --rebase`:** Vor Runde 3 blockierte ein unstaged
+  `_reports/kimi-2_at_ASUS-GEI.md` (subagent report in Arbeit) sowie CRLF/LF-Rauschen
+  in `CATALOGUE.md`/`PROVENANCE.md` den Rebase. Nach Sicherung des Reports und
+  Zurücksetzen der reinen Line-Ending-Änderungen lief der Rebase sauber durch.
 - Fremde untracked Dateien (`stoersender-*.csv/json`, `evidence_*.json`) nicht
   angefasst und nicht committet.
