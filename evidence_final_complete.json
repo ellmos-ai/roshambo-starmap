@@ -1,0 +1,1004 @@
+{
+  "ttl_seconds": 300,
+  "counts": {
+    "trails": 106,
+    "trail_failures": 1,
+    "audit_rows": 3451,
+    "distinct_agents": 27,
+    "distinct_hosts": 2
+  },
+  "task_resources": {
+    "denials": 915,
+    "genuine_collisions": 905,
+    "contention_events": 695,
+    "cross_vendor_collisions": 0,
+    "cross_vendor_events": 0,
+    "cross_host_collisions": 81,
+    "cross_host_events": 62,
+    "stale_denials": 7,
+    "defects": [
+      {
+        "resource": "starmap:task:06",
+        "denied_at": "2026-07-30T22:24:52.585002+00:00",
+        "named_holder": "BotAgent-C@WORKSTATION-LG",
+        "actual_holder": "BotAgent-E@WORKSTATION-LG"
+      },
+      {
+        "resource": "starmap:task:06",
+        "denied_at": "2026-07-30T22:24:52.656211+00:00",
+        "named_holder": "BotAgent-C@WORKSTATION-LG",
+        "actual_holder": "BotAgent-E@WORKSTATION-LG"
+      },
+      {
+        "resource": "starmap:task:06",
+        "denied_at": "2026-07-30T22:24:52.870608+00:00",
+        "named_holder": "BotAgent-C@WORKSTATION-LG",
+        "actual_holder": "BotAgent-E@WORKSTATION-LG"
+      }
+    ],
+    "denials_naming_a_holder": 915,
+    "pairs": [
+      {
+        "denied": "BotAgent-A@ASUS-GEI",
+        "holder": "BotAgent-C@ASUS-GEI",
+        "count": 39
+      },
+      {
+        "denied": "BotAgent-B@ASUS-GEI",
+        "holder": "BotAgent-C@ASUS-GEI",
+        "count": 37
+      },
+      {
+        "denied": "BotAgent-B@ASUS-GEI",
+        "holder": "BotAgent-A@ASUS-GEI",
+        "count": 34
+      },
+      {
+        "denied": "BotAgent-C@ASUS-GEI",
+        "holder": "BotAgent-A@ASUS-GEI",
+        "count": 33
+      },
+      {
+        "denied": "BotAgent-C@ASUS-GEI",
+        "holder": "BotAgent-B@ASUS-GEI",
+        "count": 33
+      },
+      {
+        "denied": "BotAgent-A@ASUS-GEI",
+        "holder": "BotAgent-B@ASUS-GEI",
+        "count": 32
+      },
+      {
+        "denied": "BotAgent-A@WORKSTATION-LG",
+        "holder": "BotAgent-B@WORKSTATION-LG",
+        "count": 32
+      },
+      {
+        "denied": "BotAgent-C@WORKSTATION-LG",
+        "holder": "BotAgent-B@WORKSTATION-LG",
+        "count": 30
+      },
+      {
+        "denied": "BotAgent-C@WORKSTATION-LG",
+        "holder": "BotAgent-A@WORKSTATION-LG",
+        "count": 30
+      },
+      {
+        "denied": "BotAgent-A@WORKSTATION-LG",
+        "holder": "BotAgent-C@WORKSTATION-LG",
+        "count": 25
+      },
+      {
+        "denied": "BotAgent-B@WORKSTATION-LG",
+        "holder": "BotAgent-A@WORKSTATION-LG",
+        "count": 25
+      },
+      {
+        "denied": "BotAgent-B@ASUS-GEI",
+        "holder": "kimi-1@ASUS-GEI",
+        "count": 25
+      },
+      {
+        "denied": "BotAgent-A@ASUS-GEI",
+        "holder": "kimi-1@ASUS-GEI",
+        "count": 23
+      },
+      {
+        "denied": "BotAgent-B@ASUS-GEI",
+        "holder": "kimi-2@ASUS-GEI",
+        "count": 22
+      },
+      {
+        "denied": "BotAgent-A@ASUS-GEI",
+        "holder": "kimi-2@ASUS-GEI",
+        "count": 22
+      },
+      {
+        "denied": "agy@WORKSTATION-LG",
+        "holder": "agy@WORKSTATION-LG",
+        "count": 22
+      },
+      {
+        "denied": "BotAgent-B@WORKSTATION-LG",
+        "holder": "BotAgent-C@WORKSTATION-LG",
+        "count": 21
+      },
+      {
+        "denied": "agy-1@WORKSTATION-LG",
+        "holder": "agy-2@WORKSTATION-LG",
+        "count": 18
+      },
+      {
+        "denied": "agy-2@WORKSTATION-LG",
+        "holder": "agy-1@WORKSTATION-LG",
+        "count": 18
+      },
+      {
+        "denied": "BotAgent-C@ASUS-GEI",
+        "holder": "kimi-2@ASUS-GEI",
+        "count": 16
+      },
+      {
+        "denied": "BotAgent-B@ASUS-GEI",
+        "holder": "glm-1@ASUS-GEI",
+        "count": 14
+      },
+      {
+        "denied": "BotAgent-A@ASUS-GEI",
+        "holder": "glm-1@ASUS-GEI",
+        "count": 14
+      },
+      {
+        "denied": "BotAgent-C@ASUS-GEI",
+        "holder": "kimi-1@ASUS-GEI",
+        "count": 13
+      },
+      {
+        "denied": "agy-3@WORKSTATION-LG",
+        "holder": "agy-2@WORKSTATION-LG",
+        "count": 12
+      },
+      {
+        "denied": "agy-3@WORKSTATION-LG",
+        "holder": "agy-1@WORKSTATION-LG",
+        "count": 11
+      },
+      {
+        "denied": "agy-2@WORKSTATION-LG",
+        "holder": "agy-3@WORKSTATION-LG",
+        "count": 11
+      },
+      {
+        "denied": "BotAgent-C@WORKSTATION-LG",
+        "holder": "agy-2@WORKSTATION-LG",
+        "count": 10
+      },
+      {
+        "denied": "BotAgent-B@WORKSTATION-LG",
+        "holder": "glm-1@ASUS-GEI",
+        "count": 10
+      },
+      {
+        "denied": "BotAgent-A@WORKSTATION-LG",
+        "holder": "BotAgent-A@WORKSTATION-LG",
+        "count": 9
+      },
+      {
+        "denied": "agy-1@WORKSTATION-LG",
+        "holder": "agy-3@WORKSTATION-LG",
+        "count": 9
+      },
+      {
+        "denied": "BotAgent-C@ASUS-GEI",
+        "holder": "glm-1@ASUS-GEI",
+        "count": 9
+      },
+      {
+        "denied": "BotAgent-A@WORKSTATION-LG",
+        "holder": "agy-2@WORKSTATION-LG",
+        "count": 8
+      },
+      {
+        "denied": "BotAgent-A@WORKSTATION-LG",
+        "holder": "glm-1@ASUS-GEI",
+        "count": 8
+      },
+      {
+        "denied": "BotAgent-B@WORKSTATION-LG",
+        "holder": "agy-2@WORKSTATION-LG",
+        "count": 7
+      },
+      {
+        "denied": "agy-2@WORKSTATION-LG",
+        "holder": "agy-2@WORKSTATION-LG",
+        "count": 7
+      },
+      {
+        "denied": "agy-4@WORKSTATION-LG",
+        "holder": "agy-2@WORKSTATION-LG",
+        "count": 7
+      },
+      {
+        "denied": "BotAgent-C@WORKSTATION-LG",
+        "holder": "glm-1@ASUS-GEI",
+        "count": 7
+      },
+      {
+        "denied": "agy-1@WORKSTATION-LG",
+        "holder": "agy-1@WORKSTATION-LG",
+        "count": 6
+      },
+      {
+        "denied": "BotAgent-C@WORKSTATION-LG",
+        "holder": "BotAgent-B@ASUS-GEI",
+        "count": 5
+      },
+      {
+        "denied": "agy-1@WORKSTATION-LG",
+        "holder": "agy-4@WORKSTATION-LG",
+        "count": 5
+      },
+      {
+        "denied": "agy-2@WORKSTATION-LG",
+        "holder": "agy-4@WORKSTATION-LG",
+        "count": 5
+      },
+      {
+        "denied": "kimi-1@ASUS-GEI",
+        "holder": "kimi-2@ASUS-GEI",
+        "count": 5
+      },
+      {
+        "denied": "BotAgent-B@WORKSTATION-LG",
+        "holder": "agy-1@WORKSTATION-LG",
+        "count": 4
+      },
+      {
+        "denied": "BotAgent-B@WORKSTATION-LG",
+        "holder": "BotAgent-B@WORKSTATION-LG",
+        "count": 4
+      },
+      {
+        "denied": "BotAgent-B@WORKSTATION-LG",
+        "holder": "agy-3@WORKSTATION-LG",
+        "count": 4
+      },
+      {
+        "denied": "agy-4@WORKSTATION-LG",
+        "holder": "agy-3@WORKSTATION-LG",
+        "count": 4
+      },
+      {
+        "denied": "agy-6@WORKSTATION-LG",
+        "holder": "agy-2@WORKSTATION-LG",
+        "count": 4
+      },
+      {
+        "denied": "kimi-2@ASUS-GEI",
+        "holder": "kimi-1@ASUS-GEI",
+        "count": 4
+      },
+      {
+        "denied": "BotAgent-A@WORKSTATION-LG",
+        "holder": "agy@WORKSTATION-LG",
+        "count": 4
+      },
+      {
+        "denied": "BotAgent-C@WORKSTATION-LG",
+        "holder": "BotAgent-A@ASUS-GEI",
+        "count": 3
+      },
+      {
+        "denied": "BotAgent-C@WORKSTATION-LG",
+        "holder": "agy-1@WORKSTATION-LG",
+        "count": 3
+      },
+      {
+        "denied": "BotAgent-A@WORKSTATION-LG",
+        "holder": "agy-1@WORKSTATION-LG",
+        "count": 3
+      },
+      {
+        "denied": "agy-3@WORKSTATION-LG",
+        "holder": "agy-4@WORKSTATION-LG",
+        "count": 3
+      },
+      {
+        "denied": "glm-1@ASUS-GEI",
+        "holder": "BotAgent-C@WORKSTATION-LG",
+        "count": 3
+      },
+      {
+        "denied": "agy-5@WORKSTATION-LG",
+        "holder": "agy-2@WORKSTATION-LG",
+        "count": 3
+      },
+      {
+        "denied": "agy-6@WORKSTATION-LG",
+        "holder": "agy-3@WORKSTATION-LG",
+        "count": 3
+      },
+      {
+        "denied": "agy-4@WORKSTATION-LG",
+        "holder": "agy-5@WORKSTATION-LG",
+        "count": 3
+      },
+      {
+        "denied": "agy-1@WORKSTATION-LG",
+        "holder": "agy-6@WORKSTATION-LG",
+        "count": 3
+      },
+      {
+        "denied": "kimi-2@ASUS-GEI",
+        "holder": "glm-1@ASUS-GEI",
+        "count": 3
+      },
+      {
+        "denied": "kimi-2@ASUS-GEI",
+        "holder": "kimi-2@ASUS-GEI",
+        "count": 3
+      },
+      {
+        "denied": "BotAgent-C@WORKSTATION-LG",
+        "holder": "kimi-1@ASUS-GEI",
+        "count": 3
+      },
+      {
+        "denied": "BotAgent-B@WORKSTATION-LG",
+        "holder": "kimi-1@ASUS-GEI",
+        "count": 3
+      },
+      {
+        "denied": "BotAgent-B@WORKSTATION-LG",
+        "holder": "agy@WORKSTATION-LG",
+        "count": 3
+      },
+      {
+        "denied": "BotAgent-C@WORKSTATION-LG",
+        "holder": "agy@WORKSTATION-LG",
+        "count": 3
+      },
+      {
+        "denied": "BotAgent-B@ASUS-GEI",
+        "holder": "BotAgent-B@ASUS-GEI",
+        "count": 3
+      },
+      {
+        "denied": "claude-code-2@ASUS-GEI",
+        "holder": "claude-code-1@ASUS-GEI",
+        "count": 2
+      },
+      {
+        "denied": "claude-code-1@ASUS-GEI",
+        "holder": "claude-code-2@ASUS-GEI",
+        "count": 2
+      },
+      {
+        "denied": "BotAgent-C@WORKSTATION-LG",
+        "holder": "BotAgent-C@ASUS-GEI",
+        "count": 2
+      },
+      {
+        "denied": "BotAgent-C@ASUS-GEI",
+        "holder": "BotAgent-C@WORKSTATION-LG",
+        "count": 2
+      },
+      {
+        "denied": "BotAgent-A@WORKSTATION-LG",
+        "holder": "BotAgent-A@ASUS-GEI",
+        "count": 2
+      },
+      {
+        "denied": "BotAgent-B@WORKSTATION-LG",
+        "holder": "BotAgent-A@ASUS-GEI",
+        "count": 2
+      },
+      {
+        "denied": "BotAgent-E@WORKSTATION-LG",
+        "holder": "BotAgent-A@ASUS-GEI",
+        "count": 2
+      },
+      {
+        "denied": "BotAgent-A@WORKSTATION-LG",
+        "holder": "BotAgent-B@ASUS-GEI",
+        "count": 2
+      },
+      {
+        "denied": "BotAgent-D@WORKSTATION-LG",
+        "holder": "BotAgent-B@ASUS-GEI",
+        "count": 2
+      },
+      {
+        "denied": "BotAgent-B@WORKSTATION-LG",
+        "holder": "BotAgent-B@ASUS-GEI",
+        "count": 2
+      },
+      {
+        "denied": "BotAgent-E@WORKSTATION-LG",
+        "holder": "BotAgent-B@ASUS-GEI",
+        "count": 2
+      },
+      {
+        "denied": "BotAgent-E@WORKSTATION-LG",
+        "holder": "agy-1@WORKSTATION-LG",
+        "count": 2
+      },
+      {
+        "denied": "BotAgent-E@WORKSTATION-LG",
+        "holder": "agy-2@WORKSTATION-LG",
+        "count": 2
+      },
+      {
+        "denied": "BotAgent-A@WORKSTATION-LG",
+        "holder": "BotAgent-D@WORKSTATION-LG",
+        "count": 2
+      },
+      {
+        "denied": "BotAgent-C@WORKSTATION-LG",
+        "holder": "BotAgent-C@WORKSTATION-LG",
+        "count": 2
+      },
+      {
+        "denied": "BotAgent-C@WORKSTATION-LG",
+        "holder": "agy-3@WORKSTATION-LG",
+        "count": 2
+      },
+      {
+        "denied": "agy-4@WORKSTATION-LG",
+        "holder": "agy-1@WORKSTATION-LG",
+        "count": 2
+      },
+      {
+        "denied": "glm-1@ASUS-GEI",
+        "holder": "BotAgent-B@WORKSTATION-LG",
+        "count": 2
+      },
+      {
+        "denied": "agy-4@WORKSTATION-LG",
+        "holder": "glm-1@ASUS-GEI",
+        "count": 2
+      },
+      {
+        "denied": "agy-4@WORKSTATION-LG",
+        "holder": "agy-6@WORKSTATION-LG",
+        "count": 2
+      },
+      {
+        "denied": "agy-2@WORKSTATION-LG",
+        "holder": "agy-6@WORKSTATION-LG",
+        "count": 2
+      },
+      {
+        "denied": "agy-5@WORKSTATION-LG",
+        "holder": "agy-3@WORKSTATION-LG",
+        "count": 2
+      },
+      {
+        "denied": "kimi-1@ASUS-GEI",
+        "holder": "agy-5@WORKSTATION-LG",
+        "count": 2
+      },
+      {
+        "denied": "BotAgent-A@WORKSTATION-LG",
+        "holder": "kimi-1@ASUS-GEI",
+        "count": 2
+      },
+      {
+        "denied": "glm-1@ASUS-GEI",
+        "holder": "kimi-2@ASUS-GEI",
+        "count": 2
+      },
+      {
+        "denied": "kimi-1@ASUS-GEI",
+        "holder": "BotAgent-B@ASUS-GEI",
+        "count": 2
+      },
+      {
+        "denied": "BotAgent-A@ASUS-GEI",
+        "holder": "BotAgent-A@ASUS-GEI",
+        "count": 2
+      },
+      {
+        "denied": "BotAgent-C@ASUS-GEI",
+        "holder": "claude-code-1@ASUS-GEI",
+        "count": 1
+      },
+      {
+        "denied": "BotAgent-B@ASUS-GEI",
+        "holder": "claude-code-1@ASUS-GEI",
+        "count": 1
+      },
+      {
+        "denied": "BotAgent-A@ASUS-GEI",
+        "holder": "claude-code-1@ASUS-GEI",
+        "count": 1
+      },
+      {
+        "denied": "BotAgent-A@ASUS-GEI",
+        "holder": "BotAgent-A@WORKSTATION-LG",
+        "count": 1
+      },
+      {
+        "denied": "BotAgent-B@ASUS-GEI",
+        "holder": "BotAgent-C@WORKSTATION-LG",
+        "count": 1
+      },
+      {
+        "denied": "BotAgent-D@WORKSTATION-LG",
+        "holder": "BotAgent-A@ASUS-GEI",
+        "count": 1
+      },
+      {
+        "denied": "BotAgent-B@WORKSTATION-LG",
+        "holder": "BotAgent-E@WORKSTATION-LG",
+        "count": 1
+      },
+      {
+        "denied": "BotAgent-A@WORKSTATION-LG",
+        "holder": "BotAgent-E@WORKSTATION-LG",
+        "count": 1
+      },
+      {
+        "denied": "BotAgent-C@WORKSTATION-LG",
+        "holder": "BotAgent-E@WORKSTATION-LG",
+        "count": 1
+      },
+      {
+        "denied": "BotAgent-D@WORKSTATION-LG",
+        "holder": "BotAgent-E@WORKSTATION-LG",
+        "count": 1
+      },
+      {
+        "denied": "BotAgent-B@ASUS-GEI",
+        "holder": "agy-1@WORKSTATION-LG",
+        "count": 1
+      },
+      {
+        "denied": "BotAgent-D@WORKSTATION-LG",
+        "holder": "agy-1@WORKSTATION-LG",
+        "count": 1
+      },
+      {
+        "denied": "BotAgent-B@ASUS-GEI",
+        "holder": "BotAgent-E@WORKSTATION-LG",
+        "count": 1
+      },
+      {
+        "denied": "BotAgent-C@ASUS-GEI",
+        "holder": "agy-1@WORKSTATION-LG",
+        "count": 1
+      },
+      {
+        "denied": "BotAgent-A@ASUS-GEI",
+        "holder": "agy-1@WORKSTATION-LG",
+        "count": 1
+      },
+      {
+        "denied": "agy-2@WORKSTATION-LG",
+        "holder": "BotAgent-E@WORKSTATION-LG",
+        "count": 1
+      },
+      {
+        "denied": "agy-1@WORKSTATION-LG",
+        "holder": "BotAgent-E@WORKSTATION-LG",
+        "count": 1
+      },
+      {
+        "denied": "BotAgent-A@ASUS-GEI",
+        "holder": "agy-2@WORKSTATION-LG",
+        "count": 1
+      },
+      {
+        "denied": "BotAgent-D@WORKSTATION-LG",
+        "holder": "BotAgent-B@WORKSTATION-LG",
+        "count": 1
+      },
+      {
+        "denied": "BotAgent-E@WORKSTATION-LG",
+        "holder": "BotAgent-B@WORKSTATION-LG",
+        "count": 1
+      },
+      {
+        "denied": "claude-opus-1@ASUS-GEI",
+        "holder": "agy-4@WORKSTATION-LG",
+        "count": 1
+      },
+      {
+        "denied": "BotAgent-A@WORKSTATION-LG",
+        "holder": "agy-3@WORKSTATION-LG",
+        "count": 1
+      },
+      {
+        "denied": "glm-1@ASUS-GEI",
+        "holder": "BotAgent-A@WORKSTATION-LG",
+        "count": 1
+      },
+      {
+        "denied": "agy-4@WORKSTATION-LG",
+        "holder": "BotAgent-A@WORKSTATION-LG",
+        "count": 1
+      },
+      {
+        "denied": "agy-5@WORKSTATION-LG",
+        "holder": "BotAgent-A@WORKSTATION-LG",
+        "count": 1
+      },
+      {
+        "denied": "agy-1@WORKSTATION-LG",
+        "holder": "BotAgent-A@WORKSTATION-LG",
+        "count": 1
+      },
+      {
+        "denied": "agy-5@WORKSTATION-LG",
+        "holder": "glm-1@ASUS-GEI",
+        "count": 1
+      },
+      {
+        "denied": "agy-1@WORKSTATION-LG",
+        "holder": "glm-1@ASUS-GEI",
+        "count": 1
+      },
+      {
+        "denied": "agy-6@WORKSTATION-LG",
+        "holder": "agy-4@WORKSTATION-LG",
+        "count": 1
+      },
+      {
+        "denied": "BotAgent-A@WORKSTATION-LG",
+        "holder": "agy-4@WORKSTATION-LG",
+        "count": 1
+      },
+      {
+        "denied": "BotAgent-C@WORKSTATION-LG",
+        "holder": "agy-4@WORKSTATION-LG",
+        "count": 1
+      },
+      {
+        "denied": "agy-1@WORKSTATION-LG",
+        "holder": "agy-5@WORKSTATION-LG",
+        "count": 1
+      },
+      {
+        "denied": "agy-2@WORKSTATION-LG",
+        "holder": "agy-5@WORKSTATION-LG",
+        "count": 1
+      },
+      {
+        "denied": "agy-6@WORKSTATION-LG",
+        "holder": "agy-5@WORKSTATION-LG",
+        "count": 1
+      },
+      {
+        "denied": "agy-6@WORKSTATION-LG",
+        "holder": "agy-1@WORKSTATION-LG",
+        "count": 1
+      },
+      {
+        "denied": "agy-3@WORKSTATION-LG",
+        "holder": "agy-5@WORKSTATION-LG",
+        "count": 1
+      },
+      {
+        "denied": "agy-3@WORKSTATION-LG",
+        "holder": "agy-6@WORKSTATION-LG",
+        "count": 1
+      },
+      {
+        "denied": "agy-5@WORKSTATION-LG",
+        "holder": "agy-6@WORKSTATION-LG",
+        "count": 1
+      },
+      {
+        "denied": "agy-5@WORKSTATION-LG",
+        "holder": "agy-4@WORKSTATION-LG",
+        "count": 1
+      },
+      {
+        "denied": "kimi-1@ASUS-GEI",
+        "holder": "BotAgent-A@ASUS-GEI",
+        "count": 1
+      },
+      {
+        "denied": "glm-1@ASUS-GEI",
+        "holder": "kimi-1@ASUS-GEI",
+        "count": 1
+      },
+      {
+        "denied": "glm-1@ASUS-GEI",
+        "holder": "BotAgent-B@ASUS-GEI",
+        "count": 1
+      },
+      {
+        "denied": "BotAgent-A@ASUS-GEI",
+        "holder": "BotAgent-C@WORKSTATION-LG",
+        "count": 1
+      },
+      {
+        "denied": "kimi-2@ASUS-GEI",
+        "holder": "BotAgent-B@ASUS-GEI",
+        "count": 1
+      },
+      {
+        "denied": "kimi-1@ASUS-GEI",
+        "holder": "glm-1@ASUS-GEI",
+        "count": 1
+      },
+      {
+        "denied": "kimi-1@ASUS-GEI",
+        "holder": "kimi-1@ASUS-GEI",
+        "count": 1
+      }
+    ],
+    "resources": [
+      "starmap:task:01",
+      "starmap:task:02",
+      "starmap:task:03",
+      "starmap:task:04",
+      "starmap:task:05",
+      "starmap:task:06",
+      "starmap:task:07",
+      "starmap:task:08",
+      "starmap:task:09",
+      "starmap:task:10",
+      "starmap:task:11",
+      "starmap:task:12",
+      "starmap:task:13",
+      "starmap:task:14",
+      "starmap:task:15",
+      "starmap:task:16",
+      "starmap:task:17",
+      "starmap:task:18",
+      "starmap:task:19",
+      "starmap:task:20",
+      "starmap:task:21",
+      "starmap:task:22",
+      "starmap:task:25",
+      "starmap:task:28",
+      "starmap:task:29",
+      "starmap:task:30",
+      "starmap:task:31",
+      "starmap:task:32",
+      "starmap:task:33"
+    ]
+  },
+  "index_resource": {
+    "denials": 106,
+    "genuine_collisions": 106,
+    "contention_events": 61,
+    "cross_vendor_collisions": 0,
+    "cross_vendor_events": 0,
+    "cross_host_collisions": 64,
+    "cross_host_events": 30,
+    "stale_denials": 0,
+    "defects": [],
+    "denials_naming_a_holder": 106,
+    "pairs": [
+      {
+        "denied": "agy-1@WORKSTATION-LG",
+        "holder": "kimi-2@ASUS-GEI",
+        "count": 13
+      },
+      {
+        "denied": "kimi-2@ASUS-GEI",
+        "holder": "glm-1@ASUS-GEI",
+        "count": 7
+      },
+      {
+        "denied": "agy-1@WORKSTATION-LG",
+        "holder": "glm-1@ASUS-GEI",
+        "count": 7
+      },
+      {
+        "denied": "agy-2@WORKSTATION-LG",
+        "holder": "kimi-2@ASUS-GEI",
+        "count": 6
+      },
+      {
+        "denied": "agy-2@WORKSTATION-LG",
+        "holder": "agy-1@WORKSTATION-LG",
+        "count": 5
+      },
+      {
+        "denied": "agy-6@WORKSTATION-LG",
+        "holder": "glm-1@ASUS-GEI",
+        "count": 5
+      },
+      {
+        "denied": "kimi-2@ASUS-GEI",
+        "holder": "kimi-2@ASUS-GEI",
+        "count": 5
+      },
+      {
+        "denied": "agy-2@WORKSTATION-LG",
+        "holder": "glm-1@ASUS-GEI",
+        "count": 5
+      },
+      {
+        "denied": "agy-4@WORKSTATION-LG",
+        "holder": "kimi-1@ASUS-GEI",
+        "count": 4
+      },
+      {
+        "denied": "agy-5@WORKSTATION-LG",
+        "holder": "glm-1@ASUS-GEI",
+        "count": 4
+      },
+      {
+        "denied": "agy-3@WORKSTATION-LG",
+        "holder": "kimi-2@ASUS-GEI",
+        "count": 4
+      },
+      {
+        "denied": "kimi-1@ASUS-GEI",
+        "holder": "glm-1@ASUS-GEI",
+        "count": 3
+      },
+      {
+        "denied": "agy-4@WORKSTATION-LG",
+        "holder": "kimi-2@ASUS-GEI",
+        "count": 3
+      },
+      {
+        "denied": "agy-1@WORKSTATION-LG",
+        "holder": "agy-3@WORKSTATION-LG",
+        "count": 3
+      },
+      {
+        "denied": "glm-1@ASUS-GEI",
+        "holder": "kimi-2@ASUS-GEI",
+        "count": 3
+      },
+      {
+        "denied": "kimi-1@ASUS-GEI",
+        "holder": "kimi-2@ASUS-GEI",
+        "count": 3
+      },
+      {
+        "denied": "agy@WORKSTATION-LG",
+        "holder": "kimi-2@ASUS-GEI",
+        "count": 3
+      },
+      {
+        "denied": "agy@WORKSTATION-LG",
+        "holder": "agy@WORKSTATION-LG",
+        "count": 3
+      },
+      {
+        "denied": "agy-1@WORKSTATION-LG",
+        "holder": "agy-2@WORKSTATION-LG",
+        "count": 2
+      },
+      {
+        "denied": "agy-3@WORKSTATION-LG",
+        "holder": "agy-1@WORKSTATION-LG",
+        "count": 2
+      },
+      {
+        "denied": "agy-2@WORKSTATION-LG",
+        "holder": "kimi-1@ASUS-GEI",
+        "count": 2
+      },
+      {
+        "denied": "agy-3@WORKSTATION-LG",
+        "holder": "glm-1@ASUS-GEI",
+        "count": 2
+      },
+      {
+        "denied": "claude-code-1@ASUS-GEI",
+        "holder": "claude-code-2@ASUS-GEI",
+        "count": 1
+      },
+      {
+        "denied": "agy-4@WORKSTATION-LG",
+        "holder": "agy-2@WORKSTATION-LG",
+        "count": 1
+      },
+      {
+        "denied": "agy-2@WORKSTATION-LG",
+        "holder": "agy-3@WORKSTATION-LG",
+        "count": 1
+      },
+      {
+        "denied": "kimi-1@ASUS-GEI",
+        "holder": "agy-3@WORKSTATION-LG",
+        "count": 1
+      },
+      {
+        "denied": "agy-5@WORKSTATION-LG",
+        "holder": "agy-3@WORKSTATION-LG",
+        "count": 1
+      },
+      {
+        "denied": "agy-1@WORKSTATION-LG",
+        "holder": "kimi-1@ASUS-GEI",
+        "count": 1
+      },
+      {
+        "denied": "agy-5@WORKSTATION-LG",
+        "holder": "kimi-1@ASUS-GEI",
+        "count": 1
+      },
+      {
+        "denied": "agy-5@WORKSTATION-LG",
+        "holder": "agy-1@WORKSTATION-LG",
+        "count": 1
+      },
+      {
+        "denied": "agy-6@WORKSTATION-LG",
+        "holder": "kimi-2@ASUS-GEI",
+        "count": 1
+      },
+      {
+        "denied": "agy-4@WORKSTATION-LG",
+        "holder": "agy-3@WORKSTATION-LG",
+        "count": 1
+      },
+      {
+        "denied": "kimi-2@ASUS-GEI",
+        "holder": "agy@WORKSTATION-LG",
+        "count": 1
+      },
+      {
+        "denied": "agy@WORKSTATION-LG",
+        "holder": "glm-1@ASUS-GEI",
+        "count": 1
+      }
+    ],
+    "resources": [
+      "starmap:repo"
+    ]
+  },
+  "other_resources": {
+    "denials": 45,
+    "genuine_collisions": 45,
+    "contention_events": 42,
+    "cross_vendor_collisions": 0,
+    "cross_vendor_events": 0,
+    "cross_host_collisions": 0,
+    "cross_host_events": 0,
+    "stale_denials": 0,
+    "defects": [],
+    "denials_naming_a_holder": 45,
+    "pairs": [
+      {
+        "denied": "BotAgent-B@ASUS-GEI",
+        "holder": "BotAgent-A@ASUS-GEI",
+        "count": 9
+      },
+      {
+        "denied": "BotAgent-A@ASUS-GEI",
+        "holder": "BotAgent-B@ASUS-GEI",
+        "count": 9
+      },
+      {
+        "denied": "BotAgent-C@ASUS-GEI",
+        "holder": "BotAgent-B@ASUS-GEI",
+        "count": 8
+      },
+      {
+        "denied": "BotAgent-C@ASUS-GEI",
+        "holder": "BotAgent-A@ASUS-GEI",
+        "count": 7
+      },
+      {
+        "denied": "BotAgent-A@ASUS-GEI",
+        "holder": "BotAgent-C@ASUS-GEI",
+        "count": 6
+      },
+      {
+        "denied": "BotAgent-B@ASUS-GEI",
+        "holder": "BotAgent-C@ASUS-GEI",
+        "count": 6
+      }
+    ],
+    "resources": [
+      "storm:task:01",
+      "storm:task:02"
+    ]
+  },
+  "scenario": "starmap",
+  "resource_names": {
+    "task_prefix": "starmap:task:",
+    "serialization": "starmap:repo"
+  }
+}
