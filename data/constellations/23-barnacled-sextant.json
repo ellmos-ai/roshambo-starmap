@@ -1,0 +1,22 @@
+{
+  "name": "The Barnacled Sextant",
+  "abbr": "Sxt",
+  "stars": [
+    {"id": "sxt-arc", "ra": 235.0, "dec": -32.0, "mag": 2.1, "spectral": "F"},
+    {"id": "sxt-index", "ra": 248.0, "dec": -28.0, "mag": 1.4, "spectral": "A"},
+    {"id": "sxt-mirror", "ra": 260.0, "dec": -35.0, "mag": 2.8, "spectral": "G"},
+    {"id": "sxt-shade", "ra": 272.0, "dec": -42.0, "mag": 3.3, "spectral": "K"},
+    {"id": "sxt-horizon", "ra": 252.0, "dec": -48.0, "mag": 0.9, "spectral": "B"},
+    {"id": "sxt-ivory", "ra": 238.0, "dec": -52.0, "mag": 3.6, "spectral": "M"},
+    {"id": "sxt-brass", "ra": 265.0, "dec": -55.0, "mag": 2.5, "spectral": "K"}
+  ],
+  "lines": [
+    ["sxt-arc", "sxt-index"],
+    ["sxt-index", "sxt-mirror"],
+    ["sxt-mirror", "sxt-shade"],
+    ["sxt-shade", "sxt-horizon"],
+    ["sxt-horizon", "sxt-index"],
+    ["sxt-ivory", "sxt-arc"],
+    ["sxt-brass", "sxt-ivory"]
+  ]
+}
