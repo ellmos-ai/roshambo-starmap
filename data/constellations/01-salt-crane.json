@@ -1,0 +1,24 @@
+{
+  "name": "The Salt Crane",
+  "abbr": "SCr",
+  "stars": [
+    {"id": "scr-beak", "ra": 4.5, "dec": 44.0, "mag": 3.4, "spectral": "M"},
+    {"id": "scr-head", "ra": 7.2, "dec": 41.5, "mag": 1.1, "spectral": "A"},
+    {"id": "scr-neck", "ra": 11.0, "dec": 33.0, "mag": 2.2, "spectral": "F"},
+    {"id": "scr-shoulder", "ra": 16.5, "dec": 27.5, "mag": 0.4, "spectral": "B"},
+    {"id": "scr-wing", "ra": 24.0, "dec": 34.5, "mag": 2.6, "spectral": "K"},
+    {"id": "scr-tail", "ra": 30.5, "dec": 24.0, "mag": 1.9, "spectral": "G"},
+    {"id": "scr-knee", "ra": 15.0, "dec": 16.5, "mag": 3.0, "spectral": "K"},
+    {"id": "scr-foot", "ra": 13.0, "dec": 9.0, "mag": 4.1, "spectral": "M"}
+  ],
+  "lines": [
+    ["scr-beak", "scr-head"],
+    ["scr-head", "scr-neck"],
+    ["scr-neck", "scr-shoulder"],
+    ["scr-shoulder", "scr-wing"],
+    ["scr-wing", "scr-tail"],
+    ["scr-tail", "scr-shoulder"],
+    ["scr-shoulder", "scr-knee"],
+    ["scr-knee", "scr-foot"]
+  ]
+}

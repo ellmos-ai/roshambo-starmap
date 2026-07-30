@@ -1,0 +1,23 @@
+{
+  "name": "The Broken Anvil",
+  "abbr": "Anv",
+  "stars": [
+    {"id": "anv-horn",   "ra": 44.2, "dec": 38.6, "mag": 1.4, "spectral": "B"},
+    {"id": "anv-topl",   "ra": 52.0, "dec": 41.2, "mag": 0.6, "spectral": "A"},
+    {"id": "anv-topr",   "ra": 68.4, "dec": 42.5, "mag": 2.1, "spectral": "F"},
+    {"id": "anv-waistl", "ra": 55.3, "dec": 32.0, "mag": 3.4, "spectral": "K"},
+    {"id": "anv-waistr", "ra": 64.1, "dec": 32.6, "mag": 4.2, "spectral": "M"},
+    {"id": "anv-basel",  "ra": 52.6, "dec": 24.1, "mag": 1.9, "spectral": "G"},
+    {"id": "anv-baser",  "ra": 67.0, "dec": 24.4, "mag": 2.9, "spectral": "K"}
+  ],
+  "lines": [
+    ["anv-horn", "anv-topl"],
+    ["anv-topl", "anv-topr"],
+    ["anv-topl", "anv-waistl"],
+    ["anv-topr", "anv-waistr"],
+    ["anv-waistl", "anv-waistr"],
+    ["anv-waistl", "anv-basel"],
+    ["anv-waistr", "anv-baser"],
+    ["anv-basel", "anv-baser"]
+  ]
+}
