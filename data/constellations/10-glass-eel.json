@@ -1,0 +1,23 @@
+{
+  "name": "The Glass Eel",
+  "abbr": "Gee",
+  "stars": [
+    {"id": "gee-head",  "ra": 308.0, "dec": 0.0,   "mag": 1.2, "spectral": "A"},
+    {"id": "gee-jaw",   "ra": 306.0, "dec": -3.0,  "mag": 3.0, "spectral": "F"},
+    {"id": "gee-gill",  "ra": 310.0, "dec": -2.0,  "mag": 2.6, "spectral": "B"},
+    {"id": "gee-body1", "ra": 312.0, "dec": -10.0, "mag": 2.4, "spectral": "G"},
+    {"id": "gee-body2", "ra": 314.0, "dec": -20.0, "mag": 2.8, "spectral": "K"},
+    {"id": "gee-body3", "ra": 310.0, "dec": -30.0, "mag": 3.2, "spectral": "M"},
+    {"id": "gee-body4", "ra": 314.0, "dec": -40.0, "mag": 3.5, "spectral": "K"},
+    {"id": "gee-tail",  "ra": 312.0, "dec": -48.0, "mag": 4.0, "spectral": "M"}
+  ],
+  "lines": [
+    ["gee-head", "gee-jaw"],
+    ["gee-head", "gee-gill"],
+    ["gee-gill", "gee-body1"],
+    ["gee-body1", "gee-body2"],
+    ["gee-body2", "gee-body3"],
+    ["gee-body3", "gee-body4"],
+    ["gee-body4", "gee-tail"]
+  ]
+}
