@@ -27,6 +27,7 @@ place a point on a sphere. The lore is invented to match the mood of each figure
 | 16 | The Last Cairn | LCn | 6 | 284–344 | -48…-29 | `16-last-cairn.json` |
 | 23 | The Barnacled Sextant | Sxt | 7 | 235–272 | -55…-28 | `23-barnacled-sextant.json` |
 | 24 | The Coral Quiver | Qvr | 7 | 234–246 | 38…55 | `24-coral-quiver.json` |
+| 25 | The Sulfur Anchor | SAn | 7 | 73–91 | -44…-26 | `25-sulfur-anchor.json` |
 
 ## Notes on the figures
 
@@ -51,6 +52,7 @@ place a point on a sphere. The lore is invented to match the mood of each figure
 - **The Last Cairn** (LCn) — A cairn raised by the last traveller to walk the southern road; no path returns to it.
 - **The Barnacled Sextant** (Sxt) — A navigator's sextant dropped overboard and forgotten, now overgrown with barnacles that catch the southern light.
 - **The Coral Quiver** (Qvr) — A quiver made from reef-coral, said to hold the one arrow that can strike a star without dimming it.
+- **The Sulfur Anchor** (SAn) — An anchor left to pickle in sulfur water, its chain running deep enough to hook the next iron tide before it turns.
 
-Total constellations catalogued: **21**.
+Total constellations catalogued: **22**.
 

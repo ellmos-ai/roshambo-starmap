@@ -1,0 +1,22 @@
+{
+  "name": "The Sulfur Anchor",
+  "abbr": "SAn",
+  "stars": [
+    {"id": "san-shank", "ra": 73.0, "dec": -28.5, "mag": 2.4, "spectral": "F"},
+    {"id": "san-stock", "ra": 78.5, "dec": -31.0, "mag": 1.9, "spectral": "G"},
+    {"id": "san-ring", "ra": 84.0, "dec": -29.5, "mag": 3.1, "spectral": "K"},
+    {"id": "san-fluke-west", "ra": 80.0, "dec": -39.0, "mag": 2.7, "spectral": "M"},
+    {"id": "san-fluke-east", "ra": 88.0, "dec": -38.0, "mag": 3.0, "spectral": "M"},
+    {"id": "san-crown", "ra": 90.5, "dec": -25.5, "mag": 3.5, "spectral": "A"},
+    {"id": "san-chain", "ra": 76.0, "dec": -44.0, "mag": 3.8, "spectral": "K"}
+  ],
+  "lines": [
+    ["san-shank", "san-stock"],
+    ["san-stock", "san-ring"],
+    ["san-stock", "san-fluke-west"],
+    ["san-stock", "san-fluke-east"],
+    ["san-fluke-west", "san-fluke-east"],
+    ["san-ring", "san-crown"],
+    ["san-stock", "san-chain"]
+  ]
+}
