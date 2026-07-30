@@ -1,0 +1,22 @@
+{
+  "name": "The Coral Quiver",
+  "abbr": "Qvr",
+  "stars": [
+    {"id": "qvr-nock", "ra": 234.0, "dec": 42.0, "mag": 2.3, "spectral": "A"},
+    {"id": "qvr-shaft", "ra": 240.0, "dec": 48.0, "mag": 1.7, "spectral": "B"},
+    {"id": "qvr-fletch", "ra": 246.0, "dec": 45.0, "mag": 2.9, "spectral": "F"},
+    {"id": "qvr-tip", "ra": 238.0, "dec": 38.0, "mag": 3.2, "spectral": "G"},
+    {"id": "qvr-binding", "ra": 242.0, "dec": 52.0, "mag": 0.8, "spectral": "O"},
+    {"id": "qvr-ivory", "ra": 236.0, "dec": 55.0, "mag": 3.5, "spectral": "K"},
+    {"id": "qvr-wax", "ra": 244.0, "dec": 40.0, "mag": 2.6, "spectral": "A"}
+  ],
+  "lines": [
+    ["qvr-nock", "qvr-shaft"],
+    ["qvr-shaft", "qvr-fletch"],
+    ["qvr-fletch", "qvr-tip"],
+    ["qvr-tip", "qvr-nock"],
+    ["qvr-binding", "qvr-ivory"],
+    ["qvr-ivory", "qvr-shaft"],
+    ["qvr-wax", "qvr-binding"]
+  ]
+}

@@ -1,315 +1,380 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-label="A sky invented by three agents">
 <rect width="1600" height="900" fill="#0b1026"/>
 <g stroke="#5c6f9c" stroke-width="1.1" opacity="0.75">
-<line x1="836.02" y1="277.80" x2="822.74" y2="316.62"/>
-<line x1="822.74" y1="316.62" x2="809.74" y2="338.93"/>
-<line x1="809.74" y1="338.93" x2="773.41" y2="313.75"/>
-<line x1="773.41" y1="313.75" x2="710.14" y2="253.38"/>
-<line x1="710.14" y1="253.38" x2="768.33" y2="190.70"/>
-<line x1="768.33" y1="190.70" x2="836.02" y2="277.80"/>
-<line x1="822.74" y1="316.62" x2="710.14" y2="253.38"/>
+<line x1="714.65" y1="307.04" x2="702.58" y2="342.34"/>
+<line x1="702.58" y1="342.34" x2="690.75" y2="362.64"/>
+<line x1="690.75" y1="362.64" x2="657.71" y2="339.74"/>
+<line x1="657.71" y1="339.74" x2="600.17" y2="284.83"/>
+<line x1="600.17" y1="284.83" x2="653.09" y2="227.82"/>
+<line x1="653.09" y1="227.82" x2="714.65" y2="307.04"/>
+<line x1="702.58" y1="342.34" x2="600.17" y2="284.83"/>
 </g>
-<circle cx="836.02" cy="277.80" r="5.62" fill="#a6c1ff"/>
-<circle cx="822.74" cy="316.62" r="4.16" fill="#8fb2ff"/>
-<circle cx="809.74" cy="338.93" r="2.96" fill="#c6d6ff"/>
-<circle cx="773.41" cy="313.75" r="4.63" fill="#eaeeff"/>
-<circle cx="710.14" cy="253.38" r="2.28" fill="#ffc98a"/>
-<circle cx="768.33" cy="190.70" r="3.71" fill="#ff9564"/>
-<text x="786.73" y="263.86" fill="#8fa3d0" font-size="15" font-family="Georgia, serif" text-anchor="middle">The Obsidian Beacon</text>
+<circle cx="714.65" cy="307.04" r="5.62" fill="#a6c1ff"/>
+<circle cx="702.58" cy="342.34" r="4.16" fill="#8fb2ff"/>
+<circle cx="690.75" cy="362.64" r="2.96" fill="#c6d6ff"/>
+<circle cx="657.71" cy="339.74" r="4.63" fill="#eaeeff"/>
+<circle cx="600.17" cy="284.83" r="2.28" fill="#ffc98a"/>
+<circle cx="653.09" cy="227.82" r="3.71" fill="#ff9564"/>
+<text x="669.82" y="292.73" fill="#8fa3d0" font-size="15" font-family="Georgia, serif" text-anchor="middle">The Obsidian Beacon</text>
 <g stroke="#5c6f9c" stroke-width="1.1" opacity="0.75">
-<line x1="843.71" y1="350.19" x2="838.79" y2="345.14"/>
-<line x1="838.79" y1="345.14" x2="828.79" y2="326.88"/>
-<line x1="828.79" y1="326.88" x2="814.20" y2="316.51"/>
-<line x1="814.20" y1="316.51" x2="805.35" y2="337.99"/>
-<line x1="805.35" y1="337.99" x2="780.82" y2="321.24"/>
-<line x1="780.82" y1="321.24" x2="814.20" y2="316.51"/>
-<line x1="814.20" y1="316.51" x2="809.75" y2="286.90"/>
-<line x1="809.75" y1="286.90" x2="810.00" y2="263.36"/>
+<line x1="721.65" y1="372.87" x2="717.18" y2="368.29"/>
+<line x1="717.18" y1="368.29" x2="708.07" y2="351.67"/>
+<line x1="708.07" y1="351.67" x2="694.80" y2="342.24"/>
+<line x1="694.80" y1="342.24" x2="686.76" y2="361.78"/>
+<line x1="686.76" y1="361.78" x2="664.45" y2="346.54"/>
+<line x1="664.45" y1="346.54" x2="694.80" y2="342.24"/>
+<line x1="694.80" y1="342.24" x2="690.76" y2="315.32"/>
+<line x1="690.76" y1="315.32" x2="690.98" y2="293.91"/>
 </g>
-<circle cx="843.71" cy="350.19" r="2.96" fill="#ff9564"/>
-<circle cx="810.00" cy="263.36" r="2.28" fill="#ff9564"/>
-<circle cx="838.79" cy="345.14" r="5.62" fill="#c6d6ff"/>
-<circle cx="809.75" cy="286.90" r="3.38" fill="#ffc98a"/>
-<circle cx="828.79" cy="326.88" r="4.27" fill="#eaeeff"/>
-<circle cx="814.20" cy="316.51" r="6.53" fill="#a6c1ff"/>
-<circle cx="780.82" cy="321.24" r="4.63" fill="#fff3dd"/>
-<circle cx="805.35" cy="337.99" r="3.82" fill="#ffc98a"/>
-<text x="816.43" y="300.53" fill="#8fa3d0" font-size="15" font-family="Georgia, serif" text-anchor="middle">The Salt Crane</text>
+<circle cx="721.65" cy="372.87" r="2.96" fill="#ff9564"/>
+<circle cx="690.98" cy="293.91" r="2.28" fill="#ff9564"/>
+<circle cx="717.18" cy="368.29" r="5.62" fill="#c6d6ff"/>
+<circle cx="690.76" cy="315.32" r="3.38" fill="#ffc98a"/>
+<circle cx="708.07" cy="351.67" r="4.27" fill="#eaeeff"/>
+<circle cx="694.80" cy="342.24" r="6.53" fill="#a6c1ff"/>
+<circle cx="664.45" cy="346.54" r="4.63" fill="#fff3dd"/>
+<circle cx="686.76" cy="361.78" r="3.82" fill="#ffc98a"/>
+<text x="696.83" y="326.08" fill="#8fa3d0" font-size="15" font-family="Georgia, serif" text-anchor="middle">The Salt Crane</text>
 <g stroke="#5c6f9c" stroke-width="1.1" opacity="0.75">
-<line x1="836.12" y1="278.97" x2="822.58" y2="315.88"/>
-<line x1="822.58" y1="315.88" x2="809.74" y2="338.93"/>
-<line x1="809.74" y1="338.93" x2="777.30" y2="319.63"/>
-<line x1="777.30" y1="319.63" x2="740.96" y2="293.75"/>
-<line x1="836.12" y1="278.97" x2="768.03" y2="189.80"/>
-<line x1="768.03" y1="189.80" x2="777.30" y2="319.63"/>
+<line x1="714.75" y1="308.10" x2="702.43" y2="341.67"/>
+<line x1="702.43" y1="341.67" x2="690.75" y2="362.64"/>
+<line x1="690.75" y1="362.64" x2="661.25" y2="345.09"/>
+<line x1="661.25" y1="345.09" x2="628.20" y2="321.54"/>
+<line x1="714.75" y1="308.10" x2="652.82" y2="227.01"/>
+<line x1="652.82" y1="227.01" x2="661.25" y2="345.09"/>
 </g>
-<circle cx="836.12" cy="278.97" r="5.24" fill="#a6c1ff"/>
-<circle cx="822.58" cy="315.88" r="3.93" fill="#c6d6ff"/>
-<circle cx="809.74" cy="338.93" r="3.27" fill="#eaeeff"/>
-<circle cx="777.30" cy="319.63" r="4.27" fill="#ffc98a"/>
-<circle cx="740.96" cy="293.75" r="2.38" fill="#ff9564"/>
-<circle cx="768.03" cy="189.80" r="2.66" fill="#fff3dd"/>
-<text x="792.45" y="271.50" fill="#8fa3d0" font-size="15" font-family="Georgia, serif" text-anchor="middle">The Silver Loom</text>
+<circle cx="714.75" cy="308.10" r="5.24" fill="#a6c1ff"/>
+<circle cx="702.43" cy="341.67" r="3.93" fill="#c6d6ff"/>
+<circle cx="690.75" cy="362.64" r="3.27" fill="#eaeeff"/>
+<circle cx="661.25" cy="345.09" r="4.27" fill="#ffc98a"/>
+<circle cx="628.20" cy="321.54" r="2.38" fill="#ff9564"/>
+<circle cx="652.82" cy="227.01" r="2.66" fill="#fff3dd"/>
+<text x="675.03" y="299.68" fill="#8fa3d0" font-size="15" font-family="Georgia, serif" text-anchor="middle">The Silver Loom</text>
 <g stroke="#5c6f9c" stroke-width="1.1" opacity="0.75">
-<line x1="779.56" y1="366.77" x2="774.90" y2="380.73"/>
-<line x1="774.90" y1="380.73" x2="763.94" y2="405.63"/>
-<line x1="774.90" y1="380.73" x2="754.04" y2="373.03"/>
-<line x1="763.94" y1="405.63" x2="746.24" y2="389.25"/>
-<line x1="754.04" y1="373.03" x2="746.24" y2="389.25"/>
-<line x1="754.04" y1="373.03" x2="741.48" y2="356.44"/>
-<line x1="746.24" y1="389.25" x2="724.86" y2="386.56"/>
-<line x1="741.48" y1="356.44" x2="724.86" y2="386.56"/>
+<line x1="663.30" y1="387.96" x2="659.07" y2="400.65"/>
+<line x1="659.07" y1="400.65" x2="649.10" y2="423.30"/>
+<line x1="659.07" y1="400.65" x2="640.10" y2="393.65"/>
+<line x1="649.10" y1="423.30" x2="633.00" y2="408.40"/>
+<line x1="640.10" y1="393.65" x2="633.00" y2="408.40"/>
+<line x1="640.10" y1="393.65" x2="628.67" y2="378.56"/>
+<line x1="633.00" y1="408.40" x2="613.55" y2="405.95"/>
+<line x1="628.67" y1="378.56" x2="613.55" y2="405.95"/>
 </g>
-<circle cx="741.48" cy="356.44" r="4.63" fill="#fff3dd"/>
-<circle cx="724.86" cy="386.56" r="3.49" fill="#ffc98a"/>
-<circle cx="779.56" cy="366.77" r="5.24" fill="#a6c1ff"/>
-<circle cx="774.90" cy="380.73" r="6.26" fill="#c6d6ff"/>
-<circle cx="763.94" cy="405.63" r="4.39" fill="#eaeeff"/>
-<circle cx="754.04" cy="373.03" r="2.96" fill="#ffc98a"/>
-<circle cx="746.24" cy="389.25" r="2.19" fill="#ff9564"/>
-<text x="755.00" y="361.77" fill="#8fa3d0" font-size="15" font-family="Georgia, serif" text-anchor="middle">The Broken Anvil</text>
+<circle cx="628.67" cy="378.56" r="4.63" fill="#fff3dd"/>
+<circle cx="613.55" cy="405.95" r="3.49" fill="#ffc98a"/>
+<circle cx="663.30" cy="387.96" r="5.24" fill="#a6c1ff"/>
+<circle cx="659.07" cy="400.65" r="6.26" fill="#c6d6ff"/>
+<circle cx="649.10" cy="423.30" r="4.39" fill="#eaeeff"/>
+<circle cx="640.10" cy="393.65" r="2.96" fill="#ffc98a"/>
+<circle cx="633.00" cy="408.40" r="2.19" fill="#ff9564"/>
+<text x="640.97" y="381.78" fill="#8fa3d0" font-size="15" font-family="Georgia, serif" text-anchor="middle">The Broken Anvil</text>
 <g stroke="#5c6f9c" stroke-width="1.1" opacity="0.75">
-<line x1="791.67" y1="375.50" x2="771.39" y2="375.72"/>
-<line x1="771.39" y1="375.72" x2="786.19" y2="406.24"/>
-<line x1="786.19" y1="406.24" x2="771.32" y2="421.96"/>
-<line x1="771.39" y1="375.72" x2="742.88" y2="404.53"/>
-<line x1="742.88" y1="404.53" x2="738.62" y2="366.34"/>
+<line x1="674.32" y1="395.90" x2="655.87" y2="396.10"/>
+<line x1="655.87" y1="396.10" x2="669.33" y2="423.86"/>
+<line x1="669.33" y1="423.86" x2="655.81" y2="438.15"/>
+<line x1="655.87" y1="396.10" x2="629.95" y2="422.30"/>
+<line x1="629.95" y1="422.30" x2="626.07" y2="387.56"/>
 </g>
-<circle cx="791.67" cy="375.50" r="5.24" fill="#c6d6ff"/>
-<circle cx="771.39" cy="375.72" r="4.27" fill="#a6c1ff"/>
-<circle cx="786.19" cy="406.24" r="3.27" fill="#eaeeff"/>
-<circle cx="742.88" cy="404.53" r="3.82" fill="#fff3dd"/>
-<circle cx="771.32" cy="421.96" r="2.57" fill="#ffc98a"/>
-<circle cx="738.62" cy="366.34" r="2.28" fill="#ff9564"/>
-<text x="767.01" y="373.72" fill="#8fa3d0" font-size="15" font-family="Georgia, serif" text-anchor="middle">The Silver Veil</text>
+<circle cx="674.32" cy="395.90" r="5.24" fill="#c6d6ff"/>
+<circle cx="655.87" cy="396.10" r="4.27" fill="#a6c1ff"/>
+<circle cx="669.33" cy="423.86" r="3.27" fill="#eaeeff"/>
+<circle cx="629.95" cy="422.30" r="3.82" fill="#fff3dd"/>
+<circle cx="655.81" cy="438.15" r="2.57" fill="#ffc98a"/>
+<circle cx="626.07" cy="387.56" r="2.28" fill="#ff9564"/>
+<text x="651.89" y="392.64" fill="#8fa3d0" font-size="15" font-family="Georgia, serif" text-anchor="middle">The Silver Veil</text>
 <g stroke="#5c6f9c" stroke-width="1.1" opacity="0.75">
-<line x1="618.62" y1="480.95" x2="587.12" y2="460.76"/>
-<line x1="618.62" y1="480.95" x2="593.63" y2="511.32"/>
-<line x1="587.12" y1="460.76" x2="517.79" y2="428.38"/>
-<line x1="593.63" y1="511.32" x2="532.74" y2="568.50"/>
-<line x1="517.79" y1="428.38" x2="431.59" y2="399.65"/>
-<line x1="532.74" y1="568.50" x2="457.97" y2="627.37"/>
-<line x1="431.59" y1="399.65" x2="457.97" y2="627.37"/>
-<line x1="457.97" y1="627.37" x2="338.29" y2="606.53"/>
+<line x1="516.93" y1="491.80" x2="488.28" y2="473.44"/>
+<line x1="516.93" y1="491.80" x2="494.20" y2="519.43"/>
+<line x1="488.28" y1="473.44" x2="425.23" y2="443.99"/>
+<line x1="494.20" y1="519.43" x2="438.82" y2="571.43"/>
+<line x1="425.23" y1="443.99" x2="346.83" y2="417.86"/>
+<line x1="438.82" y1="571.43" x2="370.82" y2="624.97"/>
+<line x1="346.83" y1="417.86" x2="370.82" y2="624.97"/>
+<line x1="370.82" y1="624.97" x2="261.97" y2="606.01"/>
 </g>
-<circle cx="338.29" cy="606.53" r="2.02" fill="#ff9564"/>
-<circle cx="618.62" cy="480.95" r="5.11" fill="#c6d6ff"/>
-<circle cx="532.74" cy="568.50" r="4.39" fill="#ffc98a"/>
-<circle cx="517.79" cy="428.38" r="6.13" fill="#a6c1ff"/>
-<circle cx="457.97" cy="627.37" r="4.04" fill="#ffc98a"/>
-<circle cx="431.59" cy="399.65" r="2.47" fill="#ff9564"/>
-<circle cx="593.63" cy="511.32" r="3.06" fill="#fff3dd"/>
-<circle cx="587.12" cy="460.76" r="3.49" fill="#eaeeff"/>
-<text x="509.72" y="492.43" fill="#8fa3d0" font-size="15" font-family="Georgia, serif" text-anchor="middle">The Drowned Bell</text>
+<circle cx="261.97" cy="606.01" r="2.02" fill="#ff9564"/>
+<circle cx="516.93" cy="491.80" r="5.11" fill="#c6d6ff"/>
+<circle cx="438.82" cy="571.43" r="4.39" fill="#ffc98a"/>
+<circle cx="425.23" cy="443.99" r="6.13" fill="#a6c1ff"/>
+<circle cx="370.82" cy="624.97" r="4.04" fill="#ffc98a"/>
+<circle cx="346.83" cy="417.86" r="2.47" fill="#ff9564"/>
+<circle cx="494.20" cy="519.43" r="3.06" fill="#fff3dd"/>
+<circle cx="488.28" cy="473.44" r="3.49" fill="#eaeeff"/>
+<text x="417.88" y="500.62" fill="#8fa3d0" font-size="15" font-family="Georgia, serif" text-anchor="middle">The Drowned Bell</text>
 <g stroke="#5c6f9c" stroke-width="1.1" opacity="0.75">
-<line x1="753.30" y1="457.20" x2="773.94" y2="448.08"/>
-<line x1="753.30" y1="457.20" x2="771.72" y2="459.72"/>
-<line x1="753.30" y1="457.20" x2="733.19" y2="444.12"/>
-<line x1="733.19" y1="444.12" x2="745.69" y2="474.15"/>
-<line x1="753.30" y1="457.20" x2="709.78" y2="464.87"/>
-<line x1="709.78" y1="464.87" x2="675.37" y2="470.94"/>
+<line x1="639.42" y1="470.20" x2="658.19" y2="461.91"/>
+<line x1="639.42" y1="470.20" x2="656.17" y2="472.49"/>
+<line x1="639.42" y1="470.20" x2="621.13" y2="458.30"/>
+<line x1="621.13" y1="458.30" x2="632.50" y2="485.62"/>
+<line x1="639.42" y1="470.20" x2="599.84" y2="477.18"/>
+<line x1="599.84" y1="477.18" x2="568.55" y2="482.70"/>
 </g>
-<circle cx="709.78" cy="464.87" r="2.76" fill="#ffc98a"/>
-<circle cx="753.30" cy="457.20" r="5.74" fill="#a6c1ff"/>
-<circle cx="773.94" cy="448.08" r="4.04" fill="#c6d6ff"/>
-<circle cx="771.72" cy="459.72" r="3.71" fill="#eaeeff"/>
-<circle cx="675.37" cy="470.94" r="4.75" fill="#a6c1ff"/>
-<circle cx="745.69" cy="474.15" r="3.17" fill="#fff3dd"/>
-<circle cx="733.19" cy="444.12" r="4.51" fill="#c6d6ff"/>
-<text x="737.57" y="441.87" fill="#8fa3d0" font-size="15" font-family="Georgia, serif" text-anchor="middle">The Windlass</text>
+<circle cx="599.84" cy="477.18" r="2.76" fill="#ffc98a"/>
+<circle cx="639.42" cy="470.20" r="5.74" fill="#a6c1ff"/>
+<circle cx="658.19" cy="461.91" r="4.04" fill="#c6d6ff"/>
+<circle cx="656.17" cy="472.49" r="3.71" fill="#eaeeff"/>
+<circle cx="568.55" cy="482.70" r="4.75" fill="#a6c1ff"/>
+<circle cx="632.50" cy="485.62" r="3.17" fill="#fff3dd"/>
+<circle cx="621.13" cy="458.30" r="4.51" fill="#c6d6ff"/>
+<text x="625.11" y="454.63" fill="#8fa3d0" font-size="15" font-family="Georgia, serif" text-anchor="middle">The Windlass</text>
 <g stroke="#5c6f9c" stroke-width="1.1" opacity="0.75">
-<line x1="790.91" y1="481.93" x2="814.27" y2="511.66"/>
-<line x1="790.91" y1="481.93" x2="759.09" y2="499.55"/>
-<line x1="759.09" y1="499.55" x2="725.67" y2="532.59"/>
-<line x1="814.27" y1="511.66" x2="794.64" y2="543.41"/>
-<line x1="794.64" y1="543.41" x2="766.89" y2="579.62"/>
-<line x1="759.09" y1="499.55" x2="773.81" y2="522.55"/>
-<line x1="773.81" y1="522.55" x2="794.64" y2="543.41"/>
-<line x1="773.81" y1="522.55" x2="761.25" y2="544.83"/>
-<line x1="725.67" y1="532.59" x2="766.89" y2="579.62"/>
+<line x1="673.62" y1="492.69" x2="694.87" y2="519.74"/>
+<line x1="673.62" y1="492.69" x2="644.69" y2="508.72"/>
+<line x1="644.69" y1="508.72" x2="614.29" y2="538.76"/>
+<line x1="694.87" y1="519.74" x2="677.01" y2="548.61"/>
+<line x1="677.01" y1="548.61" x2="651.78" y2="581.54"/>
+<line x1="644.69" y1="508.72" x2="658.07" y2="529.64"/>
+<line x1="658.07" y1="529.64" x2="677.01" y2="548.61"/>
+<line x1="658.07" y1="529.64" x2="646.65" y2="549.90"/>
+<line x1="614.29" y1="538.76" x2="651.78" y2="581.54"/>
 </g>
-<circle cx="759.09" cy="499.55" r="6.53" fill="#8fb2ff"/>
-<circle cx="790.91" cy="481.93" r="5.36" fill="#a6c1ff"/>
-<circle cx="766.89" cy="579.62" r="3.93" fill="#ffc98a"/>
-<circle cx="725.67" cy="532.59" r="2.76" fill="#fff3dd"/>
-<circle cx="794.64" cy="543.41" r="3.17" fill="#eaeeff"/>
-<circle cx="814.27" cy="511.66" r="3.71" fill="#c6d6ff"/>
-<circle cx="773.81" cy="522.55" r="4.63" fill="#ffc98a"/>
-<circle cx="761.25" cy="544.83" r="2.11" fill="#ff9564"/>
-<text x="773.31" y="509.02" fill="#8fa3d0" font-size="15" font-family="Georgia, serif" text-anchor="middle">The Amber Loom</text>
+<circle cx="644.69" cy="508.72" r="6.53" fill="#8fb2ff"/>
+<circle cx="673.62" cy="492.69" r="5.36" fill="#a6c1ff"/>
+<circle cx="651.78" cy="581.54" r="3.93" fill="#ffc98a"/>
+<circle cx="614.29" cy="538.76" r="2.76" fill="#fff3dd"/>
+<circle cx="677.01" cy="548.61" r="3.17" fill="#eaeeff"/>
+<circle cx="694.87" cy="519.74" r="3.71" fill="#c6d6ff"/>
+<circle cx="658.07" cy="529.64" r="4.63" fill="#ffc98a"/>
+<circle cx="646.65" cy="549.90" r="2.11" fill="#ff9564"/>
+<text x="657.62" y="515.70" fill="#8fa3d0" font-size="15" font-family="Georgia, serif" text-anchor="middle">The Amber Loom</text>
 <g stroke="#5c6f9c" stroke-width="1.1" opacity="0.75">
-<line x1="765.46" y1="498.65" x2="758.40" y2="514.82"/>
-<line x1="758.40" y1="514.82" x2="757.69" y2="538.10"/>
-<line x1="757.69" y1="538.10" x2="773.03" y2="539.52"/>
-<line x1="757.69" y1="538.10" x2="739.64" y2="536.62"/>
-<line x1="773.03" y1="539.52" x2="767.92" y2="570.08"/>
-<line x1="739.64" y1="536.62" x2="767.92" y2="570.08"/>
-<line x1="767.92" y1="570.08" x2="773.39" y2="598.68"/>
+<line x1="650.48" y1="507.90" x2="644.05" y2="522.61"/>
+<line x1="644.05" y1="522.61" x2="643.42" y2="543.78"/>
+<line x1="643.42" y1="543.78" x2="657.36" y2="545.07"/>
+<line x1="643.42" y1="543.78" x2="627.00" y2="542.43"/>
+<line x1="657.36" y1="545.07" x2="652.71" y2="572.86"/>
+<line x1="627.00" y1="542.43" x2="652.71" y2="572.86"/>
+<line x1="652.71" y1="572.86" x2="657.69" y2="598.88"/>
 </g>
-<circle cx="767.92" cy="570.08" r="4.63" fill="#ffc98a"/>
-<circle cx="773.03" cy="539.52" r="3.27" fill="#eaeeff"/>
-<circle cx="758.40" cy="514.82" r="4.27" fill="#c6d6ff"/>
-<circle cx="739.64" cy="536.62" r="3.71" fill="#fff3dd"/>
-<circle cx="773.39" cy="598.68" r="2.19" fill="#ff9564"/>
-<circle cx="765.46" cy="498.65" r="6.00" fill="#a6c1ff"/>
-<circle cx="757.69" cy="538.10" r="7.62" fill="#8fb2ff"/>
-<text x="762.22" y="524.35" fill="#8fa3d0" font-size="15" font-family="Georgia, serif" text-anchor="middle">The Silver Spindle</text>
+<circle cx="652.71" cy="572.86" r="4.63" fill="#ffc98a"/>
+<circle cx="657.36" cy="545.07" r="3.27" fill="#eaeeff"/>
+<circle cx="644.05" cy="522.61" r="4.27" fill="#c6d6ff"/>
+<circle cx="627.00" cy="542.43" r="3.71" fill="#fff3dd"/>
+<circle cx="657.69" cy="598.88" r="2.19" fill="#ff9564"/>
+<circle cx="650.48" cy="507.90" r="6.00" fill="#a6c1ff"/>
+<circle cx="643.42" cy="543.78" r="7.62" fill="#8fb2ff"/>
+<text x="647.53" y="529.65" fill="#8fa3d0" font-size="15" font-family="Georgia, serif" text-anchor="middle">The Silver Spindle</text>
 <g stroke="#5c6f9c" stroke-width="1.1" opacity="0.75">
-<line x1="826.32" y1="531.29" x2="826.84" y2="557.69"/>
-<line x1="826.84" y1="557.69" x2="833.44" y2="604.94"/>
-<line x1="833.44" y1="604.94" x2="848.83" y2="663.68"/>
-<line x1="848.83" y1="663.68" x2="805.49" y2="725.94"/>
-<line x1="848.83" y1="663.68" x2="902.62" y2="706.70"/>
-<line x1="805.49" y1="725.94" x2="878.05" y2="830.00"/>
-<line x1="902.62" y1="706.70" x2="878.05" y2="830.00"/>
+<line x1="705.83" y1="537.59" x2="706.30" y2="561.60"/>
+<line x1="706.30" y1="561.60" x2="712.31" y2="604.57"/>
+<line x1="712.31" y1="604.57" x2="726.30" y2="657.99"/>
+<line x1="726.30" y1="657.99" x2="686.89" y2="714.62"/>
+<line x1="726.30" y1="657.99" x2="775.22" y2="697.12"/>
+<line x1="686.89" y1="714.62" x2="752.88" y2="809.26"/>
+<line x1="775.22" y1="697.12" x2="752.88" y2="809.26"/>
 </g>
-<circle cx="902.62" cy="706.70" r="4.87" fill="#fff3dd"/>
-<circle cx="805.49" cy="725.94" r="2.96" fill="#ffc98a"/>
-<circle cx="826.84" cy="557.69" r="2.57" fill="#ff9564"/>
-<circle cx="826.32" cy="531.29" r="3.82" fill="#eaeeff"/>
-<circle cx="833.44" cy="604.94" r="5.87" fill="#a6c1ff"/>
-<circle cx="848.83" cy="663.68" r="4.27" fill="#c6d6ff"/>
-<circle cx="878.05" cy="830.00" r="2.11" fill="#ff9564"/>
-<text x="845.94" y="642.04" fill="#8fa3d0" font-size="15" font-family="Georgia, serif" text-anchor="middle">The Ferryman's Oar</text>
+<circle cx="775.22" cy="697.12" r="4.87" fill="#fff3dd"/>
+<circle cx="686.89" cy="714.62" r="2.96" fill="#ffc98a"/>
+<circle cx="706.30" cy="561.60" r="2.57" fill="#ff9564"/>
+<circle cx="705.83" cy="537.59" r="3.82" fill="#eaeeff"/>
+<circle cx="712.31" cy="604.57" r="5.87" fill="#a6c1ff"/>
+<circle cx="726.30" cy="657.99" r="4.27" fill="#c6d6ff"/>
+<circle cx="752.88" cy="809.26" r="2.11" fill="#ff9564"/>
+<text x="723.68" y="636.68" fill="#8fa3d0" font-size="15" font-family="Georgia, serif" text-anchor="middle">The Ferryman's Oar</text>
 <g stroke="#5c6f9c" stroke-width="1.1" opacity="0.75">
-<line x1="904.75" y1="506.66" x2="904.36" y2="547.48"/>
-<line x1="904.36" y1="547.48" x2="958.48" y2="566.11"/>
-<line x1="958.48" y1="566.11" x2="950.59" y2="519.41"/>
-<line x1="950.59" y1="519.41" x2="904.75" y2="506.66"/>
-<line x1="904.75" y1="506.66" x2="958.48" y2="566.11"/>
-<line x1="904.36" y1="547.48" x2="950.59" y2="519.41"/>
-<line x1="958.48" y1="566.11" x2="994.45" y2="581.19"/>
-<line x1="994.45" y1="581.19" x2="983.77" y2="644.80"/>
-<line x1="983.77" y1="644.80" x2="1076.06" y2="642.85"/>
-<line x1="904.75" y1="506.66" x2="875.85" y2="502.06"/>
+<line x1="777.16" y1="515.18" x2="776.81" y2="552.31"/>
+<line x1="776.81" y1="552.31" x2="826.03" y2="569.26"/>
+<line x1="826.03" y1="569.26" x2="818.86" y2="526.78"/>
+<line x1="818.86" y1="526.78" x2="777.16" y2="515.18"/>
+<line x1="777.16" y1="515.18" x2="826.03" y2="569.26"/>
+<line x1="776.81" y1="552.31" x2="818.86" y2="526.78"/>
+<line x1="826.03" y1="569.26" x2="858.74" y2="582.97"/>
+<line x1="858.74" y1="582.97" x2="849.03" y2="640.82"/>
+<line x1="849.03" y1="640.82" x2="932.97" y2="639.05"/>
+<line x1="777.16" y1="515.18" x2="750.88" y2="511.00"/>
 </g>
-<circle cx="950.59" cy="519.41" r="4.63" fill="#a6c1ff"/>
-<circle cx="958.48" cy="566.11" r="3.27" fill="#eaeeff"/>
-<circle cx="994.45" cy="581.19" r="3.06" fill="#fff3dd"/>
-<circle cx="983.77" cy="644.80" r="1.93" fill="#ff9564"/>
-<circle cx="1076.06" cy="642.85" r="3.71" fill="#ffc98a"/>
-<circle cx="904.75" cy="506.66" r="6.26" fill="#8fb2ff"/>
-<circle cx="875.85" cy="502.06" r="2.19" fill="#ff9564"/>
-<circle cx="904.36" cy="547.48" r="4.04" fill="#c6d6ff"/>
-<text x="956.04" y="545.82" fill="#8fa3d0" font-size="15" font-family="Georgia, serif" text-anchor="middle">The Ashen Kite</text>
+<circle cx="818.86" cy="526.78" r="4.63" fill="#a6c1ff"/>
+<circle cx="826.03" cy="569.26" r="3.27" fill="#eaeeff"/>
+<circle cx="858.74" cy="582.97" r="3.06" fill="#fff3dd"/>
+<circle cx="849.03" cy="640.82" r="1.93" fill="#ff9564"/>
+<circle cx="932.97" cy="639.05" r="3.71" fill="#ffc98a"/>
+<circle cx="777.16" cy="515.18" r="6.26" fill="#8fb2ff"/>
+<circle cx="750.88" cy="511.00" r="2.19" fill="#ff9564"/>
+<circle cx="776.81" cy="552.31" r="4.04" fill="#c6d6ff"/>
+<text x="823.81" y="549.17" fill="#8fa3d0" font-size="15" font-family="Georgia, serif" text-anchor="middle">The Ashen Kite</text>
 <g stroke="#5c6f9c" stroke-width="1.1" opacity="0.75">
-<line x1="981.57" y1="498.24" x2="977.28" y2="479.89"/>
-<line x1="977.28" y1="479.89" x2="987.39" y2="466.56"/>
-<line x1="981.57" y1="498.24" x2="1005.68" y2="490.34"/>
-<line x1="987.39" y1="466.56" x2="1005.68" y2="490.34"/>
-<line x1="1005.68" y1="490.34" x2="1034.03" y2="494.29"/>
-<line x1="1034.03" y1="494.29" x2="1060.97" y2="516.51"/>
-<line x1="987.39" y1="466.56" x2="1028.07" y2="457.08"/>
+<line x1="847.03" y1="507.53" x2="843.13" y2="490.84"/>
+<line x1="843.13" y1="490.84" x2="852.32" y2="478.72"/>
+<line x1="847.03" y1="507.53" x2="868.96" y2="500.34"/>
+<line x1="852.32" y1="478.72" x2="868.96" y2="500.34"/>
+<line x1="868.96" y1="500.34" x2="894.74" y2="503.94"/>
+<line x1="894.74" y1="503.94" x2="919.24" y2="524.15"/>
+<line x1="852.32" y1="478.72" x2="889.32" y2="470.09"/>
 </g>
-<circle cx="1005.68" cy="490.34" r="3.49" fill="#eaeeff"/>
-<circle cx="1028.07" cy="457.08" r="1.85" fill="#ff9564"/>
-<circle cx="1060.97" cy="516.51" r="3.27" fill="#ffc98a"/>
-<circle cx="987.39" cy="466.56" r="5.49" fill="#a6c1ff"/>
-<circle cx="981.57" cy="498.24" r="4.75" fill="#a6c1ff"/>
-<circle cx="977.28" cy="479.89" r="3.82" fill="#c6d6ff"/>
-<circle cx="1034.03" cy="494.29" r="2.96" fill="#fff3dd"/>
-<text x="1010.71" y="468.13" fill="#8fa3d0" font-size="15" font-family="Georgia, serif" text-anchor="middle">The Hollow Chalice</text>
+<circle cx="868.96" cy="500.34" r="3.49" fill="#eaeeff"/>
+<circle cx="889.32" cy="470.09" r="1.85" fill="#ff9564"/>
+<circle cx="919.24" cy="524.15" r="3.27" fill="#ffc98a"/>
+<circle cx="852.32" cy="478.72" r="5.49" fill="#a6c1ff"/>
+<circle cx="847.03" cy="507.53" r="4.75" fill="#a6c1ff"/>
+<circle cx="843.13" cy="490.84" r="3.82" fill="#c6d6ff"/>
+<circle cx="894.74" cy="503.94" r="2.96" fill="#fff3dd"/>
+<text x="873.54" y="478.51" fill="#8fa3d0" font-size="15" font-family="Georgia, serif" text-anchor="middle">The Hollow Chalice</text>
 <g stroke="#5c6f9c" stroke-width="1.1" opacity="0.75">
-<line x1="923.47" y1="432.37" x2="928.04" y2="440.01"/>
-<line x1="928.04" y1="440.01" x2="940.82" y2="443.15"/>
-<line x1="928.04" y1="440.01" x2="945.28" y2="440.01"/>
-<line x1="928.04" y1="440.01" x2="945.23" y2="436.71"/>
-<line x1="928.04" y1="440.01" x2="942.85" y2="433.57"/>
-<line x1="928.04" y1="440.01" x2="938.22" y2="430.82"/>
+<line x1="794.18" y1="447.62" x2="798.34" y2="454.57"/>
+<line x1="798.34" y1="454.57" x2="809.97" y2="457.43"/>
+<line x1="798.34" y1="454.57" x2="814.03" y2="454.57"/>
+<line x1="798.34" y1="454.57" x2="813.98" y2="451.57"/>
+<line x1="798.34" y1="454.57" x2="811.81" y2="448.71"/>
+<line x1="798.34" y1="454.57" x2="807.60" y2="446.21"/>
 </g>
-<circle cx="928.04" cy="440.01" r="4.75" fill="#a6c1ff"/>
-<circle cx="923.47" cy="432.37" r="5.36" fill="#c6d6ff"/>
-<circle cx="940.82" cy="443.15" r="3.38" fill="#eaeeff"/>
-<circle cx="945.28" cy="440.01" r="2.96" fill="#fff3dd"/>
-<circle cx="945.23" cy="436.71" r="2.76" fill="#ffc98a"/>
-<circle cx="942.85" cy="433.57" r="3.06" fill="#fff3dd"/>
-<circle cx="938.22" cy="430.82" r="3.38" fill="#eaeeff"/>
-<text x="937.70" y="418.66" fill="#8fa3d0" font-size="15" font-family="Georgia, serif" text-anchor="middle">The Quartz Comb</text>
+<circle cx="798.34" cy="454.57" r="4.75" fill="#a6c1ff"/>
+<circle cx="794.18" cy="447.62" r="5.36" fill="#c6d6ff"/>
+<circle cx="809.97" cy="457.43" r="3.38" fill="#eaeeff"/>
+<circle cx="814.03" cy="454.57" r="2.96" fill="#fff3dd"/>
+<circle cx="813.98" cy="451.57" r="2.76" fill="#ffc98a"/>
+<circle cx="811.81" cy="448.71" r="3.06" fill="#fff3dd"/>
+<circle cx="807.60" cy="446.21" r="3.38" fill="#eaeeff"/>
+<text x="807.13" y="433.52" fill="#8fa3d0" font-size="15" font-family="Georgia, serif" text-anchor="middle">The Quartz Comb</text>
 <g stroke="#5c6f9c" stroke-width="1.1" opacity="0.75">
-<line x1="1018.05" y1="309.33" x2="1031.74" y2="308.53"/>
-<line x1="1018.05" y1="309.33" x2="1019.16" y2="298.72"/>
-<line x1="1019.16" y1="298.72" x2="1038.77" y2="270.74"/>
-<line x1="1038.77" y1="270.74" x2="1068.84" y2="229.43"/>
-<line x1="1068.84" y1="229.43" x2="1132.42" y2="203.69"/>
-<line x1="1132.42" y1="203.69" x2="1178.22" y2="123.80"/>
-<line x1="1178.22" y1="123.80" x2="1261.71" y2="70.00"/>
+<line x1="880.20" y1="335.71" x2="892.66" y2="334.99"/>
+<line x1="880.20" y1="335.71" x2="881.22" y2="326.06"/>
+<line x1="881.22" y1="326.06" x2="899.05" y2="300.62"/>
+<line x1="899.05" y1="300.62" x2="926.40" y2="263.04"/>
+<line x1="926.40" y1="263.04" x2="984.22" y2="239.63"/>
+<line x1="984.22" y1="239.63" x2="1025.88" y2="166.97"/>
+<line x1="1025.88" y1="166.97" x2="1101.82" y2="118.05"/>
 </g>
-<circle cx="1038.77" cy="270.74" r="4.04" fill="#fff3dd"/>
-<circle cx="1068.84" cy="229.43" r="3.60" fill="#ffc98a"/>
-<circle cx="1132.42" cy="203.69" r="3.17" fill="#ff9564"/>
-<circle cx="1178.22" cy="123.80" r="2.86" fill="#ffc98a"/>
-<circle cx="1019.16" cy="298.72" r="3.82" fill="#a6c1ff"/>
-<circle cx="1018.05" cy="309.33" r="5.49" fill="#c6d6ff"/>
-<circle cx="1031.74" cy="308.53" r="3.38" fill="#eaeeff"/>
-<circle cx="1261.71" cy="70.00" r="2.38" fill="#ff9564"/>
-<text x="1093.61" y="208.78" fill="#8fa3d0" font-size="15" font-family="Georgia, serif" text-anchor="middle">The Glass Eel</text>
+<circle cx="899.05" cy="300.62" r="4.04" fill="#fff3dd"/>
+<circle cx="926.40" cy="263.04" r="3.60" fill="#ffc98a"/>
+<circle cx="984.22" cy="239.63" r="3.17" fill="#ff9564"/>
+<circle cx="1025.88" cy="166.97" r="2.86" fill="#ffc98a"/>
+<circle cx="881.22" cy="326.06" r="3.82" fill="#a6c1ff"/>
+<circle cx="880.20" cy="335.71" r="5.49" fill="#c6d6ff"/>
+<circle cx="892.66" cy="334.99" r="3.38" fill="#eaeeff"/>
+<circle cx="1101.82" cy="118.05" r="2.38" fill="#ff9564"/>
+<text x="948.93" y="242.64" fill="#8fa3d0" font-size="15" font-family="Georgia, serif" text-anchor="middle">The Glass Eel</text>
 <g stroke="#5c6f9c" stroke-width="1.1" opacity="0.75">
-<line x1="942.87" y1="403.73" x2="989.54" y2="386.74"/>
-<line x1="989.54" y1="386.74" x2="973.97" y2="407.00"/>
-<line x1="989.54" y1="386.74" x2="965.63" y2="378.94"/>
-<line x1="989.54" y1="386.74" x2="1034.95" y2="367.46"/>
-<line x1="1034.95" y1="367.46" x2="1030.20" y2="396.93"/>
-<line x1="1034.95" y1="367.46" x2="1006.40" y2="350.16"/>
+<line x1="811.83" y1="421.57" x2="854.27" y2="406.12"/>
+<line x1="854.27" y1="406.12" x2="840.12" y2="424.54"/>
+<line x1="854.27" y1="406.12" x2="832.53" y2="399.03"/>
+<line x1="854.27" y1="406.12" x2="895.57" y2="388.59"/>
+<line x1="895.57" y1="388.59" x2="891.26" y2="415.39"/>
+<line x1="895.57" y1="388.59" x2="869.61" y2="372.85"/>
 </g>
-<circle cx="1034.95" cy="367.46" r="3.93" fill="#eaeeff"/>
-<circle cx="1006.40" cy="350.16" r="2.11" fill="#ff9564"/>
-<circle cx="1030.20" cy="396.93" r="2.57" fill="#ffc98a"/>
-<circle cx="942.87" cy="403.73" r="5.11" fill="#c6d6ff"/>
-<circle cx="989.54" cy="386.74" r="4.27" fill="#a6c1ff"/>
-<circle cx="965.63" cy="378.94" r="3.71" fill="#fff3dd"/>
-<circle cx="973.97" cy="407.00" r="3.38" fill="#eaeeff"/>
-<text x="991.94" y="366.42" fill="#8fa3d0" font-size="15" font-family="Georgia, serif" text-anchor="middle">The Pale Anchor</text>
+<circle cx="895.57" cy="388.59" r="3.93" fill="#eaeeff"/>
+<circle cx="869.61" cy="372.85" r="2.11" fill="#ff9564"/>
+<circle cx="891.26" cy="415.39" r="2.57" fill="#ffc98a"/>
+<circle cx="811.83" cy="421.57" r="5.11" fill="#c6d6ff"/>
+<circle cx="854.27" cy="406.12" r="4.27" fill="#a6c1ff"/>
+<circle cx="832.53" cy="399.03" r="3.71" fill="#fff3dd"/>
+<circle cx="840.12" cy="424.54" r="3.38" fill="#eaeeff"/>
+<text x="856.46" y="386.01" fill="#8fa3d0" font-size="15" font-family="Georgia, serif" text-anchor="middle">The Pale Anchor</text>
 <g stroke="#5c6f9c" stroke-width="1.1" opacity="0.75">
-<line x1="919.31" y1="338.41" x2="950.64" y2="277.05"/>
-<line x1="919.31" y1="338.41" x2="894.41" y2="337.21"/>
-<line x1="894.41" y1="337.21" x2="883.14" y2="319.24"/>
-<line x1="883.14" y1="319.24" x2="902.26" y2="294.63"/>
-<line x1="902.26" y1="294.63" x2="943.84" y2="257.37"/>
-<line x1="943.84" y1="257.37" x2="950.64" y2="277.05"/>
-<line x1="912.28" y1="316.65" x2="920.07" y2="284.38"/>
+<line x1="790.40" y1="362.16" x2="818.90" y2="306.36"/>
+<line x1="790.40" y1="362.16" x2="767.76" y2="361.07"/>
+<line x1="767.76" y1="361.07" x2="757.51" y2="344.72"/>
+<line x1="757.51" y1="344.72" x2="774.90" y2="322.35"/>
+<line x1="774.90" y1="322.35" x2="812.71" y2="288.46"/>
+<line x1="812.71" y1="288.46" x2="818.90" y2="306.36"/>
+<line x1="784.02" y1="342.37" x2="791.10" y2="313.02"/>
 </g>
-<circle cx="943.84" cy="257.37" r="3.06" fill="#fff3dd"/>
-<circle cx="894.41" cy="337.21" r="4.16" fill="#a6c1ff"/>
-<circle cx="950.64" cy="277.05" r="3.60" fill="#eaeeff"/>
-<circle cx="919.31" cy="338.41" r="4.87" fill="#c6d6ff"/>
-<circle cx="883.14" cy="319.24" r="2.76" fill="#ffc98a"/>
-<circle cx="902.26" cy="294.63" r="3.49" fill="#fff3dd"/>
-<circle cx="912.28" cy="316.65" r="2.02" fill="#ff9564"/>
-<circle cx="920.07" cy="284.38" r="1.69" fill="#ff9564"/>
-<text x="915.74" y="285.12" fill="#8fa3d0" font-size="15" font-family="Georgia, serif" text-anchor="middle">The Quiet Harp</text>
+<circle cx="812.71" cy="288.46" r="3.06" fill="#fff3dd"/>
+<circle cx="767.76" cy="361.07" r="4.16" fill="#a6c1ff"/>
+<circle cx="818.90" cy="306.36" r="3.60" fill="#eaeeff"/>
+<circle cx="790.40" cy="362.16" r="4.87" fill="#c6d6ff"/>
+<circle cx="757.51" cy="344.72" r="2.76" fill="#ffc98a"/>
+<circle cx="774.90" cy="322.35" r="3.49" fill="#fff3dd"/>
+<circle cx="784.02" cy="342.37" r="2.02" fill="#ff9564"/>
+<circle cx="791.10" cy="313.02" r="1.69" fill="#ff9564"/>
+<text x="787.16" y="312.06" fill="#8fa3d0" font-size="15" font-family="Georgia, serif" text-anchor="middle">The Quiet Harp</text>
 <g stroke="#5c6f9c" stroke-width="1.1" opacity="0.75">
-<line x1="804.85" y1="113.22" x2="713.28" y2="90.94"/>
-<line x1="713.28" y1="90.94" x2="591.51" y2="108.16"/>
-<line x1="591.51" y1="108.16" x2="528.59" y2="218.58"/>
-<line x1="528.59" y1="218.58" x2="520.03" y2="326.12"/>
-<line x1="591.51" y1="108.16" x2="494.80" y2="71.38"/>
-<line x1="494.80" y1="71.38" x2="407.21" y2="209.10"/>
-<line x1="407.21" y1="209.10" x2="528.59" y2="218.58"/>
+<line x1="686.30" y1="157.35" x2="603.02" y2="137.09"/>
+<line x1="603.02" y1="137.09" x2="492.27" y2="152.75"/>
+<line x1="492.27" y1="152.75" x2="435.05" y2="253.17"/>
+<line x1="435.05" y1="253.17" x2="427.27" y2="350.99"/>
+<line x1="492.27" y1="152.75" x2="404.31" y2="119.30"/>
+<line x1="404.31" y1="119.30" x2="324.66" y2="244.56"/>
+<line x1="324.66" y1="244.56" x2="435.05" y2="253.17"/>
 </g>
-<circle cx="407.21" cy="209.10" r="3.82" fill="#eaeeff"/>
-<circle cx="528.59" cy="218.58" r="4.39" fill="#ffc98a"/>
-<circle cx="494.80" cy="71.38" r="2.57" fill="#fff3dd"/>
-<circle cx="591.51" cy="108.16" r="6.80" fill="#ff9564"/>
-<circle cx="713.28" cy="90.94" r="5.36" fill="#fff3dd"/>
-<circle cx="520.03" cy="326.12" r="3.06" fill="#ff9564"/>
-<circle cx="804.85" cy="113.22" r="3.49" fill="#ffc98a"/>
-<text x="580.04" y="144.50" fill="#8fa3d0" font-size="15" font-family="Georgia, serif" text-anchor="middle">The Iron Tide</text>
+<circle cx="324.66" cy="244.56" r="3.82" fill="#eaeeff"/>
+<circle cx="435.05" cy="253.17" r="4.39" fill="#ffc98a"/>
+<circle cx="404.31" cy="119.30" r="2.57" fill="#fff3dd"/>
+<circle cx="492.27" cy="152.75" r="6.80" fill="#ff9564"/>
+<circle cx="603.02" cy="137.09" r="5.36" fill="#fff3dd"/>
+<circle cx="427.27" cy="350.99" r="3.06" fill="#ff9564"/>
+<circle cx="686.30" cy="157.35" r="3.49" fill="#ffc98a"/>
+<text x="481.84" y="184.17" fill="#8fa3d0" font-size="15" font-family="Georgia, serif" text-anchor="middle">The Iron Tide</text>
 <g stroke="#5c6f9c" stroke-width="1.1" opacity="0.75">
-<line x1="496.43" y1="532.31" x2="464.29" y2="607.26"/>
-<line x1="464.29" y1="607.26" x2="468.14" y2="688.50"/>
-<line x1="468.14" y1="688.50" x2="553.51" y2="749.99"/>
-<line x1="553.51" y1="749.99" x2="641.60" y2="747.80"/>
-<line x1="641.60" y1="747.80" x2="729.46" y2="744.87"/>
-<line x1="397.43" y1="751.59" x2="468.14" y2="688.50"/>
+<line x1="405.80" y1="538.51" x2="376.57" y2="606.68"/>
+<line x1="376.57" y1="606.68" x2="380.07" y2="680.56"/>
+<line x1="380.07" y1="680.56" x2="457.71" y2="736.50"/>
+<line x1="457.71" y1="736.50" x2="537.83" y2="734.50"/>
+<line x1="537.83" y1="734.50" x2="617.74" y2="731.83"/>
+<line x1="315.76" y1="737.94" x2="380.07" y2="680.56"/>
 </g>
-<circle cx="397.43" cy="751.59" r="5.87" fill="#c6d6ff"/>
-<circle cx="496.43" cy="532.31" r="4.04" fill="#eaeeff"/>
-<circle cx="464.29" cy="607.26" r="3.27" fill="#fff3dd"/>
-<circle cx="468.14" cy="688.50" r="4.51" fill="#ffc98a"/>
-<circle cx="553.51" cy="749.99" r="3.49" fill="#a6c1ff"/>
-<circle cx="641.60" cy="747.80" r="2.96" fill="#fff3dd"/>
-<circle cx="729.46" cy="744.87" r="1.85" fill="#ff9564"/>
-<text x="535.84" y="670.90" fill="#8fa3d0" font-size="15" font-family="Georgia, serif" text-anchor="middle">The Sunken Choir</text>
+<circle cx="315.76" cy="737.94" r="5.87" fill="#c6d6ff"/>
+<circle cx="405.80" cy="538.51" r="4.04" fill="#eaeeff"/>
+<circle cx="376.57" cy="606.68" r="3.27" fill="#fff3dd"/>
+<circle cx="380.07" cy="680.56" r="4.51" fill="#ffc98a"/>
+<circle cx="457.71" cy="736.50" r="3.49" fill="#a6c1ff"/>
+<circle cx="537.83" cy="734.50" r="2.96" fill="#fff3dd"/>
+<circle cx="617.74" cy="731.83" r="1.85" fill="#ff9564"/>
+<text x="441.64" y="662.93" fill="#8fa3d0" font-size="15" font-family="Georgia, serif" text-anchor="middle">The Sunken Choir</text>
+<g stroke="#5c6f9c" stroke-width="1.1" opacity="0.75">
+<line x1="769.45" y1="748.95" x2="820.24" y2="775.99"/>
+<line x1="820.24" y1="775.99" x2="882.18" y2="800.70"/>
+<line x1="882.18" y1="800.70" x2="957.85" y2="822.28"/>
+<line x1="957.85" y1="822.28" x2="1043.10" y2="830.00"/>
+<line x1="820.24" y1="775.99" x2="833.74" y2="744.88"/>
+<line x1="833.74" y1="744.88" x2="880.75" y2="767.60"/>
+</g>
+<circle cx="1043.10" cy="830.00" r="4.63" fill="#a6c1ff"/>
+<circle cx="820.24" cy="775.99" r="4.27" fill="#fff3dd"/>
+<circle cx="882.18" cy="800.70" r="3.60" fill="#ffc98a"/>
+<circle cx="957.85" cy="822.28" r="3.06" fill="#ff9564"/>
+<circle cx="833.74" cy="744.88" r="5.36" fill="#eaeeff"/>
+<circle cx="769.45" cy="748.95" r="4.99" fill="#c6d6ff"/>
+<circle cx="880.75" cy="767.60" r="2.76" fill="#fff3dd"/>
+<text x="883.90" y="766.34" fill="#8fa3d0" font-size="15" font-family="Georgia, serif" text-anchor="middle">The Foundered Ark</text>
+<g stroke="#5c6f9c" stroke-width="1.1" opacity="0.75">
+<line x1="1204.63" y1="340.16" x2="1119.00" y2="255.38"/>
+<line x1="1119.00" y1="255.38" x2="1019.90" y2="187.16"/>
+<line x1="1019.90" y1="187.16" x2="918.47" y2="149.87"/>
+<line x1="918.47" y1="149.87" x2="815.66" y2="138.75"/>
+<line x1="1019.90" y1="187.16" x2="1062.37" y2="70.00"/>
+<line x1="1062.37" y1="70.00" x2="1204.63" y2="340.16"/>
+</g>
+<circle cx="1204.63" cy="340.16" r="2.86" fill="#ff9564"/>
+<circle cx="918.47" cy="149.87" r="6.00" fill="#ffc98a"/>
+<circle cx="1119.00" cy="255.38" r="4.04" fill="#ffc98a"/>
+<circle cx="1019.90" cy="187.16" r="4.99" fill="#fff3dd"/>
+<circle cx="1062.37" cy="70.00" r="2.19" fill="#ff9564"/>
+<circle cx="815.66" cy="138.75" r="3.49" fill="#eaeeff"/>
+<text x="1023.34" y="172.22" fill="#8fa3d0" font-size="15" font-family="Georgia, serif" text-anchor="middle">The Last Cairn</text>
+<g stroke="#5c6f9c" stroke-width="1.1" opacity="0.75">
+<line x1="1013.37" y1="654.33" x2="1025.97" y2="574.93"/>
+<line x1="1025.97" y1="574.93" x2="1093.29" y2="518.96"/>
+<line x1="1093.29" y1="518.96" x2="1161.42" y2="439.43"/>
+<line x1="1161.42" y1="439.43" x2="1206.38" y2="609.98"/>
+<line x1="1206.38" y1="609.98" x2="1025.97" y2="574.93"/>
+<line x1="1203.55" y1="751.67" x2="1013.37" y2="654.33"/>
+<line x1="1338.03" y1="507.93" x2="1203.55" y2="751.67"/>
+</g>
+<circle cx="1013.37" cy="654.33" r="4.39" fill="#eaeeff"/>
+<circle cx="1338.03" cy="507.93" r="3.93" fill="#ffc98a"/>
+<circle cx="1206.38" cy="609.98" r="5.87" fill="#a6c1ff"/>
+<circle cx="1025.97" cy="574.93" r="5.24" fill="#c6d6ff"/>
+<circle cx="1203.55" cy="751.67" r="2.76" fill="#ff9564"/>
+<circle cx="1093.29" cy="518.96" r="3.60" fill="#fff3dd"/>
+<circle cx="1161.42" cy="439.43" r="3.06" fill="#ffc98a"/>
+<text x="1148.86" y="561.60" fill="#8fa3d0" font-size="15" font-family="Georgia, serif" text-anchor="middle">The Barnacled Sextant</text>
+<g stroke="#5c6f9c" stroke-width="1.1" opacity="0.75">
+<line x1="797.61" y1="505.09" x2="792.25" y2="491.62"/>
+<line x1="792.25" y1="491.62" x2="801.13" y2="487.09"/>
+<line x1="801.13" y1="487.09" x2="807.93" y2="504.46"/>
+<line x1="807.93" y1="504.46" x2="797.61" y2="505.09"/>
+<line x1="786.77" y1="485.77" x2="778.54" y2="488.60"/>
+<line x1="778.54" y1="488.60" x2="792.25" y2="491.62"/>
+<line x1="808.99" y1="494.03" x2="786.77" y2="485.77"/>
+</g>
+<circle cx="786.77" cy="485.77" r="6.00" fill="#8fb2ff"/>
+<circle cx="801.13" cy="487.09" r="3.49" fill="#eaeeff"/>
+<circle cx="778.54" cy="488.60" r="2.86" fill="#ffc98a"/>
+<circle cx="797.61" cy="505.09" r="4.16" fill="#c6d6ff"/>
+<circle cx="792.25" cy="491.62" r="4.87" fill="#a6c1ff"/>
+<circle cx="807.93" cy="504.46" r="3.17" fill="#fff3dd"/>
+<circle cx="808.99" cy="494.03" r="3.82" fill="#c6d6ff"/>
+<text x="796.17" y="475.81" fill="#8fa3d0" font-size="15" font-family="Georgia, serif" text-anchor="middle">The Coral Quiver</text>
   <!-- Title Block -->
   <g class="title-block">
     <text x="35" y="45" font-family="Georgia, serif" font-size="24" font-weight="bold" fill="#f1f5f9" letter-spacing="2.0">CELESTIAL STAR MAP</text>
@@ -336,6 +401,10 @@
     <text x="35" y="392" font-family="sans-serif" font-size="11" fill="#94a3b8">Hrp — The Quiet Harp (8 stars)</text>
     <text x="35" y="410" font-family="sans-serif" font-size="11" fill="#94a3b8">ITd — The Iron Tide (7 stars)</text>
     <text x="35" y="428" font-family="sans-serif" font-size="11" fill="#94a3b8">Cho — The Sunken Choir (7 stars)</text>
+    <text x="35" y="446" font-family="sans-serif" font-size="11" fill="#94a3b8">Fka — The Foundered Ark (7 stars)</text>
+    <text x="35" y="464" font-family="sans-serif" font-size="11" fill="#94a3b8">LCn — The Last Cairn (6 stars)</text>
+    <text x="35" y="482" font-family="sans-serif" font-size="11" fill="#94a3b8">Sxt — The Barnacled Sextant (7 stars)</text>
+    <text x="35" y="500" font-family="sans-serif" font-size="11" fill="#94a3b8">Qvr — The Coral Quiver (7 stars)</text>
   </g>
   <!-- Magnitude Key -->
   <g class="magnitude-key">
@@ -347,5 +416,5 @@
     <circle cx="245" cy="860" r="1.5" fill="#f8fafc" opacity="0.9"/>
     <text x="259" y="864" font-family="sans-serif" font-size="10" fill="#94a3b8">Mag 5.0</text>
   </g>
-<!-- constellations=18 stars=129 segments=127 dropped_segments=0 skipped=none modules={'projection': 'starmap/projection.py', 'style': 'starmap/style.py', 'legend': 'starmap/legend.py'} -->
+<!-- constellations=22 stars=156 segments=153 dropped_segments=0 skipped=none modules={'projection': 'starmap/projection.py', 'style': 'starmap/style.py', 'legend': 'starmap/legend.py'} -->
 </svg>
