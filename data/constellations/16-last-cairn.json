@@ -1,0 +1,20 @@
+{
+  "name": "The Last Cairn",
+  "abbr": "LCn",
+  "stars": [
+    {"id": "lcn-base", "ra": 283.5, "dec": -47.0, "mag": 3.5, "spectral": "M"},
+    {"id": "lcn-foot", "ra": 297.0, "dec": -42.5, "mag": 2.4, "spectral": "K"},
+    {"id": "lcn-mid", "ra": 312.5, "dec": -38.0, "mag": 1.6, "spectral": "G"},
+    {"id": "lcn-cap", "ra": 328.0, "dec": -33.5, "mag": 0.8, "spectral": "K"},
+    {"id": "lcn-witness", "ra": 344.5, "dec": -29.0, "mag": 2.9, "spectral": "F"},
+    {"id": "lcn-stray", "ra": 319.0, "dec": -48.5, "mag": 4.2, "spectral": "M"}
+  ],
+  "lines": [
+    ["lcn-base", "lcn-foot"],
+    ["lcn-foot", "lcn-mid"],
+    ["lcn-mid", "lcn-cap"],
+    ["lcn-cap", "lcn-witness"],
+    ["lcn-mid", "lcn-stray"],
+    ["lcn-stray", "lcn-base"]
+  ]
+}
