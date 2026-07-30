@@ -114,6 +114,23 @@
 <circle cx="1026.24" cy="390.15" r="2.19" fill="#ff9564"/>
 <circle cx="1064.48" cy="451.08" r="4.04" fill="#c6d6ff"/>
 <text x="1133.79" y="454.99" fill="#8fa3d0" font-size="15" font-family="Georgia, serif" text-anchor="middle">The Ashen Kite</text>
+<g stroke="#5c6f9c" stroke-width="1.1" opacity="0.75">
+<line x1="1168.04" y1="385.03" x2="1162.28" y2="360.42"/>
+<line x1="1162.28" y1="360.42" x2="1175.84" y2="342.54"/>
+<line x1="1168.04" y1="385.03" x2="1200.38" y2="374.43"/>
+<line x1="1175.84" y1="342.54" x2="1200.38" y2="374.43"/>
+<line x1="1200.38" y1="374.43" x2="1238.40" y2="379.73"/>
+<line x1="1238.40" y1="379.73" x2="1274.53" y2="409.53"/>
+<line x1="1175.84" y1="342.54" x2="1230.40" y2="329.82"/>
+</g>
+<circle cx="1200.38" cy="374.43" r="3.49" fill="#eaeeff"/>
+<circle cx="1230.40" cy="329.82" r="1.85" fill="#ff9564"/>
+<circle cx="1274.53" cy="409.53" r="3.27" fill="#ffc98a"/>
+<circle cx="1175.84" cy="342.54" r="5.49" fill="#a6c1ff"/>
+<circle cx="1168.04" cy="385.03" r="4.75" fill="#a6c1ff"/>
+<circle cx="1162.28" cy="360.42" r="3.82" fill="#c6d6ff"/>
+<circle cx="1238.40" cy="379.73" r="2.96" fill="#fff3dd"/>
+<text x="1207.12" y="350.79" fill="#8fa3d0" font-size="15" font-family="Georgia, serif" text-anchor="middle">The Hollow Chalice</text>
 
-<!-- constellations=6 stars=46 segments=50 dropped_segments=0 skipped=none modules={'projection': 'starmap/projection.py', 'style': 'starmap/style.py', 'legend': 'fallback (none)'} -->
+<!-- constellations=7 stars=53 segments=57 dropped_segments=0 skipped=none modules={'projection': 'starmap/projection.py', 'style': 'starmap/style.py', 'legend': 'fallback (none)'} -->
 </svg>

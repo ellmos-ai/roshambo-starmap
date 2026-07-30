@@ -1,0 +1,22 @@
+{
+  "name": "The Hollow Chalice",
+  "abbr": "Cha",
+  "stars": [
+    {"id": "cha-lip-w", "ra": 246.0, "dec": 22.0, "mag": 1.8, "spectral": "B"},
+    {"id": "cha-rim", "ra": 252.5, "dec": 26.0, "mag": 2.6, "spectral": "A"},
+    {"id": "cha-lip-e", "ra": 259.0, "dec": 23.5, "mag": 1.2, "spectral": "B"},
+    {"id": "cha-bowl", "ra": 252.0, "dec": 15.0, "mag": 2.9, "spectral": "F"},
+    {"id": "cha-stem", "ra": 253.5, "dec": 6.0, "mag": 3.4, "spectral": "G"},
+    {"id": "cha-foot", "ra": 250.0, "dec": -3.0, "mag": 3.1, "spectral": "K"},
+    {"id": "cha-drop", "ra": 264.5, "dec": 10.0, "mag": 4.6, "spectral": "M"}
+  ],
+  "lines": [
+    ["cha-lip-w", "cha-rim"],
+    ["cha-rim", "cha-lip-e"],
+    ["cha-lip-w", "cha-bowl"],
+    ["cha-lip-e", "cha-bowl"],
+    ["cha-bowl", "cha-stem"],
+    ["cha-stem", "cha-foot"],
+    ["cha-lip-e", "cha-drop"]
+  ]
+}
