@@ -1,0 +1,21 @@
+{
+  "name": "The Foundered Ark",
+  "abbr": "Fka",
+  "stars": [
+    {"id": "fka-stern",  "ra": 188.0, "dec": -24.0, "mag": 1.6, "spectral": "A"},
+    {"id": "fka-keel1",  "ra": 196.0, "dec": -30.0, "mag": 2.2, "spectral": "G"},
+    {"id": "fka-keel2",  "ra": 204.0, "dec": -36.0, "mag": 2.8, "spectral": "K"},
+    {"id": "fka-keel3",  "ra": 212.0, "dec": -42.0, "mag": 3.3, "spectral": "M"},
+    {"id": "fka-bow",    "ra": 220.0, "dec": -47.0, "mag": 1.9, "spectral": "B"},
+    {"id": "fka-mast",   "ra": 200.0, "dec": -26.0, "mag": 1.3, "spectral": "F"},
+    {"id": "fka-yard",   "ra": 206.0, "dec": -32.0, "mag": 3.6, "spectral": "G"}
+  ],
+  "lines": [
+    ["fka-stern", "fka-keel1"],
+    ["fka-keel1", "fka-keel2"],
+    ["fka-keel2", "fka-keel3"],
+    ["fka-keel3", "fka-bow"],
+    ["fka-keel1", "fka-mast"],
+    ["fka-mast", "fka-yard"]
+  ]
+}
