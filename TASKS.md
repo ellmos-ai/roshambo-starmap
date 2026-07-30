@@ -211,3 +211,38 @@ what the schema and the lease TTL actually guarantee. Write `_skills/32-resilien
 ## 33 — Constellation in the far south, Dec below -50°
 Still open from the third wave: create `data/constellations/23-<slug>.json`.
 (Yes, file number 23 — the task list numbering and the file numbering are independent here.)
+
+---
+
+# Sixth wave — the planetarium
+
+Correction of a misunderstanding: this sky was asked for as a **planetarium** — something you
+stand inside and look around in — and was built as a flat chart. The data is right; only the
+viewer is missing. The existing `render.py` and `starmap.svg` stay as they are.
+
+Everything below reads the SAME data files under `data/`. Do not change them, do not change
+`render.py`.
+
+## 36 — The dome: a walk-in sky
+Create `planetarium.html` — a single self-contained HTML file, no build step, no external
+downloads at runtime (embed or inline what you need). Put the stars from `data/constellations/*.json`
+and `data/scatter.json` onto a celestial sphere by right ascension and declination, place the
+camera at its centre looking out, and let the viewer turn and zoom with the mouse.
+Star size and brightness follow the magnitudes in the data. Constellation lines from the
+`segments`. It must open by double-clicking the file.
+
+## 37 — Names and depth in the dome
+Extend `planetarium.html`: constellation names float at their centre and stay readable when
+you turn; hovering a star shows its name and magnitude. Keep it restrained — a planetarium is
+dark and quiet, not a dashboard.
+
+## 38 — Time and motion
+Extend `planetarium.html`: a slow rotation of the sky (as the real one turns), with a control
+to stop it, and a horizon so the viewer knows which way is down. Invented sky, invented
+horizon — say so in a corner of the screen.
+
+## 39 — The build, seen from inside
+Create `planetarium-timelapse.html`: the same dome, but showing the sky as it grew — the
+constellations appear in the order their commits were made, read from `_timelapse/frames.json`
+(76 frames with commit hashes and timestamps). A slider scrubs through the run. This is the
+one that makes the coordination visible from inside the result.
