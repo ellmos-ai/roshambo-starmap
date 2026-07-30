@@ -107,6 +107,22 @@
 <circle cx="1264.77" cy="420.71" r="3.76" fill="#f8f7ff"/>
 <circle cx="1144.78" cy="453.31" r="1.88" fill="#fff4ea"/>
 <text x="1077.19" y="363.12" fill="#8fa3d0" font-size="15" font-family="Georgia, serif" text-anchor="middle">The Celestial Lyre</text>
+<g stroke="#5c6f9c" stroke-width="1.1" opacity="0.75">
+<line x1="953.26" y1="458.03" x2="994.26" y2="496.69"/>
+<line x1="994.26" y1="496.69" x2="1038.37" y2="550.55"/>
+<line x1="1038.37" y1="550.55" x2="963.43" y2="538.88"/>
+<line x1="963.43" y1="538.88" x2="903.02" y2="523.39"/>
+<line x1="903.02" y1="523.39" x2="909.51" y2="479.12"/>
+<line x1="909.51" y1="479.12" x2="953.26" y2="458.03"/>
+<line x1="994.26" y1="496.69" x2="963.43" y2="538.88"/>
+</g>
+<circle cx="953.26" cy="458.03" r="4.79" fill="#aabfff"/>
+<circle cx="994.26" cy="496.69" r="3.06" fill="#cad7ff"/>
+<circle cx="1038.37" cy="550.55" r="2.48" fill="#f8f7ff"/>
+<circle cx="963.43" cy="538.88" r="3.39" fill="#9bb0ff"/>
+<circle cx="903.02" cy="523.39" r="1.88" fill="#ffd2a1"/>
+<circle cx="909.51" cy="479.12" r="1.64" fill="#ffcc6f"/>
+<text x="960.31" y="489.78" fill="#8fa3d0" font-size="15" font-family="Georgia, serif" text-anchor="middle">The Crystal Tower</text>
 
-<!-- constellations=7 stars=42 segments=44 dropped_segments=0 skipped=none modules={'projection': 'starmap/projection.py', 'style': 'starmap/style.py', 'legend': 'fallback (none)'} -->
+<!-- constellations=8 stars=48 segments=51 dropped_segments=0 skipped=none modules={'projection': 'starmap/projection.py', 'style': 'starmap/style.py', 'legend': 'fallback (none)'} -->
 </svg>
