@@ -1,0 +1,23 @@
+{
+  "name": "The Crystal Compass",
+  "abbr": "ccp",
+  "stars": [
+    {"id": "ccp-n", "ra": 140.0, "dec": 45.0, "mag": -0.2, "spectral": "O"},
+    {"id": "ccp-e", "ra": 155.0, "dec": 20.0, "mag": 1.5, "spectral": "B"},
+    {"id": "ccp-s", "ra": 140.0, "dec": -0.5, "mag": 2.1, "spectral": "A"},
+    {"id": "ccp-w", "ra": 125.0, "dec": 20.0, "mag": 2.7, "spectral": "F"},
+    {"id": "ccp-c", "ra": 140.0, "dec": 20.0, "mag": 0.8, "spectral": "G"},
+    {"id": "ccp-ne", "ra": 148.0, "dec": 33.0, "mag": 3.8, "spectral": "K"},
+    {"id": "ccp-sw", "ra": 132.0, "dec": 8.0, "mag": 4.3, "spectral": "M"}
+  ],
+  "lines": [
+    ["ccp-n", "ccp-c"],
+    ["ccp-s", "ccp-c"],
+    ["ccp-e", "ccp-c"],
+    ["ccp-w", "ccp-c"],
+    ["ccp-n", "ccp-ne"],
+    ["ccp-ne", "ccp-e"],
+    ["ccp-s", "ccp-sw"],
+    ["ccp-sw", "ccp-w"]
+  ]
+}
