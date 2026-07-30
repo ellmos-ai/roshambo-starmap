@@ -1,0 +1,21 @@
+{
+  "name": "The Silver Lantern",
+  "abbr": "Sla",
+  "stars": [
+    {"id": "sla-a", "ra": 10.5, "dec": 35.0, "mag": 1.1, "spectral": "B"},
+    {"id": "sla-b", "ra": 18.2, "dec": 42.1, "mag": 2.3, "spectral": "A"},
+    {"id": "sla-c", "ra": 25.4, "dec": 28.5, "mag": 3.4, "spectral": "F"},
+    {"id": "sla-d", "ra": 32.1, "dec": 15.0, "mag": 1.8, "spectral": "O"},
+    {"id": "sla-e", "ra": 22.0, "dec": 10.2, "mag": 4.1, "spectral": "K"},
+    {"id": "sla-f", "ra": 15.0, "dec": 20.8, "mag": 2.9, "spectral": "G"}
+  ],
+  "lines": [
+    ["sla-a", "sla-b"],
+    ["sla-b", "sla-c"],
+    ["sla-c", "sla-d"],
+    ["sla-d", "sla-e"],
+    ["sla-e", "sla-f"],
+    ["sla-f", "sla-a"],
+    ["sla-a", "sla-c"]
+  ]
+}
