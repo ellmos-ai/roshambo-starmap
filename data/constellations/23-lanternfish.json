@@ -1,0 +1,21 @@
+{
+  "name": "The Lanternfish",
+  "abbr": "Ltf",
+  "stars": [
+    {"id": "ltf-mouth", "ra": 172.0, "dec": -53.5, "mag": 2.8, "spectral": "A"},
+    {"id": "ltf-gill", "ra": 185.5, "dec": -57.0, "mag": 1.5, "spectral": "B"},
+    {"id": "ltf-light", "ra": 201.0, "dec": -61.5, "mag": 0.6, "spectral": "F"},
+    {"id": "ltf-belly", "ra": 218.5, "dec": -64.0, "mag": 2.2, "spectral": "G"},
+    {"id": "ltf-fin", "ra": 236.0, "dec": -60.5, "mag": 3.1, "spectral": "K"},
+    {"id": "ltf-tail", "ra": 250.5, "dec": -55.0, "mag": 1.9, "spectral": "K"},
+    {"id": "ltf-barbel", "ra": 194.0, "dec": -68.5, "mag": 4.3, "spectral": "M"}
+  ],
+  "lines": [
+    ["ltf-mouth", "ltf-gill"],
+    ["ltf-gill", "ltf-light"],
+    ["ltf-light", "ltf-belly"],
+    ["ltf-belly", "ltf-fin"],
+    ["ltf-fin", "ltf-tail"],
+    ["ltf-light", "ltf-barbel"]
+  ]
+}
