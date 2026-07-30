@@ -34,4 +34,3 @@ def star_radius(magnitude: float) -> float:
 def background() -> str:
     """Return a deep night colour for the background."""
     return "#0b0e14"
-
