@@ -1,0 +1,21 @@
+{
+  "name": "The Broken Wheel",
+  "abbr": "Bwh",
+  "stars": [
+    {"id": "bwh-a", "ra": 45.2, "dec": 15.3, "mag": 1.4, "spectral": "B"},
+    {"id": "bwh-b", "ra": 52.8, "dec": 28.1, "mag": 2.5, "spectral": "A"},
+    {"id": "bwh-c", "ra": 67.1, "dec": 32.4, "mag": 3.1, "spectral": "F"},
+    {"id": "bwh-d", "ra": 74.5, "dec": 18.9, "mag": 2.2, "spectral": "G"},
+    {"id": "bwh-e", "ra": 68.0, "dec": 5.2, "mag": 3.8, "spectral": "K"},
+    {"id": "bwh-f", "ra": 54.3, "dec": 2.7, "mag": 4.1, "spectral": "M"}
+  ],
+  "lines": [
+    ["bwh-a", "bwh-b"],
+    ["bwh-b", "bwh-c"],
+    ["bwh-c", "bwh-d"],
+    ["bwh-d", "bwh-e"],
+    ["bwh-e", "bwh-f"],
+    ["bwh-f", "bwh-a"],
+    ["bwh-a", "bwh-c"]
+  ]
+}

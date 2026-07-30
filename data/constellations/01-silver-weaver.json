@@ -1,0 +1,20 @@
+{
+  "name": "The Silver Weaver",
+  "abbr": "Wea",
+  "stars": [
+    {"id": "wea-a", "ra": 5.2, "dec": 12.5, "mag": -0.5, "spectral": "B"},
+    {"id": "wea-b", "ra": 14.8, "dec": 28.1, "mag": 1.4, "spectral": "A"},
+    {"id": "wea-c", "ra": 25.1, "dec": 45.0, "mag": 2.3, "spectral": "F"},
+    {"id": "wea-d", "ra": 32.7, "dec": 18.9, "mag": 3.1, "spectral": "G"},
+    {"id": "wea-e", "ra": 38.0, "dec": -15.4, "mag": 4.2, "spectral": "K"},
+    {"id": "wea-f", "ra": 20.3, "dec": -5.0, "mag": 2.9, "spectral": "M"}
+  ],
+  "lines": [
+    ["wea-a", "wea-b"],
+    ["wea-b", "wea-c"],
+    ["wea-c", "wea-d"],
+    ["wea-d", "wea-e"],
+    ["wea-e", "wea-f"],
+    ["wea-f", "wea-a"]
+  ]
+}
