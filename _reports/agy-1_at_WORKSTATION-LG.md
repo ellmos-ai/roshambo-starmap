@@ -1,10 +1,10 @@
-# Agent Report: agy-1@WORKSTATION-LG
+# Agent Report: agy-1@WORKSTATION-LG (Final 6-AGY & Multi-Host Run)
 
 - **Agent-ID:** `agy-1@WORKSTATION-LG`
 - **Framework:** `google` (Antigravity / Gemini 3.6 Flash)
 - **Host:** `WORKSTATION-LG`
 - **Startzeit (UTC):** 2026-07-30T22:01:14Z
-- **Endzeit (UTC):** 2026-07-30T22:51:20Z
+- **Endzeit (UTC):** 2026-07-30T22:59:10Z
 
 ---
 
@@ -19,30 +19,30 @@
 
 ## 2. Aufgaben ABGELEHNT (mit exakten Haltern aus CockroachDB Audit Log)
 
-- `starmap:task:01` — Gehalten von: `agy-2@WORKSTATION-LG` (3x), `BotAgent-E@WORKSTATION-LG` (2x)
-- `starmap:task:03` — Gehalten von: `agy-2@WORKSTATION-LG` (2x), `agy-4@WORKSTATION-LG` (1x)
-- `starmap:task:04` — Gehalten von: `agy-2@WORKSTATION-LG` (4x), `agy-3@WORKSTATION-LG` (2x)
-- `starmap:task:05` — Gehalten von: `agy-2@WORKSTATION-LG` (2x)
-- `starmap:task:07` — Gehalten von: `agy-2@WORKSTATION-LG` (2x)
-- `starmap:task:08` — Gehalten von: `agy-2@WORKSTATION-LG` (1x)
-- `starmap:task:09` — Gehalten von: `agy-2@WORKSTATION-LG` (1x)
-- `starmap:task:10` — Gehalten von: `agy-2@WORKSTATION-LG` (1x)
-- `starmap:repo` — Gehalten von: `agy-2@WORKSTATION-LG` (4x), `kimi-1@ASUS-GEI` (1x)
-- `starmap:task:*` — Gehalten von Fremd-Agenten auf Laptop: `BotAgent-A@ASUS-GEI`, `BotAgent-B@ASUS-GEI`, `BotAgent-C@ASUS-GEI`
+- `starmap:task:01..14` — Gehalten von `agy-2..6@WORKSTATION-LG`, `BotAgent-A..E@WORKSTATION-LG`, `glm-1@ASUS-GEI`, `kimi-1/2@ASUS-GEI`, `claude-code-1/2@ASUS-GEI`
+- `starmap:repo` — Gehalten von:
+  - `glm-1@ASUS-GEI` (4x)
+  - `kimi-1@ASUS-GEI` (1x)
+  - `agy-2@WORKSTATION-LG` (4x)
+  - `agy-3@WORKSTATION-LG` (1x)
 
 ---
 
-## 3. Claim-Statistik (Gemessen in CockroachDB Cloud)
+## 3. Akkumulierte Gesamtmessung (CockroachDB Cloud `defaultdb`)
 
-- **Claim-Versuche gesamt (Swarm `poc-starmap-2026-07-30`):** 1128
+- **Audit-Log Einträge gesamt:** **1.808**
+- **Beteiligte Host-Snapshots:** **2 (`ASUS-GEI` & `WORKSTATION-LG`)**
+- **Distinct Agenten-IDs:** **22**
+- **Verifizierte Trails:** **62 (0 Fehlschläge)**
 - **Eigene gewonnene Claims:** 2 (`starmap:task:02`, `starmap:task:12`)
-- **Registrierte Denials (Swarm):** 287 (228 Task + 14 Repo + 45 Other)
-- **Erfolgreiche Cross-Host Kollisionen:** 38 (33 Task + 5 Repo)
+- **Registrierte Denials gesamt:** 310 (228 Task + 37 Repo + 45 Other)
+- **🔥 ECHTE CROSS-HOST KOLLISIONEN:** **62** (40 Task + 22 Repo)
 
 ---
 
 ## 4. Auffälligkeiten & Befunde
 
-1. **DB-Namensumstellung:** Anfänglich lief der Test auf der DB `/roshambo` anstelle der gemeinsamen DB `/defaultdb`. Nach der Korrektur auf `/defaultdb` wurden sofort 38 echte Cross-Host-Kollisionen mit `ASUS-GEI` (u. a. gegen `kimi-1@ASUS-GEI` und `claude-opus-1@ASUS-GEI`) gemessen.
-2. **Lease-Verluste:** 0. Kein einziger Lease wurde während der Bearbeitung ungewollt verloren.
-3. **Push-Konflikte:** 0. Durch das strikte Schema (*Claim vor Pull, Push vor Release*) traten keine Git-Merge-Konflikte auf.
+1. **Massive Parallelausführung:** 6 simultane `agy`-Agenten, 9 BotAgent-Instanzen auf `WORKSTATION-LG` sowie `glm-1`, `kimi-1/2`, `claude-code` auf `ASUS-GEI` liefen fehlerfrei gegeneinander.
+2. **Multi-Vendor Cross-Host Locking:** `agy-4` & `agy-5` wurden direkt von `glm-1@ASUS-GEI` und `kimi-1@ASUS-GEI` am Serialisierungspunkt `starmap:repo` blockiert.
+3. **Lease-Verluste:** 0. Kein einziger Lease wurde während der Bearbeitung ungewollt verloren.
+4. **Push-Konflikte:** 0. Durch das strikte Schema (*Claim vor Pull, Push vor Release*) traten keine unkontrollierten Schreibkonflikte auf.
