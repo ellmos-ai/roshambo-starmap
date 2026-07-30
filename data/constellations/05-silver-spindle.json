@@ -1,0 +1,22 @@
+{
+  "name": "The Silver Spindle",
+  "abbr": "Spi",
+  "stars": [
+    {"id": "spi-top", "ra": 124.5, "dec": 38.0, "mag": 0.8, "spectral": "B"},
+    {"id": "spi-neck", "ra": 129.0, "dec": 31.5, "mag": 2.2, "spectral": "A"},
+    {"id": "spi-waist", "ra": 136.5, "dec": 25.0, "mag": -0.4, "spectral": "O"},
+    {"id": "spi-left", "ra": 142.0, "dec": 28.5, "mag": 3.1, "spectral": "F"},
+    {"id": "spi-right", "ra": 131.0, "dec": 20.5, "mag": 2.7, "spectral": "G"},
+    {"id": "spi-hip", "ra": 147.5, "dec": 18.0, "mag": 1.9, "spectral": "K"},
+    {"id": "spi-tip", "ra": 154.0, "dec": 10.5, "mag": 4.2, "spectral": "M"}
+  ],
+  "lines": [
+    ["spi-top", "spi-neck"],
+    ["spi-neck", "spi-waist"],
+    ["spi-waist", "spi-left"],
+    ["spi-waist", "spi-right"],
+    ["spi-left", "spi-hip"],
+    ["spi-right", "spi-hip"],
+    ["spi-hip", "spi-tip"]
+  ]
+}
