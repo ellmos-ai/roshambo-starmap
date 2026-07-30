@@ -4,7 +4,7 @@
 - **Framework:** glm
 - **Host:** ASUS-GEI
 - **Start (UTC):** 2026-07-30T22:47:04Z
-- **Ende (UTC):** 2026-07-30T23:07:49Z
+- **Ende (UTC):** 2026-07-30T23:12:00Z (finaler Abschluss — keine offenen Aufgaben mehr)
 - **Repo:** https://github.com/ellmos-ai/roshambo-starmap.git (Branch master)
 - **Swarm:** poc-starmap-2026-07-30
 
@@ -123,3 +123,34 @@ Alle Konstellations-Sterne: ra im Aufgaben-Band, dec −60..+60, mag −1..5, sp
 - Ob andere Agenten meiner Arbeit überschrieben haben: nicht geprüft (außerhalb meines Lease-Fensters).
 - Token-/Kostenmetrik: nicht erhoben.
 - Welle-2-Task-Claim-Gesamtzahl nicht einzeln mitgezählt (nur die oben geloggerten GRANTED/DENIED).
+
+## Finaler Abschluss (2026-07-30T23:12:00Z)
+
+Auftrag des Users: „sobald es keine offenen Aufgaben mehr gibt schließe ab mit bericht."
+Ergebnis der Offene-Aufgaben-Prüfung:
+
+- **Offizielle TASKS.md (Tasks 01–22): vollständig gebaut.** Alle Konstellationen
+  (01–11, 13–16), die Module (04 projection, 08 style, 12 legend, 19 grid, 20 labels),
+  die Hintergrunddaten (17 scatter, 18 river) sowie CATALOGUE (21) und PROVENANCE (22)
+  liegen committed vor. Welle 1 + Welle 2 damit abgeschlossen.
+- **Welle 3 (nicht in TASKS.md):** `data/constellations/23-barnacled-sextant.json` wurde
+  von einem anderen Agenten gebaut (Datei vorhanden, von mir unangetastet). Eine
+  erweiterte/dritte-Wave-Aufgabenliste existiert nicht im Repo; die Welle-3-Ressourcen
+  `starmap:task:23`..`starmap:task:30` sind alle `free=true` (kein Halter), haben aber
+  keine Task-Definition — es gibt keine dokumentierte offene Aufgabe zu bauen.
+- **Laufende Aktivität = Stresstest, keine Bauaufgaben:** Die `storm-1..8.log` in
+  `_logs/` (Zeitraum 01:01–01:11 lokal) belegen einen BotAgent-Sturm von BotAgent A/B/C
+  auf die *bereits gebauten* Tasks 01–06 (`bot-w3.json`: 45 Attempts, 28 granted, 17
+  denied, 0 two-simultaneous-holders). Die 3 `active_claims` aus dem Swarm-Status gehören
+  diesen Storm-Bots — sie halten Leases auf fertige Tasks als Lasttest, nicht um zu bauen.
+- `who-has`-Probe auf `starmap:task:24`..`30`: alles `free=true`, `held=false`.
+
+Daraus folgt: **Es gibt keine offene Bauaufgabe mehr**, die ich übernehmen könnte. Der
+Feldversuch hat sein Sky-Ziel (nördlicher + südlicher Himmel + Finishing) erreicht. Ich
+beende die Teilnahme hier mit diesem Bericht als Abschluss.
+
+**Meine gebaute Bilanz bleibt:** 6 Aufgaben (03 Windlass, 09 Quartz Comb, 10 Glass Eel,
+15 Foundered Ark, 18 River, 22 PROVENANCE) über zwei Wellen, je 3 pro Welle. Keine Lease
+wird gehalten — Repo-Lease `c356ce00` (intent `report-final`) wird nach dem Push dieses
+Abschlusses sofort freigegeben. Keine echten astronomischen Fakten erfunden; der Himmel
+dieser Karte ist ausgedacht und so dokumentiert.
