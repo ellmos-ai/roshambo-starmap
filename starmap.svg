@@ -131,6 +131,22 @@
 <circle cx="1162.28" cy="360.42" r="3.82" fill="#c6d6ff"/>
 <circle cx="1238.40" cy="379.73" r="2.96" fill="#fff3dd"/>
 <text x="1207.12" y="350.79" fill="#8fa3d0" font-size="15" font-family="Georgia, serif" text-anchor="middle">The Hollow Chalice</text>
+<g stroke="#5c6f9c" stroke-width="1.1" opacity="0.75">
+<line x1="1116.13" y1="258.27" x2="1178.72" y2="235.48"/>
+<line x1="1178.72" y1="235.48" x2="1157.85" y2="262.65"/>
+<line x1="1178.72" y1="235.48" x2="1146.65" y2="225.02"/>
+<line x1="1178.72" y1="235.48" x2="1239.62" y2="209.62"/>
+<line x1="1239.62" y1="209.62" x2="1233.26" y2="249.15"/>
+<line x1="1239.62" y1="209.62" x2="1201.34" y2="186.42"/>
+</g>
+<circle cx="1239.62" cy="209.62" r="3.93" fill="#eaeeff"/>
+<circle cx="1201.34" cy="186.42" r="2.11" fill="#ff9564"/>
+<circle cx="1233.26" cy="249.15" r="2.57" fill="#ffc98a"/>
+<circle cx="1116.13" cy="258.27" r="5.11" fill="#c6d6ff"/>
+<circle cx="1178.72" cy="235.48" r="4.27" fill="#a6c1ff"/>
+<circle cx="1146.65" cy="225.02" r="3.71" fill="#fff3dd"/>
+<circle cx="1157.85" cy="262.65" r="3.38" fill="#eaeeff"/>
+<text x="1181.94" y="214.37" fill="#8fa3d0" font-size="15" font-family="Georgia, serif" text-anchor="middle">The Pale Anchor</text>
 
-<!-- constellations=7 stars=53 segments=57 dropped_segments=0 skipped=none modules={'projection': 'starmap/projection.py', 'style': 'starmap/style.py', 'legend': 'fallback (none)'} -->
+<!-- constellations=8 stars=60 segments=63 dropped_segments=0 skipped=none modules={'projection': 'starmap/projection.py', 'style': 'starmap/style.py', 'legend': 'fallback (none)'} -->
 </svg>

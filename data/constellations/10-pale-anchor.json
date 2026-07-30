@@ -1,0 +1,21 @@
+{
+  "name": "The Pale Anchor",
+  "abbr": "Anc",
+  "stars": [
+    {"id": "anc-ring", "ra": 291.5, "dec": 40.0, "mag": 1.5, "spectral": "A"},
+    {"id": "anc-stock-w", "ra": 285.0, "dec": 28.0, "mag": 3.0, "spectral": "F"},
+    {"id": "anc-stock-e", "ra": 298.0, "dec": 27.0, "mag": 2.7, "spectral": "G"},
+    {"id": "anc-shank", "ra": 291.0, "dec": 20.0, "mag": 2.2, "spectral": "B"},
+    {"id": "anc-fluke-w", "ra": 283.5, "dec": 8.0, "mag": 3.8, "spectral": "K"},
+    {"id": "anc-crown", "ra": 291.5, "dec": 4.0, "mag": 2.5, "spectral": "F"},
+    {"id": "anc-fluke-e", "ra": 300.0, "dec": 9.5, "mag": 4.3, "spectral": "M"}
+  ],
+  "lines": [
+    ["anc-ring", "anc-shank"],
+    ["anc-shank", "anc-stock-w"],
+    ["anc-shank", "anc-stock-e"],
+    ["anc-shank", "anc-crown"],
+    ["anc-crown", "anc-fluke-w"],
+    ["anc-crown", "anc-fluke-e"]
+  ]
+}
