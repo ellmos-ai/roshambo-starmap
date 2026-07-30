@@ -6,630 +6,630 @@
       "id": "riv-000",
       "ra": 0.0,
       "dec": 7.8,
-      "mag": 4.03,
+      "mag": 5.3,
       "spectral": "A"
     },
     {
       "id": "riv-001",
       "ra": 4.04,
       "dec": 4.0,
-      "mag": 4.14,
+      "mag": 5.46,
       "spectral": "O"
     },
     {
       "id": "riv-002",
       "ra": 8.09,
       "dec": 11.71,
-      "mag": 4.89,
+      "mag": 5.38,
       "spectral": "O"
     },
     {
       "id": "riv-003",
       "ra": 12.13,
       "dec": 12.09,
-      "mag": 4.03,
+      "mag": 5.35,
       "spectral": "O"
     },
     {
       "id": "riv-004",
       "ra": 16.18,
       "dec": 8.38,
-      "mag": 4.51,
+      "mag": 5.45,
       "spectral": "O"
     },
     {
       "id": "riv-005",
       "ra": 20.22,
       "dec": 14.57,
-      "mag": 4.72,
+      "mag": 5.47,
       "spectral": "K"
     },
     {
       "id": "riv-006",
       "ra": 24.27,
       "dec": 15.62,
-      "mag": 4.22,
+      "mag": 5.47,
       "spectral": "G"
     },
     {
       "id": "riv-007",
       "ra": 28.31,
       "dec": 13.04,
-      "mag": 4.87,
+      "mag": 5.48,
       "spectral": "M"
     },
     {
       "id": "riv-008",
       "ra": 32.36,
       "dec": 21.44,
-      "mag": 4.7,
+      "mag": 5.44,
       "spectral": "A"
     },
     {
       "id": "riv-009",
       "ra": 36.4,
       "dec": 14.92,
-      "mag": 4.22,
+      "mag": 5.45,
       "spectral": "M"
     },
     {
       "id": "riv-010",
       "ra": 40.45,
       "dec": 16.46,
-      "mag": 4.09,
+      "mag": 5.59,
       "spectral": "O"
     },
     {
       "id": "riv-011",
       "ra": 44.49,
       "dec": 17.33,
-      "mag": 4.34,
+      "mag": 5.5,
       "spectral": "A"
     },
     {
       "id": "riv-012",
       "ra": 48.54,
       "dec": 24.0,
-      "mag": 4.73,
+      "mag": 5.61,
       "spectral": "G"
     },
     {
       "id": "riv-013",
       "ra": 52.58,
       "dec": 14.68,
-      "mag": 4.92,
+      "mag": 5.66,
       "spectral": "O"
     },
     {
       "id": "riv-014",
       "ra": 56.63,
       "dec": 20.73,
-      "mag": 4.83,
+      "mag": 5.7,
       "spectral": "G"
     },
     {
       "id": "riv-015",
       "ra": 60.67,
       "dec": 25.29,
-      "mag": 4.36,
+      "mag": 5.74,
       "spectral": "B"
     },
     {
       "id": "riv-016",
       "ra": 64.72,
       "dec": 22.49,
-      "mag": 4.05,
+      "mag": 5.54,
       "spectral": "B"
     },
     {
       "id": "riv-017",
       "ra": 68.76,
       "dec": 23.01,
-      "mag": 4.99,
+      "mag": 5.55,
       "spectral": "M"
     },
     {
       "id": "riv-018",
       "ra": 72.81,
       "dec": 14.85,
-      "mag": 4.1,
+      "mag": 5.71,
       "spectral": "A"
     },
     {
       "id": "riv-019",
       "ra": 76.85,
       "dec": 17.18,
-      "mag": 4.83,
+      "mag": 5.68,
       "spectral": "B"
     },
     {
       "id": "riv-020",
       "ra": 80.9,
       "dec": 15.11,
-      "mag": 4.21,
+      "mag": 5.58,
       "spectral": "A"
     },
     {
       "id": "riv-021",
       "ra": 84.94,
       "dec": 18.71,
-      "mag": 4.68,
+      "mag": 5.74,
       "spectral": "O"
     },
     {
       "id": "riv-022",
       "ra": 88.99,
       "dec": 16.23,
-      "mag": 4.17,
+      "mag": 5.81,
       "spectral": "K"
     },
     {
       "id": "riv-023",
       "ra": 93.03,
       "dec": 9.82,
-      "mag": 4.46,
+      "mag": 5.81,
       "spectral": "A"
     },
     {
       "id": "riv-024",
       "ra": 97.08,
       "dec": 18.83,
-      "mag": 4.64,
+      "mag": 5.64,
       "spectral": "G"
     },
     {
       "id": "riv-025",
       "ra": 101.12,
       "dec": 6.54,
-      "mag": 4.32,
+      "mag": 5.68,
       "spectral": "M"
     },
     {
       "id": "riv-026",
       "ra": 105.17,
       "dec": 12.72,
-      "mag": 4.23,
+      "mag": 5.6,
       "spectral": "O"
     },
     {
       "id": "riv-027",
       "ra": 109.21,
       "dec": 11.45,
-      "mag": 4.4,
+      "mag": 5.91,
       "spectral": "O"
     },
     {
       "id": "riv-028",
       "ra": 113.26,
       "dec": 1.39,
-      "mag": 4.94,
+      "mag": 5.69,
       "spectral": "K"
     },
     {
       "id": "riv-029",
       "ra": 117.3,
       "dec": 1.05,
-      "mag": 4.66,
+      "mag": 5.86,
       "spectral": "F"
     },
     {
       "id": "riv-030",
       "ra": 121.35,
       "dec": 7.21,
-      "mag": 4.64,
+      "mag": 5.82,
       "spectral": "B"
     },
     {
       "id": "riv-031",
       "ra": 125.39,
       "dec": -3.3,
-      "mag": 4.25,
+      "mag": 5.85,
       "spectral": "G"
     },
     {
       "id": "riv-032",
       "ra": 129.44,
       "dec": -1.29,
-      "mag": 4.75,
+      "mag": 5.84,
       "spectral": "F"
     },
     {
       "id": "riv-033",
       "ra": 133.48,
       "dec": 1.92,
-      "mag": 4.4,
+      "mag": 5.94,
       "spectral": "B"
     },
     {
       "id": "riv-034",
       "ra": 137.53,
       "dec": 1.52,
-      "mag": 4.14,
+      "mag": 5.89,
       "spectral": "F"
     },
     {
       "id": "riv-035",
       "ra": 141.57,
       "dec": -12.91,
-      "mag": 4.05,
+      "mag": 5.81,
       "spectral": "O"
     },
     {
       "id": "riv-036",
       "ra": 145.62,
       "dec": -13.72,
-      "mag": 4.16,
+      "mag": 5.77,
       "spectral": "K"
     },
     {
       "id": "riv-037",
       "ra": 149.66,
       "dec": -11.56,
-      "mag": 4.06,
+      "mag": 5.89,
       "spectral": "F"
     },
     {
       "id": "riv-038",
       "ra": 153.71,
       "dec": -10.64,
-      "mag": 4.47,
+      "mag": 6.04,
       "spectral": "A"
     },
     {
       "id": "riv-039",
       "ra": 157.75,
       "dec": -6.81,
-      "mag": 4.86,
+      "mag": 5.82,
       "spectral": "O"
     },
     {
       "id": "riv-040",
       "ra": 161.8,
       "dec": -12.18,
-      "mag": 4.11,
+      "mag": 5.99,
       "spectral": "G"
     },
     {
       "id": "riv-041",
       "ra": 165.84,
       "dec": -12.38,
-      "mag": 4.77,
+      "mag": 5.99,
       "spectral": "A"
     },
     {
       "id": "riv-042",
       "ra": 169.89,
       "dec": -22.37,
-      "mag": 4.43,
+      "mag": 5.86,
       "spectral": "F"
     },
     {
       "id": "riv-043",
       "ra": 173.93,
       "dec": -24.79,
-      "mag": 4.72,
+      "mag": 5.89,
       "spectral": "K"
     },
     {
       "id": "riv-044",
       "ra": 177.98,
       "dec": -21.9,
-      "mag": 4.5,
+      "mag": 6.05,
       "spectral": "B"
     },
     {
       "id": "riv-045",
       "ra": 182.02,
       "dec": -19.08,
-      "mag": 4.11,
+      "mag": 5.99,
       "spectral": "K"
     },
     {
       "id": "riv-046",
       "ra": 186.07,
       "dec": -22.45,
-      "mag": 4.64,
+      "mag": 5.99,
       "spectral": "G"
     },
     {
       "id": "riv-047",
       "ra": 190.11,
       "dec": -24.11,
-      "mag": 4.37,
+      "mag": 6.03,
       "spectral": "B"
     },
     {
       "id": "riv-048",
       "ra": 194.16,
       "dec": -19.45,
-      "mag": 4.78,
+      "mag": 5.93,
       "spectral": "G"
     },
     {
       "id": "riv-049",
       "ra": 198.2,
       "dec": -14.07,
-      "mag": 4.6,
+      "mag": 6.12,
       "spectral": "F"
     },
     {
       "id": "riv-050",
       "ra": 202.25,
       "dec": -26.43,
-      "mag": 4.93,
+      "mag": 6.1,
       "spectral": "M"
     },
     {
       "id": "riv-051",
       "ra": 206.29,
       "dec": -15.01,
-      "mag": 4.24,
+      "mag": 6.1,
       "spectral": "B"
     },
     {
       "id": "riv-052",
       "ra": 210.34,
       "dec": -13.45,
-      "mag": 4.95,
+      "mag": 6.05,
       "spectral": "O"
     },
     {
       "id": "riv-053",
       "ra": 214.38,
       "dec": -14.78,
-      "mag": 4.82,
+      "mag": 6.21,
       "spectral": "M"
     },
     {
       "id": "riv-054",
       "ra": 218.43,
       "dec": -16.69,
-      "mag": 4.13,
+      "mag": 6.23,
       "spectral": "K"
     },
     {
       "id": "riv-055",
       "ra": 222.47,
       "dec": -16.48,
-      "mag": 4.55,
+      "mag": 6.16,
       "spectral": "A"
     },
     {
       "id": "riv-056",
       "ra": 226.52,
       "dec": -14.6,
-      "mag": 4.61,
+      "mag": 6.03,
       "spectral": "B"
     },
     {
       "id": "riv-057",
       "ra": 230.56,
       "dec": -7.7,
-      "mag": 4.76,
+      "mag": 6.06,
       "spectral": "K"
     },
     {
       "id": "riv-058",
       "ra": 234.61,
       "dec": -16.5,
-      "mag": 4.31,
+      "mag": 6.08,
       "spectral": "K"
     },
     {
       "id": "riv-059",
       "ra": 238.65,
       "dec": -8.72,
-      "mag": 4.44,
+      "mag": 6.07,
       "spectral": "G"
     },
     {
       "id": "riv-060",
       "ra": 242.7,
       "dec": -9.91,
-      "mag": 4.25,
+      "mag": 6.25,
       "spectral": "O"
     },
     {
       "id": "riv-061",
       "ra": 246.74,
       "dec": -9.84,
-      "mag": 4.59,
+      "mag": 6.24,
       "spectral": "B"
     },
     {
       "id": "riv-062",
       "ra": 250.79,
       "dec": -4.6,
-      "mag": 4.01,
+      "mag": 6.15,
       "spectral": "K"
     },
     {
       "id": "riv-063",
       "ra": 254.83,
       "dec": -2.23,
-      "mag": 4.23,
+      "mag": 6.37,
       "spectral": "O"
     },
     {
       "id": "riv-064",
       "ra": 258.88,
       "dec": 2.78,
-      "mag": 4.07,
+      "mag": 6.3,
       "spectral": "B"
     },
     {
       "id": "riv-065",
       "ra": 262.92,
       "dec": -3.52,
-      "mag": 4.49,
+      "mag": 6.36,
       "spectral": "G"
     },
     {
       "id": "riv-066",
       "ra": 266.97,
       "dec": -3.73,
-      "mag": 4.94,
+      "mag": 6.39,
       "spectral": "G"
     },
     {
       "id": "riv-067",
       "ra": 271.01,
       "dec": 4.3,
-      "mag": 4.24,
+      "mag": 6.36,
       "spectral": "F"
     },
     {
       "id": "riv-068",
       "ra": 275.06,
       "dec": 9.34,
-      "mag": 4.19,
+      "mag": 6.32,
       "spectral": "O"
     },
     {
       "id": "riv-069",
       "ra": 279.1,
       "dec": 9.01,
-      "mag": 4.35,
+      "mag": 6.48,
       "spectral": "F"
     },
     {
       "id": "riv-070",
       "ra": 283.15,
       "dec": 8.02,
-      "mag": 4.73,
+      "mag": 6.23,
       "spectral": "K"
     },
     {
       "id": "riv-071",
       "ra": 287.19,
       "dec": 12.25,
-      "mag": 4.65,
+      "mag": 6.41,
       "spectral": "O"
     },
     {
       "id": "riv-072",
       "ra": 291.24,
       "dec": 10.28,
-      "mag": 4.34,
+      "mag": 6.49,
       "spectral": "M"
     },
     {
       "id": "riv-073",
       "ra": 295.28,
       "dec": 7.62,
-      "mag": 4.19,
+      "mag": 6.38,
       "spectral": "G"
     },
     {
       "id": "riv-074",
       "ra": 299.33,
       "dec": 13.7,
-      "mag": 4.42,
+      "mag": 6.49,
       "spectral": "A"
     },
     {
       "id": "riv-075",
       "ra": 303.37,
       "dec": 15.1,
-      "mag": 4.87,
+      "mag": 6.32,
       "spectral": "O"
     },
     {
       "id": "riv-076",
       "ra": 307.42,
       "dec": 15.91,
-      "mag": 4.86,
+      "mag": 6.4,
       "spectral": "G"
     },
     {
       "id": "riv-077",
       "ra": 311.46,
       "dec": 12.01,
-      "mag": 4.65,
+      "mag": 6.37,
       "spectral": "G"
     },
     {
       "id": "riv-078",
       "ra": 315.51,
       "dec": 23.14,
-      "mag": 4.97,
+      "mag": 6.42,
       "spectral": "M"
     },
     {
       "id": "riv-079",
       "ra": 319.55,
       "dec": 23.95,
-      "mag": 4.17,
+      "mag": 6.53,
       "spectral": "F"
     },
     {
       "id": "riv-080",
       "ra": 323.6,
       "dec": 19.28,
-      "mag": 4.86,
+      "mag": 6.37,
       "spectral": "O"
     },
     {
       "id": "riv-081",
       "ra": 327.64,
       "dec": 15.15,
-      "mag": 4.0,
+      "mag": 6.44,
       "spectral": "F"
     },
     {
       "id": "riv-082",
       "ra": 331.69,
       "dec": 16.7,
-      "mag": 4.78,
+      "mag": 6.61,
       "spectral": "F"
     },
     {
       "id": "riv-083",
       "ra": 335.73,
       "dec": 16.96,
-      "mag": 4.7,
+      "mag": 6.46,
       "spectral": "K"
     },
     {
       "id": "riv-084",
       "ra": 339.78,
       "dec": 26.71,
-      "mag": 4.56,
+      "mag": 6.42,
       "spectral": "K"
     },
     {
       "id": "riv-085",
       "ra": 343.82,
       "dec": 19.22,
-      "mag": 4.19,
+      "mag": 6.69,
       "spectral": "B"
     },
     {
       "id": "riv-086",
       "ra": 347.87,
       "dec": 25.45,
-      "mag": 4.58,
+      "mag": 6.57,
       "spectral": "G"
     },
     {
       "id": "riv-087",
       "ra": 351.91,
       "dec": 12.06,
-      "mag": 4.31,
+      "mag": 6.43,
       "spectral": "O"
     },
     {
       "id": "riv-088",
       "ra": 355.96,
       "dec": 18.54,
-      "mag": 4.5,
+      "mag": 6.61,
       "spectral": "M"
     },
     {
       "id": "riv-089",
       "ra": 360.0,
       "dec": 16.82,
-      "mag": 4.06,
+      "mag": 6.49,
       "spectral": "G"
     }
   ],
