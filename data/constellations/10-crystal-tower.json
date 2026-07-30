@@ -1,0 +1,21 @@
+{
+  "name": "The Crystal Tower",
+  "abbr": "Tow",
+  "stars": [
+    {"id": "tow-a", "ra": 285.5, "dec": 42.0, "mag": 1.1, "spectral": "B"},
+    {"id": "tow-b", "ra": 292.0, "dec": 30.5, "mag": 2.4, "spectral": "A"},
+    {"id": "tow-c", "ra": 298.5, "dec": 18.0, "mag": 3.0, "spectral": "F"},
+    {"id": "tow-d", "ra": 305.0, "dec": 32.0, "mag": 2.1, "spectral": "O"},
+    {"id": "tow-e", "ra": 312.5, "dec": 45.0, "mag": 3.8, "spectral": "K"},
+    {"id": "tow-f", "ra": 298.0, "dec": 50.0, "mag": 4.2, "spectral": "M"}
+  ],
+  "lines": [
+    ["tow-a", "tow-b"],
+    ["tow-b", "tow-c"],
+    ["tow-c", "tow-d"],
+    ["tow-d", "tow-e"],
+    ["tow-e", "tow-f"],
+    ["tow-f", "tow-a"],
+    ["tow-b", "tow-d"]
+  ]
+}

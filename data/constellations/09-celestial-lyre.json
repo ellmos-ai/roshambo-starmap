@@ -1,0 +1,20 @@
+{
+  "name": "The Celestial Lyre",
+  "abbr": "Lyr",
+  "stars": [
+    {"id": "lyr-a", "ra": 245.5, "dec": 38.2, "mag": -0.5, "spectral": "A"},
+    {"id": "lyr-b", "ra": 252.1, "dec": 32.7, "mag": 3.2, "spectral": "B"},
+    {"id": "lyr-c", "ra": 258.4, "dec": 28.1, "mag": 2.1, "spectral": "K"},
+    {"id": "lyr-d", "ra": 265.0, "dec": 15.4, "mag": 4.5, "spectral": "M"},
+    {"id": "lyr-e", "ra": 271.3, "dec": -10.2, "mag": 1.8, "spectral": "F"},
+    {"id": "lyr-f", "ra": 276.8, "dec": 5.6, "mag": 3.8, "spectral": "G"}
+  ],
+  "lines": [
+    ["lyr-a", "lyr-b"],
+    ["lyr-b", "lyr-c"],
+    ["lyr-c", "lyr-d"],
+    ["lyr-d", "lyr-e"],
+    ["lyr-e", "lyr-f"],
+    ["lyr-f", "lyr-b"]
+  ]
+}
