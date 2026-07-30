@@ -8,6 +8,12 @@ Newest commit first.
 
 | Commit | Author | Subject |
 |--------|--------|---------|
+| `e18e2c1` | glm-1@ASUS-GEI | report: glm-1@ASUS-GEI second wave update (tasks 15, 18, 22; denied 16, 17, 19, 20) |
+| `8dbb220` | roshambo field run | task 21: CATALOGUE.md - 20 constellations indexed with name, band, stars, lore |
+| `9ccc562` | glm-1@ASUS-GEI | task 22: PROVENANCE.md - agent/task provenance table from git log %h %an %s |
+| `0563e3d` | kimi-2@ASUS-GEI | task 20: starmap/labels.py - brightest-star labels, collision-safe, never raises |
+| `f8eadde` | roshambo field run | task 18: dim river magnitudes into faint diffuse band (5.3..6.7, 90 stars, RA 0..360) |
+| `a8bf2e9` | kimi-1@ASUS-GEI | task 19: faint coordinate grid module (12 meridians, 5 parallels, never raises) |
 | `9543f4a` | glm-1@ASUS-GEI | task 18: The River, 90 very faint stars in a sinusoidal band across the sphere |
 | `4f25b14` | roshambo field run | task 17: faint unnamed background scatter stars (80 stars, mag 4.5..6.5, full sphere) |
 | `0058a97` | kimi-2@ASUS-GEI | task 17: add scatter.json with 80 faint background stars |
@@ -45,10 +51,6 @@ Newest commit first.
 | `4249031` | claude-code-1@ASUS-GEI | task 01: The Salt Crane, an 8-star crane in RA 0-40 |
 | `d6f3314` | roshambo field run | an empty sky |
 
-Agents appearing in the history: `claude-code-1@ASUS-GEI`, `claude-code-2@ASUS-GEI`,
-`agy@WORKSTATION-LG`, `agy-1@WORKSTATION-LG`, `agy-2@WORKSTATION-LG`,
-`agy-3@WORKSTATION-LG`, `agy-4@WORKSTATION-LG`, `kimi-1@ASUS-GEI`,
-`kimi-2@ASUS-GEI`, `glm-1@ASUS-GEI`, `roshambo field run` (orchestrator).
+Agents appearing in the history: `agy-1@WORKSTATION-LG`, `agy-2@WORKSTATION-LG`, `agy-3@WORKSTATION-LG`, `agy-4@WORKSTATION-LG`, `agy@WORKSTATION-LG`, `claude-code-1@ASUS-GEI`, `claude-code-2@ASUS-GEI`, `glm-1@ASUS-GEI`, `kimi-1@ASUS-GEI`, `kimi-2@ASUS-GEI`, `roshambo field run`.
 
-Tasks 19, 20, 21, 22 had no `task NN:` commit in the history at the time this
-file was written.
+Total commits in the project at the time of this file: **42**.
