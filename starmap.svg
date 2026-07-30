@@ -1,6 +1,22 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-label="A sky invented by three agents">
 <rect width="1600" height="900" fill="#060913"/>
 <g stroke="#5c6f9c" stroke-width="1.1" opacity="0.75">
+<line x1="740.39" y1="617.67" x2="722.56" y2="581.14"/>
+<line x1="722.56" y1="581.14" x2="675.24" y2="628.06"/>
+<line x1="675.24" y1="628.06" x2="613.25" y2="673.81"/>
+<line x1="613.25" y1="673.81" x2="651.66" y2="724.69"/>
+<line x1="651.66" y1="724.69" x2="706.39" y2="680.44"/>
+<line x1="706.39" y1="680.44" x2="740.39" y2="617.67"/>
+<line x1="740.39" y1="617.67" x2="675.24" y2="628.06"/>
+</g>
+<circle cx="740.39" cy="617.67" r="3.73" fill="#bbccff"/>
+<circle cx="722.56" cy="581.14" r="2.60" fill="#f8f9ff"/>
+<circle cx="675.24" cy="628.06" r="1.87" fill="#ffffed"/>
+<circle cx="613.25" cy="673.81" r="3.02" fill="#9bb0ff"/>
+<circle cx="651.66" cy="724.69" r="1.51" fill="#ffc58d"/>
+<circle cx="706.39" cy="680.44" r="2.17" fill="#fff2a3"/>
+<text x="684.92" y="632.97" fill="#8fa3d0" font-size="15" font-family="Georgia, serif" text-anchor="middle">The Silver Lantern</text>
+<g stroke="#5c6f9c" stroke-width="1.1" opacity="0.75">
 <line x1="749.38" y1="734.46" x2="716.69" y2="645.27"/>
 <line x1="716.69" y1="645.27" x2="707.54" y2="562.10"/>
 <line x1="707.54" y1="562.10" x2="622.07" y2="654.04"/>
@@ -141,7 +157,7 @@
 <text x="868.01" y="613.73" fill="#8fa3d0" font-size="15" font-family="Georgia, serif" text-anchor="middle">The Phoenix Feather</text>
   <g id="title-block" transform="translate(30, 45)" font-family="sans-serif">
     <text x="0" y="0" font-size="22" font-weight="bold" fill="#e0e6ed" letter-spacing="1">CELESTIAL MAP</text>
-    <text x="0" y="20" font-size="12" fill="#8b9bb4" font-style="italic">An invented night sky created by independent agents</text>
+    <text x="0" y="20" font-size="12" fill="#8b9bb4" font-style="italic">This sky is invented — created by independent agents.</text>
   </g>
   <g id="magnitude-key" transform="translate(30, 95)" font-family="sans-serif" font-size="11" fill="#a0aec0">
     <text x="0" y="0" font-weight="bold" fill="#cbd5e0">Magnitude Scale:</text>
@@ -154,15 +170,16 @@
   </g>
   <g id="constellation-legend" transform="translate(30, 135)" font-family="sans-serif" font-size="11" fill="#a0aec0">
     <text x="0" y="0" font-weight="bold" fill="#cbd5e0">Constellations Present:</text>
-    <text x="10" y="20">The Silver Weaver (6 stars)</text>
-    <text x="10" y="38">The Broken Wheel (6 stars)</text>
-    <text x="10" y="56">The Heron (6 stars)</text>
-    <text x="10" y="74">The Golden Compass (6 stars)</text>
-    <text x="10" y="92">The Obsidian Mirror (6 stars)</text>
-    <text x="10" y="110">The Crimson Chariot (6 stars)</text>
-    <text x="10" y="128">The Celestial Lyre (6 stars)</text>
-    <text x="10" y="146">The Crystal Tower (6 stars)</text>
-    <text x="10" y="164">The Phoenix Feather (7 stars)</text>
+    <text x="10" y="20">The Silver Lantern (6 stars)</text>
+    <text x="10" y="38">The Silver Weaver (6 stars)</text>
+    <text x="10" y="56">The Broken Wheel (6 stars)</text>
+    <text x="10" y="74">The Heron (6 stars)</text>
+    <text x="10" y="92">The Golden Compass (6 stars)</text>
+    <text x="10" y="110">The Obsidian Mirror (6 stars)</text>
+    <text x="10" y="128">The Crimson Chariot (6 stars)</text>
+    <text x="10" y="146">The Celestial Lyre (6 stars)</text>
+    <text x="10" y="164">The Crystal Tower (6 stars)</text>
+    <text x="10" y="182">The Phoenix Feather (7 stars)</text>
   </g>
-<!-- constellations=9 stars=55 segments=57 dropped_segments=0 skipped=none modules={'projection': 'starmap/projection.py', 'style': 'starmap/style.py', 'legend': 'starmap/legend.py'} -->
+<!-- constellations=10 stars=61 segments=64 dropped_segments=0 skipped=none modules={'projection': 'starmap/projection.py', 'style': 'starmap/style.py', 'legend': 'starmap/legend.py'} -->
 </svg>

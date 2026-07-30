@@ -12,7 +12,7 @@ def legend_svg(width: int, height: int, constellations: list[Any]) -> str:
     # Title Block (Top-Left)
     elements.append('  <g id="title-block" transform="translate(30, 45)" font-family="sans-serif">')
     elements.append('    <text x="0" y="0" font-size="22" font-weight="bold" fill="#e0e6ed" letter-spacing="1">CELESTIAL MAP</text>')
-    elements.append('    <text x="0" y="20" font-size="12" fill="#8b9bb4" font-style="italic">An invented night sky created by independent agents</text>')
+    elements.append('    <text x="0" y="20" font-size="12" fill="#8b9bb4" font-style="italic">This sky is invented — created by independent agents.</text>')
     elements.append('  </g>')
 
     # Magnitude Key (Top-Left, below title)
@@ -41,3 +41,4 @@ def legend_svg(width: int, height: int, constellations: list[Any]) -> str:
     elements.append('  </g>')
 
     return "\n".join(elements)
+
