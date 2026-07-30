@@ -1,0 +1,419 @@
+plan: storm on swarm 'poc-starmap-2026-07-30', 3 bots (BotAgent A, BotAgent B, BotAgent C) x up to 40 attempts each, 6 task(s): starmap:task:01, starmap:task:02, starmap:task:03, starmap:task:04, starmap:task:05, starmap:task:06
+RU estimate (planning only, worst case): ~2400 RU
+
+=== STORM RESULT (poc-starmap-2026-07-30) ===
+bots: BotAgent A, BotAgent B, BotAgent C
+  BotAgent A   attempts=13   granted=6    denied=7    errored=0   final_interval=3.16s
+  BotAgent B   attempts=15   granted=9    denied=6    errored=0   final_interval=0.68s
+  BotAgent C   attempts=17   granted=13   denied=4    errored=0   final_interval=0.25s
+total: 45 attempts, 28 granted, 17 denied, 0 errored
+two simultaneous holders of the same task, at any point: no
+RU estimate (planning only, not measured): ~2400 RU
+interval log written to C:\_Local_DEV\_roshambo-poc\ASUS-GEI\botagent-crosshost.csv
+{
+  "mode": "storm",
+  "swarm_id": "poc-starmap-2026-07-30",
+  "bots": [
+    "BotAgent A",
+    "BotAgent B",
+    "BotAgent C"
+  ],
+  "total_attempts": 45,
+  "total_granted": 28,
+  "total_denied": 17,
+  "total_errored": 0,
+  "two_simultaneous_holders_detected": false,
+  "overlap_violations": [],
+  "unreleased_claims": [],
+  "per_bot": [
+    {
+      "agent_id": "BotAgent-A@ASUS-GEI",
+      "display_name": "BotAgent A",
+      "attempts": 13,
+      "granted": 6,
+      "denied": 7,
+      "errored": 0,
+      "final_interval": 3.1581162962944
+    },
+    {
+      "agent_id": "BotAgent-B@ASUS-GEI",
+      "display_name": "BotAgent B",
+      "attempts": 15,
+      "granted": 9,
+      "denied": 6,
+      "errored": 0,
+      "final_interval": 0.6770211810181117
+    },
+    {
+      "agent_id": "BotAgent-C@ASUS-GEI",
+      "display_name": "BotAgent C",
+      "attempts": 17,
+      "granted": 13,
+      "denied": 4,
+      "errored": 0,
+      "final_interval": 0.25
+    }
+  ],
+  "interval_log": [
+    {
+      "timestamp": "2026-07-30T22:16:16.371680+00:00",
+      "agent_id": "BotAgent-A@ASUS-GEI",
+      "resource": "starmap:task:01",
+      "outcome": "denied",
+      "interval_before": 1.0,
+      "interval_after": 1.6
+    },
+    {
+      "timestamp": "2026-07-30T22:16:23.537007+00:00",
+      "agent_id": "BotAgent-A@ASUS-GEI",
+      "resource": "starmap:task:02",
+      "outcome": "granted",
+      "interval_before": 1.6,
+      "interval_after": 1.1199999999999999
+    },
+    {
+      "timestamp": "2026-07-30T22:16:24.897151+00:00",
+      "agent_id": "BotAgent-A@ASUS-GEI",
+      "resource": "starmap:task:03",
+      "outcome": "denied",
+      "interval_before": 1.1199999999999999,
+      "interval_after": 1.7919999999999998
+    },
+    {
+      "timestamp": "2026-07-30T22:16:27.084061+00:00",
+      "agent_id": "BotAgent-A@ASUS-GEI",
+      "resource": "starmap:task:04",
+      "outcome": "denied",
+      "interval_before": 1.7919999999999998,
+      "interval_after": 2.8672
+    },
+    {
+      "timestamp": "2026-07-30T22:16:35.323996+00:00",
+      "agent_id": "BotAgent-A@ASUS-GEI",
+      "resource": "starmap:task:05",
+      "outcome": "granted",
+      "interval_before": 2.8672,
+      "interval_after": 2.00704
+    },
+    {
+      "timestamp": "2026-07-30T22:16:37.656994+00:00",
+      "agent_id": "BotAgent-A@ASUS-GEI",
+      "resource": "starmap:task:06",
+      "outcome": "denied",
+      "interval_before": 2.00704,
+      "interval_after": 3.211264
+    },
+    {
+      "timestamp": "2026-07-30T22:16:41.237423+00:00",
+      "agent_id": "BotAgent-A@ASUS-GEI",
+      "resource": "starmap:task:01",
+      "outcome": "denied",
+      "interval_before": 3.211264,
+      "interval_after": 5.1380224000000005
+    },
+    {
+      "timestamp": "2026-07-30T22:16:46.678300+00:00",
+      "agent_id": "BotAgent-A@ASUS-GEI",
+      "resource": "starmap:task:02",
+      "outcome": "denied",
+      "interval_before": 5.1380224000000005,
+      "interval_after": 8.220835840000001
+    },
+    {
+      "timestamp": "2026-07-30T22:16:55.146820+00:00",
+      "agent_id": "BotAgent-A@ASUS-GEI",
+      "resource": "starmap:task:03",
+      "outcome": "denied",
+      "interval_before": 8.220835840000001,
+      "interval_after": 13.153337344000002
+    },
+    {
+      "timestamp": "2026-07-30T22:17:13.728640+00:00",
+      "agent_id": "BotAgent-A@ASUS-GEI",
+      "resource": "starmap:task:04",
+      "outcome": "granted",
+      "interval_before": 13.153337344000002,
+      "interval_after": 9.2073361408
+    },
+    {
+      "timestamp": "2026-07-30T22:17:28.347344+00:00",
+      "agent_id": "BotAgent-A@ASUS-GEI",
+      "resource": "starmap:task:05",
+      "outcome": "granted",
+      "interval_before": 9.2073361408,
+      "interval_after": 6.44513529856
+    },
+    {
+      "timestamp": "2026-07-30T22:17:40.157013+00:00",
+      "agent_id": "BotAgent-A@ASUS-GEI",
+      "resource": "starmap:task:06",
+      "outcome": "granted",
+      "interval_before": 6.44513529856,
+      "interval_after": 4.511594708992
+    },
+    {
+      "timestamp": "2026-07-30T22:17:50.252116+00:00",
+      "agent_id": "BotAgent-A@ASUS-GEI",
+      "resource": "starmap:task:01",
+      "outcome": "granted",
+      "interval_before": 4.511594708992,
+      "interval_after": 3.1581162962944
+    },
+    {
+      "timestamp": "2026-07-30T22:16:16.396958+00:00",
+      "agent_id": "BotAgent-B@ASUS-GEI",
+      "resource": "starmap:task:01",
+      "outcome": "denied",
+      "interval_before": 1.0,
+      "interval_after": 1.6
+    },
+    {
+      "timestamp": "2026-07-30T22:16:18.436866+00:00",
+      "agent_id": "BotAgent-B@ASUS-GEI",
+      "resource": "starmap:task:02",
+      "outcome": "denied",
+      "interval_before": 1.6,
+      "interval_after": 2.5600000000000005
+    },
+    {
+      "timestamp": "2026-07-30T22:16:26.399582+00:00",
+      "agent_id": "BotAgent-B@ASUS-GEI",
+      "resource": "starmap:task:03",
+      "outcome": "granted",
+      "interval_before": 2.5600000000000005,
+      "interval_after": 1.7920000000000003
+    },
+    {
+      "timestamp": "2026-07-30T22:16:28.488459+00:00",
+      "agent_id": "BotAgent-B@ASUS-GEI",
+      "resource": "starmap:task:04",
+      "outcome": "denied",
+      "interval_before": 1.7920000000000003,
+      "interval_after": 2.8672000000000004
+    },
+    {
+      "timestamp": "2026-07-30T22:16:31.586807+00:00",
+      "agent_id": "BotAgent-B@ASUS-GEI",
+      "resource": "starmap:task:05",
+      "outcome": "denied",
+      "interval_before": 2.8672000000000004,
+      "interval_after": 4.5875200000000005
+    },
+    {
+      "timestamp": "2026-07-30T22:16:36.719140+00:00",
+      "agent_id": "BotAgent-B@ASUS-GEI",
+      "resource": "starmap:task:06",
+      "outcome": "denied",
+      "interval_before": 4.5875200000000005,
+      "interval_after": 7.340032000000001
+    },
+    {
+      "timestamp": "2026-07-30T22:16:49.517290+00:00",
+      "agent_id": "BotAgent-B@ASUS-GEI",
+      "resource": "starmap:task:01",
+      "outcome": "granted",
+      "interval_before": 7.340032000000001,
+      "interval_after": 5.1380224000000005
+    },
+    {
+      "timestamp": "2026-07-30T22:17:00.064210+00:00",
+      "agent_id": "BotAgent-B@ASUS-GEI",
+      "resource": "starmap:task:02",
+      "outcome": "granted",
+      "interval_before": 5.1380224000000005,
+      "interval_after": 3.59661568
+    },
+    {
+      "timestamp": "2026-07-30T22:17:09.028323+00:00",
+      "agent_id": "BotAgent-B@ASUS-GEI",
+      "resource": "starmap:task:03",
+      "outcome": "granted",
+      "interval_before": 3.59661568,
+      "interval_after": 2.517630976
+    },
+    {
+      "timestamp": "2026-07-30T22:17:11.842314+00:00",
+      "agent_id": "BotAgent-B@ASUS-GEI",
+      "resource": "starmap:task:04",
+      "outcome": "denied",
+      "interval_before": 2.517630976,
+      "interval_after": 4.0282095616
+    },
+    {
+      "timestamp": "2026-07-30T22:17:21.241885+00:00",
+      "agent_id": "BotAgent-B@ASUS-GEI",
+      "resource": "starmap:task:05",
+      "outcome": "granted",
+      "interval_before": 4.0282095616,
+      "interval_after": 2.8197466931199995
+    },
+    {
+      "timestamp": "2026-07-30T22:17:29.538870+00:00",
+      "agent_id": "BotAgent-B@ASUS-GEI",
+      "resource": "starmap:task:06",
+      "outcome": "granted",
+      "interval_before": 2.8197466931199995,
+      "interval_after": 1.9738226851839995
+    },
+    {
+      "timestamp": "2026-07-30T22:17:36.906880+00:00",
+      "agent_id": "BotAgent-B@ASUS-GEI",
+      "resource": "starmap:task:01",
+      "outcome": "granted",
+      "interval_before": 1.9738226851839995,
+      "interval_after": 1.3816758796287996
+    },
+    {
+      "timestamp": "2026-07-30T22:17:43.661207+00:00",
+      "agent_id": "BotAgent-B@ASUS-GEI",
+      "resource": "starmap:task:02",
+      "outcome": "granted",
+      "interval_before": 1.3816758796287996,
+      "interval_after": 0.9671731157401596
+    },
+    {
+      "timestamp": "2026-07-30T22:17:50.013289+00:00",
+      "agent_id": "BotAgent-B@ASUS-GEI",
+      "resource": "starmap:task:03",
+      "outcome": "granted",
+      "interval_before": 0.9671731157401596,
+      "interval_after": 0.6770211810181117
+    },
+    {
+      "timestamp": "2026-07-30T22:16:21.536973+00:00",
+      "agent_id": "BotAgent-C@ASUS-GEI",
+      "resource": "starmap:task:01",
+      "outcome": "granted",
+      "interval_before": 1.0,
+      "interval_after": 0.7
+    },
+    {
+      "timestamp": "2026-07-30T22:16:22.524877+00:00",
+      "agent_id": "BotAgent-C@ASUS-GEI",
+      "resource": "starmap:task:02",
+      "outcome": "denied",
+      "interval_before": 0.7,
+      "interval_after": 1.1199999999999999
+    },
+    {
+      "timestamp": "2026-07-30T22:16:23.925814+00:00",
+      "agent_id": "BotAgent-C@ASUS-GEI",
+      "resource": "starmap:task:03",
+      "outcome": "denied",
+      "interval_before": 1.1199999999999999,
+      "interval_after": 1.7919999999999998
+    },
+    {
+      "timestamp": "2026-07-30T22:16:31.268044+00:00",
+      "agent_id": "BotAgent-C@ASUS-GEI",
+      "resource": "starmap:task:04",
+      "outcome": "granted",
+      "interval_before": 1.7919999999999998,
+      "interval_after": 1.2543999999999997
+    },
+    {
+      "timestamp": "2026-07-30T22:16:32.750317+00:00",
+      "agent_id": "BotAgent-C@ASUS-GEI",
+      "resource": "starmap:task:05",
+      "outcome": "denied",
+      "interval_before": 1.2543999999999997,
+      "interval_after": 2.0070399999999995
+    },
+    {
+      "timestamp": "2026-07-30T22:16:35.138608+00:00",
+      "agent_id": "BotAgent-C@ASUS-GEI",
+      "resource": "starmap:task:06",
+      "outcome": "denied",
+      "interval_before": 2.0070399999999995,
+      "interval_after": 3.2112639999999995
+    },
+    {
+      "timestamp": "2026-07-30T22:16:43.736828+00:00",
+      "agent_id": "BotAgent-C@ASUS-GEI",
+      "resource": "starmap:task:01",
+      "outcome": "granted",
+      "interval_before": 3.2112639999999995,
+      "interval_after": 2.2478847999999996
+    },
+    {
+      "timestamp": "2026-07-30T22:16:51.352034+00:00",
+      "agent_id": "BotAgent-C@ASUS-GEI",
+      "resource": "starmap:task:02",
+      "outcome": "granted",
+      "interval_before": 2.2478847999999996,
+      "interval_after": 1.5735193599999997
+    },
+    {
+      "timestamp": "2026-07-30T22:16:58.317235+00:00",
+      "agent_id": "BotAgent-C@ASUS-GEI",
+      "resource": "starmap:task:03",
+      "outcome": "granted",
+      "interval_before": 1.5735193599999997,
+      "interval_after": 1.1014635519999998
+    },
+    {
+      "timestamp": "2026-07-30T22:17:04.969958+00:00",
+      "agent_id": "BotAgent-C@ASUS-GEI",
+      "resource": "starmap:task:04",
+      "outcome": "granted",
+      "interval_before": 1.1014635519999998,
+      "interval_after": 0.7710244863999998
+    },
+    {
+      "timestamp": "2026-07-30T22:17:11.136799+00:00",
+      "agent_id": "BotAgent-C@ASUS-GEI",
+      "resource": "starmap:task:05",
+      "outcome": "granted",
+      "interval_before": 0.7710244863999998,
+      "interval_after": 0.5397171404799997
+    },
+    {
+      "timestamp": "2026-07-30T22:17:17.049623+00:00",
+      "agent_id": "BotAgent-C@ASUS-GEI",
+      "resource": "starmap:task:06",
+      "outcome": "granted",
+      "interval_before": 0.5397171404799997,
+      "interval_after": 0.3778019983359998
+    },
+    {
+      "timestamp": "2026-07-30T22:17:22.820092+00:00",
+      "agent_id": "BotAgent-C@ASUS-GEI",
+      "resource": "starmap:task:01",
+      "outcome": "granted",
+      "interval_before": 0.3778019983359998,
+      "interval_after": 0.26446139883519987
+    },
+    {
+      "timestamp": "2026-07-30T22:17:28.463894+00:00",
+      "agent_id": "BotAgent-C@ASUS-GEI",
+      "resource": "starmap:task:02",
+      "outcome": "granted",
+      "interval_before": 0.26446139883519987,
+      "interval_after": 0.25
+    },
+    {
+      "timestamp": "2026-07-30T22:17:34.120573+00:00",
+      "agent_id": "BotAgent-C@ASUS-GEI",
+      "resource": "starmap:task:03",
+      "outcome": "granted",
+      "interval_before": 0.25,
+      "interval_after": 0.25
+    },
+    {
+      "timestamp": "2026-07-30T22:17:39.783907+00:00",
+      "agent_id": "BotAgent-C@ASUS-GEI",
+      "resource": "starmap:task:04",
+      "outcome": "granted",
+      "interval_before": 0.25,
+      "interval_after": 0.25
+    },
+    {
+      "timestamp": "2026-07-30T22:17:45.414954+00:00",
+      "agent_id": "BotAgent-C@ASUS-GEI",
+      "resource": "starmap:task:05",
+      "outcome": "granted",
+      "interval_before": 0.25,
+      "interval_after": 0.25
+    }
+  ]
+}

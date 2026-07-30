@@ -1,0 +1,26 @@
+{
+  "name": "The Ashen Kite",
+  "abbr": "Kit",
+  "stars": [
+    {"id": "kit-nose", "ra": 219.0, "dec": 46.0, "mag": 0.6, "spectral": "O"},
+    {"id": "kit-west", "ra": 206.5, "dec": 31.0, "mag": 2.4, "spectral": "A"},
+    {"id": "kit-east", "ra": 231.5, "dec": 28.0, "mag": 1.9, "spectral": "B"},
+    {"id": "kit-keel", "ra": 220.5, "dec": 14.0, "mag": 3.1, "spectral": "F"},
+    {"id": "kit-knot-a", "ra": 225.5, "dec": 3.0, "mag": 3.3, "spectral": "G"},
+    {"id": "kit-knot-b", "ra": 213.0, "dec": -8.0, "mag": 4.5, "spectral": "M"},
+    {"id": "kit-knot-c", "ra": 228.0, "dec": -20.0, "mag": 2.7, "spectral": "K"},
+    {"id": "kit-spool", "ra": 202.0, "dec": 55.0, "mag": 4.2, "spectral": "M"}
+  ],
+  "lines": [
+    ["kit-nose", "kit-west"],
+    ["kit-west", "kit-keel"],
+    ["kit-keel", "kit-east"],
+    ["kit-east", "kit-nose"],
+    ["kit-nose", "kit-keel"],
+    ["kit-west", "kit-east"],
+    ["kit-keel", "kit-knot-a"],
+    ["kit-knot-a", "kit-knot-b"],
+    ["kit-knot-b", "kit-knot-c"],
+    ["kit-nose", "kit-spool"]
+  ]
+}
