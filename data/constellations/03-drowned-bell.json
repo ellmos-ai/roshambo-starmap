@@ -1,0 +1,24 @@
+{
+  "name": "The Drowned Bell",
+  "abbr": "DBl",
+  "stars": [
+    {"id": "dbl-crown", "ra": 100.0, "dec": -6.0, "mag": 1.5, "spectral": "A"},
+    {"id": "dbl-yoke-w", "ra": 94.5, "dec": -12.5, "mag": 2.9, "spectral": "F"},
+    {"id": "dbl-yoke-e", "ra": 105.5, "dec": -13.0, "mag": 3.3, "spectral": "G"},
+    {"id": "dbl-flank-w", "ra": 88.0, "dec": -25.0, "mag": 0.7, "spectral": "B"},
+    {"id": "dbl-flank-e", "ra": 112.0, "dec": -26.5, "mag": 2.1, "spectral": "K"},
+    {"id": "dbl-lip-w", "ra": 84.5, "dec": -36.5, "mag": 3.9, "spectral": "M"},
+    {"id": "dbl-lip-e", "ra": 115.5, "dec": -38.0, "mag": 2.4, "spectral": "K"},
+    {"id": "dbl-clapper", "ra": 108.0, "dec": -47.0, "mag": 4.4, "spectral": "M"}
+  ],
+  "lines": [
+    ["dbl-crown", "dbl-yoke-w"],
+    ["dbl-crown", "dbl-yoke-e"],
+    ["dbl-yoke-w", "dbl-flank-w"],
+    ["dbl-yoke-e", "dbl-flank-e"],
+    ["dbl-flank-w", "dbl-lip-w"],
+    ["dbl-flank-e", "dbl-lip-e"],
+    ["dbl-lip-w", "dbl-lip-e"],
+    ["dbl-lip-e", "dbl-clapper"]
+  ]
+}
