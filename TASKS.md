@@ -147,3 +147,48 @@ This task is about structure and wording rather than drawing:
 - Return `""` rather than raising if the list is empty.
 
 Return only SVG elements, no `<svg>` wrapper and no `<?xml?>` header.
+
+---
+
+# Second wave — the southern sky and the finishing touches
+
+The first twelve tasks are done. These continue the same sky. Same rules: nothing here is
+astronomy, invent freely, do not change the renderer. Filenames stay fixed by task number.
+
+## 13 — Constellation in the band Dec -20° to -50°, RA 0°–90°
+Create `data/constellations/13-<slug>.json`. Southern sky: give it a different mood than
+the northern ones — something heavier, older, or stranger.
+
+## 14 — Constellation in the band Dec -20° to -50°, RA 90°–180°
+Create `data/constellations/14-<slug>.json`.
+
+## 15 — Constellation in the band Dec -20° to -50°, RA 180°–270°
+Create `data/constellations/15-<slug>.json`.
+
+## 16 — Constellation in the band Dec -20° to -50°, RA 270°–360°
+Create `data/constellations/16-<slug>.json`.
+
+## 17 — A faint scattering: unnamed background stars
+Create `data/scatter.json` — a list of 60 to 120 faint stars with no constellation lines,
+spread across the whole sphere. They give the sky depth. Keep magnitudes dim so they do
+not compete with the named constellations.
+
+## 18 — The river: a broad diffuse band
+Create `data/river.json` — a wide, soft band of very faint stars following a curve across
+the sky, the way a galaxy's disc would look from inside it. Invented, like everything else.
+
+## 19 — Coordinate grid (optional module)
+Create `starmap/grid.py`. The renderer picks it up automatically if present. Draw meridians
+and parallels faintly, behind everything else. Must not raise on any input.
+
+## 20 — Star names (optional module)
+Create `starmap/labels.py`. Label only the brightest star of each constellation, small and
+unobtrusive. Skip labels that would collide. Must not raise on any input.
+
+## 21 — A catalogue page
+Create `CATALOGUE.md` — one line per constellation: name, band, number of stars, and one
+sentence of invented lore. Read the data files, do not guess what is in them.
+
+## 22 — Provenance note
+Create `PROVENANCE.md` — which agent built which task, read from the git history
+(`git log --format='%h %an %s'`). Plain table, no interpretation, no invented entries.
