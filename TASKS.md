@@ -171,3 +171,43 @@ renderer picks it up automatically if present. Must never raise.
 Create `READING-THE-MAP.md` — half a page explaining to a newcomer how to read this chart:
 what the bands mean, why the sky is invented, what the magnitude key shows. Plain language,
 no jargon, no invented astronomy.
+
+---
+
+# Fourth wave — using the CockroachDB Agent Skills
+
+These tasks require the official skills repo at `C:\_Local_DEV\repos\cockroachdb-skills`
+(clone it if missing: `git clone https://github.com/cockroachlabs/cockroachdb-skills.git`).
+Read the SKILL.md of the skill you use, follow its own procedure, and validate against the
+LIVE database — not from memory. Write findings into `_skills/` in this workspace.
+
+Connect with the same DSN the agents use. Never paste credentials into a file.
+
+## 28 — Query patterns review (skill: cockroachdb-sql)
+Apply `skills/cockroachdb-query-and-schema-design/cockroachdb-sql` to the queries this
+project runs (see `demo/queries.py` and `src/roshambo/` in the Roshambo repo, read-only).
+Write `_skills/28-query-review.md`: which rule from `references/cockroachdb-rules/` you
+applied, what you checked against the live DB, what passed, what did not. Negative results
+are results — "nothing to fix, here is why" is a valid outcome if you show the evidence.
+
+## 29 — Observability pass (skill: cockroachdb-observability-and-diagnostics)
+Follow that skill against the live cluster. Write `_skills/29-observability.md`: what you
+measured (real numbers), what it says about a swarm under contention.
+
+## 30 — Performance and scaling read (skill: cockroachdb-performance-and-scaling)
+Apply it to the `claims` and `audit_log` tables. Write `_skills/30-performance.md`.
+Note: a known hotspot on `audit_log` is already documented in the Roshambo repo under
+`docs/EVIDENCE-skills.md` — read it first and do NOT repeat it; look for something else.
+
+## 31 — Cost and usage (skill: cockroachdb-cost-and-usage-management)
+This ran on a Basic cluster with a request-unit budget. Apply the skill, write
+`_skills/31-cost.md`: what this experiment actually consumed, measured, not estimated.
+If a number is not measurable, say so instead of guessing.
+
+## 32 — Resilience question (skill: cockroachdb-resilience-and-disaster-recovery)
+What happens to held leases if a node or a client dies mid-claim? Apply the skill, check
+what the schema and the lease TTL actually guarantee. Write `_skills/32-resilience.md`.
+
+## 33 — Constellation in the far south, Dec below -50°
+Still open from the third wave: create `data/constellations/23-<slug>.json`.
+(Yes, file number 23 — the task list numbering and the file numbering are independent here.)
