@@ -1,0 +1,21 @@
+{
+  "name": "The Windlass",
+  "abbr": "Wla",
+  "stars": [
+    {"id": "wla-drum",     "ra": 100.0, "dec": 40.0, "mag": 1.0, "spectral": "B"},
+    {"id": "wla-handle-n","ra": 96.0,  "dec": 50.0, "mag": 2.4, "spectral": "A"},
+    {"id": "wla-handle-s","ra": 104.0, "dec": 48.0, "mag": 2.7, "spectral": "F"},
+    {"id": "wla-ratchet",  "ra": 92.0,  "dec": 32.0, "mag": 2.0, "spectral": "A"},
+    {"id": "wla-pawl",     "ra": 108.0, "dec": 35.0, "mag": 3.2, "spectral": "G"},
+    {"id": "wla-cable",    "ra": 100.0, "dec": 22.0, "mag": 3.6, "spectral": "K"},
+    {"id": "wla-hook",     "ra": 100.0, "dec": 10.0, "mag": 1.8, "spectral": "B"}
+  ],
+  "lines": [
+    ["wla-drum", "wla-handle-n"],
+    ["wla-drum", "wla-handle-s"],
+    ["wla-drum", "wla-ratchet"],
+    ["wla-ratchet", "wla-pawl"],
+    ["wla-drum", "wla-cable"],
+    ["wla-cable", "wla-hook"]
+  ]
+}
