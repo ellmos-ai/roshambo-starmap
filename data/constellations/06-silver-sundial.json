@@ -1,0 +1,22 @@
+{
+  "name": "The Silver Sundial",
+  "abbr": "Sdl",
+  "stars": [
+    {"id": "sdl-a", "ra": 165.2, "dec": 15.4, "mag": 1.4, "spectral": "B"},
+    {"id": "sdl-b", "ra": 172.8, "dec": 28.1, "mag": 2.6, "spectral": "A"},
+    {"id": "sdl-c", "ra": 180.5, "dec": 35.0, "mag": 3.1, "spectral": "F"},
+    {"id": "sdl-d", "ra": 188.1, "dec": 24.2, "mag": 2.9, "spectral": "G"},
+    {"id": "sdl-e", "ra": 195.4, "dec": 12.0, "mag": 3.8, "spectral": "K"},
+    {"id": "sdl-f", "ra": 180.0, "dec": 18.5, "mag": 2.1, "spectral": "O"}
+  ],
+  "lines": [
+    ["sdl-a", "sdl-b"],
+    ["sdl-b", "sdl-c"],
+    ["sdl-c", "sdl-d"],
+    ["sdl-d", "sdl-e"],
+    ["sdl-a", "sdl-e"],
+    ["sdl-f", "sdl-c"],
+    ["sdl-f", "sdl-a"],
+    ["sdl-f", "sdl-e"]
+  ]
+}

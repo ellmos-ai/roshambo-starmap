@@ -1,0 +1,21 @@
+{
+  \ name\: \The Obsidian Mirror\,
+  \abbr\: \Mir\,
+  \stars\: [
+    {\id\: \mir-a\, \ra\: 205.2, \dec\: 12.5, \mag\: 1.4, \spectral\: \B\},
+    {\id\: \mir-b\, \ra\: 215.8, \dec\: 28.1, \mag\: 2.7, \spectral\: \A\},
+    {\id\: \mir-c\, \ra\: 228.4, \dec\: 35.6, \mag\: 3.2, \spectral\: \F\},
+    {\id\: \mir-d\, \ra\: 234.1, \dec\: 18.3, \mag\: 2.1, \spectral\: \K\},
+    {\id\: \mir-e\, \ra\: 222.0, \dec\: -5.4, \mag\: 4.0, \spectral\: \M\},
+    {\id\: \mir-f\, \ra\: 208.7, \dec\: -2.1, \mag\: 3.6, \spectral\: \G\}
+  ],
+  \lines\: [
+    [\mir-a\, \mir-b\],
+    [\mir-b\, \mir-c\],
+    [\mir-c\, \mir-d\],
+    [\mir-d\, \mir-e\],
+    [\mir-e\, \mir-f\],
+    [\mir-f\, \mir-a\],
+    [\mir-a\, \mir-d\]
+  ]
+}
