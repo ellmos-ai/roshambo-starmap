@@ -1,0 +1,21 @@
+{
+  "name": "The Phoenix Feather",
+  "abbr": "Phe",
+  "stars": [
+    {"id": "phe-a", "ra": 325.0, "dec": 15.0, "mag": -0.5, "spectral": "O"},
+    {"id": "phe-b", "ra": 332.5, "dec": 28.0, "mag": 1.4, "spectral": "B"},
+    {"id": "phe-c", "ra": 340.0, "dec": 38.0, "mag": 2.2, "spectral": "A"},
+    {"id": "phe-d", "ra": 348.5, "dec": 45.0, "mag": 3.1, "spectral": "F"},
+    {"id": "phe-e", "ra": 355.0, "dec": 50.0, "mag": 4.5, "spectral": "M"},
+    {"id": "phe-f", "ra": 335.0, "dec": 10.0, "mag": 2.9, "spectral": "G"},
+    {"id": "phe-g", "ra": 345.0, "dec": 20.0, "mag": 3.7, "spectral": "K"}
+  ],
+  "lines": [
+    ["phe-a", "phe-b"],
+    ["phe-b", "phe-c"],
+    ["phe-c", "phe-d"],
+    ["phe-d", "phe-e"],
+    ["phe-a", "phe-f"],
+    ["phe-b", "phe-g"]
+  ]
+}
