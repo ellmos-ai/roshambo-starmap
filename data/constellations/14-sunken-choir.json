@@ -1,0 +1,14 @@
+{
+  "name": "The Sunken Choir",
+  "abbr": "Cho",
+  "stars": [
+    {"id": "cho-a", "ra": 124.5, "dec": -47.8, "mag": 0.9, "spectral": "A"},
+    {"id": "cho-b", "ra": 104.6, "dec": -29.8, "mag": 2.4, "spectral": "F"},
+    {"id": "cho-c", "ra": 113.4, "dec": -36.5, "mag": 3.1, "spectral": "G"},
+    {"id": "cho-d", "ra": 123.0, "dec": -40.1, "mag": 2.0, "spectral": "K"},
+    {"id": "cho-e", "ra": 136.2, "dec": -37.4, "mag": 2.9, "spectral": "B"},
+    {"id": "cho-f", "ra": 145.8, "dec": -30.6, "mag": 3.4, "spectral": "G"},
+    {"id": "cho-g", "ra": 158.3, "dec": -24.2, "mag": 4.6, "spectral": "M"}
+  ],
+  "lines": [["cho-b", "cho-c"], ["cho-c", "cho-d"], ["cho-d", "cho-e"], ["cho-e", "cho-f"], ["cho-f", "cho-g"], ["cho-a", "cho-d"]]
+}
