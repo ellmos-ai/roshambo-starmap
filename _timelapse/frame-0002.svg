@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-label="A sky invented by three agents">
+<rect width="1600" height="900" fill="#080b1a"/>
+<g stroke="#5c6f9c" stroke-width="1.1" opacity="0.75">
+<line x1="-4.45" y1="102.99" x2="9.68" y2="117.71"/>
+<line x1="9.68" y1="117.71" x2="29.56" y2="167.76"/>
+<line x1="29.56" y1="167.76" x2="58.35" y2="200.14"/>
+<line x1="58.35" y1="200.14" x2="97.60" y2="158.93"/>
+<line x1="97.60" y1="158.93" x2="131.61" y2="220.75"/>
+<line x1="131.61" y1="220.75" x2="58.35" y2="200.14"/>
+<line x1="58.35" y1="200.14" x2="50.50" y2="264.90"/>
+<line x1="50.50" y1="264.90" x2="40.03" y2="309.06"/>
+</g>
+<circle cx="-4.45" cy="102.99" r="2.92" fill="#ffcc6f"/>
+<circle cx="40.03" cy="309.06" r="2.08" fill="#ffcc6f"/>
+<circle cx="9.68" cy="117.71" r="5.68" fill="#cad7ff"/>
+<circle cx="50.50" cy="264.90" r="3.40" fill="#ffd2a1"/>
+<circle cx="29.56" cy="167.76" r="4.36" fill="#f8f7ff"/>
+<circle cx="58.35" cy="200.14" r="6.52" fill="#aabfff"/>
+<circle cx="131.61" cy="220.75" r="4.72" fill="#fff4ea"/>
+<circle cx="97.60" cy="158.93" r="3.88" fill="#ffd2a1"/>
+<text x="51.61" y="174.78" fill="#8fa3d0" font-size="15" font-family="Georgia, serif" text-anchor="middle">The Salt Crane</text>
+<g stroke="#5c6f9c" stroke-width="1.1" opacity="0.75">
+<line x1="203.31" y1="134.79" x2="244.13" y2="119.48"/>
+<line x1="244.13" y1="119.48" x2="329.96" y2="111.83"/>
+<line x1="244.13" y1="119.48" x2="261.40" y2="173.64"/>
+<line x1="329.96" y1="111.83" x2="307.46" y2="170.11"/>
+<line x1="261.40" y1="173.64" x2="307.46" y2="170.11"/>
+<line x1="261.40" y1="173.64" x2="247.27" y2="220.16"/>
+<line x1="307.46" y1="170.11" x2="322.63" y2="218.39"/>
+<line x1="247.27" y1="220.16" x2="322.63" y2="218.39"/>
+</g>
+<circle cx="247.27" cy="220.16" r="4.72" fill="#fff4ea"/>
+<circle cx="322.63" cy="218.39" r="3.52" fill="#ffd2a1"/>
+<circle cx="203.31" cy="134.79" r="5.32" fill="#aabfff"/>
+<circle cx="244.13" cy="119.48" r="6.28" fill="#cad7ff"/>
+<circle cx="329.96" cy="111.83" r="4.48" fill="#f8f7ff"/>
+<circle cx="261.40" cy="173.64" r="2.92" fill="#ffd2a1"/>
+<circle cx="307.46" cy="170.11" r="1.96" fill="#ffcc6f"/>
+<text x="273.74" y="146.06" fill="#8fa3d0" font-size="15" font-family="Georgia, serif" text-anchor="middle">The Broken Anvil</text>
+
+<text x="24" y="878" fill="#6b7ba8" font-size="16" font-family="monospace">02/76  22:06:37Z  task 01: The Salt Crane, an 8-star crane in RA 0-40</text>
+<!-- constellations=2 stars=15 segments=16 dropped_segments=0 skipped=none modules={'projection': 'fallback (equirectangular)', 'style': 'fallback', 'legend': 'fallback (none)'} -->
+</svg>
