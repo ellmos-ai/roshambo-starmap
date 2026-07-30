@@ -1,0 +1,22 @@
+{
+  "name": "The Ferryman's Oar",
+  "abbr": "Oar",
+  "stars": [
+    {"id": "oar-grip", "ra": 165.0, "dec": 42.0, "mag": 2.6, "spectral": "F"},
+    {"id": "oar-collar", "ra": 168.5, "dec": 31.0, "mag": 3.8, "spectral": "M"},
+    {"id": "oar-shaft", "ra": 174.0, "dec": 14.0, "mag": 0.9, "spectral": "B"},
+    {"id": "oar-throat", "ra": 179.5, "dec": -3.0, "mag": 2.2, "spectral": "A"},
+    {"id": "oar-blade-w", "ra": 171.0, "dec": -17.5, "mag": 3.4, "spectral": "K"},
+    {"id": "oar-blade-e", "ra": 191.0, "dec": -14.0, "mag": 1.7, "spectral": "G"},
+    {"id": "oar-tip", "ra": 184.0, "dec": -33.0, "mag": 4.3, "spectral": "M"}
+  ],
+  "lines": [
+    ["oar-grip", "oar-collar"],
+    ["oar-collar", "oar-shaft"],
+    ["oar-shaft", "oar-throat"],
+    ["oar-throat", "oar-blade-w"],
+    ["oar-throat", "oar-blade-e"],
+    ["oar-blade-w", "oar-tip"],
+    ["oar-blade-e", "oar-tip"]
+  ]
+}
