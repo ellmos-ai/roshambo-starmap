@@ -147,3 +147,27 @@ This task is about structure and wording rather than drawing:
 - Return `""` rather than raising if the list is empty.
 
 Return only SVG elements, no `<svg>` wrapper and no `<?xml?>` header.
+
+---
+
+# Third wave
+
+## 23 — Constellation in the far south, Dec below -50°
+Create `data/constellations/23-<slug>.json`. The circumpolar south — invent something that
+belongs to a sky no one in the north ever sees.
+
+## 24 — Constellation in the far south, second one
+Create `data/constellations/24-<slug>.json`. Different character to task 23.
+
+## 25 — A double star and a variable
+Create `data/curiosities.json` — two or three individual stars with a note each: one that is
+really two, one whose brightness changes. Invented, like the rest of the sky.
+
+## 26 — Compass rose and horizon marks (optional module)
+Create `starmap/compass.py`. Cardinal marks around the edge of the map, restrained. The
+renderer picks it up automatically if present. Must never raise.
+
+## 27 — A reader's note
+Create `READING-THE-MAP.md` — half a page explaining to a newcomer how to read this chart:
+what the bands mean, why the sky is invented, what the magnitude key shows. Plain language,
+no jargon, no invented astronomy.
