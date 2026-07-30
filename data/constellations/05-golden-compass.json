@@ -1,0 +1,21 @@
+{
+  "name": "The Golden Compass",
+  "abbr": "Gcp",
+  "stars": [
+    {"id": "gcp-a", "ra": 125.0, "dec": 45.0, "mag": 0.8, "spectral": "F"},
+    {"id": "gcp-b", "ra": 132.5, "dec": 30.0, "mag": 2.1, "spectral": "A"},
+    {"id": "gcp-c", "ra": 147.5, "dec": 30.0, "mag": 2.4, "spectral": "G"},
+    {"id": "gcp-d", "ra": 140.0, "dec": 15.0, "mag": 1.5, "spectral": "B"},
+    {"id": "gcp-e", "ra": 140.0, "dec": -5.0, "mag": 3.6, "spectral": "K"},
+    {"id": "gcp-f", "ra": 155.0, "dec": 40.0, "mag": 4.2, "spectral": "M"}
+  ],
+  "lines": [
+    ["gcp-a", "gcp-b"],
+    ["gcp-a", "gcp-c"],
+    ["gcp-b", "gcp-c"],
+    ["gcp-b", "gcp-d"],
+    ["gcp-c", "gcp-d"],
+    ["gcp-d", "gcp-e"],
+    ["gcp-c", "gcp-f"]
+  ]
+}
