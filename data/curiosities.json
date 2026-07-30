@@ -1,0 +1,29 @@
+[
+  {
+    "id": "cur-pair",
+    "name": "The Twin Wicks",
+    "ra": 152.3,
+    "dec": 18.5,
+    "mag": 2.7,
+    "spectral": "F",
+    "note": "Looks like one lamp from a distance, but it is really two stars leaning on each other's light, circling so closely that their glows braid into a single wick."
+  },
+  {
+    "id": "cur-variable",
+    "name": "The Breathing Ember",
+    "ra": 305.8,
+    "dec": -38.2,
+    "mag": 3.4,
+    "spectral": "M",
+    "note": "A deep red ember whose brightness swells and fades on a slow rhythm, as if the star were drawing breath — some nights it outshines its neighbours, some nights it nearly slips from sight."
+  },
+  {
+    "id": "cur-pair-b",
+    "name": "The Borrowed Lantern",
+    "ra": 66.1,
+    "dec": -52.0,
+    "mag": 4.0,
+    "spectral": "K",
+    "note": "A second double: a dim orange star that only reads as bright because a hidden companion lends it light, the two trading places around a point between them."
+  }
+]
