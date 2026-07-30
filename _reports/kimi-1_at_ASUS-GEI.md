@@ -99,3 +99,55 @@ Runde 3 (Fortsetzung nach Kontext-Zusammenfassung, 2026-07-31):
   Zurücksetzen der reinen Line-Ending-Änderungen lief der Rebase sauber durch.
 - Fremde untracked Dateien (`stoersender-*.csv/json`, `evidence_*.json`) nicht
   angefasst und nicht committet.
+
+---
+
+## Runde 4 (Welle 4, Tasks 28–33, CockroachDB-Skills) — Nachtrag 2026-07-30T23:32:51Z
+
+### Aufgaben BEKOMMEN
+
+- **Task 29 — GRANTED** (`70217ed2`): Observability-Pass mit dem Sub-Skill
+  `profiling-statement-fingerprints` (SKILL.md gelesen, Kernabfragen Q1/Q4/Q7 plus
+  Volumenabfrage gegen die Live-DB, gemessen 2026-07-30T23:25:15Z).
+  Ergebnis `_skills/29-observability.md`: Claim-Wettbewerb materialisiert sich als
+  Fehlerrate auf `INSERT INTO claims` (943 Ausführungen / 13 Fehler im 23:00-Bucket,
+  1,4–5,7 % je nach Stunde — das ist das DENIED); gemessene Lock-Contention auf
+  Schwarm-Tabellen praktisch null (nur system.jobs ~1e-11 s, gesampled);
+  Latenz-Spitzen nur Cluster-intern (CREATE STATISTICS ~2 s); 25 600 Statements/2h;
+  `application_name` nicht gesetzt. **Inhalt liegt auf `origin/master` als
+  `d991e8d`** (eingesammelt und gepusht durch `roshambo field run`, während mein
+  eigener Push zweimal an Repo-Contention scheiterte; mein lokaler Commit `c970511`
+  ist dadurch verwaist, der Inhalt ist identisch angekommen).
+
+### Aufgaben ABGELEHNT (DENIED, held_by exakt)
+
+| Ressource | gehalten von | intent |
+|---|---|---|
+| starmap:task:28 | BotAgent-B@ASUS-GEI | BotAgent B contention probe |
+| starmap:repo | glm-1@ASUS-GEI | task-32-build |
+| starmap:repo | kimi-2@ASUS-GEI | commit task 30 / task 30 addendum (5× in Folge) |
+
+### Claim-Statistik Runde 4
+
+- Claim-Versuche gesamt: 15 (Task 2, Repo 13)
+- Gewonnen: 5 (Task 29; Repo 4×)
+- Abgewiesen: 10
+
+### Auffälligkeiten Runde 4
+
+- **Zweiter kimi-1 unter meiner agent_id:** Beim Release von Task 29 meldete der
+  Service EXPIRED mit `held_by=kimi-1@ASUS-GEI`, aber fremdem Intent
+  („CockroachDB observability skill review" — nicht meiner). Es läuft offenbar eine
+  zweite kimi-1-Invocation mit derselben ID auf diesem Host — gleiches Phänomen,
+  das kimi-2 in Runde 3 als „stale leases on own ID" dokumentierte. Die
+  Registrierungs-Bindung agent_id↔framework↔host verhindert das nicht.
+- **Repo-Lease ist der Engpass, nicht die Tasks:** 10 der 15 Versuche galten
+  `starmap:repo`. Ein Push wurde trotz Lease abgelehnt (Remote war zwischen
+  pull und push weitergelaufen); beim Re-Versuch unter neuem Lease hatte der
+  Field-Run-Operator meine Datei bereits eingesammelt.
+- **Welle 4 war bei Ankunft fast fertig:** 28, 30, 31, 32, 33 wurden praktisch
+  gleichzeitig von glm-1, kimi-2, BotAgent-B und anderen gebaut; nur 29 war
+  real frei.
+- **Sonstiges:** Skills-Repo las sauber (Sub-Skill-Struktur: observability besteht
+  aus 7 Sub-Skills, kein Top-Level-SKILL.md). Keine Credentials in Dateien
+  geschrieben; DSN nur aus der Credentials-Datei gelesen.
