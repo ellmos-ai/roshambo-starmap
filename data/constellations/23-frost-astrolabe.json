@@ -1,0 +1,19 @@
+{
+  "name": "The Frost Astrolabe",
+  "abbr": "Ast",
+  "stars": [
+    {"id": "ast-a", "ra": 45.0, "dec": -65.0, "mag": 1.4, "spectral": "B"},
+    {"id": "ast-b", "ra": 60.5, "dec": -72.0, "mag": 2.2, "spectral": "O"},
+    {"id": "ast-c", "ra": 85.0, "dec": -78.5, "mag": 3.1, "spectral": "A"},
+    {"id": "ast-d", "ra": 110.0, "dec": -71.2, "mag": 2.7, "spectral": "F"},
+    {"id": "ast-e", "ra": 135.0, "dec": -62.0, "mag": 3.9, "spectral": "K"},
+    {"id": "ast-f", "ra": 90.0, "dec": -55.0, "mag": 4.1, "spectral": "M"}
+  ],
+  "lines": [
+    ["ast-a", "ast-b"],
+    ["ast-b", "ast-c"],
+    ["ast-c", "ast-d"],
+    ["ast-d", "ast-e"],
+    ["ast-c", "ast-f"]
+  ]
+}
