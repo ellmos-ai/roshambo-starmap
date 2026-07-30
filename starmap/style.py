@@ -1,36 +1,47 @@
+"""Graphic design module for the starmap rendering."""
+
+
 def star_colour(spectral: str) -> str:
-    """Map spectral class (O, B, A, F, G, K, M) to hex colour (#rrggbb)."""
+    """Map spectral classes O B A F G K M along the real colour progression.
+    
+    Hot blue-white through to cool orange-red. Return #rrggbb hex string.
+    Must not raise for unknown inputs.
+    """
     if not isinstance(spectral, str):
         return "#ffffff"
-    c = spectral.strip().upper()
-    if not c:
-        return "#ffffff"
-    first = c[0]
+    
+    code = spectral.strip()[:1].upper()
     colours = {
-        "O": "#9bb0ff",
-        "B": "#aabfff",
-        "A": "#cad7ff",
-        "F": "#f8f7ff",
-        "G": "#fff4ea",
-        "K": "#ffd2a1",
-        "M": "#ffcc6f",
+        "O": "#9bb0ff",  # Deep blue-white
+        "B": "#bbccff",  # Blue-white
+        "A": "#f8f9ff",  # White
+        "F": "#ffffed",  # Yellow-white
+        "G": "#fff2a3",  # Yellow (Sun-like)
+        "K": "#ffc58d",  # Light orange
+        "M": "#ff8e6b",  # Cool orange-red
     }
-    return colours.get(first, "#ffffff")
+    return colours.get(code, "#ffffff")
 
 
 def star_radius(magnitude: float) -> float:
-    """Turn magnitude into radius between 0.1 and 40."""
+    """Turn magnitude into a radius using a non-linear curve.
+    
+    Bright stars (mag ~ -1 to 0) around 7-9 px, faint ones (mag ~ 5) around 1-2 px.
+    Must return float between 0.1 and 40.0. Must not raise for invalid/unexpected inputs.
+    """
     try:
         mag = float(magnitude)
-    except (ValueError, TypeError):
-        mag = 2.5
+    except (TypeError, ValueError):
+        mag = 3.0
 
-    # Non-linear mapping: brighter stars (lower mag) are larger.
-    # Mag around -1 => ~8.5px, Mag 0 => ~7.0px, Mag 2.5 => ~3.5px, Mag 5 => ~1.2px
-    r = 7.0 * (10.0 ** (-0.15 * mag))
-    return max(0.1, min(40.0, r))
+    # Exponential mapping for perception: r = A * exp(-B * mag)
+    # Bright (mag = -1) -> ~8.5 px, faint (mag = 5) -> ~1.4 px
+    r = 5.2 * (0.74 ** mag)
+    
+    # Ensure within safe bounds [0.1, 40.0]
+    return max(0.1, min(40.0, float(r)))
 
 
 def background() -> str:
-    """Return a deep night colour for the background."""
-    return "#0b0e14"
+    """Return a deep night celestial background colour (#rrggbb)."""
+    return "#060913"
