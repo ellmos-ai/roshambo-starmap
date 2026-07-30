@@ -244,6 +244,22 @@
 <circle cx="776.81" cy="552.31" r="4.04" fill="#c6d6ff"/>
 <text x="823.81" y="549.17" fill="#8fa3d0" font-size="15" font-family="Georgia, serif" text-anchor="middle">The Ashen Kite</text>
 <g stroke="#5c6f9c" stroke-width="1.1" opacity="0.75">
+<line x1="794.05" y1="594.76" x2="795.80" y2="548.46"/>
+<line x1="795.80" y1="548.46" x2="802.27" y2="520.44"/>
+<line x1="802.27" y1="520.44" x2="841.07" y2="536.36"/>
+<line x1="841.07" y1="536.36" x2="870.04" y2="612.23"/>
+<line x1="870.04" y1="612.23" x2="824.25" y2="630.23"/>
+<line x1="824.25" y1="630.23" x2="794.05" y2="594.76"/>
+<line x1="794.05" y1="594.76" x2="841.07" y2="536.36"/>
+</g>
+<circle cx="794.05" cy="594.76" r="5.24" fill="#a6c1ff"/>
+<circle cx="795.80" cy="548.46" r="3.71" fill="#c6d6ff"/>
+<circle cx="802.27" cy="520.44" r="3.17" fill="#eaeeff"/>
+<circle cx="841.07" cy="536.36" r="4.39" fill="#ffc98a"/>
+<circle cx="870.04" cy="612.23" r="2.38" fill="#ff9564"/>
+<circle cx="824.25" cy="630.23" r="2.76" fill="#fff3dd"/>
+<text x="821.24" y="555.75" fill="#8fa3d0" font-size="15" font-family="Georgia, serif" text-anchor="middle">The Obsidian Mirror</text>
+<g stroke="#5c6f9c" stroke-width="1.1" opacity="0.75">
 <line x1="847.03" y1="507.53" x2="843.13" y2="490.84"/>
 <line x1="843.13" y1="490.84" x2="852.32" y2="478.72"/>
 <line x1="847.03" y1="507.53" x2="868.96" y2="500.34"/>
@@ -431,16 +447,17 @@
     <text x="35" y="320" font-family="sans-serif" font-size="11" fill="#94a3b8">Oar — The Ferryman's Oar (7 stars)</text>
     <text x="35" y="338" font-family="sans-serif" font-size="11" fill="#94a3b8">Sdl — The Silver Sundial (6 stars)</text>
     <text x="35" y="356" font-family="sans-serif" font-size="11" fill="#94a3b8">Kit — The Ashen Kite (8 stars)</text>
-    <text x="35" y="374" font-family="sans-serif" font-size="11" fill="#94a3b8">Cha — The Hollow Chalice (7 stars)</text>
-    <text x="35" y="392" font-family="sans-serif" font-size="11" fill="#94a3b8">Qco — The Quartz Comb (7 stars)</text>
-    <text x="35" y="410" font-family="sans-serif" font-size="11" fill="#94a3b8">Gee — The Glass Eel (8 stars)</text>
-    <text x="35" y="428" font-family="sans-serif" font-size="11" fill="#94a3b8">Anc — The Pale Anchor (7 stars)</text>
-    <text x="35" y="446" font-family="sans-serif" font-size="11" fill="#94a3b8">Hrp — The Quiet Harp (8 stars)</text>
-    <text x="35" y="464" font-family="sans-serif" font-size="11" fill="#94a3b8">ITd — The Iron Tide (7 stars)</text>
-    <text x="35" y="482" font-family="sans-serif" font-size="11" fill="#94a3b8">Cho — The Sunken Choir (7 stars)</text>
-    <text x="35" y="500" font-family="sans-serif" font-size="11" fill="#94a3b8">Fka — The Foundered Ark (7 stars)</text>
-    <text x="35" y="518" font-family="sans-serif" font-size="11" fill="#94a3b8">LCn — The Last Cairn (6 stars)</text>
-    <text x="35" y="536" font-family="sans-serif" font-size="11" fill="#94a3b8">Sxt — The Barnacled Sextant (7 stars)</text>
+    <text x="35" y="374" font-family="sans-serif" font-size="11" fill="#94a3b8">Mir — The Obsidian Mirror (6 stars)</text>
+    <text x="35" y="392" font-family="sans-serif" font-size="11" fill="#94a3b8">Cha — The Hollow Chalice (7 stars)</text>
+    <text x="35" y="410" font-family="sans-serif" font-size="11" fill="#94a3b8">Qco — The Quartz Comb (7 stars)</text>
+    <text x="35" y="428" font-family="sans-serif" font-size="11" fill="#94a3b8">Gee — The Glass Eel (8 stars)</text>
+    <text x="35" y="446" font-family="sans-serif" font-size="11" fill="#94a3b8">Anc — The Pale Anchor (7 stars)</text>
+    <text x="35" y="464" font-family="sans-serif" font-size="11" fill="#94a3b8">Hrp — The Quiet Harp (8 stars)</text>
+    <text x="35" y="482" font-family="sans-serif" font-size="11" fill="#94a3b8">ITd — The Iron Tide (7 stars)</text>
+    <text x="35" y="500" font-family="sans-serif" font-size="11" fill="#94a3b8">Cho — The Sunken Choir (7 stars)</text>
+    <text x="35" y="518" font-family="sans-serif" font-size="11" fill="#94a3b8">Fka — The Foundered Ark (7 stars)</text>
+    <text x="35" y="536" font-family="sans-serif" font-size="11" fill="#94a3b8">LCn — The Last Cairn (6 stars)</text>
+    <text x="35" y="554" font-family="sans-serif" font-size="11" fill="#94a3b8">Sxt — The Barnacled Sextant (7 stars)</text>
   </g>
   <!-- Magnitude Key -->
   <g class="magnitude-key">
@@ -452,5 +469,5 @@
     <circle cx="245" cy="860" r="1.5" fill="#f8fafc" opacity="0.9"/>
     <text x="259" y="864" font-family="sans-serif" font-size="10" fill="#94a3b8">Mag 5.0</text>
   </g>
-<!-- constellations=24 stars=168 segments=169 dropped_segments=0 skipped=07-obsidian-mirror.json modules={'projection': 'starmap/projection.py', 'style': 'starmap/style.py', 'legend': 'starmap/legend.py'} -->
+<!-- constellations=25 stars=174 segments=176 dropped_segments=0 skipped=none modules={'projection': 'starmap/projection.py', 'style': 'starmap/style.py', 'legend': 'starmap/legend.py'} -->
 </svg>
