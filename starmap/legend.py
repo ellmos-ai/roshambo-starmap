@@ -1,6 +1,6 @@
 """Title block, constellation list, and legend SVG module for starmap."""
 
-from __future__ import annotations
+# Updated by agy-6@WORKSTATION-LG
 
 
 def legend_svg(width: int, height: int, constellations: list) -> str:
@@ -17,11 +17,11 @@ def legend_svg(width: int, height: int, constellations: list) -> str:
     elements.append('  <!-- Title Block -->')
     elements.append('  <g class="title-block">')
     elements.append(
-        '    <text x="35" y="45" font-family="sans-serif" font-size="22" font-weight="bold" '
-        'fill="#e2e8f0" letter-spacing="1.5">CELESTIAL STAR MAP</text>'
+        '    <text x="35" y="45" font-family="Georgia, serif" font-size="24" font-weight="bold" '
+        'fill="#f1f5f9" letter-spacing="2.0">CELESTIAL STAR MAP</text>'
     )
     elements.append(
-        '    <text x="35" y="66" font-family="sans-serif" font-size="11" font-style="italic" '
+        '    <text x="35" y="68" font-family="sans-serif" font-size="11" font-style="italic" '
         'fill="#94a3b8">This sky is invented.</text>'
     )
     elements.append('  </g>')
@@ -30,11 +30,11 @@ def legend_svg(width: int, height: int, constellations: list) -> str:
     elements.append('  <!-- Constellation Index -->')
     elements.append('  <g class="constellation-list">')
     elements.append(
-        '    <text x="35" y="100" font-family="sans-serif" font-size="13" font-weight="bold" '
-        'fill="#cbd5e1">RECORDED CONSTELLATIONS</text>'
+        '    <text x="35" y="102" font-family="sans-serif" font-size="12" font-weight="bold" '
+        'fill="#cbd5e1" letter-spacing="1.0">RECORDED CONSTELLATIONS</text>'
     )
 
-    start_y = 120
+    start_y = 122
     row_height = 18
     for idx, c in enumerate(constellations):
         y_pos = start_y + (idx * row_height)
@@ -54,8 +54,8 @@ def legend_svg(width: int, height: int, constellations: list) -> str:
     elements.append('  <!-- Magnitude Key -->')
     elements.append('  <g class="magnitude-key">')
     elements.append(
-        f'    <text x="35" y="{key_y - 20}" font-family="sans-serif" font-size="12" '
-        f'font-weight="bold" fill="#cbd5e1">MAGNITUDE SCALE</text>'
+        f'    <text x="35" y="{key_y - 20}" font-family="sans-serif" font-size="11" '
+        f'font-weight="bold" fill="#cbd5e1" letter-spacing="1.0">MAGNITUDE SCALE</text>'
     )
 
     # Three sample magnitude dots: Mag 0 (r=6), Mag 2.5 (r=3.5), Mag 5 (r=1.5)
