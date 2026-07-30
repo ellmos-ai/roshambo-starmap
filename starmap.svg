@@ -38,6 +38,20 @@
 <circle cx="851.85" cy="245.03" r="2.19" fill="#ff9564"/>
 <text x="863.48" y="214.45" fill="#8fa3d0" font-size="15" font-family="Georgia, serif" text-anchor="middle">The Broken Anvil</text>
 <g stroke="#5c6f9c" stroke-width="1.1" opacity="0.75">
+<line x1="912.15" y1="226.79" x2="885.23" y2="227.08"/>
+<line x1="885.23" y1="227.08" x2="904.87" y2="267.59"/>
+<line x1="904.87" y1="267.59" x2="885.14" y2="288.44"/>
+<line x1="885.23" y1="227.08" x2="847.39" y2="265.32"/>
+<line x1="847.39" y1="265.32" x2="841.74" y2="214.62"/>
+</g>
+<circle cx="912.15" cy="226.79" r="5.24" fill="#c6d6ff"/>
+<circle cx="885.23" cy="227.08" r="4.27" fill="#a6c1ff"/>
+<circle cx="904.87" cy="267.59" r="3.27" fill="#eaeeff"/>
+<circle cx="847.39" cy="265.32" r="3.82" fill="#fff3dd"/>
+<circle cx="885.14" cy="288.44" r="2.57" fill="#ffc98a"/>
+<circle cx="841.74" cy="214.62" r="2.28" fill="#ff9564"/>
+<text x="879.42" y="230.31" fill="#8fa3d0" font-size="15" font-family="Georgia, serif" text-anchor="middle">The Silver Veil</text>
+<g stroke="#5c6f9c" stroke-width="1.1" opacity="0.75">
 <line x1="682.47" y1="366.73" x2="640.66" y2="339.94"/>
 <line x1="682.47" y1="366.73" x2="649.31" y2="407.05"/>
 <line x1="640.66" y1="339.94" x2="548.65" y2="296.97"/>
@@ -165,6 +179,34 @@
 <circle cx="1072.23" cy="148.67" r="2.02" fill="#ff9564"/>
 <circle cx="1082.56" cy="105.85" r="1.69" fill="#ff9564"/>
 <text x="1076.82" y="112.72" fill="#8fa3d0" font-size="15" font-family="Georgia, serif" text-anchor="middle">The Quiet Harp</text>
-
-<!-- constellations=9 stars=68 segments=70 dropped_segments=0 skipped=none modules={'projection': 'starmap/projection.py', 'style': 'starmap/style.py', 'legend': 'fallback (none)'} -->
+  <!-- Title Block -->
+  <g class="title-block">
+    <text x="35" y="45" font-family="sans-serif" font-size="22" font-weight="bold" fill="#e2e8f0" letter-spacing="1.5">CELESTIAL STAR MAP</text>
+    <text x="35" y="66" font-family="sans-serif" font-size="11" font-style="italic" fill="#94a3b8">An invented nocturnal sky constructed by multi-agent coordination</text>
+  </g>
+  <!-- Constellation Index -->
+  <g class="constellation-list">
+    <text x="35" y="100" font-family="sans-serif" font-size="13" font-weight="bold" fill="#cbd5e1">RECORDED CONSTELLATIONS</text>
+    <text x="35" y="120" font-family="sans-serif" font-size="11" fill="#94a3b8">SCr — The Salt Crane (8 stars)</text>
+    <text x="35" y="138" font-family="sans-serif" font-size="11" fill="#94a3b8">Anv — The Broken Anvil (7 stars)</text>
+    <text x="35" y="156" font-family="sans-serif" font-size="11" fill="#94a3b8">SVl — The Silver Veil (6 stars)</text>
+    <text x="35" y="174" font-family="sans-serif" font-size="11" fill="#94a3b8">DBl — The Drowned Bell (8 stars)</text>
+    <text x="35" y="192" font-family="sans-serif" font-size="11" fill="#94a3b8">ALm — The Amber Loom (8 stars)</text>
+    <text x="35" y="210" font-family="sans-serif" font-size="11" fill="#94a3b8">Oar — The Ferryman's Oar (7 stars)</text>
+    <text x="35" y="228" font-family="sans-serif" font-size="11" fill="#94a3b8">Kit — The Ashen Kite (8 stars)</text>
+    <text x="35" y="246" font-family="sans-serif" font-size="11" fill="#94a3b8">Cha — The Hollow Chalice (7 stars)</text>
+    <text x="35" y="264" font-family="sans-serif" font-size="11" fill="#94a3b8">Anc — The Pale Anchor (7 stars)</text>
+    <text x="35" y="282" font-family="sans-serif" font-size="11" fill="#94a3b8">Hrp — The Quiet Harp (8 stars)</text>
+  </g>
+  <!-- Magnitude Key -->
+  <g class="magnitude-key">
+    <text x="35" y="840" font-family="sans-serif" font-size="12" font-weight="bold" fill="#cbd5e1">MAGNITUDE SCALE</text>
+    <circle cx="45" cy="860" r="6.0" fill="#f8fafc" opacity="0.9"/>
+    <text x="59" y="864" font-family="sans-serif" font-size="10" fill="#94a3b8">Mag 0.0</text>
+    <circle cx="145" cy="860" r="3.5" fill="#f8fafc" opacity="0.9"/>
+    <text x="159" y="864" font-family="sans-serif" font-size="10" fill="#94a3b8">Mag 2.5</text>
+    <circle cx="245" cy="860" r="1.5" fill="#f8fafc" opacity="0.9"/>
+    <text x="259" y="864" font-family="sans-serif" font-size="10" fill="#94a3b8">Mag 5.0</text>
+  </g>
+<!-- constellations=10 stars=74 segments=75 dropped_segments=0 skipped=none modules={'projection': 'starmap/projection.py', 'style': 'starmap/style.py', 'legend': 'starmap/legend.py'} -->
 </svg>
