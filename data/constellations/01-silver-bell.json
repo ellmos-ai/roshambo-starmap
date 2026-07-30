@@ -1,0 +1,21 @@
+{
+  "name": "The Silver Bell",
+  "abbr": "sbl",
+  "stars": [
+    {"id": "sbl-a", "ra": 8.5, "dec": 32.0, "mag": 1.4, "spectral": "B"},
+    {"id": "sbl-b", "ra": 14.2, "dec": 41.5, "mag": 2.6, "spectral": "A"},
+    {"id": "sbl-c", "ra": 25.1, "dec": 38.0, "mag": 3.1, "spectral": "F"},
+    {"id": "sbl-d", "ra": 32.4, "dec": 25.8, "mag": 2.0, "spectral": "G"},
+    {"id": "sbl-e", "ra": 28.0, "dec": 12.4, "mag": 4.2, "spectral": "K"},
+    {"id": "sbl-f", "ra": 15.6, "dec": 18.2, "mag": 3.8, "spectral": "M"}
+  ],
+  "lines": [
+    ["sbl-a", "sbl-b"],
+    ["sbl-b", "sbl-c"],
+    ["sbl-c", "sbl-d"],
+    ["sbl-d", "sbl-e"],
+    ["sbl-e", "sbl-f"],
+    ["sbl-f", "sbl-a"],
+    ["sbl-b", "sbl-e"]
+  ]
+}
