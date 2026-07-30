@@ -1,0 +1,19 @@
+{
+  "name": "The Heron",
+  "abbr": "Her",
+  "stars": [
+    {"id": "her-a", "ra": 85.2, "dec": 15.4, "mag": -0.5, "spectral": "B"},
+    {"id": "her-b", "ra": 92.0, "dec": 30.1, "mag": 1.8, "spectral": "A"},
+    {"id": "her-c", "ra": 101.5, "dec": 42.8, "mag": 2.4, "spectral": "O"},
+    {"id": "her-d", "ra": 112.3, "dec": 22.0, "mag": 3.1, "spectral": "G"},
+    {"id": "her-e", "ra": 105.8, "dec": 5.2, "mag": 4.0, "spectral": "K"},
+    {"id": "her-f", "ra": 118.6, "dec": -12.4, "mag": 2.9, "spectral": "M"}
+  ],
+  "lines": [
+    ["her-a", "her-b"],
+    ["her-b", "her-c"],
+    ["her-b", "her-d"],
+    ["her-d", "her-e"],
+    ["her-e", "her-f"]
+  ]
+}
