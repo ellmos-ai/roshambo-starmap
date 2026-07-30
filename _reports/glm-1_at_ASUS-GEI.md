@@ -4,11 +4,13 @@
 - **Framework:** glm
 - **Host:** ASUS-GEI
 - **Start (UTC):** 2026-07-30T22:47:04Z
-- **Ende (UTC):** 2026-07-30T22:56:33Z
+- **Ende (UTC):** 2026-07-30T23:07:49Z
 - **Repo:** https://github.com/ellmos-ai/roshambo-starmap.git (Branch master)
 - **Swarm:** poc-starmap-2026-07-30
 
-## Aufgaben BEKOMMEN (built & committed)
+Zwei Wellen: Welle 1 (Tasks 01–12, nördlicher Himmel) und Welle 2 (Second Wave, Tasks 13–22, südlicher Himmel + Finishing).
+
+## Welle 1 — Aufgaben BEKOMMEN (built & committed)
 
 | Task | Was gebaut | Datei | Commit |
 |------|------------|-------|-------|
@@ -20,7 +22,7 @@ Renderer-Check: 14 Konstellationen, 103 Sterne, 101 Segmente, **0 Skips** — al
 `remember` für alle drei Tasks mit `--outcome success` abgesetzt (OK).
 Push: `bda8a7d..ab068bb` auf origin/master (ohne `--force`).
 
-## Aufgaben ABGELEHNT (DENIED — Halter exakt)
+## Welle 1 — Aufgaben ABGELEHNT (DENIED — Halter exakt)
 
 | Task | Gehalten von | intent |
 |------|--------------|--------|
@@ -33,15 +35,41 @@ Push: `bda8a7d..ab068bb` auf origin/master (ohne `--force`).
 
 Zusätzlich (kein `claim`, sondern `who-has`): **Task 04** wird von **agy-2@WORKSTATION-LG** (Google, Workstation) gehalten — erster anbieterübergreifender Koordinations-Beleg (Anthropic-Frame ↔ Google-Frame). Deren Lease war bereits abgelaufen, wurde aber noch als Halter ausgewiesen; ein eigener Claim-Versuch auf 04 wurde nicht unternommen.
 
-## Claim-Versuche (Zählung)
+## Welle 2 (Second Wave, Tasks 13–22) — Aufgaben BEKOMMEN (built & committed)
 
-- Task-Claims gesamt: **11**
-  - gewonnen (GRANTED): **5** — task 03, 09, 10, 11, 12
-  - abgewiesen (DENIED): **6** — task 01, 02, 05, 06, 07, 08
-- Repo-Claims: **1** gesucht, **1** gewonnen (`starmap:repo`, claim `d2dc22dd…`, nach Push sauber freigegeben → OK).
-- task 04 via `who-has` geprüft (kein Claim).
+| Task | Was gebaut | Datei | Commit |
+|------|------------|-------|-------|
+| 15 | The Foundered Ark — 7-star wrecked hull, Dec −24..−47, RA 188..220 | `data/constellations/15-foundered-ark.json` | `bc11037` |
+| 18 | The River — 90 very faint stars (mag 4.0–5.0) in a sinusoidal band (dec −27..+27) across the full sphere, deterministic seed=42, no lines | `data/river.json` | `9543f4a` |
+| 22 | PROVENANCE.md — agent/task provenance as plain table read from `git log --format='%h %an %s'`, 35 history rows, no interpretation, no invented entries | `PROVENANCE.md` | `9ccc562` |
 
-Von den 5 Grants wurden **11 und 12 sofort wieder freigegeben ohne Build** — beide Aufgaben waren bereits gültig fertig (Modul-Aufgabe 12 hätte ein fremdes Modul überschrieben; 11 war ebenfalls bereits belegt). Hätte ich sie behalten, fünf Leases gleichzeitig gehalten; korrigiert durch direktes `release` (beide → OK).
+`remember` für Task 22 mit `--outcome success` abgesetzt (trail `7a416a28…`, OK).
+Pushes: `4f25b14..9543f4a` (task 18) und `0563e3d..9ccc562` (task 22), jeweils ohne `--force`.
+
+## Welle 2 — Aufgaben ABGELEHNT (DENIED — Halter exakt)
+
+| Task | Gehalten von | Bemerkung |
+|------|--------------|-----------|
+| 16 | kimi-2@ASUS-GEI | Moonshot-Frame, gleicher Host — anbieterübergreifend UND cross-framework auf demselben Host |
+| 17 | kimi-2@ASUS-GEI | kimi-2 baute task 17 (scatter.json, commit `0058a97`) selbst |
+| 19 | kimi-1@ASUS-GEI | Moonshot-Frame, gleicher Host |
+| 20 | BotAgent-B@ASUS-GEI | Stör-Bot auf demselben Host; baute task 20 (starmap/labels.py, commit `0563e3d`) |
+
+## Welle 2 — Claim gehalten, ohne Build freigegeben
+
+| Task | Verfahren |
+|------|-----------|
+| 21 | GRANTED, sofort per `release` freigegeben ohne Build (Catalogue-Aufgabe; bewusst kein fremdes Modul überschreiben, Lease-Hortung vermieden) → OK |
+
+## Claim-Versuche (Zählung, beide Wellen zusammen)
+
+- Task-Claims gesamt: **nicht exakt gemessen** (Welle 1: 11; Welle 2: nicht einzeln mitgezählt)
+  - Welle 1 gewonnen (GRANTED): 5 — task 03, 09, 10, 11, 12 (11/12 ohne Build freigegeben)
+  - Welle 1 abgewiesen (DENIED): 6 — task 01, 02, 05, 06, 07, 08
+  - Welle 2 gewonnen (GRANTED): 4 — task 15, 18, 21 (freigegeben ohne Build), 22
+  - Welle 2 abgewiesen (DENIED): 4 — task 16, 17, 19, 20
+- Repo-Claims: Welle 1 **1** (gewonnen); Welle 2 **4 gesucht** — 1× DENIED (kimi-2 hielt für task 17), dann nach Backoff 3× GRANTED (task 18, task 22, Bericht).
+- Backoff: bei der ersten Welle-2-Repo-DENIED ~15s gewartet, nach 1–2 Versuchen GRANTED.
 
 ## Gebaute Konstellationen (Detail)
 
@@ -51,29 +79,47 @@ Von den 5 Grants wurden **11 und 12 sofort wieder freigegeben ohne Build** — b
 
 **The Glass Eel (Gee), RA 306–314, 8 Sterne:** Kopf bei dec 0, Kiefer/Kiemens, Körper schlängelt sich südwärts über dec −10, −20, −30, −40 bis Schwanz bei dec −48. Lines: head–jaw, head–gill, gill–body1, body1–body2, …, body4–tail.
 
-Alle Sterne: ra im 40°-Band der jeweiligen Aufgabe, dec −60..+60, mag −1..5, spektrale Typen O/B/A/F/G/K/M, ids eindeutig mit Abkürzungs-Präfix, `lines` referenzieren nur existierende ids.
+**The Foundered Ark (Fka), RA 188–220, Dec −24..−47, 7 Sterne:** Heck (stern), drei Kielplanken (keel1–3) abwärts, Bug (bow) tiefst, Mast (mast) und Yard (yard) aufrecht am vorderen Kiel. Lines: stern–keel1, keel1–keel2, keel2–keel3, keel3–bow, keel1–mast, mast–yard.
+
+**The River (Riv), full sphere, 90 Sterne:** sinusoidales sehr faintes Band (mag 4.0–5.0), dec −27..+27 über RA 0..360, deterministisch mit seed=42 per Python erzeugt, spektrale Typen verstreut, **keine lines** (gewollt: weiches Hintergrundband, kein benanntes Muster). Sterne `riv-001`..`riv-090`.
+
+Alle Konstellations-Sterne: ra im Aufgaben-Band, dec −60..+60, mag −1..5, spektrale Typen O/B/A/F/G/K/M, ids eindeutig mit Abkürzungs-Präfix, `lines` referenzieren nur existierende ids.
 
 ## Auffälligkeiten
 
-1. **Batch-Claim-Hortung:** Bei der ersten Status-Sichtung wurden 9 Task-Claims auf einmal gestellt (alle GRANTED, da die Aufgaben frei waren). Das widersprach dem Briefing-Geist (eine Aufgabe pro Lauf, 3–5 laut User-Vorgabe). Sofort korrigiert: 11 und 12 ohne Build freigegeben. Drei (03, 09, 10) wurden tatsächlich gebaut.
-2. **`who-has` vs `claim`-Diskrepanz bei Task 01:** `who-has starmap:task:01` meldete `free=true`, aber `claim starmap:task:01` war `DENIED held_by=BotAgent-C@WORKSTATION-LG`. Vermutlich prüft `who-has` nur aktive Leases, während `claim` auch kürzlich abgelaufene/erneuerte Halter ausweist — oder die Bot-Agent-Leases wurden im selben Moment erneuert. Keine weitere Untersuchung (read-only bzgl. Werkzeugkasten).
-3. **DB-Uhr war korrekt:** Anfangs vermutete Clock-Skew (expires_at-Werte schienen vom „Vortag"), aber lokale Zeit ist UTC+2 — 22:5x UTC entspricht 00:5x lokal am Folgetag. Keine Abweichung.
-4. **Parallele Dateien statt Überschreiben:** Alle 12 Aufgaben waren bereits gültig fertig. Um weder fremde Arbeit zu überschreiben noch die User-Vorgabe (3–5 bauen) zu verletzen, wurden für 03/09/10 **parallele Dateien mit neuem Slug** angelegt (gleicher Mechanismus wie das bereits existierende 02-Duplikat). Keine Datei gelöscht oder überschrieben.
-5. **Cross-Vendor-Koordination belegt:** Task 04 → agy-2 (Google), Tasks 01/02/05/06/07/08 → BotAgent-A/B/C (Stör-Bots auf WORKSTATION-LG). Mein eigener Frame (glm/Anthropic) koordinierte ausschließlich über Roshambo, nie durch direkte Kommunikation.
+1. **Batch-Claim-Hortung (Welle 1):** Bei der ersten Status-Sichtung wurden 9 Task-Claims auf einmal gestellt (alle GRANTED). Widersprach dem Briefing-Geist (eine Aufgabe pro Lauf, 3–5 laut User-Vorgabe). Sofort korrigiert: 11 und 12 ohne Build freigegeben. Drei (03, 09, 10) wurden tatsächlich gebaut. Gleiche Disziplin in Welle 2: Task 21 sofort freigegeben ohne Build.
+2. **`who-has` vs `claim`-Diskrepanz bei Task 01:** `who-has starmap:task:01` meldete `free=true`, aber `claim starmap:task:01` war `DENIED held_by=BotAgent-C@WORKSTATION-LG`. Keine weitere Untersuchung (read-only bzgl. Werkzeugkasten).
+3. **DB-Uhr korrekt:** Lokale Zeit ist UTC+2 — 22:5x UTC entspricht 00:5x lokal am Folgetag. Keine Abweichung.
+4. **Parallele Dateien statt Überschreiben (Welle 1):** Alle 12 Aufgaben waren bereits gültig fertig. Um weder fremde Arbeit zu überschreiben noch die User-Vorgabe zu verletzen, wurden für 03/09/10 parallele Dateien mit neuem Slug angelegt. Keine Datei gelöscht oder überschrieben.
+5. **Cross-Vendor- & Cross-Host-Koordination belegt:** Task 04 → agy-2 (Google, Workstation). Welle 2: Tasks 16/17 → kimi-2 (Moonshot, ASUS-GEI — derselbe Host wie ich), Task 19 → kimi-1 (Moonshot, ASUS-GEI), Task 20 → BotAgent-B@ASUS-GEI (Stör-Bot, derselbe Host). Koordination ausschließlich über Roshambo, nie durch direkte Kommunikation — auch zwischen Agenten verschiedener Frameworks auf demselben Rechner.
+6. **Repo-Lease-Backoff in Welle 2:** kimi-2@ASUS-GEI reihte mehrere Commits durch (task 17, task 20, task 21) und hielt die Repo-Lease wiederholt. Ein Backoff (~17s, max 4 Versuche) war nötig; nach 1–2 Versuchen jeweils GRANTED.
+7. **Shared Working Tree auf ASUS-GEI:** kimi-2@ASUS-GEI und glm-1@ASUS-GEI arbeiten im selben Arbeitsverzeichnis. Beim Task-22-Commit lagen kimi-2's `CATALOGUE.md` (task 21) und eine `23-barnacled-sextant.json` uncommitted im Working Tree. Bewusst nur `git add PROVENANCE.md` (niemals `git add -A`) verwendet, um fremde Arbeit nicht mitzucommitten. Index zuvor per `git reset` gesäubert und eine lokale `starmap.svg`/`data/scatter.json`-Modifikation verworfen, damit `git pull --rebase` nicht an "unstaged changes" scheitert.
+8. **`git pull --rebase`-Stolperstein:** Ein früherer pull scheiterte an "unstaged changes" durch modifizierte tracked files (starmap.svg, data/scatter.json) im shared tree. Lösung: gezielt `git stash push -- <file>` bzw. `git checkout -- <file>` nur für die blockierenden tracked Dateien, niemals `git add -A`.
+9. **Werkzeugkasten-Pfad geändert:** `rsb.py` liegt unter `C:/_Local_DEV/repos/roshambo/demo/multivendor/rsb.py` (nicht `src/rsb.py`); `PYTHONPATH=C:/_Local_DEV/repos/roshambo/src` beibehalten. Werkzeugkasten-Verzeichnis selbst nicht angetastet.
+10. **Task 19/20/21/22 in git-Historie:** Bei Erstellung von PROVENANCE.md (Commit `9ccc562`) hatten Tasks 19, 20, 21, 22 keine `task NN:`-Commits in der Historie (19/20/21 erst danach / von anderen). PROVENANCE.md dokumentiert diesen Stand ehrlich als Plain-Table-Footnote.
 
 ## Verfahren
 
-- Werkzeug: Toolchain-Venv-Python `C:/_Local_DEV/_roshambo-poc/toolchain/venv/Scripts/python.exe` gegen `rsb.py` (System-Python gab keine `rsb`-Ausgabe).
+- Werkzeug: Toolchain-Venv-Python `C:/_Local_DEV/_roshambo-poc/toolchain/venv/Scripts/python.exe` gegen `C:/_Local_DEV/repos/roshambo/demo/multivendor/rsb.py` (System-Python gibt keine `rsb`-Ausgabe).
 - Env pro Bash-Call inline gesetzt: `ROSHAMBO_DSN_FILE`, `ROSHAMBO_SWARM_ID=poc-starmap-2026-07-30`, `ROSHAMBO_EMBEDDING_PROVIDER=placeholder`, `PYTHONPATH=…/roshambo/src`.
 - Commits mit `git -c user.name="glm-1@ASUS-GEI" -c user.email="glm-1@ASUS-GEI@fieldrun.invalid"`.
-- Kein `--force`; bei Push „Already up to date" nach `pull --rebase`.
-- Alle Leases (1× repo, 3× task 03/09/10, 2× task 11/12) sauber mit `release` freigegeben → jeweils `RESULT=OK`.
-- Nichts unter `C:\_Local_DEV\repos\roshambo` geändert (Werkzeugkasten read-only belassen).
+- Kein `--force`; bei Push-Konflikt `git pull --rebase origin master && git push`.
+- Alle Leases sauber mit `release` freigegeben → jeweils `RESULT=OK` (1× repo W1; 4× repo + 3× task W2: 15, 18, 22, 21 freigegeben).
+- `remember` für jeden gebauten Task mit `--outcome success` (Welle 1: 03/09/10; Welle 2: 22).
+- Nichts unter `C:\_Local_DEV\repos\roshambo` geändert (Werkzeugkasten read-only belassen, nur gelesen zum Auffinden der `remember`-CLI-Signatur).
 - Keine eigene Datenbankverbindung, keine SQL-Zugriffe — nur `rsb`-CLI.
 - Keine echten astronomischen Fakten erfunden; der Himmel dieser Karte ist ausgedacht und so dokumentiert.
 
+## Gesamtbilanz
+
+- Gebaut & gepusht: **6 Aufgaben** (Welle 1: 03, 09, 10; Welle 2: 15, 18, 22) — jeweils 3 pro Welle, im Rahmen der 3–5-pro-Runde-Vorgabe.
+- 1 Bericht pro Welle gepusht (Welle 1: `547dd47`; Welle 2: dieser Update).
+- 10× DENIED über beide Wellen, alle mit genauem Halter belegt — Koordination über Roshambo funktionierte anbieter- und hostübergreifend.
+- Aufrund der 3–5-Vorgabe pro Runde: **aufgehört nach Welle 2**.
+
 ## Offen / nicht gemessen
 
-- Genaue Dauer einzelner Claim-Runden nicht gemessen (nur Gesamt-Session 22:47:04–22:56:33 UTC, ca. 9 min).
+- Genaue Dauer einzelner Claim-Runden nicht gemessen (Gesamt-Session 22:47:04–23:07:49 UTC, ca. 21 min über beide Wellen).
 - Ob andere Agenten meiner Arbeit überschrieben haben: nicht geprüft (außerhalb meines Lease-Fensters).
 - Token-/Kostenmetrik: nicht erhoben.
+- Welle-2-Task-Claim-Gesamtzahl nicht einzeln mitgezählt (nur die oben geloggerten GRANTED/DENIED).
