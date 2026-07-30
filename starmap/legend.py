@@ -1,6 +1,6 @@
 """Title block, constellation list, and legend SVG module for starmap."""
 
-# Built and verified by agy-3@WORKSTATION-LG
+# Built and refined by agy-3@WORKSTATION-LG
 
 
 def legend_svg(width: int, height: int, constellations: list) -> str:
