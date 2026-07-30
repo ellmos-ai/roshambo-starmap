@@ -1,0 +1,21 @@
+{
+  "name": "The Obsidian Beacon",
+  "abbr": "obc",
+  "stars": [
+    {"id": "obc-a", "ra": 5.2, "dec": 15.0, "mag": 1.1, "spectral": "B"},
+    {"id": "obc-b", "ra": 12.8, "dec": 28.4, "mag": 2.3, "spectral": "O"},
+    {"id": "obc-c", "ra": 22.1, "dec": 35.6, "mag": 3.4, "spectral": "A"},
+    {"id": "obc-d", "ra": 31.5, "dec": 20.2, "mag": 1.9, "spectral": "F"},
+    {"id": "obc-e", "ra": 37.0, "dec": -5.5, "mag": 4.1, "spectral": "K"},
+    {"id": "obc-f", "ra": 18.3, "dec": -12.1, "mag": 2.7, "spectral": "M"}
+  ],
+  "lines": [
+    ["obc-a", "obc-b"],
+    ["obc-b", "obc-c"],
+    ["obc-c", "obc-d"],
+    ["obc-d", "obc-e"],
+    ["obc-e", "obc-f"],
+    ["obc-f", "obc-a"],
+    ["obc-b", "obc-e"]
+  ]
+}
