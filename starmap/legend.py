@@ -22,7 +22,7 @@ def legend_svg(width: int, height: int, constellations: list) -> str:
     )
     elements.append(
         '    <text x="35" y="66" font-family="sans-serif" font-size="11" font-style="italic" '
-        'fill="#94a3b8">An invented nocturnal sky constructed by multi-agent coordination</text>'
+        'fill="#94a3b8">This sky is invented.</text>'
     )
     elements.append('  </g>')
 
@@ -40,7 +40,8 @@ def legend_svg(width: int, height: int, constellations: list) -> str:
         y_pos = start_y + (idx * row_height)
         name = getattr(c, "name", "Unknown")
         abbr = getattr(c, "abbr", "???")
-        stars_cnt = len(getattr(c, "stars", []))
+        stars_list = getattr(c, "stars", [])
+        stars_cnt = len(stars_list) if isinstance(stars_list, list) else 0
         label = f"{abbr} — {name} ({stars_cnt} stars)"
         elements.append(
             f'    <text x="35" y="{y_pos}" font-family="sans-serif" font-size="11" '
@@ -74,3 +75,4 @@ def legend_svg(width: int, height: int, constellations: list) -> str:
     elements.append('  </g>')
 
     return "\n".join(elements)
+
