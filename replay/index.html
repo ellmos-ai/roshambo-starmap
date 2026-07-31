@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Roshambo field run — poc-starmap-2026-07-30 — replay</title>
+<style>
+  html,body{margin:0;padding:0;background:#0b0e14;color:#dfe6f0;font-family:"Segoe UI",Arial,sans-serif;}
+  #stage{position:relative;width:1920px;height:1080px;overflow:hidden;background:
+    radial-gradient(1200px 500px at 50% -100px, #14203a 0%, #0b0e14 60%);}
+  .panel{position:absolute;border:1px solid #2a3550;border-radius:10px;background:rgba(18,24,38,.55);}
+  .panel h3{margin:6px 10px 4px;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#8fa3c8;}
+  #chapter{position:absolute;left:0;top:0;width:1920px;height:64px;display:flex;align-items:center;}
+  #chapter .title{font-size:27px;font-weight:600;margin-left:28px;}
+  #chapter .note{font-size:13px;color:#8fa3c8;margin-left:18px;max-width:900px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  #clock{margin-left:auto;margin-right:28px;font-size:20px;font-variant-numeric:tabular-nums;color:#bcd0ee;}
+  #judge{position:absolute;left:912px;top:88px;width:96px;height:96px;}
+  #judge .ring{position:absolute;inset:0;border-radius:50%;border:3px solid #37b6a8;opacity:.25;}
+  #judge .core{position:absolute;inset:14px;border-radius:50%;background:#123b36;display:flex;align-items:center;justify-content:center;border:2px solid #37b6a8;}
+  #judgeLbl{position:absolute;left:852px;top:192px;width:216px;text-align:center;font-size:13px;color:#6fd6c8;}
+  #machineL{left:16px;top:80px;width:264px;height:548px;}
+  #machineR{left:1640px;top:80px;width:264px;height:548px;}
+  #tasksPanel{left:310px;top:240px;width:830px;height:388px;}
+  #sky{position:absolute;left:310px;top:214px;width:830px;text-align:center;font-size:13px;color:#9db4d8;}
+  #feed{left:1150px;top:240px;width:474px;height:388px;overflow:hidden;}
+  #feedLines{position:absolute;left:8px;right:8px;top:30px;bottom:6px;overflow:hidden;font-size:12.5px;line-height:1.45;}
+  #feedLines div{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#c4d2e8;}
+  #feedLines .tm{color:#5f7295;margin-right:6px;font-variant-numeric:tabular-nums;}
+  #lanes{position:absolute;left:16px;top:644px;width:1888px;height:384px;}
+  #controls{position:absolute;left:0;top:1036px;width:1920px;height:40px;display:flex;align-items:center;gap:10px;padding:0 20px;box-sizing:border-box;}
+  #controls button{background:#1b2740;color:#dfe6f0;border:1px solid #33436b;border-radius:6px;padding:4px 12px;font-size:13px;cursor:pointer;}
+  #controls button.on{background:#2c4a7a;}
+  #seek{flex:1;accent-color:#4a90e2;}
+  .token{position:absolute;width:120px;text-align:center;}
+  .token .disc{width:34px;height:34px;border-radius:50%;margin:0 auto;display:flex;align-items:center;justify-content:center;
+    font-size:12px;font-weight:700;color:#0b0e14;border:2px solid rgba(255,255,255,.25);}
+  .token .nm{font-size:10px;color:#aebcd6;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .token .ct{font-size:10px;color:#e8d27a;font-variant-numeric:tabular-nums;}
+  .token.win .disc{box-shadow:0 0 14px 4px #35d06a;border-color:#35d06a;}
+  .token.lose .disc{box-shadow:0 0 14px 4px #e04848;border-color:#e04848;}
+  .task{position:absolute;width:130px;height:36px;border:1px solid #33436b;border-radius:6px;background:#131b2e;
+    font-size:10px;padding:3px 5px;box-sizing:border-box;transition:left .5s,top .5s;}
+  .task .tid{font-weight:700;color:#8fa3c8;}
+  .task .ttl{color:#aebcd6;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .task.claimed{border-width:2px;}
+  .task.done{background:#10341d;border-color:#35d06a;width:44px;height:20px;font-size:10px;padding:1px 4px;color:#7be495;}
+  #err{position:absolute;left:0;top:0;width:1920px;background:#a02020;color:#fff;font-size:14px;padding:6px 12px;display:none;z-index:99;}
+  .chromeless #controls{display:none;}
+  .chromeless .task{transition:none !important;}
+  #beat{position:absolute;left:50%;bottom:118px;transform:translateX(-50%);max-width:1280px;
+    padding:20px 44px;background:rgba(6,10,18,.85);border:1px solid rgba(55,182,168,.45);
+    border-radius:14px;font-size:37px;line-height:1.35;text-align:center;color:#eef4f2;
+    opacity:0;z-index:60;pointer-events:none;box-shadow:0 6px 30px rgba(0,0,0,.5);}
+  #beat .tag{display:block;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:#6fd6c8;margin-bottom:8px;}
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="err"></div>
+  <div id="chapter"><span class="title" id="chTitle"></span><span class="note" id="chNote"></span><span id="clock"></span></div>
+  <div id="judge"><div class="ring" id="judgeRing"></div><div class="core">
+    <svg width="40" height="40" viewBox="0 0 40 40"><ellipse cx="20" cy="9" rx="13" ry="5" fill="none" stroke="#6fd6c8" stroke-width="2"/><path d="M7 9 v22 c0 2.8 5.8 5 13 5 s13 -2.2 13 -5 V9" fill="none" stroke="#6fd6c8" stroke-width="2"/><path d="M7 20 c0 2.8 5.8 5 13 5 s13 -2.2 13 -5" fill="none" stroke="#6fd6c8" stroke-width="2"/></svg>
+  </div></div>
+  <div id="judgeLbl">the judge · CockroachDB</div>
+  <div class="panel" id="machineL"><h3>ASUS-GEI · laptop</h3></div>
+  <div class="panel" id="machineR"><h3>WORKSTATION-LG</h3></div>
+  <div id="sky"></div>
+  <div class="panel" id="tasksPanel"><h3>task manager</h3></div>
+  <div class="panel" id="feed"><h3>live feed</h3><div id="feedLines"></div></div>
+  <div id="beat"></div>
+  <canvas id="lanes" width="1888" height="384"></canvas>
+  <div id="controls">
+    <button id="playBtn">Pause</button>
+    <button class="spd" data-s="1">1×</button><button class="spd" data-s="10">10×</button>
+    <button class="spd on" data-s="60">60×</button><button class="spd" data-s="240">240×</button>
+    <input type="range" id="seek" min="0" max="100" step="0.05" value="0">
+    <span id="tread" style="font-size:12px;color:#8fa3c8;white-space:nowrap"></span>
+    <span id="chBtns"></span>
+  </div>
+</div>
+<script src="data/data.js"></script>
+<script>
+"use strict";
+window.addEventListener("error", e => {
+  const el = document.getElementById("err");
+  el.style.display = "block";
+  el.textContent = "JS ERROR: " + (e.message || e.type) + " @ " + (e.filename||"").split("/").pop() + ":" + e.lineno;
+});
+
+const D = window.ROSHAMBO_DATA;
+const parse = s => new Date(s).getTime();
+const T0 = parse(D.phases.t0), TEND = parse(D.phases.t_end);
+const T = (TEND - T0) / 1000;                 // sim seconds
+const TTL = 300000;                            // lease ttl ms (evidence: ttl_seconds=300)
+
+/* ---------- unified event stream ---------- */
+const events = [];
+for (const r of D.audit) {
+  events.push({ ms: parse(r.created_at), kind: r.verb, agent: r.agent_id, allowed: r.allowed,
+                reason: r.reason, resource: r.resource, lat: r.latency_ms || 0 });
+}
+for (const r of D.memory) {
+  events.push({ ms: parse(r.created_at), kind: r.verb, agent: r.agent_id, allowed: r.allowed,
+                reason: r.reason, resource: r.resource, lat: 0 });
+}
+const OPERATOR = "field-run (operator)";
+for (const c of D.commits) {
+  const who = c.author === "roshambo field run" ? OPERATOR : c.author;
+  events.push({ ms: parse(c.date), kind: "commit", agent: who, hash: c.hash.slice(0,8), subject: c.subject });
+}
+events.sort((a,b) => a.ms - b.ms);
+
+/* ---------- agents ---------- */
+const roster = D.agents.slice();
+roster.push({ id: OPERATOR, name: "field run", machine: "ASUS-GEI", group: "Operator", color: "#c9c9c9", icon: "op" });
+const byId = {}; roster.forEach(a => byId[a.id] = a);
+const laneOrder = roster.filter(a => a.machine === "ASUS-GEI" && a.id !== OPERATOR)
+  .concat(roster.filter(a => a.machine === "WORKSTATION-LG"))
+  .concat([byId[OPERATOR]]);
+
+/* ---------- per-agent lane segments ---------- */
+function splat(segs, f, t, s) {
+  for (let i = 0; i < segs.length; i++) {
+    const g = segs[i];
+    if (g.t <= f || g.f >= t) continue;
+    segs.splice(i, 1);
+    if (g.f < f) segs.splice(i, 0, { f: g.f, t: f, s: g.s }), i++;
+    segs.splice(i, 0, { f: Math.max(f,g.f), t: Math.min(t,g.t), s }); i++;
+    if (g.t > t) segs.splice(i, 0, { f: t, t: g.t, s: g.s }), i++;
+    i--;
+  }
+}
+function buildSegments(aid) {
+  const evs = events.filter(e => e.agent === aid);
+  const segs = [];
+  let cur = 0, base = 1, cursor = T0, holdEnd = null;
+  const push = (s,f,t) => { if (t > f + 1) segs.push({ f, t, s }); };
+  for (const e of evs) {
+    if (e.kind === "commit" || e.kind === "remember" || e.kind === "recall") continue;
+    if (e.kind === "register_agent") {
+      if (cur === 0) { push(0, cursor, e.ms); cur = 1; base = 1; cursor = e.ms; }
+      continue;
+    }
+    if (cur === 0) continue;
+    if (e.kind === "heartbeat") {
+      if (holdEnd && e.ms <= holdEnd) holdEnd = Math.max(holdEnd, e.ms + TTL);
+      continue;
+    }
+    if (e.kind === "claim") {
+      const req = Math.max(cursor, e.ms - Math.max(e.lat, 2000));
+      push(cur, cursor, req); push(2, req, e.ms);
+      if (e.allowed) { push(3, e.ms, e.ms + 3000); cursor = e.ms + 3000; cur = 4; base = 4; holdEnd = e.ms + TTL; }
+      else { push(0, e.ms, e.ms + 2500); cursor = e.ms + 2500; cur = base; }
+      continue;
+    }
+    if (e.kind === "release") {
+      if (holdEnd) { push(4, cursor, e.ms); holdEnd = null; } else push(cur, cursor, e.ms);
+      cur = 1; base = 1; cursor = e.ms; continue;
+    }
+  }
+  if (holdEnd) { const end = Math.min(holdEnd, TEND); push(4, cursor, end); cur = 1; cursor = end; }
+  push(cur, cursor, TEND);
+  for (const e of evs) if (e.kind === "commit") splat(segs, e.ms, e.ms + 25000, 5);
+  return segs;
+}
+const laneSegs = {}; laneOrder.forEach(a => laneSegs[a.id] = buildSegments(a.id));
+function stateAt(segs, ms) {
+  let lo = 0, hi = segs.length - 1, ans = 0;
+  while (lo <= hi) { const m = (lo + hi) >> 1, g = segs[m];
+    if (ms < g.f) hi = m - 1; else if (ms >= g.t) lo = m + 1; else return g.s; }
+  return ans;
+}
+
+/* ---------- grants counter ---------- */
+const grantCounts = {}; roster.forEach(a => grantCounts[a.id] = 0);
+
+/* ---------- conflicts (denial naming a holder) ---------- */
+const conflicts = [];
+for (const e of events) {
+  if (e.kind === "claim" && e.allowed === false && e.reason) {
+    const m = /held by (\S+)/.exec(e.reason);
+    if (m) conflicts.push({ ms: e.ms, loser: e.agent, winner: m[1] });
+  }
+}
+const conflictMs = conflicts.map(c => c.ms);
+
+/* ---------- task timelines ---------- */
+const normTask = res => {
+  if (!res) return null;
+  let m = /^starmap:task:(\d{2})$/.exec(res) || /^task[:_-](\d{2})$/.exec(res) || /^(\d{2})$/.exec(res);
+  return m ? m[1] : null;
+};
+const trailTask = res => {
+  if (!res) return null;
+  const m = /task\s*(\d{2})/i.exec(res);
+  return m ? m[1] : null;
+};
+const taskInfo = {}; D.tasks.forEach(t => taskInfo[t.id] = t.title);
+const taskTL = {}; D.tasks.forEach(t => taskTL[t.id] = []);   // [{f,t,st,agent}]
+(function buildTasks() {
+  const grants = {};                                   // NN -> [{grant,agent,release}]
+  const trails = {};                                   // NN -> [ms]
+  const openClaims = {};                               // agent -> [NN,...] fifo
+  for (const e of events) {
+    if (e.kind === "claim" && e.allowed) {
+      const nn = normTask(e.resource);
+      if (nn && taskTL[nn]) {
+        (grants[nn] = grants[nn] || []).push({ grant: e.ms, agent: e.agent, release: null });
+        (openClaims[e.agent] = openClaims[e.agent] || []).push(nn);
+      }
+    } else if (e.kind === "release") {
+      const q = openClaims[e.agent];
+      if (q && q.length) {
+        const nn = q.shift();
+        const ep = grants[nn].find(g => g.agent === e.agent && g.release === null);
+        if (ep) ep.release = e.ms;
+      }
+    } else if (e.kind === "remember") {
+      const nn = trailTask(e.resource);
+      if (nn && taskTL[nn]) (trails[nn] = trails[nn] || []).push(e.ms);
+    }
+  }
+  // agent hold expiry fallback (last heartbeat + TTL)
+  const lastHb = {};
+  for (const e of events) if (e.kind === "heartbeat") lastHb[e.agent] = e.ms;
+  for (const nn of Object.keys(taskTL)) {
+    const segs = taskTL[nn]; let cursor = T0;
+    for (const ep of (grants[nn] || [])) {
+      const tr = (trails[nn] || []).filter(x => x >= ep.grant).sort((a,b) => a-b)[0];
+      const expiry = Math.min((lastHb[ep.agent] || ep.grant) + TTL, TEND);
+      const end = ep.release || expiry;
+      if (ep.grant > cursor) segs.push({ f: cursor, t: ep.grant, st: "open" });
+      if (tr !== undefined) {
+        const heldUntil = Math.max(end, tr);
+        segs.push({ f: ep.grant, t: heldUntil, st: "claimed", agent: ep.agent });
+        segs.push({ f: heldUntil, t: TEND, st: "done", agent: ep.agent });
+        cursor = TEND; break;
+      } else {
+        segs.push({ f: ep.grant, t: end, st: "claimed", agent: ep.agent });
+        cursor = end;
+      }
+    }
+    if (cursor < TEND) segs.push({ f: cursor, t: TEND, st: "open" });
+  }
+})();
+function taskAt(segs, ms) {
+  let lo = 0, hi = segs.length - 1;
+  while (lo <= hi) { const m = (lo + hi) >> 1, g = segs[m];
+    if (ms < g.f) hi = m - 1; else if (ms >= g.t) lo = m + 1; else return g; }
+  return segs[segs.length - 1];
+}
+
+/* ---------- beat overlays (quotes.json "beat" fields) ---------- */
+/* One quiet lower-third caption at a time. Duration in sim-ms: 640 s ≈ 4 s
+   when filmed at ~160×. Scheduled non-overlapping; deterministic in t-mode. */
+const BEAT_DUR = 640000, BEAT_FADE = 80000, BEAT_GAP = 40000;
+let beatSchedule = [];
+function buildBeats() {
+  beatSchedule = [];
+  const qs = Array.isArray(window.ROSHAMBO_QUOTES) ? window.ROSHAMBO_QUOTES : [];
+  const items = [];
+  for (const q of qs) {
+    const beat = q.beat && String(q.beat).trim(); if (!beat) continue;
+    if (q.sim_t == null || !isFinite(q.sim_t)) continue;   // curated set only
+    items.push({ ms: T0 + q.sim_t * 1000, beat });
+  }
+  items.sort((a, b) => a.ms - b.ms);
+  let end = -Infinity;
+  for (const it of items) {
+    const start = Math.max(it.ms, end + BEAT_GAP);
+    beatSchedule.push({ f: start, t: start + BEAT_DUR, beat: it.beat });
+    end = start + BEAT_DUR;
+  }
+}
+buildBeats();
+
+/* ---------- feed events ---------- */
+const esc = s => String(s).replace(/[&<>]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c]));
+const short = aid => aid ? aid.split("@")[0] : "?";
+const hostTag = aid => aid && aid.includes("@") ? "@" + aid.split("@")[1] : "";
+let feedEvents = [];
+function buildFeed() {
+  feedEvents = [];
+  for (const e of events) {
+    let txt = null;
+    if (e.kind === "register_agent") txt = `<b>${esc(short(e.agent))}</b>${esc(hostTag(e.agent))} joins the swarm`;
+    else if (e.kind === "claim" && e.allowed) txt = `<b>${esc(short(e.agent))}</b> takes <i>${esc(e.resource)}</i>`;
+    else if (e.kind === "claim" && !e.allowed) {
+      const m = e.reason && /held by (\S+)/.exec(e.reason);
+      txt = m ? `<b>${esc(short(e.agent))}</b>${esc(hostTag(e.agent))} was refused by ${esc(m[1])}`
+              : `<b>${esc(short(e.agent))}</b> was refused`;
+    }
+    else if (e.kind === "release") txt = `<b>${esc(short(e.agent))}</b> releases its lease`;
+    else if (e.kind === "remember") txt = `<b>${esc(short(e.agent))}</b> leaves a trail: ${esc(e.resource || "")}`;
+    else if (e.kind === "recall") txt = `<b>${esc(short(e.agent))}</b> recalls: ${esc(e.resource || "")}`;
+    else if (e.kind === "commit") txt = `&#9127; <b>${esc(short(e.agent))}</b> commits ${esc(e.hash)} — ${esc(e.subject.slice(0,60))}`;
+    if (txt) feedEvents.push({ ms: e.ms, html: txt });
+  }
+  if (Array.isArray(window.ROSHAMBO_QUOTES)) {
+    for (const q of window.ROSHAMBO_QUOTES) {
+      let ms = NaN;
+      if (q.sim_t != null && isFinite(q.sim_t)) ms = T0 + q.sim_t * 1000;
+      else ms = parse(q.t || q.time || q.timestamp);
+      if (!ms || !isFinite(ms) || ms < T0 || ms > TEND) continue;
+      const actor = q.actor || q.agent || q.author || "?";
+      const text = q.text || q.quote || q.message || "";
+      feedEvents.push({ ms, html: `&raquo; <b>${esc(short(actor))}</b>: ${esc(text)}` });
+    }
+  }
+  feedEvents.sort((a,b) => a.ms - b.ms);
+  feedMs = feedEvents.map(f => f.ms);
+  buildBeats();
+}
+let feedMs = [];
+buildFeed();
+// optional quotes (script tag works over file://, fetch works over http://)
+(function tryQuotes() {
+  const s = document.createElement("script");
+  s.src = "data/quotes.js"; s.onload = () => { buildFeed(); render(); };
+  s.onerror = () => {
+    fetch("data/quotes.json").then(r => r.ok ? r.json() : null)
+      .then(j => { if (j) { window.ROSHAMBO_QUOTES = j; buildFeed(); } }).catch(() => {});
+  };
+  document.head.appendChild(s);
+})();
+
+/* ---------- chapters ---------- */
+const chapters = D.phases.chapters.map(c => ({ ...c, ms: parse(c.start) })).sort((a,b) => a.ms - b.ms);
+function chapterAt(ms) { let c = chapters[0]; for (const ch of chapters) if (ms >= ch.ms) c = ch; return c; }
+
+/* ---------- sky counter (timelapse frames) ---------- */
+const frames = (D.frames.frames || []).map(f => ({ ms: parse(f.committed_at), ...f })).sort((a,b) => a.ms - b.ms);
+function skyAt(ms) { let f = null; for (const fr of frames) { if (fr.ms <= ms) f = fr; else break; } return f; }
+
+/* ---------- layout: tokens ---------- */
+const stage = document.getElementById("stage");
+const tokenEls = {}, anchors = {};
+function layoutMachine(panelId, list, x0) {
+  list.forEach((a, i) => {
+    const col = i % 2, row = (i / 2) | 0;
+    const x = x0 + 14 + col * 122, y = 116 + row * 62;
+    const el = document.createElement("div");
+    el.className = "token"; el.style.left = x + "px"; el.style.top = y + "px";
+    el.innerHTML = `<div class="disc" style="background:${a.color}">${(a.icon || "??").slice(0,2).toUpperCase()}</div>
+      <div class="nm">${esc(a.name)}</div><div class="ct">0</div>`;
+    stage.appendChild(el);
+    tokenEls[a.id] = el;
+    anchors[a.id] = { x: x + 8, y: y + 40 };
+  });
+}
+layoutMachine("machineL", laneOrder.filter(a => a.machine === "ASUS-GEI" && a.id !== OPERATOR), 16);
+layoutMachine("machineR", laneOrder.filter(a => a.machine === "WORKSTATION-LG"), 1640);
+
+/* ---------- task boxes ---------- */
+const taskEls = {}, taskPos = {};
+const GRID = { x: 318, y: 268, w: 130, h: 36, gx: 8, gy: 6, cols: 6 };
+const DONE = { x: 318, y: 566, w: 44, h: 20, g: 4, perRow: 17 };
+const taskIds = D.tasks.map(t => t.id);
+taskIds.forEach((id, i) => {
+  const el = document.createElement("div");
+  el.className = "task";
+  el.innerHTML = `<span class="tid">${id}</span> <span class="ttl">${esc(taskInfo[id])}</span>`;
+  stage.appendChild(el);
+  taskEls[id] = el;
+  taskPos[id] = "";
+});
+function gridPos(i) {
+  return { x: GRID.x + (i % GRID.cols) * (GRID.w + GRID.gx), y: GRID.y + ((i / GRID.cols) | 0) * (GRID.h + GRID.gy) };
+}
+function donePos(i) {
+  return { x: DONE.x + (i % DONE.perRow) * (DONE.w + DONE.g), y: DONE.y + ((i / DONE.perRow) | 0) * (DONE.h + DONE.g) };
+}
+
+/* ---------- controls / params ---------- */
+const params = new URLSearchParams(location.search);
+let simT = Math.max(0, Math.min(T, parseFloat(params.get("t") || "0") || 0));
+let speed = parseFloat(params.get("speed") || "60") || 60;
+let playing = !params.has("t");
+if (params.get("chromeless") === "1") document.body.classList.add("chromeless"), playing = false;
+const seek = document.getElementById("seek"); seek.max = T; seek.value = simT;
+const tread = document.getElementById("tread");
+document.getElementById("playBtn").onclick = () => { playing = !playing; };
+document.querySelectorAll(".spd").forEach(b => b.onclick = () => {
+  speed = parseFloat(b.dataset.s);
+  document.querySelectorAll(".spd").forEach(x => x.classList.toggle("on", x === b));
+});
+seek.oninput = () => { simT = parseFloat(seek.value); render(); };
+document.addEventListener("keydown", e => { if (e.code === "Space") { playing = !playing; e.preventDefault(); } });
+const chBtns = document.getElementById("chBtns");
+chapters.forEach(ch => {
+  const b = document.createElement("button"); b.textContent = ch.title.split(",")[0];
+  b.onclick = () => { simT = (ch.ms - T0) / 1000 + 0.01; render(); };
+  chBtns.appendChild(b);
+});
+
+/* ---------- lanes canvas ---------- */
+const cv = document.getElementById("lanes"), ctx = cv.getContext("2d");
+const LW = cv.width, LH = cv.height, LABEL = 150;
+const laneH = LH / laneOrder.length;
+const xOf = ms => LABEL + (ms - T0) / (TEND - T0) * (LW - LABEL - 8);
+const yOf = (lane, st) => lane * laneH + laneH - 3 - (st / 5) * (laneH - 6);
+function drawLanes(nowMs) {
+  ctx.clearRect(0, 0, LW, LH);
+  // chapter background bands
+  for (let i = 0; i < chapters.length; i++) {
+    const x0 = xOf(chapters[i].ms), x1 = i + 1 < chapters.length ? xOf(chapters[i + 1].ms) : LW;
+    ctx.fillStyle = i % 2 ? "rgba(255,255,255,0.025)" : "rgba(255,255,255,0.0)";
+    ctx.fillRect(x0, 0, x1 - x0, LH);
+    ctx.fillStyle = "#54678c"; ctx.font = "10px sans-serif";
+    ctx.fillText(chapters[i].title, x0 + 4, 11);
+    ctx.strokeStyle = "rgba(120,140,180,.35)"; ctx.beginPath(); ctx.moveTo(x0, 0); ctx.lineTo(x0, LH); ctx.stroke();
+  }
+  laneOrder.forEach((a, li) => {
+    // baseline
+    ctx.fillStyle = "rgba(120,140,180,.18)";
+    ctx.fillRect(LABEL, li * laneH + laneH - 2, LW - LABEL - 8, 1);
+    // label
+    ctx.fillStyle = a.color; ctx.font = "10px sans-serif";
+    ctx.fillText(a.name + (a.id === OPERATOR ? "" : ""), 6, li * laneH + laneH - 4);
+    const segs = laneSegs[a.id];
+    for (let k = 0; k < segs.length; k++) {
+      const g = segs[k];
+      const future = g.f > nowMs;
+      const x0 = xOf(g.f), x1 = xOf(Math.min(g.t, nowMs));
+      ctx.globalAlpha = future ? 0.12 : 1;
+      ctx.fillStyle = a.color;
+      if (!future) ctx.fillRect(x0, yOf(li, g.s), Math.max(1, x1 - x0), 2.5);
+      else ctx.fillRect(x0, yOf(li, g.s), Math.max(1, xOf(g.t) - x0), 2.5);
+      if (k > 0) {
+        const p = segs[k - 1];
+        if (p.s !== g.s) {
+          const yA = yOf(li, p.s), yB = yOf(li, g.s);
+          ctx.fillRect(x0 - 1, Math.min(yA, yB), 2, Math.abs(yB - yA) + 2.5);
+        }
+      }
+    }
+    ctx.globalAlpha = 1;
+  });
+  // playhead
+  const px = xOf(nowMs);
+  ctx.fillStyle = "rgba(255,255,255,.85)"; ctx.fillRect(px - 1, 0, 2, LH);
+}
+
+/* ---------- per-frame render ---------- */
+const judgeRing = document.getElementById("judgeRing");
+const chTitle = document.getElementById("chTitle"), chNote = document.getElementById("chNote");
+const clockEl = document.getElementById("clock"), skyEl = document.getElementById("sky");
+const feedEl = document.getElementById("feedLines");
+const beatEl = document.getElementById("beat");
+let lastFeedSig = "", lastChapter = "", lastSky = "", lastClock = "", lastBeatSig = "";
+const decisions = events.filter(e => e.kind === "claim").map(e => e.ms);
+
+function upperBound(arr, ms) {
+  let lo = 0, hi = arr.length;
+  while (lo < hi) { const m = (lo + hi) >> 1; if (arr[m] <= ms) lo = m + 1; else hi = m; }
+  return lo;
+}
+
+function render() {
+  const nowMs = T0 + simT * 1000;
+
+  // chapter + clock + sky
+  const ch = chapterAt(nowMs);
+  if (ch.id !== lastChapter) { lastChapter = ch.id; chTitle.textContent = ch.title; chNote.textContent = ch.note || ""; }
+  const clk = new Date(nowMs).toISOString().slice(11, 19) + " UTC";
+  if (clk !== lastClock) { lastClock = clk; clockEl.textContent = clk; }
+  const sky = skyAt(nowMs);
+  const skyTxt = sky ? `the sky so far: ${sky.constellations} constellations · ${sky.stars} stars · ${sky.segments} segments (frame ${sky.index})`
+                     : "the sky so far: — (first frame not yet committed)";
+  if (skyTxt !== lastSky) { lastSky = skyTxt; skyEl.textContent = skyTxt; }
+
+  // judge pulse = decisions in the last 2 sim seconds
+  const di = upperBound(decisions, nowMs);
+  let pulse = 0; for (let i = di - 1; i >= 0 && decisions[i] > nowMs - 2000; i--) pulse++;
+  const sc = 1 + Math.min(pulse, 6) * 0.08;
+  judgeRing.style.transform = `scale(${sc})`;
+  judgeRing.style.opacity = Math.min(0.25 + pulse * 0.15, 1);
+
+  // tokens: counters + conflict flashes
+  for (const a of laneOrder) {
+    if (a.id === OPERATOR) continue;
+    const el = tokenEls[a.id]; if (!el) continue;
+    const st = stateAt(laneSegs[a.id], nowMs);
+    el.style.opacity = st === 0 && !el.classList.contains("lose") ? 0.35 : 1;
+  }
+  // grant counters (recompute cheap: count claims allowed per agent up to nowMs) — cached increments
+  for (const a of laneOrder) {
+    const el = tokenEls[a.id]; if (!el) continue;
+    const n = countGrants(a.id, nowMs);
+    const ct = el.querySelector(".ct");
+    const s = n + (n === 1 ? " claim" : " claims");
+    if (ct.textContent !== s) ct.textContent = s;
+  }
+  // conflicts active now
+  const ci = upperBound(conflictMs, nowMs);
+  const active = new Set();
+  for (let i = ci - 1; i >= 0 && conflicts[i].ms > nowMs - 3500; i--) {
+    active.add("w:" + conflicts[i].winner); active.add("l:" + conflicts[i].loser);
+  }
+  for (const a of laneOrder) {
+    const el = tokenEls[a.id]; if (!el) continue;
+    el.classList.toggle("win", active.has("w:" + a.id));
+    el.classList.toggle("lose", active.has("l:" + a.id));
+  }
+
+  // tasks
+  let doneIdx = 0;
+  const claimStack = {};
+  taskIds.forEach((id, gi) => {
+    const g = taskAt(taskTL[id], nowMs);
+    const el = taskEls[id];
+    let x, y, cls;
+    if (g.st === "done") { const p = donePos(doneIdx++); x = p.x; y = p.y; cls = "task done"; }
+    else if (g.st === "claimed") {
+      const k = (claimStack[g.agent] = (claimStack[g.agent] || 0) + 1) - 1;
+      const an = anchors[g.agent] || { x: 900, y: 300 };
+      x = an.x + (k % 2) * 8; y = an.y + k * 40; cls = "task claimed";
+      el.style.borderColor = (byId[g.agent] || {}).color || "#888";
+    } else { const p = gridPos(gi); x = p.x; y = p.y; cls = "task"; }
+    if (g.st !== "claimed") el.style.borderColor = "";
+    if (g.st === "done") el.innerHTML = `<span class="tid">${id} &#10003;</span>`;
+    else if (el.classList.contains("done")) el.innerHTML = `<span class="tid">${id}</span> <span class="ttl">${esc(taskInfo[id])}</span>`;
+    const sig = cls + x + "," + y;
+    if (taskPos[id] !== sig) {
+      taskPos[id] = sig;
+      el.className = cls;
+      el.style.left = x + "px"; el.style.top = y + "px";
+    }
+  });
+
+  // feed
+  const fi = upperBound(feedMs, nowMs);
+  const sigF = fi + ":" + feedEvents.length;
+  if (sigF !== lastFeedSig) {
+    lastFeedSig = sigF;
+    const from = Math.max(0, fi - 26);
+    let html = "";
+    for (let i = from; i < fi; i++) {
+      const f = feedEvents[i];
+      html += `<div><span class="tm">${new Date(f.ms).toISOString().slice(11, 19)}</span>${f.html}</div>`;
+    }
+    feedEl.innerHTML = html;
+    feedEl.scrollTop = feedEl.scrollHeight;
+  }
+
+  drawLanes(nowMs);
+
+  // beat overlay (deterministic function of sim time)
+  let bActive = null;
+  for (const b of beatSchedule) {
+    if (nowMs >= b.f && nowMs <= b.t) { bActive = b; break; }
+    if (b.f > nowMs) break;
+  }
+  let bOp = 0;
+  if (bActive) {
+    bOp = Math.min((nowMs - bActive.f) / BEAT_FADE, (bActive.t - nowMs) / BEAT_FADE, 1);
+    bOp = Math.max(0, Math.min(1, bOp));
+  }
+  const bSig = bActive ? bActive.f + ":" + Math.round(bOp * 40) : "off";
+  if (bSig !== lastBeatSig) {
+    lastBeatSig = bSig;
+    if (bActive) {
+      beatEl.innerHTML = `<span class="tag">from the field notes</span>${esc(bActive.beat)}`;
+      beatEl.style.opacity = bOp;
+    } else {
+      beatEl.style.opacity = 0;
+    }
+  } else if (bActive) {
+    beatEl.style.opacity = bOp;
+  }
+
+  // controls readout
+  tread.textContent = `t=${simT.toFixed(1)}s / ${T.toFixed(0)}s · ${speed}×`;
+  if (playing) seek.value = simT;
+}
+
+/* grant counter cache */
+const grantCache = {};
+function countGrants(aid, ms) {
+  if (!grantCache[aid]) {
+    grantCache[aid] = events.filter(e => e.agent === aid && e.kind === "claim" && e.allowed).map(e => e.ms);
+  }
+  return upperBound(grantCache[aid], ms);
+}
+
+/* ---------- main loop ---------- */
+let lastRAF = performance.now();
+function loop(now) {
+  const dt = (now - lastRAF) / 1000; lastRAF = now;
+  if (playing) {
+    simT = Math.min(T, simT + dt * speed);
+    if (simT >= T) playing = false;
+    render();
+  }
+  requestAnimationFrame(loop);
+}
+document.getElementById("playBtn").textContent = playing ? "Pause" : "Play";
+setInterval(() => { document.getElementById("playBtn").textContent = playing ? "Pause" : "Play"; }, 300);
+render();
+requestAnimationFrame(loop);
+</script>
+</body>
+</html>

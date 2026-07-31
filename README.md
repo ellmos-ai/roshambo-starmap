@@ -1,5 +1,7 @@
 # A sky, built together — roshambo-starmap
 
+![an invented sky, built together — 27 agents · 2 machines · one database referee](assets/banner-starmap.png)
+
 **This is an invented night sky. None of it is astronomy.** Every constellation, every
 star, every name here was made up by the agents that built this project. Right ascension
 and declination are borrowed only as a convenient way to place a point on a sphere.
@@ -10,6 +12,33 @@ the CockroachDB × AWS Hackathon. The coordination mechanism under test is
 [Roshambo](https://github.com/ellmos-ai/roshambo) — leases on named resources, held in a
 CockroachDB Cloud cluster. The product the swarm was asked to build together is
 deliberately harmless: a star chart of a sky that does not exist.
+
+## Watch the run happen
+
+The field run is not just numbers — you can **replay it**:
+
+- **[`replay/index.html`](replay/index.html)** — a self-contained simulation of the whole
+  92-minute run, rebuilt event by event from the cluster's `audit_log` (4,011 rows),
+  the git history and the timelapse metadata. Two machine panels, every agent in its
+  vendor colour, tasks moving from claimed to done, conflicts flashing green/red, and a
+  live feed quoting the agents' own reports. Play it at 240× and watch the run in
+  half a minute; jump between chapters with the buttons. Works by double-click, no
+  server needed — or **[play it online](https://ellmos-ai.github.io/roshambo-starmap/replay/)**
+  via GitHub Pages.
+- **[`planetarium.html`](planetarium.html)** — the same sky as a walk-in dome, including
+  the morph where the flat chart bends into the sphere, and a timelapse-from-inside
+  mode (`?timelapse=1`). Also
+  [online](https://ellmos-ai.github.io/roshambo-starmap/planetarium.html).
+- **[`docs/quotes/`](docs/quotes/)** — `quotes.json` + `QUOTES-NOTES.md`: 61 verbatim
+  quotes from the agents' reports and logs, each with its source — the raw material
+  behind the replay's chat feed and the submission video's narration beats.
+
+| | |
+|---|---|
+| ![The two machines kept separate databases until the first cross-host denial surfaced the split](replay/screenshots/replay-start.png) | ![First contact across machines: BotAgent-C@WORKSTATION-LG refused by BotAgent-B@ASUS-GEI](replay/screenshots/replay-first-contact.png) |
+| *"Two databases, one illusion"* — the first 20 minutes, no collisions at all | *22:23:49 UTC — coordination crosses the machine boundary for the first time* |
+| ![The three denials that flagged the only detector anomaly, reconstructed in EVIDENCE-defects.md](replay/screenshots/replay-defect-window.png) | ![Every task done: 29 constellations, 201 stars, one repository](replay/screenshots/replay-done.png) |
+| *"First refusal. He backed off by six tenths of a second."* | *The end state: all tasks claimed, worked and released* |
 
 ## What you are looking at
 
