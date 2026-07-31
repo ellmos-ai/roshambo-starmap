@@ -109,3 +109,8 @@ The sky in this repository is **invented**. It is a safe, neutral work product c
 that 27 processes could fight over leases without anything real being at stake. The
 astronomy-looking vocabulary is a rendering convenience. The *coordination* is real;
 the *stars* are not.
+
+## License
+
+MIT — see [LICENSE](LICENSE). The sky in this repository is invented; the
+coordination that built it is not.
