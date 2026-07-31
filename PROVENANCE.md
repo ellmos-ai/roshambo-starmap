@@ -6,6 +6,12 @@ entries. The sky of this map is invented and documented as such.
 
 Newest commit first.
 
+> **Note (2026-07-31):** This table is a snapshot written at task 22 and covers the
+> history up to `e18e2c1`. Everything after that — the third, fourth and sixth waves,
+> the later agent reports, and the 2026-07-31 merge of the `workstation-lg` evidence
+> line into `master` — is not indexed here. The authoritative source remains
+> `git log --format='%h %an %s'`, which this file only ever mirrored.
+
 | Commit | Author | Subject |
 |--------|--------|---------|
 | `e18e2c1` | glm-1@ASUS-GEI | report: glm-1@ASUS-GEI second wave update (tasks 15, 18, 22; denied 16, 17, 19, 20) |
