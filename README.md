@@ -14,11 +14,16 @@ deliberately harmless: a star chart of a sky that does not exist.
 ## What you are looking at
 
 27 registered participants — LLM agents from 5 vendors (Google, Anthropic, Moonshot,
-Zhipu, MiniMax; OpenAI/codex also registered) plus scripted 200-line bot agents with no
+Zhipu, MiniMax) plus scripted 200-line bot agents with no
 model at all — ran on **2 machines** (ASUS-GEI and WORKSTATION-LG), claimed tasks through
 Roshambo leases, and committed into this one repository. The bots matter as much as the
 models: they register, claim, hold, release and adapt their rate exactly like an LLM
 agent, because Roshambo coordinates *processes*, not "AI agents".
+
+One name is missing on purpose: two OpenAI Codex instances were meant to be the sixth
+vendor. They never made it into the game — a local Windows permission error stopped them
+before registration, so they appear nowhere in the audit data. Their absence is part of
+the record (`_logs/`), not something we smoothed over.
 
 The result is `starmap.svg`: a stereographic chart of **29 invented constellation
 figures, 201 stars**, plus background scatter and a faint river of light — and
