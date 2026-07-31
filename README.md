@@ -93,8 +93,9 @@ From the [Roshambo](https://github.com/ellmos-ai/roshambo) repository, with
 python demo/multivendor/collect_evidence.py --swarm poc-starmap-2026-07-30
 ```
 
-Anyone without database access or an LLM key can reproduce the core property — mutual
-exclusion with holder-named denials — locally in about thirty seconds:
+Anyone with a CockroachDB cluster — a free CockroachDB Cloud tier is enough — and **no
+LLM key at all** can reproduce the core property, mutual exclusion with holder-named
+denials, in about thirty seconds (the dry-run uses its own throwaway swarm):
 
 ```
 python demo/multivendor/bot_agent.py --dry-run --bots 3
