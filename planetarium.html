@@ -25,6 +25,10 @@
   URL parameters:
     ?timelapse=1        show the sky as it grew, commit by commit (slider + play)
     &frame=N            pin the timelapse to frame N (1..76)
+    ?morph=1            the map becomes the world: starts on the flat
+                        stereographic chart exactly as render.py draws it,
+                        bends it around the viewer (t=3..19), settles into the
+                        dome, then flows into the camera flight (t>=28).
     ?t=<seconds>        deterministic video mode: camera flies a fixed path
                         (slow orbit, then into two or three constellations and
                         back out). Everything is a pure function of t, so
@@ -38,7 +42,7 @@
       "file:///.../planetarium.html?t=30&chromeless=1"
 -->
 <style>
-  html, body { margin: 0; height: 100%; overflow: hidden; background: #080b1a; }
+  html, body { margin: 0; height: 100%; overflow: hidden; background: #0b1026; }
   canvas { display: block; width: 100vw; height: 100vh; cursor: grab; }
   canvas.dragging { cursor: grabbing; }
   .hud {
@@ -99,8 +103,10 @@
 /* ------------------------------------------------------------------ data --- */
 const D = window.SKY_DATA;
 const TAU = Math.PI * 2, DEG = Math.PI / 180;
-const COLOURS = {O:'#9bb0ff',B:'#aabfff',A:'#cad7ff',F:'#f8f7ff',G:'#fff4ea',K:'#ffd2a1',M:'#ffcc6f'};
-const BG = '#080b1a';
+// Same palette and night as starmap/style.py, so the flat map and the dome are
+// one visual language and the morph can crossfade without a colour pop.
+const COLOURS = {O:'#8fb2ff',B:'#a6c1ff',A:'#c6d6ff',F:'#eaeeff',G:'#fff3dd',K:'#ffc98a',M:'#ff9564'};
+const BG = '#0b1026';
 
 function vec(ra, dec) {
   const r = ra * DEG, d = dec * DEG;
@@ -113,7 +119,7 @@ function centroidVec(stars) {
   return [x / n, y / n, z / n];
 }
 function prepStars(list, kind) {
-  return list.map(s => ({ id: s.id, mag: s.mag, sp: s.sp || s.spectral || 'G',
+  return list.map(s => ({ id: s.id, ra: s.ra, dec: s.dec, mag: s.mag, sp: s.sp || s.spectral || 'G',
                           name: s.name || null, note: s.note || null,
                           v: vec(s.ra, s.dec), kind }));
 }
@@ -132,6 +138,49 @@ const BIRTH = { scatter: (D.scatter || {}).frame || 1,
                 river: (D.river || {}).frame || 1,
                 curiosities: (D.curiosities || {}).frame || 1 };
 
+/* ------------------------------------------- flat map (for morph mode) --- */
+// Replicates render.py + starmap/projection.py + starmap/style.py EXACTLY, on a
+// logical 1600x900 canvas: stereographic about the north pole (r = tan((90-dec)/2)
+// normalised to the dec=-70 rim), RA=0 at the top, then the renderer's
+// fit-to-bounds transform. The morph starts pixel-faithful to what
+// `python render.py` draws today (all parallel variants, like a fresh render).
+const FLAT_W = 1600, FLAT_H = 900, FLAT_MARGIN = 70;
+const FLAT_DEC_LIMIT = -70, FLAT_EDGE_INSET = 0.98;
+const FLAT_R_LIMIT = Math.tan((90 - FLAT_DEC_LIMIT) / 2 * DEG);
+function flatProject(ra, dec) {
+  dec = Math.max(FLAT_DEC_LIMIT, Math.min(90, dec));
+  const r = Math.tan((90 - dec) / 2 * DEG) / FLAT_R_LIMIT
+          * Math.min(FLAT_W, FLAT_H) / 2 * FLAT_EDGE_INSET;
+  const a = ra * DEG;
+  return { x: FLAT_W / 2 - r * Math.sin(a), y: FLAT_H / 2 - r * Math.cos(a) };
+}
+function flatRadius(mag) {  // starmap/style.py star_radius
+  const b = Math.min(1, Math.max(0, (6.0 - mag) / 7.5));
+  return 1.0 + 8.2 * Math.pow(b, 1.35);
+}
+(function buildFlatLayout() {
+  let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+  for (const c of constellations) for (const s of c.stars) {
+    s._fp = flatProject(s.ra, s.dec);
+    minX = Math.min(minX, s._fp.x); minY = Math.min(minY, s._fp.y);
+    maxX = Math.max(maxX, s._fp.x); maxY = Math.max(maxY, s._fp.y);
+  }
+  if (minX > maxX) { minX = minY = 0; maxX = FLAT_W; maxY = FLAT_H; }
+  const spanX = Math.max(maxX - minX, 1e-9), spanY = Math.max(maxY - minY, 1e-9);
+  const scale = Math.min((FLAT_W - 2 * FLAT_MARGIN) / spanX, (FLAT_H - 2 * FLAT_MARGIN) / spanY);
+  const offX = (FLAT_W - spanX * scale) / 2 - minX * scale;
+  const offY = (FLAT_H - spanY * scale) / 2 - minY * scale;
+  for (const c of constellations) {
+    let cx = 0, cy = 0;
+    for (const s of c.stars) {
+      s.fx = s._fp.x * scale + offX; s.fy = s._fp.y * scale + offY;  // fitted, logical 1600x900
+      s.fr = flatRadius(s.mag);
+      cx += s.fx; cy += s.fy;
+    }
+    c.fcx = cx / c.stars.length; c.fcy = cy / c.stars.length;
+  }
+})();
+
 /* --------------------------------------------------------------- params --- */
 const Q = new URLSearchParams(location.search);
 const P = {
@@ -140,6 +189,7 @@ const P = {
   chromeless: Q.get('chromeless') === '1',
   timelapse:  Q.get('timelapse') === '1',
   frame:      Q.has('frame') ? parseFloat(Q.get('frame')) : null,
+  morph:      Q.get('morph') === '1',
   yaw:        Q.has('yaw') ? parseFloat(Q.get('yaw')) : null,
   pitch:      Q.has('pitch') ? parseFloat(Q.get('pitch')) : null,
   fov:        Q.has('fov') ? parseFloat(Q.get('fov')) : null,
@@ -215,11 +265,15 @@ function timelapsePos(t) {
 const canvas = document.getElementById('sky');
 const ctx = canvas.getContext('2d');
 let W = 0, H = 0;
+const flatScale = { k: 1, ox: 0, oy: 0 };   // logical 1600x900 -> actual canvas
 function resize() {
   const dpr = Math.min(2, window.devicePixelRatio || 1);
   W = Math.round(canvas.clientWidth * dpr);
   H = Math.round(canvas.clientHeight * dpr);
   canvas.width = W; canvas.height = H;
+  flatScale.k = Math.min(W / FLAT_W, H / FLAT_H);
+  flatScale.ox = (W - FLAT_W * flatScale.k) / 2;
+  flatScale.oy = (H - FLAT_H * flatScale.k) / 2;
 }
 window.addEventListener('resize', resize);
 
@@ -253,6 +307,25 @@ function project(v, rot) {
 function starPx(mag, zoom) {
   return Math.max(0.6, Math.min(10, (7 - mag) * 0.62)) * Math.pow(zoom, 0.22);
 }
+// Like project(), but never returns null: the depth is clamped in front of the
+// camera and the result boxed to a generous off-screen margin. The morph needs
+// an endpoint for every star, even ones that have already bent out of view.
+function projectClamped(v, rot) {
+  let [x, y, z] = v;
+  if (rot) {
+    const xr = x * view.cosA - y * view.sinA, yr = x * view.sinA + y * view.cosA;
+    x = xr; y = yr;
+  }
+  let zc = x * view.f[0] + y * view.f[1] + z * view.f[2];
+  if (zc < 0.015) zc = 0.015;
+  const xc = x * view.r[0] + y * view.r[1] + z * view.r[2];
+  const yc = x * view.u[0] + y * view.u[1] + z * view.u[2];
+  return {
+    x: Math.max(-2 * W, Math.min(3 * W, W / 2 + (xc / zc) * view.focal)),
+    y: Math.max(-2 * H, Math.min(3 * H, H / 2 - (yc / zc) * view.focal)),
+  };
+}
+const lerp = (a, b, u) => a + (b - a) * u;
 
 /* -------------------------------------------------------------- render --- */
 let hoverTargets = [];   // rebuilt each frame for the tooltip
@@ -307,13 +380,60 @@ function drawConstellation(c, alpha) {
   }
 }
 
-function drawHorizon() {
+function drawMorphConstellation(c, alpha, m) {
+  // The heart of morph mode: every star travels from its flat chart position to
+  // its dome position along one eased path, lines and name follow their stars.
+  // At m=0 this is pixel-faithful to render.py; at m=1 it IS the dome.
+  const e = smooth(m);
+  const { k, ox, oy } = flatScale;
+  const zoom = 80 / cam.fov;
+  const pts = {};
+  for (const s of c.stars) {
+    const dome = projectClamped(s.v, true);
+    pts[s.id] = { x: lerp(ox + k * s.fx, dome.x, e), y: lerp(oy + k * s.fy, dome.y, e) };
+  }
+  ctx.strokeStyle = '#5c6f9c';
+  ctx.lineWidth = lerp(1.1 * k, Math.max(0.7, W / 2200), e);
+  ctx.globalAlpha = alpha * lerp(0.75, 0.7, e);
+  for (const [a, b] of c.lines) {
+    const p1 = pts[a], p2 = pts[b];
+    if (!p1 || !p2) continue;
+    ctx.beginPath(); ctx.moveTo(p1.x, p1.y); ctx.lineTo(p2.x, p2.y); ctx.stroke();
+  }
+  for (const s of c.stars) {
+    const p = pts[s.id];
+    if (p.x < -20 || p.x > W + 20 || p.y < -20 || p.y > H + 20) continue;
+    ctx.globalAlpha = alpha;
+    ctx.fillStyle = starColour(s);
+    ctx.beginPath(); ctx.arc(p.x, p.y, lerp(s.fr * k, starPx(s.mag, zoom), e), 0, TAU); ctx.fill();
+    hoverTargets.push({ s, x: p.x, y: p.y });
+  }
+  ctx.globalAlpha = 1;
+  if (alpha > 0.25) {
+    const domeC = projectClamped(c.centre, true);
+    const px = lerp(ox + k * c.fcx, domeC.x, e), py = lerp(oy + k * c.fcy, domeC.y, e);
+    const edge = Math.min(px, W - px, py, H - py);
+    let a = alpha * Math.max(0, Math.min(0.85, edge / 120));
+    if (labelPlaced.some(q => Math.abs(q.x - px) < 90 && Math.abs(q.y - py) < 30)) a = 0;
+    if (a > 0.05) {
+      labelPlaced.push({ x: px, y: py });
+      ctx.globalAlpha = a;
+      ctx.fillStyle = '#8fa3d0';
+      ctx.font = `${lerp(15 * k, Math.max(13, H / 72), e)}px Georgia, serif`;
+      ctx.textAlign = 'center';
+      ctx.fillText(c.name, px, py - lerp(18 * k, Math.max(14, H / 60), e));
+      ctx.globalAlpha = 1;
+    }
+  }
+}
+
+function drawHorizon(alphaMul = 1) {
   // Invented horizon: the great circle at dec 0. It does NOT rotate with the
   // sky, so the turning sky drifts past it — that is what tells you which way
   // is down. Drawn as a soft double stroke, sampled every 2 degrees.
   ctx.strokeStyle = '#3a4a74';
   for (const [w, a] of [[Math.max(3, W / 500), 0.10], [Math.max(1, W / 1600), 0.35]]) {
-    ctx.lineWidth = w; ctx.globalAlpha = a;
+    ctx.lineWidth = w; ctx.globalAlpha = a * alphaMul;
     ctx.beginPath();
     let pen = false;
     for (let ra = 0; ra <= 360; ra += 2) {
@@ -339,21 +459,26 @@ function render(pos) {
   hoverTargets = [];
   labelPlaced = [];
 
-  if (showHorizon) drawHorizon();
+  // m: 0 = flat chart, 1 = full dome (only morph mode ever goes below 1)
+  const m = P.morph ? morphM : 1;
 
-  // the river — our invented milky way: faint, small, slightly blue
-  const ra = visibleAlpha(BIRTH.river, pos);
+  if (showHorizon && m > 0.5) drawHorizon(Math.min(1, (m - 0.5) * 2));
+
+  // scatter, river and curiosities are not on the flat chart — they fade in
+  // with the morph, at their dome positions
+  const ra = visibleAlpha(BIRTH.river, pos) * m;
   if (ra > 0) for (const s of river) drawStar(s, ra * 0.38, 0.5, false);
-  // background scatter
-  const sa = visibleAlpha(BIRTH.scatter, pos);
+  const sa = visibleAlpha(BIRTH.scatter, pos) * m;
   if (sa > 0) for (const s of scatter) drawStar(s, sa * 0.6, 0.62, false);
   // constellation figures
   for (const c of constellations) {
     const a = visibleAlpha(c.frame, pos);
-    if (a > 0) drawConstellation(c, a);
+    if (a > 0) {
+      if (P.morph && m < 1) drawMorphConstellation(c, a, m);
+      else drawConstellation(c, a);
+    }
   }
-  // curiosities on top
-  const ca = visibleAlpha(BIRTH.curiosities, pos);
+  const ca = visibleAlpha(BIRTH.curiosities, pos) * m;
   if (ca > 0) for (const s of curios) drawStar(s, ca, 1.15, true);
 }
 
@@ -451,11 +576,58 @@ function updateTooltip() {
 
 /* ------------------------------------------------------------- main loop --- */
 const rotHud = document.getElementById('rot');
+
+/* Morph mode: the flat chart bends into the dome, then the flight begins.
+   One continuous, deterministic timeline (seconds):
+     0..3    hold the flat chart (exactly what render.py draws)
+     3..19   m: 0 -> 1, smoothstepped — the map wraps around the viewer;
+             the camera already sits at the dome start (looking up at the
+             pole, wide fov), only the interpolation parameter moves
+     19..21  settle in the dome
+     21..28  camera glides from the polar overhead view to the flight's start
+     28..    the existing camera path, sky rotation included
+   With ?t= every pixel is a pure function of t; without it, wall clock. */
+const MORPH = { HOLD: 3, BEND: 16, SETTLE: 2, GLIDE: 7 };
+const MORPH_DOME_T = MORPH.HOLD + MORPH.BEND + MORPH.SETTLE;         // 21
+const MORPH_FLIGHT_T = MORPH_DOME_T + MORPH.GLIDE;                   // 28
+const MORPH_CAM = { yaw: 180, pitch: 89.5, fov: 150 };  // overhead polar view
+let morphM = 1;
+const morphStart = performance.now();
+function morphDrive(mt) {
+  if (mt < MORPH.HOLD) morphM = 0;
+  else if (mt < MORPH.HOLD + MORPH.BEND) morphM = smooth((mt - MORPH.HOLD) / MORPH.BEND);
+  else morphM = 1;
+
+  if (mt < MORPH_DOME_T) {
+    cam.yaw = MORPH_CAM.yaw; cam.pitch = MORPH_CAM.pitch; cam.fov = MORPH_CAM.fov;
+    skyRot = 0;
+  } else if (mt < MORPH_FLIGHT_T) {
+    const u = smooth((mt - MORPH_DOME_T) / MORPH.GLIDE);
+    cam.yaw = lerpYaw(MORPH_CAM.yaw, PATH[0].yaw, u);
+    cam.pitch = lerp(MORPH_CAM.pitch, PATH[0].pitch, u);
+    cam.fov = lerp(MORPH_CAM.fov, PATH[0].fov, u);
+    skyRot = 0;
+  } else {
+    const tt = mt - MORPH_FLIGHT_T;
+    const c = cameraAt(tt);
+    skyRot = ROT_DEG_PER_S * tt;
+    cam.yaw = (c.yaw + skyRot) % 360;   // track the turning sky, as in video mode
+    cam.pitch = c.pitch;
+    cam.fov = c.fov;
+  }
+  // pinned-camera overrides also work in morph mode (for stills)
+  if (P.yaw !== null) cam.yaw = P.yaw;
+  if (P.pitch !== null) cam.pitch = P.pitch;
+  if (P.fov !== null) cam.fov = P.fov;
+}
+
 let prev = performance.now();
 function tick(now) {
   const dt = Math.min(100, now - prev); prev = now;
 
-  if (deterministic) {
+  if (P.morph) {
+    morphDrive(P.t !== null ? P.t : (now - morphStart) / 1000);
+  } else if (deterministic) {
     const c = cameraAt(P.t);
     skyRot = ROT_DEG_PER_S * P.t;        // deterministic sky rotation
     // add skyRot to the path yaw so the flight TRACKS the turning sky —

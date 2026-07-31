@@ -108,6 +108,17 @@ the file itself (regenerated from `data/` + git history by
   **40** constellation variants (268 stars), not the curated 29/201 of
   `starmap.svg`; the timelapse tops out at the chart's end state because the
   later files arrived after the timelapse run.
+- **Morph mode** (the flat chart becomes the world): `planetarium.html?morph=1`
+  opens on the flat stereographic chart exactly as `render.py` draws it — same
+  projection, same fit, same palette and star sizes — holds it for three
+  seconds, then bends it around the viewer (t=3–19) and flows on into the
+  dome and the camera flight (t≥28). Every star travels one eased path from
+  its chart position to its dome position; nothing is cut and no other data
+  appears. With `&t=<s>&chromeless=1` the whole arc — flat, bending, dome,
+  close-ups — is a deterministic function of `t`, ready for headless frame
+  pulling. One honest caveat: a flat sky map is mirrored against any view from
+  inside the sphere, so east and west swap during the bend; the shapes and
+  names are the same throughout.
 
 ## Two evidence lines, one repository
 
