@@ -1,0 +1,21 @@
+{
+  "name": "The Crimson Chariot",
+  "abbr": "Cha",
+  "stars": [
+    {"id": "cha-a", "ra": 205.5, "dec": 35.0, "mag": -0.2, "spectral": "M"},
+    {"id": "cha-b", "ra": 215.2, "dec": 48.1, "mag": 1.5, "spectral": "K"},
+    {"id": "cha-c", "ra": 228.0, "dec": 42.3, "mag": 2.4, "spectral": "A"},
+    {"id": "cha-d", "ra": 235.4, "dec": 25.8, "mag": 3.2, "spectral": "F"},
+    {"id": "cha-e", "ra": 222.1, "dec": 10.4, "mag": 2.8, "spectral": "G"},
+    {"id": "cha-f", "ra": 210.8, "dec": 18.2, "mag": 4.1, "spectral": "B"}
+  ],
+  "lines": [
+    ["cha-a", "cha-b"],
+    ["cha-b", "cha-c"],
+    ["cha-c", "cha-d"],
+    ["cha-d", "cha-e"],
+    ["cha-e", "cha-f"],
+    ["cha-f", "cha-a"],
+    ["cha-b", "cha-e"]
+  ]
+}
