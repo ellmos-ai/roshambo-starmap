@@ -27,7 +27,7 @@ the record (`_logs/`), not something we smoothed over.
 
 The result is `starmap.svg`: a stereographic chart of **29 invented constellation
 figures, 201 stars**, plus background scatter and a faint river of light — and
-`planetarium.html` (in progress, tasks 36–39), a walk-in dome view of the same data.
+`planetarium.html` (tasks 36–39), a walk-in dome view of the same data.
 
 Numbers below are from `collect_evidence.py` against the live cluster, verified
 2026-07-31. Nothing here is estimated:
@@ -60,6 +60,7 @@ Numbers below are from `collect_evidence.py` against the live cluster, verified
 | `_reports/` | Final reports of the participating agents and the coordinating operator — including the operator's own errors, recorded unedited. |
 | `_skills/` | Findings from applying the official CockroachDB Agent Skills against the live cluster (tasks 28–32). |
 | `_timelapse/` | 76 SVG frames rebuilt from git history: the sky as it grew, commit by commit. |
+| `planetarium.html` | The dome: the same invented sky seen from inside (tasks 36–39). See below. |
 | `evidence_*.json`, `bot*.json`, `*intervals*.csv` | Raw evidence snapshots from `collect_evidence.py` and bot runs at various points of the run. `botagent-intervals.csv` merges the adaptive-rate interval logs of both machines. |
 | `tests/` | Unit tests for the projection module. |
 
@@ -71,8 +72,42 @@ Numbers below are from `collect_evidence.py` against the live cluster, verified
   error, documented honestly in `_reports/operator_at_ASUS-GEI.md`. Two agents
   nevertheless produced real analyses; they are kept in `_skills/` as artefacts.
 - Tasks **34–35**: never written.
-- Tasks **36–39**: the planetarium (`planetarium.html`, `planetarium-timelapse.html`) —
-  in progress.
+- Tasks **36–39**: built — `planetarium.html`.
+
+## The planetarium (`planetarium.html`)
+
+Still an invented sky — now seen from inside. `planetarium.html` is a single
+self-contained file: no build step, no CDN, no network. All data is embedded in
+the file itself (regenerated from `data/` + git history by
+`_scripts/build_planetarium.py`), so it opens by double-clicking, straight off
+`file://`. The sphere maths is hand-rolled on a 2D canvas — no 3D library.
+
+- **Look around:** drag with the mouse, zoom with the scroll wheel, turn with
+  WASD or the arrow keys. Constellation names float at their centres; hovering a
+  star shows its id, magnitude and spectral class.
+- **Time and motion:** the sky turns slowly (space pauses it, `H` toggles the
+  horizon ring). The horizon is invented too, and says so in the corner.
+- **The build, seen from inside:** open `planetarium.html?timelapse=1` — the
+  constellations appear in commit order (a slider scrubs the run, play/pause
+  included). The mapping is honest: each data file's birth frame is the git
+  commit that first added it, mapped into `_timelapse/frames.json`; files
+  committed after that run ended are clamped to the last frame and flagged.
+- **Video mode** (for pulling film frames, e.g. with headless Edge):
+  `planetarium.html?t=30&chromeless=1` renders a deterministic camera flight —
+  a slow orbit, then into two or three constellations and back out — where every
+  pixel is a pure function of `t` (seconds), so screenshots are reproducible.
+  `&dur=` sets the flight length, `&frame=N` pins a timelapse frame,
+  `&yaw=&pitch=&fov=` pins the camera for stills. Example:
+
+  ```
+  msedge --headless=new --screenshot=frame.png --window-size=1920,1080 ^
+    --virtual-time-budget=3000 "file:///.../planetarium.html?t=30&chromeless=1"
+  ```
+
+  Note: the dome reads the same data files the chart does — today that is all
+  **40** constellation variants (268 stars), not the curated 29/201 of
+  `starmap.svg`; the timelapse tops out at the chart's end state because the
+  later files arrived after the timelapse run.
 
 ## Two evidence lines, one repository
 

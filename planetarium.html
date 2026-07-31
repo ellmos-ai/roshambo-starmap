@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>An Invented Sky — Planetarium</title>
+<!--
+  planetarium.html — a walk-in dome for the invented sky (tasks 36–39).
+
+  Self-contained: no build step, no CDN, no fetch — all data is embedded below
+  in the GENERATED DATA block (regenerate with _scripts/build_planetarium.py).
+  Opens by double-clicking over file://.
+
+  The sky is invented. None of this is astronomy. RA/Dec are borrowed only as a
+  convenient way to place a point on a sphere.
+
+  Sphere math (no 3D library): RA/Dec -> unit vector -> rotate by sky rotation
+  about the polar axis -> camera basis from yaw/pitch -> perspective divide.
+  Rendered on a 2D canvas with requestAnimationFrame.
+
+  Timelapse method (honest): each data file's birth frame is the git commit that
+  first added it, mapped into _timelapse/frames.json (one commit per frame).
+  Files committed after the timelapse run ended are clamped to the last frame
+  and flagged after=true. See _scripts/build_planetarium.py for details.
+
+  URL parameters:
+    ?timelapse=1        show the sky as it grew, commit by commit (slider + play)
+    &frame=N            pin the timelapse to frame N (1..76)
+    ?t=<seconds>        deterministic video mode: camera flies a fixed path
+                        (slow orbit, then into two or three constellations and
+                        back out). Everything is a pure function of t, so
+                        headless screenshots of single frames are reproducible.
+    &dur=<seconds>      length of the camera path (default 60)
+    &chromeless=1       hide all HUD text (for film frames)
+    &yaw=&pitch=&fov=   pin the camera instead of the path (still images)
+
+  Examples (headless Edge):
+    msedge --headless --screenshot=f.png --window-size=1920,1080 --virtual-time-budget=2000 ^
+      "file:///.../planetarium.html?t=30&chromeless=1"
+-->
+<style>
+  html, body { margin: 0; height: 100%; overflow: hidden; background: #080b1a; }
+  canvas { display: block; width: 100vw; height: 100vh; cursor: grab; }
+  canvas.dragging { cursor: grabbing; }
+  .hud {
+    position: fixed; color: #8fa3d0; font-family: Georgia, 'Times New Roman', serif;
+    pointer-events: none; user-select: none; text-shadow: 0 1px 3px #000;
+  }
+  body.chromeless .hud { display: none; }
+  #title   { top: 18px; left: 22px; font-size: 17px; letter-spacing: 0.04em; }
+  #title small { display: block; font-size: 12px; color: #6b7ba8; font-style: italic; }
+  #hint    { bottom: 16px; left: 22px; font-size: 12px; color: #5d6c94; }
+  #honest  { bottom: 16px; right: 22px; font-size: 12px; color: #5d6c94; font-style: italic; }
+  #rot     { top: 18px; right: 22px; font-size: 12px; color: #5d6c94; }
+  #tooltip {
+    display: none; padding: 6px 9px; background: rgba(8,11,26,0.88);
+    border: 1px solid #2c3a5e; border-radius: 4px; font-size: 12.5px; max-width: 300px;
+  }
+  #tooltip .nm { color: #cad7ff; }
+  #tooltip .nt { color: #6b7ba8; font-style: italic; margin-top: 3px; line-height: 1.35; }
+  #tl-bar {
+    left: 50%; transform: translateX(-50%); bottom: 44px; width: min(860px, 80vw);
+    pointer-events: auto; display: none; align-items: center; gap: 12px;
+    font-size: 12.5px; color: #8fa3d0;
+  }
+  body.timelapse:not(.chromeless) #tl-bar { display: flex; }
+  #tl-bar button {
+    background: #141b33; color: #8fa3d0; border: 1px solid #2c3a5e; border-radius: 4px;
+    font: inherit; padding: 3px 12px; cursor: pointer;
+  }
+  #tl-bar input[type=range] { flex: 1; accent-color: #5c6f9c; }
+  #tl-caption {
+    left: 50%; transform: translateX(-50%); bottom: 78px; font-size: 13px;
+    color: #8fa3d0; display: none; text-align: center;
+  }
+  body.timelapse #tl-caption { display: block; }
+  #tl-caption small { color: #5d6c94; }
+</style>
+</head>
+<body>
+<canvas id="sky"></canvas>
+
+<div id="title" class="hud">an invented sky — the planetarium<small>none of this is astronomy</small></div>
+<div id="rot" class="hud"></div>
+<div id="hint" class="hud">drag to look around · scroll to zoom · WASD/arrows turn · space pauses the sky · H horizon</div>
+<div id="honest" class="hud">invented sky · invented horizon</div>
+<div id="tooltip" class="hud"></div>
+<div id="tl-caption" class="hud"></div>
+<div id="tl-bar" class="hud">
+  <button id="tl-play">pause</button>
+  <input id="tl-slider" type="range" min="1" max="76" step="0.01" value="1">
+</div>
+
+<!-- BEGIN GENERATED DATA -- do not edit by hand; run _scripts/build_planetarium.py -->
+<script>window.SKY_DATA = {"method":"birth frame = git first-add commit mapped into _timelapse/frames.json; files committed after the timelapse run are clamped to the last frame (after=true). See _scripts/build_planetarium.py.","last_frame":76,"frames":[{"i":1,"sha":"d6f3314","at":"2026-07-30T22:03:14+00:00","subject":"an empty sky","author":"roshambo field run","n_constellations":0,"n_stars":0},{"i":2,"sha":"4249031","at":"2026-07-30T22:06:37+00:00","subject":"task 01: The Salt Crane, an 8-star crane in RA 0-40","author":"claude-code-1@ASUS-GEI","n_constellations":2,"n_stars":15},{"i":3,"sha":"ed5b8c6","at":"2026-07-30T22:10:48+00:00","subject":"task 03: The Drowned Bell, an 8-star bell in RA 80-120","author":"claude-code-1@ASUS-GEI","n_constellations":3,"n_stars":23},{"i":4,"sha":"6187e8b","at":"2026-07-30T22:12:28+00:00","subject":"task 04: stereographic projection about the north celestial pole","author":"claude-code-2@ASUS-GEI","n_constellations":3,"n_stars":23},{"i":5,"sha":"7215c66","at":"2026-07-30T22:16:07+00:00","subject":"task 05: The Amber Loom, an 8-star loom in RA 120-160","author":"claude-code-2@ASUS-GEI","n_constellations":5,"n_stars":38},{"i":6,"sha":"c937651","at":"2026-07-30T22:16:37+00:00","subject":"task 06: The Ferryman's Oar, a 7-star oar in RA 160-200","author":"claude-code-1@ASUS-GEI","n_constellations":5,"n_stars":38},{"i":7,"sha":"29a1c53","at":"2026-07-30T22:20:38+00:00","subject":"task 07: The Ashen Kite, an 8-star kite in RA 200-240","author":"claude-code-2@ASUS-GEI","n_constellations":6,"n_stars":46},{"i":8,"sha":"4c35430","at":"2026-07-30T22:22:14+00:00","subject":"task 08: the look of the sky - spectral colour ramp, eased star radii, indigo night","author":"claude-code-1@ASUS-GEI","n_constellations":6,"n_stars":46},{"i":9,"sha":"a3186b6","at":"2026-07-30T22:29:17+00:00","subject":"task 09: The Hollow Chalice, a 7-star chalice in RA 240-280","author":"kimi-1@ASUS-GEI","n_constellations":7,"n_stars":53},{"i":10,"sha":"f31a0f7","at":"2026-07-30T22:30:28+00:00","subject":"task 10: The Pale Anchor, a 7-star anchor in RA 280-320","author":"kimi-1@ASUS-GEI","n_constellations":8,"n_stars":60},{"i":11,"sha":"9d93672","at":"2026-07-30T22:31:49+00:00","subject":"task 11: The Quiet Harp, an 8-star harp in RA 320-360","author":"kimi-1@ASUS-GEI","n_constellations":9,"n_stars":68},{"i":12,"sha":"15a504e","at":"2026-07-30T22:44:54+00:00","subject":"task 02: add The Silver Veil constellation in RA 40-80","author":"agy@WORKSTATION-LG","n_constellations":10,"n_stars":74},{"i":13,"sha":"b0d59e5","at":"2026-07-30T22:45:28+00:00","subject":"task 12: title block, constellation index, and magnitude key","author":"agy@WORKSTATION-LG","n_constellations":10,"n_stars":74},{"i":14,"sha":"18e71e0","at":"2026-07-30T22:49:09+00:00","subject":"regenerate starmap.svg: include The Silver Veil, 10 constellations","author":"kimi-1@ASUS-GEI","n_constellations":10,"n_stars":74},{"i":15,"sha":"c18018b","at":"2026-07-30T22:51:39+00:00","subject":"report: kimi-1@ASUS-GEI and kimi-2@ASUS-GEI","author":"kimi-1@ASUS-GEI","n_constellations":10,"n_stars":74},{"i":16,"sha":"b29b0f3","at":"2026-07-30T22:52:00+00:00","subject":"task 08: graphic design style module","author":"agy-1@WORKSTATION-LG","n_constellations":10,"n_stars":74},{"i":17,"sha":"1a0802d","at":"2026-07-30T22:52:00+00:00","subject":"task 12: verify and maintain legend svg","author":"agy-1@WORKSTATION-LG","n_constellations":10,"n_stars":74},{"i":18,"sha":"b5a6d31","at":"2026-07-30T22:52:00+00:00","subject":"task 05: create constellation The Silver Spindle","author":"agy-4@WORKSTATION-LG","n_constellations":11,"n_stars":81},{"i":19,"sha":"bda8a7d","at":"2026-07-30T22:52:00+00:00","subject":"report: agy-1@WORKSTATION-LG","author":"roshambo field run","n_constellations":11,"n_stars":81},{"i":20,"sha":"12f1862","at":"2026-07-30T22:54:45+00:00","subject":"task 03: The Windlass, a 7-star winch in RA 80-120 (parallel to Drowned Bell)","author":"glm-1@ASUS-GEI","n_constellations":12,"n_stars":88},{"i":21,"sha":"901c0d4","at":"2026-07-30T22:54:45+00:00","subject":"task 09: The Quartz Comb, a 7-star comb in RA 268-278 (parallel to Hollow Chalice)","author":"glm-1@ASUS-GEI","n_constellations":13,"n_stars":95},{"i":22,"sha":"ab068bb","at":"2026-07-30T22:54:45+00:00","subject":"task 10: The Glass Eel, an 8-star eel in RA 306-314 (parallel to Pale Anchor)","author":"glm-1@ASUS-GEI","n_constellations":14,"n_stars":103},{"i":23,"sha":"fa890b9","at":"2026-07-30T22:56:14+00:00","subject":"regenerate starmap.svg: 11 constellations including The Silver Spindle","author":"kimi-1@ASUS-GEI","n_constellations":14,"n_stars":103},{"i":24,"sha":"c50fb07","at":"2026-07-30T22:56:38+00:00","subject":"tasks: second wave (13-22) - southern sky, scatter, grid, labels, catalogue, provenance","author":"roshambo field run","n_constellations":14,"n_stars":103},{"i":25,"sha":"547dd47","at":"2026-07-30T22:57:08+00:00","subject":"report: glm-1@ASUS-GEI","author":"glm-1@ASUS-GEI","n_constellations":14,"n_stars":103},{"i":26,"sha":"a8a3ebf","at":"2026-07-30T22:58:24+00:00","subject":"task 13: The Iron Tide, a 7-star southern swell in Dec -24..-45, RA 8..71","author":"kimi-2@ASUS-GEI","n_constellations":15,"n_stars":110},{"i":27,"sha":"e4a34a3","at":"2026-07-30T22:59:11+00:00","subject":"task 14: The Sunken Choir, a 7-star southern choir arc in RA 90-180","author":"kimi-1@ASUS-GEI","n_constellations":16,"n_stars":117},{"i":28,"sha":"4d5c4fe","at":"2026-07-30T22:59:17+00:00","subject":"task 08: verify look of the sky graphic design module","author":"agy-3@WORKSTATION-LG","n_constellations":16,"n_stars":117},{"i":29,"sha":"54afdc3","at":"2026-07-30T22:59:17+00:00","subject":"task 08: verify graphic design module","author":"agy-2@WORKSTATION-LG","n_constellations":16,"n_stars":117},{"i":30,"sha":"c0795f9","at":"2026-07-30T22:59:17+00:00","subject":"task 12: update title block and legend verification in starmap/legend.py","author":"agy-3@WORKSTATION-LG","n_constellations":17,"n_stars":123},{"i":31,"sha":"c45b0a3","at":"2026-07-30T22:59:17+00:00","subject":"report: agy-1@WORKSTATION-LG final 6-agy update","author":"roshambo field run","n_constellations":17,"n_stars":123},{"i":32,"sha":"bc11037","at":"2026-07-30T23:00:01+00:00","subject":"task 15: The Foundered Ark, a 7-star wrecked hull in Dec -24..-47, RA 188..220","author":"glm-1@ASUS-GEI","n_constellations":18,"n_stars":130},{"i":33,"sha":"f645d47","at":"2026-07-30T23:01:27+00:00","subject":"task 16: The Last Cairn, a 6-star cairn in Dec -29..-48, RA 283..344","author":"kimi-2@ASUS-GEI","n_constellations":19,"n_stars":136},{"i":34,"sha":"0058a97","at":"2026-07-30T23:02:18+00:00","subject":"task 17: add scatter.json with 80 faint background stars","author":"kimi-2@ASUS-GEI","n_constellations":19,"n_stars":136},{"i":35,"sha":"4f25b14","at":"2026-07-30T23:02:28+00:00","subject":"task 17: faint unnamed background scatter stars (80 stars, mag 4.5..6.5, full sphere)","author":"roshambo field run","n_constellations":19,"n_stars":136},{"i":36,"sha":"9543f4a","at":"2026-07-30T23:02:44+00:00","subject":"task 18: The River, 90 very faint stars in a sinusoidal band across the sphere","author":"glm-1@ASUS-GEI","n_constellations":19,"n_stars":136},{"i":37,"sha":"a8bf2e9","at":"2026-07-30T23:03:29+00:00","subject":"task 19: faint coordinate grid module (12 meridians, 5 parallels, never raises)","author":"kimi-1@ASUS-GEI","n_constellations":19,"n_stars":136},{"i":38,"sha":"f8eadde","at":"2026-07-30T23:04:33+00:00","subject":"task 18: dim river magnitudes into faint diffuse band (5.3..6.7, 90 stars, RA 0..360)","author":"roshambo field run","n_constellations":19,"n_stars":136},{"i":39,"sha":"0563e3d","at":"2026-07-30T23:04:44+00:00","subject":"task 20: starmap/labels.py - brightest-star labels, collision-safe, never raises","author":"kimi-2@ASUS-GEI","n_constellations":19,"n_stars":136},{"i":40,"sha":"9ccc562","at":"2026-07-30T23:07:23+00:00","subject":"task 22: PROVENANCE.md - agent/task provenance table from git log %h %an %s","author":"glm-1@ASUS-GEI","n_constellations":19,"n_stars":136},{"i":41,"sha":"8dbb220","at":"2026-07-30T23:08:01+00:00","subject":"task 21: CATALOGUE.md - 20 constellations indexed with name, band, stars, lore","author":"roshambo field run","n_constellations":20,"n_stars":143},{"i":42,"sha":"e18e2c1","at":"2026-07-30T23:08:36+00:00","subject":"report: glm-1@ASUS-GEI second wave update (tasks 15, 18, 22; denied 16, 17, 19, 20)","author":"glm-1@ASUS-GEI","n_constellations":20,"n_stars":143},{"i":43,"sha":"171088a","at":"2026-07-30T23:10:33+00:00","subject":"task 22: PROVENANCE.md - 42 commits, full agent/task history","author":"roshambo field run","n_constellations":20,"n_stars":143},{"i":44,"sha":"b3feb40","at":"2026-07-30T23:10:59+00:00","subject":"task 21: flesh out Barnacled Sextant lore in CATALOGUE.md","author":"roshambo field run","n_constellations":20,"n_stars":143},{"i":45,"sha":"9f44766","at":"2026-07-30T23:12:01+00:00","subject":"report: minimax-1@ASUS-GEI","author":"roshambo field run","n_constellations":20,"n_stars":143},{"i":46,"sha":"f22c01d","at":"2026-07-30T23:12:16+00:00","subject":"task 12: legend and title block module","author":"agy-3@WORKSTATION-LG","n_constellations":20,"n_stars":143},{"i":47,"sha":"e5aadb9","at":"2026-07-30T23:12:16+00:00","subject":"task 01: create constellation The Obsidian Beacon","author":"agy-1@WORKSTATION-LG","n_constellations":21,"n_stars":149},{"i":48,"sha":"aa14bab","at":"2026-07-30T23:12:16+00:00","subject":"report: agy-1@WORKSTATION-LG final complete run","author":"roshambo field run","n_constellations":21,"n_stars":149},{"i":49,"sha":"5d65859","at":"2026-07-30T23:12:51+00:00","subject":"report: glm-1@ASUS-GEI final close-out - all official tasks built, no open tasks remain","author":"glm-1@ASUS-GEI","n_constellations":21,"n_stars":149},{"i":50,"sha":"268bb6c","at":"2026-07-30T23:13:13+00:00","subject":"task 24: The Coral Quiver, a 7-star quiver between Kite and Chalice (RA 234-246)","author":"roshambo field run","n_constellations":22,"n_stars":156},{"i":51,"sha":"99c2eb3","at":"2026-07-30T23:14:38+00:00","subject":"tasks: third wave (23-27)","author":"roshambo field run","n_constellations":22,"n_stars":156},{"i":52,"sha":"0e33fe7","at":"2026-07-30T23:15:08+00:00","subject":"report: kimi-2@ASUS-GEI","author":"kimi-2@ASUS-GEI","n_constellations":22,"n_stars":156},{"i":53,"sha":"2d8c753","at":"2026-07-30T23:16:25+00:00","subject":"task 26: starmap/compass.py - restrained cardinal marks around the map edge","author":"kimi-2@ASUS-GEI","n_constellations":22,"n_stars":156},{"i":54,"sha":"667903d","at":"2026-07-30T23:17:30+00:00","subject":"task 27: READING-THE-MAP.md - a plain-language reader's note","author":"kimi-2@ASUS-GEI","n_constellations":22,"n_stars":156},{"i":55,"sha":"9eff1c3","at":"2026-07-30T23:17:57+00:00","subject":"task 25: add The Sulfur Anchor constellation (RA 73-91, Dec -44..-26)","author":"roshambo field run","n_constellations":23,"n_stars":163},{"i":56,"sha":"e60e21c","at":"2026-07-30T23:20:02+00:00","subject":"report: update kimi-1@ASUS-GEI with tasks 24-25","author":"roshambo field run","n_constellations":23,"n_stars":163},{"i":57,"sha":"c90afe5","at":"2026-07-30T23:21:01+00:00","subject":"tasks: fourth wave (28-33) - apply the CockroachDB agent skills","author":"roshambo field run","n_constellations":23,"n_stars":163},{"i":58,"sha":"d9c4694","at":"2026-07-30T23:22:00+00:00","subject":"task 25: data/curiosities.json - two doubles and a variable, with notes","author":"kimi-2@ASUS-GEI","n_constellations":23,"n_stars":163},{"i":59,"sha":"a6869a8","at":"2026-07-30T23:23:58+00:00","subject":"task 05: create constellation The Crystal Compass","author":"agy@WORKSTATION-LG","n_constellations":24,"n_stars":170},{"i":60,"sha":"5f99662","at":"2026-07-30T23:23:58+00:00","subject":"task 08: verify style module implementation","author":"agy@WORKSTATION-LG","n_constellations":25,"n_stars":176},{"i":61,"sha":"1de9950","at":"2026-07-30T23:23:58+00:00","subject":"task 08: graphic design style module","author":"agy@WORKSTATION-LG","n_constellations":26,"n_stars":182},{"i":62,"sha":"4b344fa","at":"2026-07-30T23:23:58+00:00","subject":"task 12: verify and maintain legend and title block","author":"agy@WORKSTATION-LG","n_constellations":26,"n_stars":182},{"i":63,"sha":"a147e98","at":"2026-07-30T23:23:59+00:00","subject":"task 06: create silver sundial constellation in RA 160-200","author":"agy@WORKSTATION-LG","n_constellations":27,"n_stars":188},{"i":64,"sha":"7a52038","at":"2026-07-30T23:25:22+00:00","subject":"task 33: The Lanternfish, a 7-star far-south fish, all Dec below -50","author":"kimi-2@ASUS-GEI","n_constellations":28,"n_stars":195},{"i":65,"sha":"56393f5","at":"2026-07-30T23:25:48+00:00","subject":"task 08: verify graphic design style module","author":"agy@WORKSTATION-LG","n_constellations":28,"n_stars":195},{"i":66,"sha":"db0626f","at":"2026-07-30T23:25:48+00:00","subject":"task 08: verify look of the sky module","author":"agy@WORKSTATION-LG","n_constellations":28,"n_stars":195},{"i":67,"sha":"ab28d53","at":"2026-07-30T23:26:43+00:00","subject":"task 32: resilience review \u2014 lease TTL on client/node death (skill missing in repo, best-effort from code + live DB)","author":"glm-1@ASUS-GEI","n_constellations":28,"n_stars":195},{"i":68,"sha":"d991e8d","at":"2026-07-30T23:27:00+00:00","subject":"task 29: observability pass (skill cockroachdb-observability-and-diagnostics)","author":"roshambo field run","n_constellations":28,"n_stars":195},{"i":69,"sha":"cd1a6cb","at":"2026-07-30T23:27:31+00:00","subject":"task 30: performance and scaling read (skill cockroachdb-performance-and-scaling)","author":"roshambo field run","n_constellations":28,"n_stars":195},{"i":70,"sha":"47f0b35","at":"2026-07-30T23:28:03+00:00","subject":"task 31: cost and usage management (skill cockroachdb-cost-and-usage-management)","author":"roshambo field run","n_constellations":28,"n_stars":195},{"i":71,"sha":"41c90b1","at":"2026-07-30T23:28:19+00:00","subject":"task 32: resilience question (skill cockroachdb-resilience-and-disaster-recovery)","author":"roshambo field run","n_constellations":28,"n_stars":195},{"i":72,"sha":"1c963c7","at":"2026-07-30T23:28:40+00:00","subject":"task 33: The Frost Astrolabe, a 6-star constellation in far south Dec -55..-78","author":"roshambo field run","n_constellations":29,"n_stars":201},{"i":73,"sha":"b0ba88f","at":"2026-07-30T23:28:57+00:00","subject":"report: agy-1@WORKSTATION-LG final complete run with skills","author":"roshambo field run","n_constellations":29,"n_stars":201},{"i":74,"sha":"4640a36","at":"2026-07-30T23:30:26+00:00","subject":"report: operator (Claude Code) - field run account, incl. own errors and negative findings","author":"roshambo field run","n_constellations":29,"n_stars":201},{"i":75,"sha":"cdef296","at":"2026-07-30T23:33:41+00:00","subject":"report: kimi-1@ASUS-GEI wave 4 (task 29; denied 28, repo contention)","author":"kimi-1@ASUS-GEI","n_constellations":29,"n_stars":201},{"i":76,"sha":"704be8b","at":"2026-07-30T23:35:13+00:00","subject":"report: kimi-2@ASUS-GEI final (8 tasks incl. 13,16,17,20,25,26,27,33 + task 30 addendum)","author":"kimi-1@ASUS-GEI","n_constellations":29,"n_stars":201}],"constellations":[{"slug":"01-obsidian-beacon","name":"The Obsidian Beacon","abbr":"obc","frame":47,"after":false,"stars":[{"id":"obc-a","ra":5.2,"dec":15.0,"mag":1.1,"sp":"B"},{"id":"obc-b","ra":12.8,"dec":28.4,"mag":2.3,"sp":"O"},{"id":"obc-c","ra":22.1,"dec":35.6,"mag":3.4,"sp":"A"},{"id":"obc-d","ra":31.5,"dec":20.2,"mag":1.9,"sp":"F"},{"id":"obc-e","ra":37.0,"dec":-5.5,"mag":4.1,"sp":"K"},{"id":"obc-f","ra":18.3,"dec":-12.1,"mag":2.7,"sp":"M"}],"lines":[["obc-a","obc-b"],["obc-b","obc-c"],["obc-c","obc-d"],["obc-d","obc-e"],["obc-e","obc-f"],["obc-f","obc-a"],["obc-b","obc-e"]]},{"slug":"01-salt-crane","name":"The Salt Crane","abbr":"SCr","frame":2,"after":false,"stars":[{"id":"scr-beak","ra":4.5,"dec":44.0,"mag":3.4,"sp":"M"},{"id":"scr-foot","ra":13.0,"dec":9.0,"mag":4.1,"sp":"M"},{"id":"scr-head","ra":7.2,"dec":41.5,"mag":1.1,"sp":"A"},{"id":"scr-knee","ra":15.0,"dec":16.5,"mag":3.0,"sp":"K"},{"id":"scr-neck","ra":11.0,"dec":33.0,"mag":2.2,"sp":"F"},{"id":"scr-shoulder","ra":16.5,"dec":27.5,"mag":0.4,"sp":"B"},{"id":"scr-tail","ra":30.5,"dec":24.0,"mag":1.9,"sp":"G"},{"id":"scr-wing","ra":24.0,"dec":34.5,"mag":2.6,"sp":"K"}],"lines":[["scr-beak","scr-head"],["scr-head","scr-neck"],["scr-neck","scr-shoulder"],["scr-shoulder","scr-wing"],["scr-wing","scr-tail"],["scr-tail","scr-shoulder"],["scr-shoulder","scr-knee"],["scr-knee","scr-foot"]]},{"slug":"01-silver-bell","name":"The Silver Bell","abbr":"sbl","frame":60,"after":false,"stars":[{"id":"sbl-a","ra":8.5,"dec":32.0,"mag":1.4,"sp":"B"},{"id":"sbl-b","ra":14.2,"dec":41.5,"mag":2.6,"sp":"A"},{"id":"sbl-c","ra":25.1,"dec":38.0,"mag":3.1,"sp":"F"},{"id":"sbl-d","ra":32.4,"dec":25.8,"mag":2.0,"sp":"G"},{"id":"sbl-e","ra":28.0,"dec":12.4,"mag":4.2,"sp":"K"},{"id":"sbl-f","ra":15.6,"dec":18.2,"mag":3.8,"sp":"M"}],"lines":[["sbl-a","sbl-b"],["sbl-b","sbl-c"],["sbl-c","sbl-d"],["sbl-d","sbl-e"],["sbl-e","sbl-f"],["sbl-f","sbl-a"],["sbl-b","sbl-e"]]},{"slug":"01-silver-lantern","name":"The Silver Lantern","abbr":"Sla","frame":76,"after":true,"stars":[{"id":"sla-a","ra":10.5,"dec":35.0,"mag":1.1,"sp":"B"},{"id":"sla-b","ra":18.2,"dec":42.1,"mag":2.3,"sp":"A"},{"id":"sla-c","ra":25.4,"dec":28.5,"mag":3.4,"sp":"F"},{"id":"sla-d","ra":32.1,"dec":15.0,"mag":1.8,"sp":"O"},{"id":"sla-e","ra":22.0,"dec":10.2,"mag":4.1,"sp":"K"},{"id":"sla-f","ra":15.0,"dec":20.8,"mag":2.9,"sp":"G"}],"lines":[["sla-a","sla-b"],["sla-b","sla-c"],["sla-c","sla-d"],["sla-d","sla-e"],["sla-e","sla-f"],["sla-f","sla-a"],["sla-a","sla-c"]]},{"slug":"01-silver-loom-agy","name":"The Silver Loom","abbr":"SlvL","frame":76,"after":true,"stars":[{"id":"SlvL-a","ra":5.2,"dec":15.4,"mag":1.4,"sp":"B"},{"id":"SlvL-b","ra":14.8,"dec":22.1,"mag":2.3,"sp":"A"},{"id":"SlvL-c","ra":28.5,"dec":18.0,"mag":3.1,"sp":"F"},{"id":"SlvL-d","ra":35.1,"dec":8.5,"mag":2.7,"sp":"G"},{"id":"SlvL-e","ra":22.0,"dec":-5.2,"mag":4.0,"sp":"K"},{"id":"SlvL-f","ra":10.1,"dec":-12.3,"mag":3.6,"sp":"M"}],"lines":[["SlvL-a","SlvL-b"],["SlvL-b","SlvL-c"],["SlvL-c","SlvL-d"],["SlvL-d","SlvL-e"],["SlvL-e","SlvL-f"],["SlvL-f","SlvL-a"],["SlvL-b","SlvL-e"]]},{"slug":"01-silver-loom","name":"The Silver Loom","abbr":"Slm","frame":30,"after":false,"stars":[{"id":"slm-a","ra":5.2,"dec":15.4,"mag":1.4,"sp":"B"},{"id":"slm-b","ra":12.8,"dec":28.1,"mag":2.5,"sp":"A"},{"id":"slm-c","ra":22.1,"dec":35.6,"mag":3.1,"sp":"F"},{"id":"slm-d","ra":31.4,"dec":22.8,"mag":2.2,"sp":"K"},{"id":"slm-e","ra":36.9,"dec":8.5,"mag":4.0,"sp":"M"},{"id":"slm-f","ra":18.3,"dec":-12.3,"mag":3.7,"sp":"G"}],"lines":[["slm-a","slm-b"],["slm-b","slm-c"],["slm-c","slm-d"],["slm-d","slm-e"],["slm-a","slm-f"],["slm-f","slm-d"]]},{"slug":"01-silver-weaver","name":"The Silver Weaver","abbr":"Wea","frame":76,"after":true,"stars":[{"id":"wea-a","ra":5.2,"dec":12.5,"mag":-0.5,"sp":"B"},{"id":"wea-b","ra":14.8,"dec":28.1,"mag":1.4,"sp":"A"},{"id":"wea-c","ra":25.1,"dec":45.0,"mag":2.3,"sp":"F"},{"id":"wea-d","ra":32.7,"dec":18.9,"mag":3.1,"sp":"G"},{"id":"wea-e","ra":38.0,"dec":-15.4,"mag":4.2,"sp":"K"},{"id":"wea-f","ra":20.3,"dec":-5.0,"mag":2.9,"sp":"M"}],"lines":[["wea-a","wea-b"],["wea-b","wea-c"],["wea-c","wea-d"],["wea-d","wea-e"],["wea-e","wea-f"],["wea-f","wea-a"]]},{"slug":"02-broken-anvil","name":"The Broken Anvil","abbr":"Anv","frame":2,"after":false,"stars":[{"id":"anv-basel","ra":52.6,"dec":24.1,"mag":1.9,"sp":"G"},{"id":"anv-baser","ra":67.0,"dec":24.4,"mag":2.9,"sp":"K"},{"id":"anv-horn","ra":44.2,"dec":38.6,"mag":1.4,"sp":"B"},{"id":"anv-topl","ra":52.0,"dec":41.2,"mag":0.6,"sp":"A"},{"id":"anv-topr","ra":68.4,"dec":42.5,"mag":2.1,"sp":"F"},{"id":"anv-waistl","ra":55.3,"dec":32.0,"mag":3.4,"sp":"K"},{"id":"anv-waistr","ra":64.1,"dec":32.6,"mag":4.2,"sp":"M"}],"lines":[["anv-horn","anv-topl"],["anv-topl","anv-topr"],["anv-topl","anv-waistl"],["anv-topr","anv-waistr"],["anv-waistl","anv-waistr"],["anv-waistl","anv-basel"],["anv-waistr","anv-baser"],["anv-basel","anv-baser"]]},{"slug":"02-broken-wheel","name":"The Broken Wheel","abbr":"Bwh","frame":76,"after":true,"stars":[{"id":"bwh-a","ra":45.2,"dec":15.3,"mag":1.4,"sp":"B"},{"id":"bwh-b","ra":52.8,"dec":28.1,"mag":2.5,"sp":"A"},{"id":"bwh-c","ra":67.1,"dec":32.4,"mag":3.1,"sp":"F"},{"id":"bwh-d","ra":74.5,"dec":18.9,"mag":2.2,"sp":"G"},{"id":"bwh-e","ra":68.0,"dec":5.2,"mag":3.8,"sp":"K"},{"id":"bwh-f","ra":54.3,"dec":2.7,"mag":4.1,"sp":"M"}],"lines":[["bwh-a","bwh-b"],["bwh-b","bwh-c"],["bwh-c","bwh-d"],["bwh-d","bwh-e"],["bwh-e","bwh-f"],["bwh-f","bwh-a"],["bwh-a","bwh-c"]]},{"slug":"02-silver-veil","name":"The Silver Veil","abbr":"SVl","frame":12,"after":false,"stars":[{"id":"svl-a","ra":42.5,"dec":45.2,"mag":1.4,"sp":"A"},{"id":"svl-b","ra":51.0,"dec":38.6,"mag":2.2,"sp":"B"},{"id":"svl-c","ra":62.4,"dec":52.1,"mag":3.1,"sp":"F"},{"id":"svl-d","ra":71.8,"dec":33.7,"mag":2.6,"sp":"G"},{"id":"svl-e","ra":77.2,"dec":48.0,"mag":3.8,"sp":"K"},{"id":"svl-f","ra":56.7,"dec":25.4,"mag":4.1,"sp":"M"}],"lines":[["svl-a","svl-b"],["svl-b","svl-c"],["svl-c","svl-e"],["svl-b","svl-d"],["svl-d","svl-f"]]},{"slug":"03-drowned-bell","name":"The Drowned Bell","abbr":"DBl","frame":3,"after":false,"stars":[{"id":"dbl-clapper","ra":108.0,"dec":-47.0,"mag":4.4,"sp":"M"},{"id":"dbl-crown","ra":100.0,"dec":-6.0,"mag":1.5,"sp":"A"},{"id":"dbl-flank-e","ra":112.0,"dec":-26.5,"mag":2.1,"sp":"K"},{"id":"dbl-flank-w","ra":88.0,"dec":-25.0,"mag":0.7,"sp":"B"},{"id":"dbl-lip-e","ra":115.5,"dec":-38.0,"mag":2.4,"sp":"K"},{"id":"dbl-lip-w","ra":84.5,"dec":-36.5,"mag":3.9,"sp":"M"},{"id":"dbl-yoke-e","ra":105.5,"dec":-13.0,"mag":3.3,"sp":"G"},{"id":"dbl-yoke-w","ra":94.5,"dec":-12.5,"mag":2.9,"sp":"F"}],"lines":[["dbl-crown","dbl-yoke-w"],["dbl-crown","dbl-yoke-e"],["dbl-yoke-w","dbl-flank-w"],["dbl-yoke-e","dbl-flank-e"],["dbl-flank-w","dbl-lip-w"],["dbl-flank-e","dbl-lip-e"],["dbl-lip-w","dbl-lip-e"],["dbl-lip-e","dbl-clapper"]]},{"slug":"03-heron","name":"The Heron","abbr":"Her","frame":76,"after":true,"stars":[{"id":"her-a","ra":85.2,"dec":15.4,"mag":-0.5,"sp":"B"},{"id":"her-b","ra":92.0,"dec":30.1,"mag":1.8,"sp":"A"},{"id":"her-c","ra":101.5,"dec":42.8,"mag":2.4,"sp":"O"},{"id":"her-d","ra":112.3,"dec":22.0,"mag":3.1,"sp":"G"},{"id":"her-e","ra":105.8,"dec":5.2,"mag":4.0,"sp":"K"},{"id":"her-f","ra":118.6,"dec":-12.4,"mag":2.9,"sp":"M"}],"lines":[["her-a","her-b"],["her-b","her-c"],["her-b","her-d"],["her-d","her-e"],["her-e","her-f"]]},{"slug":"03-windlass","name":"The Windlass","abbr":"Wla","frame":20,"after":false,"stars":[{"id":"wla-cable","ra":100.0,"dec":22.0,"mag":3.6,"sp":"K"},{"id":"wla-drum","ra":100.0,"dec":40.0,"mag":1.0,"sp":"B"},{"id":"wla-handle-n","ra":96.0,"dec":50.0,"mag":2.4,"sp":"A"},{"id":"wla-handle-s","ra":104.0,"dec":48.0,"mag":2.7,"sp":"F"},{"id":"wla-hook","ra":100.0,"dec":10.0,"mag":1.8,"sp":"B"},{"id":"wla-pawl","ra":108.0,"dec":35.0,"mag":3.2,"sp":"G"},{"id":"wla-ratchet","ra":92.0,"dec":32.0,"mag":2.0,"sp":"A"}],"lines":[["wla-drum","wla-handle-n"],["wla-drum","wla-handle-s"],["wla-drum","wla-ratchet"],["wla-ratchet","wla-pawl"],["wla-drum","wla-cable"],["wla-cable","wla-hook"]]},{"slug":"05-amber-loom","name":"The Amber Loom","abbr":"ALm","frame":5,"after":false,"stars":[{"id":"alm-beam","ra":123.0,"dec":35.5,"mag":0.4,"sp":"O"},{"id":"alm-crown","ra":125.0,"dec":52.0,"mag":1.3,"sp":"B"},{"id":"alm-foot-e","ra":149.0,"dec":15.0,"mag":2.5,"sp":"K"},{"id":"alm-foot-w","ra":126.5,"dec":17.5,"mag":3.6,"sp":"G"},{"id":"alm-heddle","ra":151.5,"dec":32.0,"mag":3.2,"sp":"F"},{"id":"alm-peak","ra":153.0,"dec":48.5,"mag":2.7,"sp":"A"},{"id":"alm-shuttle","ra":137.0,"dec":34.0,"mag":1.9,"sp":"K"},{"id":"alm-thread","ra":139.5,"dec":24.0,"mag":4.3,"sp":"M"}],"lines":[["alm-crown","alm-peak"],["alm-crown","alm-beam"],["alm-beam","alm-foot-w"],["alm-peak","alm-heddle"],["alm-heddle","alm-foot-e"],["alm-beam","alm-shuttle"],["alm-shuttle","alm-heddle"],["alm-shuttle","alm-thread"],["alm-foot-w","alm-foot-e"]]},{"slug":"05-crystal-compass","name":"The Crystal Compass","abbr":"ccp","frame":59,"after":false,"stars":[{"id":"ccp-c","ra":140.0,"dec":20.0,"mag":0.8,"sp":"G"},{"id":"ccp-e","ra":155.0,"dec":20.0,"mag":1.5,"sp":"B"},{"id":"ccp-n","ra":140.0,"dec":45.0,"mag":-0.2,"sp":"O"},{"id":"ccp-ne","ra":148.0,"dec":33.0,"mag":3.8,"sp":"K"},{"id":"ccp-s","ra":140.0,"dec":-0.5,"mag":2.1,"sp":"A"},{"id":"ccp-sw","ra":132.0,"dec":8.0,"mag":4.3,"sp":"M"},{"id":"ccp-w","ra":125.0,"dec":20.0,"mag":2.7,"sp":"F"}],"lines":[["ccp-n","ccp-c"],["ccp-s","ccp-c"],["ccp-e","ccp-c"],["ccp-w","ccp-c"],["ccp-n","ccp-ne"],["ccp-ne","ccp-e"],["ccp-s","ccp-sw"],["ccp-sw","ccp-w"]]},{"slug":"05-golden-compass","name":"The Golden Compass","abbr":"Gcp","frame":76,"after":true,"stars":[{"id":"gcp-a","ra":125.0,"dec":45.0,"mag":0.8,"sp":"F"},{"id":"gcp-b","ra":132.5,"dec":30.0,"mag":2.1,"sp":"A"},{"id":"gcp-c","ra":147.5,"dec":30.0,"mag":2.4,"sp":"G"},{"id":"gcp-d","ra":140.0,"dec":15.0,"mag":1.5,"sp":"B"},{"id":"gcp-e","ra":140.0,"dec":-5.0,"mag":3.6,"sp":"K"},{"id":"gcp-f","ra":155.0,"dec":40.0,"mag":4.2,"sp":"M"}],"lines":[["gcp-a","gcp-b"],["gcp-a","gcp-c"],["gcp-b","gcp-c"],["gcp-b","gcp-d"],["gcp-c","gcp-d"],["gcp-d","gcp-e"],["gcp-c","gcp-f"]]},{"slug":"05-silver-spindle","name":"The Silver Spindle","abbr":"Spi","frame":18,"after":false,"stars":[{"id":"spi-hip","ra":147.5,"dec":18.0,"mag":1.9,"sp":"K"},{"id":"spi-left","ra":142.0,"dec":28.5,"mag":3.1,"sp":"F"},{"id":"spi-neck","ra":129.0,"dec":31.5,"mag":2.2,"sp":"A"},{"id":"spi-right","ra":131.0,"dec":20.5,"mag":2.7,"sp":"G"},{"id":"spi-tip","ra":154.0,"dec":10.5,"mag":4.2,"sp":"M"},{"id":"spi-top","ra":124.5,"dec":38.0,"mag":0.8,"sp":"B"},{"id":"spi-waist","ra":136.5,"dec":25.0,"mag":-0.4,"sp":"O"}],"lines":[["spi-top","spi-neck"],["spi-neck","spi-waist"],["spi-waist","spi-left"],["spi-waist","spi-right"],["spi-left","spi-hip"],["spi-right","spi-hip"],["spi-hip","spi-tip"]]},{"slug":"06-ferrymans-oar","name":"The Ferryman's Oar","abbr":"Oar","frame":5,"after":false,"stars":[{"id":"oar-blade-e","ra":191.0,"dec":-14.0,"mag":1.7,"sp":"G"},{"id":"oar-blade-w","ra":171.0,"dec":-17.5,"mag":3.4,"sp":"K"},{"id":"oar-collar","ra":168.5,"dec":31.0,"mag":3.8,"sp":"M"},{"id":"oar-grip","ra":165.0,"dec":42.0,"mag":2.6,"sp":"F"},{"id":"oar-shaft","ra":174.0,"dec":14.0,"mag":0.9,"sp":"B"},{"id":"oar-throat","ra":179.5,"dec":-3.0,"mag":2.2,"sp":"A"},{"id":"oar-tip","ra":184.0,"dec":-33.0,"mag":4.3,"sp":"M"}],"lines":[["oar-grip","oar-collar"],["oar-collar","oar-shaft"],["oar-shaft","oar-throat"],["oar-throat","oar-blade-w"],["oar-throat","oar-blade-e"],["oar-blade-w","oar-tip"],["oar-blade-e","oar-tip"]]},{"slug":"06-obsidian-mirror","name":"The Obsidian Mirror","abbr":"Mir","frame":76,"after":true,"stars":[{"id":"mir-a","ra":165.2,"dec":42.1,"mag":0.8,"sp":"B"},{"id":"mir-b","ra":172.5,"dec":35.8,"mag":2.1,"sp":"A"},{"id":"mir-c","ra":184.0,"dec":28.4,"mag":3.4,"sp":"F"},{"id":"mir-d","ra":193.6,"dec":36.5,"mag":1.9,"sp":"O"},{"id":"mir-e","ra":188.1,"dec":48.0,"mag":2.7,"sp":"K"},{"id":"mir-f","ra":175.8,"dec":51.3,"mag":4.1,"sp":"M"}],"lines":[["mir-a","mir-b"],["mir-b","mir-c"],["mir-c","mir-d"],["mir-d","mir-e"],["mir-e","mir-f"],["mir-f","mir-a"]]},{"slug":"06-silver-sundial","name":"The Silver Sundial","abbr":"Sdl","frame":61,"after":false,"stars":[{"id":"sdl-a","ra":165.2,"dec":15.4,"mag":1.4,"sp":"B"},{"id":"sdl-b","ra":172.8,"dec":28.1,"mag":2.6,"sp":"A"},{"id":"sdl-c","ra":180.5,"dec":35.0,"mag":3.1,"sp":"F"},{"id":"sdl-d","ra":188.1,"dec":24.2,"mag":2.9,"sp":"G"},{"id":"sdl-e","ra":195.4,"dec":12.0,"mag":3.8,"sp":"K"},{"id":"sdl-f","ra":180.0,"dec":18.5,"mag":2.1,"sp":"O"}],"lines":[["sdl-a","sdl-b"],["sdl-b","sdl-c"],["sdl-c","sdl-d"],["sdl-d","sdl-e"],["sdl-a","sdl-e"],["sdl-f","sdl-c"],["sdl-f","sdl-a"],["sdl-f","sdl-e"]]},{"slug":"07-ashen-kite","name":"The Ashen Kite","abbr":"Kit","frame":7,"after":false,"stars":[{"id":"kit-east","ra":231.5,"dec":28.0,"mag":1.9,"sp":"B"},{"id":"kit-keel","ra":220.5,"dec":14.0,"mag":3.1,"sp":"F"},{"id":"kit-knot-a","ra":225.5,"dec":3.0,"mag":3.3,"sp":"G"},{"id":"kit-knot-b","ra":213.0,"dec":-8.0,"mag":4.5,"sp":"M"},{"id":"kit-knot-c","ra":228.0,"dec":-20.0,"mag":2.7,"sp":"K"},{"id":"kit-nose","ra":219.0,"dec":46.0,"mag":0.6,"sp":"O"},{"id":"kit-spool","ra":202.0,"dec":55.0,"mag":4.2,"sp":"M"},{"id":"kit-west","ra":206.5,"dec":31.0,"mag":2.4,"sp":"A"}],"lines":[["kit-nose","kit-west"],["kit-west","kit-keel"],["kit-keel","kit-east"],["kit-east","kit-nose"],["kit-nose","kit-keel"],["kit-west","kit-east"],["kit-keel","kit-knot-a"],["kit-knot-a","kit-knot-b"],["kit-knot-b","kit-knot-c"],["kit-nose","kit-spool"]]},{"slug":"07-crimson-chariot","name":"The Crimson Chariot","abbr":"Cha","frame":76,"after":true,"stars":[{"id":"cha-a","ra":205.5,"dec":35.0,"mag":-0.2,"sp":"M"},{"id":"cha-b","ra":215.2,"dec":48.1,"mag":1.5,"sp":"K"},{"id":"cha-c","ra":228.0,"dec":42.3,"mag":2.4,"sp":"A"},{"id":"cha-d","ra":235.4,"dec":25.8,"mag":3.2,"sp":"F"},{"id":"cha-e","ra":222.1,"dec":10.4,"mag":2.8,"sp":"G"},{"id":"cha-f","ra":210.8,"dec":18.2,"mag":4.1,"sp":"B"}],"lines":[["cha-a","cha-b"],["cha-b","cha-c"],["cha-c","cha-d"],["cha-d","cha-e"],["cha-e","cha-f"],["cha-f","cha-a"],["cha-b","cha-e"]]},{"slug":"07-obsidian-mirror","name":"The Obsidian Mirror","abbr":"Mir","frame":61,"after":false,"stars":[{"id":"mir-a","ra":205.2,"dec":12.5,"mag":1.4,"sp":"B"},{"id":"mir-b","ra":215.8,"dec":28.1,"mag":2.7,"sp":"A"},{"id":"mir-c","ra":228.4,"dec":35.6,"mag":3.2,"sp":"F"},{"id":"mir-d","ra":234.1,"dec":18.3,"mag":2.1,"sp":"K"},{"id":"mir-e","ra":222.0,"dec":-5.4,"mag":4.0,"sp":"M"},{"id":"mir-f","ra":208.7,"dec":-2.1,"mag":3.6,"sp":"G"}],"lines":[["mir-a","mir-b"],["mir-b","mir-c"],["mir-c","mir-d"],["mir-d","mir-e"],["mir-e","mir-f"],["mir-f","mir-a"],["mir-a","mir-d"]]},{"slug":"09-celestial-lyre","name":"The Celestial Lyre","abbr":"Lyr","frame":76,"after":true,"stars":[{"id":"lyr-a","ra":245.5,"dec":38.2,"mag":-0.5,"sp":"A"},{"id":"lyr-b","ra":252.1,"dec":32.7,"mag":3.2,"sp":"B"},{"id":"lyr-c","ra":258.4,"dec":28.1,"mag":2.1,"sp":"K"},{"id":"lyr-d","ra":265.0,"dec":15.4,"mag":4.5,"sp":"M"},{"id":"lyr-e","ra":271.3,"dec":-10.2,"mag":1.8,"sp":"F"},{"id":"lyr-f","ra":276.8,"dec":5.6,"mag":3.8,"sp":"G"}],"lines":[["lyr-a","lyr-b"],["lyr-b","lyr-c"],["lyr-c","lyr-d"],["lyr-d","lyr-e"],["lyr-e","lyr-f"],["lyr-f","lyr-b"]]},{"slug":"09-hollow-chalice","name":"The Hollow Chalice","abbr":"Cha","frame":9,"after":false,"stars":[{"id":"cha-bowl","ra":252.0,"dec":15.0,"mag":2.9,"sp":"F"},{"id":"cha-drop","ra":264.5,"dec":10.0,"mag":4.6,"sp":"M"},{"id":"cha-foot","ra":250.0,"dec":-3.0,"mag":3.1,"sp":"K"},{"id":"cha-lip-e","ra":259.0,"dec":23.5,"mag":1.2,"sp":"B"},{"id":"cha-lip-w","ra":246.0,"dec":22.0,"mag":1.8,"sp":"B"},{"id":"cha-rim","ra":252.5,"dec":26.0,"mag":2.6,"sp":"A"},{"id":"cha-stem","ra":253.5,"dec":6.0,"mag":3.4,"sp":"G"}],"lines":[["cha-lip-w","cha-rim"],["cha-rim","cha-lip-e"],["cha-lip-w","cha-bowl"],["cha-lip-e","cha-bowl"],["cha-bowl","cha-stem"],["cha-stem","cha-foot"],["cha-lip-e","cha-drop"]]},{"slug":"09-quartz-comb","name":"The Quartz Comb","abbr":"Qco","frame":21,"after":false,"stars":[{"id":"qco-bar","ra":270.0,"dec":50.0,"mag":1.8,"sp":"B"},{"id":"qco-grip","ra":276.0,"dec":52.0,"mag":1.3,"sp":"A"},{"id":"qco-t1","ra":268.0,"dec":44.0,"mag":3.0,"sp":"F"},{"id":"qco-t2","ra":270.0,"dec":42.0,"mag":3.4,"sp":"G"},{"id":"qco-t3","ra":272.0,"dec":42.0,"mag":3.6,"sp":"K"},{"id":"qco-t4","ra":274.0,"dec":43.0,"mag":3.3,"sp":"G"},{"id":"qco-t5","ra":276.0,"dec":45.0,"mag":3.0,"sp":"F"}],"lines":[["qco-grip","qco-bar"],["qco-bar","qco-t1"],["qco-bar","qco-t2"],["qco-bar","qco-t3"],["qco-bar","qco-t4"],["qco-bar","qco-t5"]]},{"slug":"10-crystal-tower","name":"The Crystal Tower","abbr":"Tow","frame":76,"after":true,"stars":[{"id":"tow-a","ra":285.5,"dec":42.0,"mag":1.1,"sp":"B"},{"id":"tow-b","ra":292.0,"dec":30.5,"mag":2.4,"sp":"A"},{"id":"tow-c","ra":298.5,"dec":18.0,"mag":3.0,"sp":"F"},{"id":"tow-d","ra":305.0,"dec":32.0,"mag":2.1,"sp":"O"},{"id":"tow-e","ra":312.5,"dec":45.0,"mag":3.8,"sp":"K"},{"id":"tow-f","ra":298.0,"dec":50.0,"mag":4.2,"sp":"M"}],"lines":[["tow-a","tow-b"],["tow-b","tow-c"],["tow-c","tow-d"],["tow-d","tow-e"],["tow-e","tow-f"],["tow-f","tow-a"],["tow-b","tow-d"]]},{"slug":"10-glass-eel","name":"The Glass Eel","abbr":"Gee","frame":22,"after":false,"stars":[{"id":"gee-body1","ra":312.0,"dec":-10.0,"mag":2.4,"sp":"G"},{"id":"gee-body2","ra":314.0,"dec":-20.0,"mag":2.8,"sp":"K"},{"id":"gee-body3","ra":310.0,"dec":-30.0,"mag":3.2,"sp":"M"},{"id":"gee-body4","ra":314.0,"dec":-40.0,"mag":3.5,"sp":"K"},{"id":"gee-gill","ra":310.0,"dec":-2.0,"mag":2.6,"sp":"B"},{"id":"gee-head","ra":308.0,"dec":0.0,"mag":1.2,"sp":"A"},{"id":"gee-jaw","ra":306.0,"dec":-3.0,"mag":3.0,"sp":"F"},{"id":"gee-tail","ra":312.0,"dec":-48.0,"mag":4.0,"sp":"M"}],"lines":[["gee-head","gee-jaw"],["gee-head","gee-gill"],["gee-gill","gee-body1"],["gee-body1","gee-body2"],["gee-body2","gee-body3"],["gee-body3","gee-body4"],["gee-body4","gee-tail"]]},{"slug":"10-pale-anchor","name":"The Pale Anchor","abbr":"Anc","frame":10,"after":false,"stars":[{"id":"anc-crown","ra":291.5,"dec":4.0,"mag":2.5,"sp":"F"},{"id":"anc-fluke-e","ra":300.0,"dec":9.5,"mag":4.3,"sp":"M"},{"id":"anc-fluke-w","ra":283.5,"dec":8.0,"mag":3.8,"sp":"K"},{"id":"anc-ring","ra":291.5,"dec":40.0,"mag":1.5,"sp":"A"},{"id":"anc-shank","ra":291.0,"dec":20.0,"mag":2.2,"sp":"B"},{"id":"anc-stock-e","ra":298.0,"dec":27.0,"mag":2.7,"sp":"G"},{"id":"anc-stock-w","ra":285.0,"dec":28.0,"mag":3.0,"sp":"F"}],"lines":[["anc-ring","anc-shank"],["anc-shank","anc-stock-w"],["anc-shank","anc-stock-e"],["anc-shank","anc-crown"],["anc-crown","anc-fluke-w"],["anc-crown","anc-fluke-e"]]},{"slug":"11-phoenix-feather","name":"The Phoenix Feather","abbr":"Phe","frame":76,"after":true,"stars":[{"id":"phe-a","ra":325.0,"dec":15.0,"mag":-0.5,"sp":"O"},{"id":"phe-b","ra":332.5,"dec":28.0,"mag":1.4,"sp":"B"},{"id":"phe-c","ra":340.0,"dec":38.0,"mag":2.2,"sp":"A"},{"id":"phe-d","ra":348.5,"dec":45.0,"mag":3.1,"sp":"F"},{"id":"phe-e","ra":355.0,"dec":50.0,"mag":4.5,"sp":"M"},{"id":"phe-f","ra":335.0,"dec":10.0,"mag":2.9,"sp":"G"},{"id":"phe-g","ra":345.0,"dec":20.0,"mag":3.7,"sp":"K"}],"lines":[["phe-a","phe-b"],["phe-b","phe-c"],["phe-c","phe-d"],["phe-d","phe-e"],["phe-a","phe-f"],["phe-b","phe-g"]]},{"slug":"11-quiet-harp","name":"The Quiet Harp","abbr":"Hrp","frame":11,"after":false,"stars":[{"id":"hrp-base","ra":333.0,"dec":2.0,"mag":3.3,"sp":"G"},{"id":"hrp-neck","ra":337.0,"dec":34.5,"mag":2.3,"sp":"B"},{"id":"hrp-pillar-foot","ra":328.5,"dec":6.0,"mag":2.8,"sp":"F"},{"id":"hrp-pillar-top","ra":326.0,"dec":30.0,"mag":1.7,"sp":"A"},{"id":"hrp-scroll","ra":345.0,"dec":29.0,"mag":3.6,"sp":"K"},{"id":"hrp-shoulder","ra":340.5,"dec":18.0,"mag":2.9,"sp":"G"},{"id":"hrp-string-a","ra":333.5,"dec":24.0,"mag":4.4,"sp":"M"},{"id":"hrp-string-b","ra":336.0,"dec":12.5,"mag":4.8,"sp":"M"}],"lines":[["hrp-pillar-top","hrp-pillar-foot"],["hrp-pillar-top","hrp-neck"],["hrp-neck","hrp-scroll"],["hrp-scroll","hrp-shoulder"],["hrp-shoulder","hrp-base"],["hrp-base","hrp-pillar-foot"],["hrp-string-a","hrp-string-b"]]},{"slug":"13-iron-tide","name":"The Iron Tide","abbr":"ITd","frame":26,"after":false,"stars":[{"id":"itd-anchor","ra":62.5,"dec":-44.0,"mag":2.6,"sp":"F"},{"id":"itd-anvil","ra":55.5,"dec":-33.0,"mag":2.1,"sp":"K"},{"id":"itd-depth","ra":44.0,"dec":-45.0,"mag":3.8,"sp":"G"},{"id":"itd-heart","ra":38.0,"dec":-36.5,"mag":0.2,"sp":"M"},{"id":"itd-keel","ra":21.5,"dec":-31.0,"mag":1.3,"sp":"G"},{"id":"itd-rust","ra":71.0,"dec":-27.5,"mag":3.3,"sp":"M"},{"id":"itd-sluice","ra":8.0,"dec":-24.5,"mag":2.9,"sp":"K"}],"lines":[["itd-sluice","itd-keel"],["itd-keel","itd-heart"],["itd-heart","itd-anvil"],["itd-anvil","itd-rust"],["itd-heart","itd-depth"],["itd-depth","itd-anchor"],["itd-anchor","itd-anvil"]]},{"slug":"14-sunken-choir","name":"The Sunken Choir","abbr":"Cho","frame":27,"after":false,"stars":[{"id":"cho-a","ra":124.5,"dec":-47.8,"mag":0.9,"sp":"A"},{"id":"cho-b","ra":104.6,"dec":-29.8,"mag":2.4,"sp":"F"},{"id":"cho-c","ra":113.4,"dec":-36.5,"mag":3.1,"sp":"G"},{"id":"cho-d","ra":123.0,"dec":-40.1,"mag":2.0,"sp":"K"},{"id":"cho-e","ra":136.2,"dec":-37.4,"mag":2.9,"sp":"B"},{"id":"cho-f","ra":145.8,"dec":-30.6,"mag":3.4,"sp":"G"},{"id":"cho-g","ra":158.3,"dec":-24.2,"mag":4.6,"sp":"M"}],"lines":[["cho-b","cho-c"],["cho-c","cho-d"],["cho-d","cho-e"],["cho-e","cho-f"],["cho-f","cho-g"],["cho-a","cho-d"]]},{"slug":"15-foundered-ark","name":"The Foundered Ark","abbr":"Fka","frame":32,"after":false,"stars":[{"id":"fka-bow","ra":220.0,"dec":-47.0,"mag":1.9,"sp":"B"},{"id":"fka-keel1","ra":196.0,"dec":-30.0,"mag":2.2,"sp":"G"},{"id":"fka-keel2","ra":204.0,"dec":-36.0,"mag":2.8,"sp":"K"},{"id":"fka-keel3","ra":212.0,"dec":-42.0,"mag":3.3,"sp":"M"},{"id":"fka-mast","ra":200.0,"dec":-26.0,"mag":1.3,"sp":"F"},{"id":"fka-stern","ra":188.0,"dec":-24.0,"mag":1.6,"sp":"A"},{"id":"fka-yard","ra":206.0,"dec":-32.0,"mag":3.6,"sp":"G"}],"lines":[["fka-stern","fka-keel1"],["fka-keel1","fka-keel2"],["fka-keel2","fka-keel3"],["fka-keel3","fka-bow"],["fka-keel1","fka-mast"],["fka-mast","fka-yard"]]},{"slug":"16-last-cairn","name":"The Last Cairn","abbr":"LCn","frame":33,"after":false,"stars":[{"id":"lcn-base","ra":283.5,"dec":-47.0,"mag":3.5,"sp":"M"},{"id":"lcn-cap","ra":328.0,"dec":-33.5,"mag":0.8,"sp":"K"},{"id":"lcn-foot","ra":297.0,"dec":-42.5,"mag":2.4,"sp":"K"},{"id":"lcn-mid","ra":312.5,"dec":-38.0,"mag":1.6,"sp":"G"},{"id":"lcn-stray","ra":319.0,"dec":-48.5,"mag":4.2,"sp":"M"},{"id":"lcn-witness","ra":344.5,"dec":-29.0,"mag":2.9,"sp":"F"}],"lines":[["lcn-base","lcn-foot"],["lcn-foot","lcn-mid"],["lcn-mid","lcn-cap"],["lcn-cap","lcn-witness"],["lcn-mid","lcn-stray"],["lcn-stray","lcn-base"]]},{"slug":"23-barnacled-sextant","name":"The Barnacled Sextant","abbr":"Sxt","frame":41,"after":false,"stars":[{"id":"sxt-arc","ra":235.0,"dec":-32.0,"mag":2.1,"sp":"F"},{"id":"sxt-brass","ra":265.0,"dec":-55.0,"mag":2.5,"sp":"K"},{"id":"sxt-horizon","ra":252.0,"dec":-48.0,"mag":0.9,"sp":"B"},{"id":"sxt-index","ra":248.0,"dec":-28.0,"mag":1.4,"sp":"A"},{"id":"sxt-ivory","ra":238.0,"dec":-52.0,"mag":3.6,"sp":"M"},{"id":"sxt-mirror","ra":260.0,"dec":-35.0,"mag":2.8,"sp":"G"},{"id":"sxt-shade","ra":272.0,"dec":-42.0,"mag":3.3,"sp":"K"}],"lines":[["sxt-arc","sxt-index"],["sxt-index","sxt-mirror"],["sxt-mirror","sxt-shade"],["sxt-shade","sxt-horizon"],["sxt-horizon","sxt-index"],["sxt-ivory","sxt-arc"],["sxt-brass","sxt-ivory"]]},{"slug":"23-frost-astrolabe","name":"The Frost Astrolabe","abbr":"Ast","frame":72,"after":false,"stars":[{"id":"ast-a","ra":45.0,"dec":-65.0,"mag":1.4,"sp":"B"},{"id":"ast-b","ra":60.5,"dec":-72.0,"mag":2.2,"sp":"O"},{"id":"ast-c","ra":85.0,"dec":-78.5,"mag":3.1,"sp":"A"},{"id":"ast-d","ra":110.0,"dec":-71.2,"mag":2.7,"sp":"F"},{"id":"ast-e","ra":135.0,"dec":-62.0,"mag":3.9,"sp":"K"},{"id":"ast-f","ra":90.0,"dec":-55.0,"mag":4.1,"sp":"M"}],"lines":[["ast-a","ast-b"],["ast-b","ast-c"],["ast-c","ast-d"],["ast-d","ast-e"],["ast-c","ast-f"]]},{"slug":"23-lanternfish","name":"The Lanternfish","abbr":"Ltf","frame":64,"after":false,"stars":[{"id":"ltf-barbel","ra":194.0,"dec":-68.5,"mag":4.3,"sp":"M"},{"id":"ltf-belly","ra":218.5,"dec":-64.0,"mag":2.2,"sp":"G"},{"id":"ltf-fin","ra":236.0,"dec":-60.5,"mag":3.1,"sp":"K"},{"id":"ltf-gill","ra":185.5,"dec":-57.0,"mag":1.5,"sp":"B"},{"id":"ltf-light","ra":201.0,"dec":-61.5,"mag":0.6,"sp":"F"},{"id":"ltf-mouth","ra":172.0,"dec":-53.5,"mag":2.8,"sp":"A"},{"id":"ltf-tail","ra":250.5,"dec":-55.0,"mag":1.9,"sp":"K"}],"lines":[["ltf-mouth","ltf-gill"],["ltf-gill","ltf-light"],["ltf-light","ltf-belly"],["ltf-belly","ltf-fin"],["ltf-fin","ltf-tail"],["ltf-light","ltf-barbel"]]},{"slug":"24-coral-quiver","name":"The Coral Quiver","abbr":"Qvr","frame":50,"after":false,"stars":[{"id":"qvr-binding","ra":242.0,"dec":52.0,"mag":0.8,"sp":"O"},{"id":"qvr-fletch","ra":246.0,"dec":45.0,"mag":2.9,"sp":"F"},{"id":"qvr-ivory","ra":236.0,"dec":55.0,"mag":3.5,"sp":"K"},{"id":"qvr-nock","ra":234.0,"dec":42.0,"mag":2.3,"sp":"A"},{"id":"qvr-shaft","ra":240.0,"dec":48.0,"mag":1.7,"sp":"B"},{"id":"qvr-tip","ra":238.0,"dec":38.0,"mag":3.2,"sp":"G"},{"id":"qvr-wax","ra":244.0,"dec":40.0,"mag":2.6,"sp":"A"}],"lines":[["qvr-nock","qvr-shaft"],["qvr-shaft","qvr-fletch"],["qvr-fletch","qvr-tip"],["qvr-tip","qvr-nock"],["qvr-binding","qvr-ivory"],["qvr-ivory","qvr-shaft"],["qvr-wax","qvr-binding"]]},{"slug":"25-sulfur-anchor","name":"The Sulfur Anchor","abbr":"SAn","frame":55,"after":false,"stars":[{"id":"san-chain","ra":76.0,"dec":-44.0,"mag":3.8,"sp":"K"},{"id":"san-crown","ra":90.5,"dec":-25.5,"mag":3.5,"sp":"A"},{"id":"san-fluke-east","ra":88.0,"dec":-38.0,"mag":3.0,"sp":"M"},{"id":"san-fluke-west","ra":80.0,"dec":-39.0,"mag":2.7,"sp":"M"},{"id":"san-ring","ra":84.0,"dec":-29.5,"mag":3.1,"sp":"K"},{"id":"san-shank","ra":73.0,"dec":-28.5,"mag":2.4,"sp":"F"},{"id":"san-stock","ra":78.5,"dec":-31.0,"mag":1.9,"sp":"G"}],"lines":[["san-shank","san-stock"],["san-stock","san-ring"],["san-stock","san-fluke-west"],["san-stock","san-fluke-east"],["san-fluke-west","san-fluke-east"],["san-ring","san-crown"],["san-stock","san-chain"]]}],"scatter":{"frame":34,"after":false,"stars":[{"id":"sc-001","ra":187.9142,"dec":36.8029,"mag":6.38,"spectral":"A"},{"id":"sc-002","ra":62.8878,"dec":24.6171,"mag":5.12,"spectral":"A"},{"id":"sc-003","ra":39.6583,"dec":-56.7676,"mag":4.65,"spectral":"K"},{"id":"sc-004","ra":151.0439,"dec":43.1646,"mag":5.91,"spectral":"K"},{"id":"sc-005","ra":304.678,"dec":53.4233,"mag":4.7,"spectral":"G"},{"id":"sc-006","ra":22.3894,"dec":37.5131,"mag":6.13,"spectral":"B"},{"id":"sc-007","ra":317.8098,"dec":3.9428,"mag":5.91,"spectral":"K"},{"id":"sc-008","ra":75.6036,"dec":4.7956,"mag":6.15,"spectral":"K"},{"id":"sc-009","ra":24.9043,"dec":-10.8391,"mag":5.02,"spectral":"M"},{"id":"sc-010","ra":170.6754,"dec":59.5591,"mag":4.5,"spectral":"M"},{"id":"sc-011","ra":147.1227,"dec":0.7284,"mag":4.51,"spectral":"F"},{"id":"sc-012","ra":133.9894,"dec":-53.7997,"mag":5.76,"spectral":"A"},{"id":"sc-013","ra":18.1064,"dec":-2.7315,"mag":5.24,"spectral":"O"},{"id":"sc-014","ra":312.4039,"dec":-31.3264,"mag":5.17,"spectral":"B"},{"id":"sc-015","ra":189.6904,"dec":-16.8351,"mag":4.5,"spectral":"M"},{"id":"sc-016","ra":99.1745,"dec":29.7027,"mag":5.99,"spectral":"G"},{"id":"sc-017","ra":199.2531,"dec":-44.4617,"mag":5.48,"spectral":"A"},{"id":"sc-018","ra":114.7964,"dec":-20.1512,"mag":6.23,"spectral":"G"},{"id":"sc-019","ra":281.6645,"dec":-19.7866,"mag":4.5,"spectral":"A"},{"id":"sc-020","ra":6.9174,"dec":29.3576,"mag":4.92,"spectral":"O"},{"id":"sc-021","ra":262.4344,"dec":-22.8254,"mag":4.5,"spectral":"K"},{"id":"sc-022","ra":327.6148,"dec":-57.5206,"mag":5.19,"spectral":"K"},{"id":"sc-023","ra":49.8212,"dec":-1.8134,"mag":6.35,"spectral":"G"},{"id":"sc-024","ra":293.9235,"dec":-38.0056,"mag":6.49,"spectral":"B"},{"id":"sc-025","ra":243.4716,"dec":48.8853,"mag":4.5,"spectral":"G"},{"id":"sc-026","ra":109.8439,"dec":46.7657,"mag":4.5,"spectral":"A"},{"id":"sc-027","ra":17.7995,"dec":51.1151,"mag":4.5,"spectral":"M"},{"id":"sc-028","ra":112.2607,"dec":-29.9351,"mag":6.49,"spectral":"F"},{"id":"sc-029","ra":27.0061,"dec":-49.7816,"mag":5.41,"spectral":"B"},{"id":"sc-030","ra":80.977,"dec":54.9497,"mag":5.23,"spectral":"M"},{"id":"sc-031","ra":106.2858,"dec":26.984,"mag":4.96,"spectral":"F"},{"id":"sc-032","ra":296.8012,"dec":-33.3031,"mag":4.72,"spectral":"K"},{"id":"sc-033","ra":160.2212,"dec":56.0863,"mag":5.76,"spectral":"B"},{"id":"sc-034","ra":173.8591,"dec":38.3545,"mag":6.41,"spectral":"G"},{"id":"sc-035","ra":10.2161,"dec":29.3404,"mag":5.2,"spectral":"F"},{"id":"sc-036","ra":19.3273,"dec":39.8732,"mag":6.39,"spectral":"B"},{"id":"sc-037","ra":334.7126,"dec":6.7032,"mag":5.34,"spectral":"A"},{"id":"sc-038","ra":61.9786,"dec":56.7054,"mag":4.5,"spectral":"F"},{"id":"sc-039","ra":127.9857,"dec":10.9811,"mag":5.06,"spectral":"G"},{"id":"sc-040","ra":3.7827,"dec":53.0648,"mag":6.2,"spectral":"G"},{"id":"sc-041","ra":275.3969,"dec":-6.0744,"mag":4.84,"spectral":"G"},{"id":"sc-042","ra":49.3783,"dec":5.9247,"mag":4.86,"spectral":"A"},{"id":"sc-043","ra":94.8338,"dec":58.5369,"mag":5.98,"spectral":"F"},{"id":"sc-044","ra":121.444,"dec":-20.5498,"mag":4.5,"spectral":"O"},{"id":"sc-045","ra":186.3466,"dec":23.9154,"mag":4.5,"spectral":"F"},{"id":"sc-046","ra":255.685,"dec":-23.8304,"mag":4.5,"spectral":"M"},{"id":"sc-047","ra":35.5275,"dec":49.0322,"mag":6.01,"spectral":"O"},{"id":"sc-048","ra":163.93,"dec":38.5519,"mag":6.27,"spectral":"M"},{"id":"sc-049","ra":233.7488,"dec":42.0605,"mag":5.88,"spectral":"F"},{"id":"sc-050","ra":344.1742,"dec":28.6004,"mag":4.5,"spectral":"G"},{"id":"sc-051","ra":94.4419,"dec":-17.1723,"mag":6.32,"spectral":"G"},{"id":"sc-052","ra":295.0509,"dec":57.0382,"mag":4.72,"spectral":"O"},{"id":"sc-053","ra":189.2715,"dec":59.3558,"mag":4.5,"spectral":"K"},{"id":"sc-054","ra":299.0064,"dec":-55.9769,"mag":5.69,"spectral":"A"},{"id":"sc-055","ra":117.1363,"dec":-45.9045,"mag":4.5,"spectral":"M"},{"id":"sc-056","ra":87.5726,"dec":-0.6638,"mag":4.5,"spectral":"O"},{"id":"sc-057","ra":91.7826,"dec":-51.1554,"mag":4.76,"spectral":"K"},{"id":"sc-058","ra":72.1104,"dec":-16.1312,"mag":4.5,"spectral":"M"},{"id":"sc-059","ra":205.9311,"dec":34.1592,"mag":4.5,"spectral":"F"},{"id":"sc-060","ra":190.1071,"dec":-13.3873,"mag":5.07,"spectral":"M"},{"id":"sc-061","ra":324.0101,"dec":19.5899,"mag":4.5,"spectral":"G"},{"id":"sc-062","ra":192.525,"dec":-21.948,"mag":5.91,"spectral":"A"},{"id":"sc-063","ra":344.4092,"dec":-11.1428,"mag":5.35,"spectral":"B"},{"id":"sc-064","ra":324.7969,"dec":-41.8887,"mag":4.5,"spectral":"G"},{"id":"sc-065","ra":115.809,"dec":30.9682,"mag":5.75,"spectral":"M"},{"id":"sc-066","ra":46.262,"dec":52.6408,"mag":4.99,"spectral":"G"},{"id":"sc-067","ra":68.7672,"dec":-59.1584,"mag":4.5,"spectral":"F"},{"id":"sc-068","ra":27.6689,"dec":-49.6108,"mag":5.05,"spectral":"B"},{"id":"sc-069","ra":61.3201,"dec":51.7034,"mag":4.5,"spectral":"A"},{"id":"sc-070","ra":326.4997,"dec":-4.4928,"mag":4.5,"spectral":"B"},{"id":"sc-071","ra":267.6588,"dec":-23.0032,"mag":6.09,"spectral":"G"},{"id":"sc-072","ra":185.0381,"dec":-42.7741,"mag":4.5,"spectral":"M"},{"id":"sc-073","ra":271.7641,"dec":58.0615,"mag":5.38,"spectral":"M"},{"id":"sc-074","ra":92.682,"dec":-33.9942,"mag":5.13,"spectral":"A"},{"id":"sc-075","ra":302.129,"dec":-7.6602,"mag":4.5,"spectral":"O"},{"id":"sc-076","ra":110.7753,"dec":56.5559,"mag":5.44,"spectral":"A"},{"id":"sc-077","ra":4.2892,"dec":44.2778,"mag":5.25,"spectral":"A"},{"id":"sc-078","ra":242.9624,"dec":-0.9562,"mag":4.77,"spectral":"A"},{"id":"sc-079","ra":248.1545,"dec":-6.0803,"mag":5.82,"spectral":"B"},{"id":"sc-080","ra":270.7126,"dec":-34.4427,"mag":4.5,"spectral":"A"}]},"river":{"frame":36,"after":false,"stars":[{"id":"riv-000","ra":0.0,"dec":7.8,"mag":5.3,"spectral":"A"},{"id":"riv-001","ra":4.04,"dec":4.0,"mag":5.46,"spectral":"O"},{"id":"riv-002","ra":8.09,"dec":11.71,"mag":5.38,"spectral":"O"},{"id":"riv-003","ra":12.13,"dec":12.09,"mag":5.35,"spectral":"O"},{"id":"riv-004","ra":16.18,"dec":8.38,"mag":5.45,"spectral":"O"},{"id":"riv-005","ra":20.22,"dec":14.57,"mag":5.47,"spectral":"K"},{"id":"riv-006","ra":24.27,"dec":15.62,"mag":5.47,"spectral":"G"},{"id":"riv-007","ra":28.31,"dec":13.04,"mag":5.48,"spectral":"M"},{"id":"riv-008","ra":32.36,"dec":21.44,"mag":5.44,"spectral":"A"},{"id":"riv-009","ra":36.4,"dec":14.92,"mag":5.45,"spectral":"M"},{"id":"riv-010","ra":40.45,"dec":16.46,"mag":5.59,"spectral":"O"},{"id":"riv-011","ra":44.49,"dec":17.33,"mag":5.5,"spectral":"A"},{"id":"riv-012","ra":48.54,"dec":24.0,"mag":5.61,"spectral":"G"},{"id":"riv-013","ra":52.58,"dec":14.68,"mag":5.66,"spectral":"O"},{"id":"riv-014","ra":56.63,"dec":20.73,"mag":5.7,"spectral":"G"},{"id":"riv-015","ra":60.67,"dec":25.29,"mag":5.74,"spectral":"B"},{"id":"riv-016","ra":64.72,"dec":22.49,"mag":5.54,"spectral":"B"},{"id":"riv-017","ra":68.76,"dec":23.01,"mag":5.55,"spectral":"M"},{"id":"riv-018","ra":72.81,"dec":14.85,"mag":5.71,"spectral":"A"},{"id":"riv-019","ra":76.85,"dec":17.18,"mag":5.68,"spectral":"B"},{"id":"riv-020","ra":80.9,"dec":15.11,"mag":5.58,"spectral":"A"},{"id":"riv-021","ra":84.94,"dec":18.71,"mag":5.74,"spectral":"O"},{"id":"riv-022","ra":88.99,"dec":16.23,"mag":5.81,"spectral":"K"},{"id":"riv-023","ra":93.03,"dec":9.82,"mag":5.81,"spectral":"A"},{"id":"riv-024","ra":97.08,"dec":18.83,"mag":5.64,"spectral":"G"},{"id":"riv-025","ra":101.12,"dec":6.54,"mag":5.68,"spectral":"M"},{"id":"riv-026","ra":105.17,"dec":12.72,"mag":5.6,"spectral":"O"},{"id":"riv-027","ra":109.21,"dec":11.45,"mag":5.91,"spectral":"O"},{"id":"riv-028","ra":113.26,"dec":1.39,"mag":5.69,"spectral":"K"},{"id":"riv-029","ra":117.3,"dec":1.05,"mag":5.86,"spectral":"F"},{"id":"riv-030","ra":121.35,"dec":7.21,"mag":5.82,"spectral":"B"},{"id":"riv-031","ra":125.39,"dec":-3.3,"mag":5.85,"spectral":"G"},{"id":"riv-032","ra":129.44,"dec":-1.29,"mag":5.84,"spectral":"F"},{"id":"riv-033","ra":133.48,"dec":1.92,"mag":5.94,"spectral":"B"},{"id":"riv-034","ra":137.53,"dec":1.52,"mag":5.89,"spectral":"F"},{"id":"riv-035","ra":141.57,"dec":-12.91,"mag":5.81,"spectral":"O"},{"id":"riv-036","ra":145.62,"dec":-13.72,"mag":5.77,"spectral":"K"},{"id":"riv-037","ra":149.66,"dec":-11.56,"mag":5.89,"spectral":"F"},{"id":"riv-038","ra":153.71,"dec":-10.64,"mag":6.04,"spectral":"A"},{"id":"riv-039","ra":157.75,"dec":-6.81,"mag":5.82,"spectral":"O"},{"id":"riv-040","ra":161.8,"dec":-12.18,"mag":5.99,"spectral":"G"},{"id":"riv-041","ra":165.84,"dec":-12.38,"mag":5.99,"spectral":"A"},{"id":"riv-042","ra":169.89,"dec":-22.37,"mag":5.86,"spectral":"F"},{"id":"riv-043","ra":173.93,"dec":-24.79,"mag":5.89,"spectral":"K"},{"id":"riv-044","ra":177.98,"dec":-21.9,"mag":6.05,"spectral":"B"},{"id":"riv-045","ra":182.02,"dec":-19.08,"mag":5.99,"spectral":"K"},{"id":"riv-046","ra":186.07,"dec":-22.45,"mag":5.99,"spectral":"G"},{"id":"riv-047","ra":190.11,"dec":-24.11,"mag":6.03,"spectral":"B"},{"id":"riv-048","ra":194.16,"dec":-19.45,"mag":5.93,"spectral":"G"},{"id":"riv-049","ra":198.2,"dec":-14.07,"mag":6.12,"spectral":"F"},{"id":"riv-050","ra":202.25,"dec":-26.43,"mag":6.1,"spectral":"M"},{"id":"riv-051","ra":206.29,"dec":-15.01,"mag":6.1,"spectral":"B"},{"id":"riv-052","ra":210.34,"dec":-13.45,"mag":6.05,"spectral":"O"},{"id":"riv-053","ra":214.38,"dec":-14.78,"mag":6.21,"spectral":"M"},{"id":"riv-054","ra":218.43,"dec":-16.69,"mag":6.23,"spectral":"K"},{"id":"riv-055","ra":222.47,"dec":-16.48,"mag":6.16,"spectral":"A"},{"id":"riv-056","ra":226.52,"dec":-14.6,"mag":6.03,"spectral":"B"},{"id":"riv-057","ra":230.56,"dec":-7.7,"mag":6.06,"spectral":"K"},{"id":"riv-058","ra":234.61,"dec":-16.5,"mag":6.08,"spectral":"K"},{"id":"riv-059","ra":238.65,"dec":-8.72,"mag":6.07,"spectral":"G"},{"id":"riv-060","ra":242.7,"dec":-9.91,"mag":6.25,"spectral":"O"},{"id":"riv-061","ra":246.74,"dec":-9.84,"mag":6.24,"spectral":"B"},{"id":"riv-062","ra":250.79,"dec":-4.6,"mag":6.15,"spectral":"K"},{"id":"riv-063","ra":254.83,"dec":-2.23,"mag":6.37,"spectral":"O"},{"id":"riv-064","ra":258.88,"dec":2.78,"mag":6.3,"spectral":"B"},{"id":"riv-065","ra":262.92,"dec":-3.52,"mag":6.36,"spectral":"G"},{"id":"riv-066","ra":266.97,"dec":-3.73,"mag":6.39,"spectral":"G"},{"id":"riv-067","ra":271.01,"dec":4.3,"mag":6.36,"spectral":"F"},{"id":"riv-068","ra":275.06,"dec":9.34,"mag":6.32,"spectral":"O"},{"id":"riv-069","ra":279.1,"dec":9.01,"mag":6.48,"spectral":"F"},{"id":"riv-070","ra":283.15,"dec":8.02,"mag":6.23,"spectral":"K"},{"id":"riv-071","ra":287.19,"dec":12.25,"mag":6.41,"spectral":"O"},{"id":"riv-072","ra":291.24,"dec":10.28,"mag":6.49,"spectral":"M"},{"id":"riv-073","ra":295.28,"dec":7.62,"mag":6.38,"spectral":"G"},{"id":"riv-074","ra":299.33,"dec":13.7,"mag":6.49,"spectral":"A"},{"id":"riv-075","ra":303.37,"dec":15.1,"mag":6.32,"spectral":"O"},{"id":"riv-076","ra":307.42,"dec":15.91,"mag":6.4,"spectral":"G"},{"id":"riv-077","ra":311.46,"dec":12.01,"mag":6.37,"spectral":"G"},{"id":"riv-078","ra":315.51,"dec":23.14,"mag":6.42,"spectral":"M"},{"id":"riv-079","ra":319.55,"dec":23.95,"mag":6.53,"spectral":"F"},{"id":"riv-080","ra":323.6,"dec":19.28,"mag":6.37,"spectral":"O"},{"id":"riv-081","ra":327.64,"dec":15.15,"mag":6.44,"spectral":"F"},{"id":"riv-082","ra":331.69,"dec":16.7,"mag":6.61,"spectral":"F"},{"id":"riv-083","ra":335.73,"dec":16.96,"mag":6.46,"spectral":"K"},{"id":"riv-084","ra":339.78,"dec":26.71,"mag":6.42,"spectral":"K"},{"id":"riv-085","ra":343.82,"dec":19.22,"mag":6.69,"spectral":"B"},{"id":"riv-086","ra":347.87,"dec":25.45,"mag":6.57,"spectral":"G"},{"id":"riv-087","ra":351.91,"dec":12.06,"mag":6.43,"spectral":"O"},{"id":"riv-088","ra":355.96,"dec":18.54,"mag":6.61,"spectral":"M"},{"id":"riv-089","ra":360.0,"dec":16.82,"mag":6.49,"spectral":"G"}]},"curiosities":{"frame":58,"after":false,"stars":[{"id":"cur-pair","name":"The Twin Wicks","ra":152.3,"dec":18.5,"mag":2.7,"sp":"F","note":"Looks like one lamp from a distance, but it is really two stars leaning on each other's light, circling so closely that their glows braid into a single wick."},{"id":"cur-variable","name":"The Breathing Ember","ra":305.8,"dec":-38.2,"mag":3.4,"sp":"M","note":"A deep red ember whose brightness swells and fades on a slow rhythm, as if the star were drawing breath \u2014 some nights it outshines its neighbours, some nights it nearly slips from sight."},{"id":"cur-pair-b","name":"The Borrowed Lantern","ra":66.1,"dec":-52.0,"mag":4.0,"sp":"K","note":"A second double: a dim orange star that only reads as bright because a hidden companion lends it light, the two trading places around a point between them."}]}};</script>
+<!-- END GENERATED DATA -->
+
+<script>
+'use strict';
+/* ------------------------------------------------------------------ data --- */
+const D = window.SKY_DATA;
+const TAU = Math.PI * 2, DEG = Math.PI / 180;
+const COLOURS = {O:'#9bb0ff',B:'#aabfff',A:'#cad7ff',F:'#f8f7ff',G:'#fff4ea',K:'#ffd2a1',M:'#ffcc6f'};
+const BG = '#080b1a';
+
+function vec(ra, dec) {
+  const r = ra * DEG, d = dec * DEG;
+  return [Math.cos(d) * Math.cos(r), Math.cos(d) * Math.sin(r), Math.sin(d)];
+}
+function centroidVec(stars) {
+  let x = 0, y = 0, z = 0;
+  for (const s of stars) { x += s.v[0]; y += s.v[1]; z += s.v[2]; }
+  const n = Math.hypot(x, y, z) || 1;
+  return [x / n, y / n, z / n];
+}
+function prepStars(list, kind) {
+  return list.map(s => ({ id: s.id, mag: s.mag, sp: s.sp || s.spectral || 'G',
+                          name: s.name || null, note: s.note || null,
+                          v: vec(s.ra, s.dec), kind }));
+}
+const constellations = (D.constellations || []).map(c => {
+  const stars = prepStars(c.stars, 'constellation');
+  const byId = {}; stars.forEach(s => byId[s.id] = s);
+  return { slug: c.slug, name: c.name, abbr: c.abbr, frame: c.frame, after: c.after,
+           stars, byId, lines: c.lines || [], centre: centroidVec(stars) };
+});
+const scatter = prepStars((D.scatter && D.scatter.stars) || [], 'scatter');
+const river   = prepStars((D.river   && D.river.stars)   || [], 'river');
+const curios  = prepStars((D.curiosities && D.curiosities.stars) || [], 'curiosity');
+const FRAMES = D.frames || [];
+const LAST_FRAME = D.last_frame || (FRAMES.length ? FRAMES[FRAMES.length - 1].i : 1);
+const BIRTH = { scatter: (D.scatter || {}).frame || 1,
+                river: (D.river || {}).frame || 1,
+                curiosities: (D.curiosities || {}).frame || 1 };
+
+/* --------------------------------------------------------------- params --- */
+const Q = new URLSearchParams(location.search);
+const P = {
+  t:          Q.has('t') ? parseFloat(Q.get('t')) : null,
+  dur:        Math.max(5, parseFloat(Q.get('dur')) || 60),
+  chromeless: Q.get('chromeless') === '1',
+  timelapse:  Q.get('timelapse') === '1',
+  frame:      Q.has('frame') ? parseFloat(Q.get('frame')) : null,
+  yaw:        Q.has('yaw') ? parseFloat(Q.get('yaw')) : null,
+  pitch:      Q.has('pitch') ? parseFloat(Q.get('pitch')) : null,
+  fov:        Q.has('fov') ? parseFloat(Q.get('fov')) : null,
+};
+const deterministic = P.t !== null;
+document.body.classList.toggle('chromeless', P.chromeless);
+document.body.classList.toggle('timelapse', P.timelapse);
+
+/* --------------------------------------------------------------- camera --- */
+// Invented sky, invented viewer: standing at the centre of the sphere.
+// yaw/pitch in degrees, fov vertical in degrees, skyRot = slow invented rotation.
+const cam = { yaw: 40, pitch: 14, fov: 80 };
+let skyRot = 0;            // degrees the sky has turned (invented rate)
+let rotating = true;       // task 38: the sky turns slowly unless stopped
+const ROT_DEG_PER_S = 1.2; // slow, deliberate — a planetarium, not a ride
+let showHorizon = true;
+
+// Camera path for video mode: slow orbit, then into a few constellations.
+// Targets are chosen from the data (fallback: first constellations).
+function findTarget(slugs) {
+  for (const s of slugs) {
+    const c = constellations.find(k => k.slug === s);
+    if (c) return c;
+  }
+  return constellations[0];
+}
+function targetAngles(c) {
+  const v = c.centre;
+  return { yaw: Math.atan2(v[1], v[0]) / DEG, pitch: Math.asin(Math.max(-1, Math.min(1, v[2]))) / DEG };
+}
+function buildPath() {
+  const t1 = targetAngles(findTarget(['01-salt-crane', '01-silver-lantern']));
+  const t2 = targetAngles(findTarget(['03-drowned-bell', '03-heron']));
+  const t3 = targetAngles(findTarget(['23-lanternfish', '23-frost-astrolabe']));
+  const T = P.dur;
+  const at = f => +(T * f).toFixed(3);
+  return [
+    { t: 0,        yaw: 0,          pitch: 18,       fov: 82 },
+    { t: at(0.28), yaw: 150,        pitch: 8,        fov: 76 },  // slow orbit
+    { t: at(0.40), yaw: t1.yaw,     pitch: t1.pitch, fov: 30 },  // into constellation 1
+    { t: at(0.52), yaw: t1.yaw + 4, pitch: t1.pitch, fov: 28 },  // hold, drifting slightly
+    { t: at(0.66), yaw: t2.yaw,     pitch: t2.pitch, fov: 32 },  // constellation 2
+    { t: at(0.78), yaw: t3.yaw,     pitch: t3.pitch, fov: 34 },  // constellation 3 (far south)
+    { t: at(0.90), yaw: 300,        pitch: 22,       fov: 70 },  // pull back out
+    { t: T,        yaw: 360,        pitch: 18,       fov: 82 },  // end where we began
+  ];
+}
+const PATH = constellations.length ? buildPath() : [{ t: 0, yaw: 0, pitch: 15, fov: 80 }, { t: P.dur, yaw: 360, pitch: 15, fov: 80 }];
+const smooth = u => u * u * (3 - 2 * u);
+function lerpYaw(a, b, u) {           // shortest way round the circle
+  let d = ((b - a + 540) % 360) - 180;
+  return a + d * u;
+}
+function cameraAt(t) {
+  const tt = Math.max(0, Math.min(P.dur, t));
+  let i = 0;
+  while (i < PATH.length - 2 && PATH[i + 1].t <= tt) i++;
+  const a = PATH[i], b = PATH[i + 1];
+  const u = smooth(b.t > a.t ? (tt - a.t) / (b.t - a.t) : 0);
+  return { yaw: lerpYaw(a.yaw, b.yaw, u),
+           pitch: a.pitch + (b.pitch - a.pitch) * u,
+           fov: a.fov + (b.fov - a.fov) * u };
+}
+
+// Timelapse position: a float frame number; fractional part fades constellations in.
+function timelapsePos(t) {
+  if (P.frame !== null) return Math.max(1, Math.min(LAST_FRAME, P.frame));
+  if (t !== null) return 1 + (Math.max(0, Math.min(P.dur, t)) / P.dur) * (LAST_FRAME - 1);
+  return tl.current;
+}
+
+/* -------------------------------------------------------------- canvas --- */
+const canvas = document.getElementById('sky');
+const ctx = canvas.getContext('2d');
+let W = 0, H = 0;
+function resize() {
+  const dpr = Math.min(2, window.devicePixelRatio || 1);
+  W = Math.round(canvas.clientWidth * dpr);
+  H = Math.round(canvas.clientHeight * dpr);
+  canvas.width = W; canvas.height = H;
+}
+window.addEventListener('resize', resize);
+
+// Per-frame projection state, filled by beginView().
+const view = { f: [1, 0, 0], r: [0, 1, 0], u: [0, 0, 1], focal: 1, cosA: 1, sinA: 0 };
+function beginView() {
+  const th = cam.yaw * DEG, ph = cam.pitch * DEG;
+  const f = [Math.cos(ph) * Math.cos(th), Math.cos(ph) * Math.sin(th), Math.sin(ph)];
+  let r = [f[1], -f[0], 0];                        // cross(f, worldUp), normalised:
+  const rn = Math.hypot(r[0], r[1]) || 1; r = [r[0] / rn, r[1] / rn, 0];
+  const u = [r[1] * f[2] - r[2] * f[1], r[2] * f[0] - r[0] * f[2], r[0] * f[1] - r[1] * f[0]];
+  view.f = f; view.r = r; view.u = u;
+  view.focal = (H / 2) / Math.tan((cam.fov * DEG) / 2);
+  const A = skyRot * DEG;                          // the sky turns about the polar axis
+  view.cosA = Math.cos(A); view.sinA = Math.sin(A);
+}
+// Project a world unit vector -> {x, y, z} screen px, or null if behind.
+// rot=true applies the sky rotation (stars), rot=false leaves it (horizon).
+function project(v, rot) {
+  let [x, y, z] = v;
+  if (rot) {
+    const xr = x * view.cosA - y * view.sinA, yr = x * view.sinA + y * view.cosA;
+    x = xr; y = yr;
+  }
+  const zc = x * view.f[0] + y * view.f[1] + z * view.f[2];
+  if (zc < 0.02) return null;
+  const xc = x * view.r[0] + y * view.r[1] + z * view.r[2];
+  const yc = x * view.u[0] + y * view.u[1] + z * view.u[2];
+  return { x: W / 2 + (xc / zc) * view.focal, y: H / 2 - (yc / zc) * view.focal, z: zc };
+}
+function starPx(mag, zoom) {
+  return Math.max(0.6, Math.min(10, (7 - mag) * 0.62)) * Math.pow(zoom, 0.22);
+}
+
+/* -------------------------------------------------------------- render --- */
+let hoverTargets = [];   // rebuilt each frame for the tooltip
+function starColour(s) { return COLOURS[s.sp] || '#ffffff'; }
+
+function drawStar(s, alpha, scale, ring) {
+  const p = project(s.v, true);
+  if (!p || p.x < -20 || p.x > W + 20 || p.y < -20 || p.y > H + 20) return;
+  const zoom = 80 / cam.fov;
+  const r = starPx(s.mag, zoom) * scale;
+  ctx.globalAlpha = alpha;
+  ctx.fillStyle = starColour(s);
+  ctx.beginPath(); ctx.arc(p.x, p.y, r, 0, TAU); ctx.fill();
+  if (ring) {                             // curiosities get a quiet ring
+    ctx.globalAlpha = alpha * 0.55;
+    ctx.strokeStyle = starColour(s); ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.arc(p.x, p.y, r + 4, 0, TAU); ctx.stroke();
+  }
+  ctx.globalAlpha = 1;
+  if (s.kind !== 'river') hoverTargets.push({ s, x: p.x, y: p.y });
+}
+
+function drawConstellation(c, alpha) {
+  // lines first, stars on top — same order as the flat chart
+  ctx.strokeStyle = '#5c6f9c'; ctx.lineWidth = Math.max(0.7, W / 2200);
+  ctx.globalAlpha = alpha * 0.7;
+  const pts = {};
+  for (const s of c.stars) { const p = project(s.v, true); if (p) pts[s.id] = p; }
+  for (const [a, b] of c.lines) {
+    const p1 = pts[a], p2 = pts[b];
+    if (!p1 || !p2) continue;
+    ctx.beginPath(); ctx.moveTo(p1.x, p1.y); ctx.lineTo(p2.x, p2.y); ctx.stroke();
+  }
+  ctx.globalAlpha = 1;
+  for (const s of c.stars) drawStar(s, alpha, 1, false);
+  // name at the centroid, gently dimming toward the edge of view (task 37)
+  const pc = project(c.centre, true);
+  if (pc && alpha > 0.25) {
+    const edge = Math.min(pc.x, W - pc.x, pc.y, H - pc.y);
+    let a = alpha * Math.max(0, Math.min(0.85, edge / 120));
+    // the sky has parallel variants sharing a band — keep one label per spot
+    if (labelPlaced.some(q => Math.abs(q.x - pc.x) < 90 && Math.abs(q.y - pc.y) < 30)) a = 0;
+    if (a > 0.05) {
+      labelPlaced.push(pc);
+      ctx.globalAlpha = a;
+      ctx.fillStyle = '#8fa3d0';
+      ctx.font = `${Math.max(13, H / 72)}px Georgia, serif`;
+      ctx.textAlign = 'center';
+      ctx.fillText(c.name, pc.x, pc.y - Math.max(14, H / 60));
+      ctx.globalAlpha = 1;
+    }
+  }
+}
+
+function drawHorizon() {
+  // Invented horizon: the great circle at dec 0. It does NOT rotate with the
+  // sky, so the turning sky drifts past it — that is what tells you which way
+  // is down. Drawn as a soft double stroke, sampled every 2 degrees.
+  ctx.strokeStyle = '#3a4a74';
+  for (const [w, a] of [[Math.max(3, W / 500), 0.10], [Math.max(1, W / 1600), 0.35]]) {
+    ctx.lineWidth = w; ctx.globalAlpha = a;
+    ctx.beginPath();
+    let pen = false;
+    for (let ra = 0; ra <= 360; ra += 2) {
+      const p = project(vec(ra, 0), false);
+      if (p) { pen ? ctx.lineTo(p.x, p.y) : ctx.moveTo(p.x, p.y); pen = true; }
+      else pen = false;
+    }
+    ctx.stroke();
+  }
+  ctx.globalAlpha = 1;
+}
+
+function visibleAlpha(birthFrame, pos) {
+  if (!P.timelapse) return 1;
+  return Math.max(0, Math.min(1, pos - birthFrame + 1));  // fade in over one frame
+}
+
+let labelPlaced = [];    // screen spots already holding a name this frame
+
+function render(pos) {
+  beginView();
+  ctx.fillStyle = BG; ctx.fillRect(0, 0, W, H);
+  hoverTargets = [];
+  labelPlaced = [];
+
+  if (showHorizon) drawHorizon();
+
+  // the river — our invented milky way: faint, small, slightly blue
+  const ra = visibleAlpha(BIRTH.river, pos);
+  if (ra > 0) for (const s of river) drawStar(s, ra * 0.38, 0.5, false);
+  // background scatter
+  const sa = visibleAlpha(BIRTH.scatter, pos);
+  if (sa > 0) for (const s of scatter) drawStar(s, sa * 0.6, 0.62, false);
+  // constellation figures
+  for (const c of constellations) {
+    const a = visibleAlpha(c.frame, pos);
+    if (a > 0) drawConstellation(c, a);
+  }
+  // curiosities on top
+  const ca = visibleAlpha(BIRTH.curiosities, pos);
+  if (ca > 0) for (const s of curios) drawStar(s, ca, 1.15, true);
+}
+
+/* ---------------------------------------------------------- timelapse --- */
+const tl = { current: 1, playing: true, lastStep: 0 };
+const tlSlider = document.getElementById('tl-slider');
+const tlPlay = document.getElementById('tl-play');
+const tlCaption = document.getElementById('tl-caption');
+tlSlider.max = LAST_FRAME;
+tlSlider.addEventListener('input', () => { tl.current = parseFloat(tlSlider.value); });
+tlPlay.addEventListener('click', () => { tl.playing = !tl.playing; tlPlay.textContent = tl.playing ? 'pause' : 'play'; });
+
+function updateTimelapse(now, dt) {
+  if (deterministic) {
+    tl.current = timelapsePos(P.t);
+  } else {
+    if (P.frame !== null) tl.current = Math.max(1, Math.min(LAST_FRAME, P.frame));
+    else if (tl.playing) {
+      tl.lastStep += dt;
+      if (tl.lastStep > 700) {                       // one commit every 0.7 s
+        tl.lastStep = 0;
+        tl.current = tl.current >= LAST_FRAME ? 1 : tl.current + 1;
+      }
+    }
+  }
+  tlSlider.value = tl.current;
+  const f = FRAMES[Math.min(FRAMES.length - 1, Math.max(0, Math.round(tl.current) - 1))];
+  if (f) {
+    const date = (f.at || '').slice(0, 16).replace('T', ' ');
+    tlCaption.innerHTML =
+      `frame ${f.i}/${LAST_FRAME} · ${date} UTC — <em>${escapeHtml(f.subject)}</em> ` +
+      `<small>(${escapeHtml(f.author)} · ${f.n_constellations} constellations, ${f.n_stars} stars)</small>`;
+  }
+}
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"]/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[ch]));
+}
+
+/* ------------------------------------------------------------ controls --- */
+let dragging = false, lastX = 0, lastY = 0, mouseX = -1, mouseY = -1;
+canvas.addEventListener('mousedown', e => { dragging = true; lastX = e.clientX; lastY = e.clientY; canvas.classList.add('dragging'); });
+window.addEventListener('mouseup', () => { dragging = false; canvas.classList.remove('dragging'); });
+window.addEventListener('mousemove', e => {
+  mouseX = e.clientX; mouseY = e.clientY;
+  if (!dragging || deterministic) return;
+  const k = cam.fov / 900;
+  cam.yaw = (cam.yaw - (e.clientX - lastX) * k + 360) % 360;   // grab the sky
+  cam.pitch = Math.max(-89, Math.min(89, cam.pitch + (e.clientY - lastY) * k));
+  lastX = e.clientX; lastY = e.clientY;
+});
+canvas.addEventListener('wheel', e => {
+  if (deterministic) return;
+  e.preventDefault();
+  cam.fov = Math.max(12, Math.min(110, cam.fov * Math.exp(e.deltaY * 0.001)));
+}, { passive: false });
+const keys = {};
+window.addEventListener('keydown', e => {
+  keys[e.key.toLowerCase()] = true;
+  if (e.key === ' ') { rotating = !rotating; e.preventDefault(); }
+  if (e.key.toLowerCase() === 'h') showHorizon = !showHorizon;
+  if (e.key.toLowerCase() === 'r') rotating = !rotating;
+});
+window.addEventListener('keyup', e => { keys[e.key.toLowerCase()] = false; });
+
+function keyboardLook(dt) {
+  if (deterministic) return;
+  const s = (cam.fov / 60) * 45 * dt / 1000;   // deg per frame, scaled by zoom
+  if (keys['a'] || keys['arrowleft'])  cam.yaw = (cam.yaw + s + 360) % 360;
+  if (keys['d'] || keys['arrowright']) cam.yaw = (cam.yaw - s + 360) % 360;
+  if (keys['w'] || keys['arrowup'])    cam.pitch = Math.min(89, cam.pitch + s);
+  if (keys['s'] || keys['arrowdown'])  cam.pitch = Math.max(-89, cam.pitch - s);
+  if (keys['+'] || keys['=']) cam.fov = Math.max(12, cam.fov * 0.99);
+  if (keys['-'])              cam.fov = Math.min(110, cam.fov * 1.01);
+}
+
+/* -------------------------------------------------------------- tooltip --- */
+const tooltip = document.getElementById('tooltip');
+function updateTooltip() {
+  if (P.chromeless || deterministic || mouseX < 0) { tooltip.style.display = 'none'; return; }
+  const dpr = W / canvas.clientWidth;
+  const mx = mouseX * dpr, my = mouseY * dpr;
+  let best = null, bestD = 14 * dpr;
+  for (const h of hoverTargets) {
+    const d = Math.hypot(h.x - mx, h.y - my);
+    if (d < bestD) { bestD = d; best = h.s; }
+  }
+  if (!best) { tooltip.style.display = 'none'; return; }
+  const label = best.name || best.id;
+  tooltip.innerHTML = `<span class="nm">${escapeHtml(label)}</span> · mag ${best.mag} · ${best.sp}` +
+    (best.note ? `<div class="nt">${escapeHtml(best.note)}</div>` : '');
+  tooltip.style.display = 'block';
+  tooltip.style.left = Math.min(window.innerWidth - 320, mouseX + 14) + 'px';
+  tooltip.style.top = (mouseY + 14) + 'px';
+}
+
+/* ------------------------------------------------------------- main loop --- */
+const rotHud = document.getElementById('rot');
+let prev = performance.now();
+function tick(now) {
+  const dt = Math.min(100, now - prev); prev = now;
+
+  if (deterministic) {
+    const c = cameraAt(P.t);
+    skyRot = ROT_DEG_PER_S * P.t;        // deterministic sky rotation
+    // add skyRot to the path yaw so the flight TRACKS the turning sky —
+    // otherwise the zoom targets drift out of frame during the close-ups
+    cam.yaw = P.yaw !== null ? P.yaw : (c.yaw + skyRot) % 360;
+    cam.pitch = P.pitch !== null ? P.pitch : c.pitch;
+    cam.fov = P.fov !== null ? P.fov : c.fov;
+  } else {
+    keyboardLook(dt);
+    if (rotating) skyRot = (skyRot + ROT_DEG_PER_S * dt / 1000) % 360;
+    rotHud.textContent = rotating ? 'the sky is turning (space to hold it)' : 'the sky is held (space to release)';
+  }
+
+  if (P.timelapse) updateTimelapse(now, dt);
+  render(P.timelapse ? tl.current : 1);
+  updateTooltip();
+  requestAnimationFrame(tick);
+}
+resize();
+if (P.timelapse) tl.current = timelapsePos(P.t);
+requestAnimationFrame(tick);
+</script>
+</body>
+</html>
