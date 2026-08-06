@@ -22,7 +22,8 @@
   #tasksPanel{left:310px;top:240px;width:830px;height:388px;}
   #sky{position:absolute;left:310px;top:214px;width:830px;text-align:center;font-size:13px;color:#9db4d8;}
   #feed{left:1150px;top:240px;width:474px;height:388px;overflow:hidden;}
-  #feedLines{position:absolute;left:8px;right:8px;top:30px;bottom:6px;overflow:hidden;font-size:12.5px;line-height:1.45;}
+  #feed h3{position:relative;z-index:2;background:rgba(18,24,38,.92);margin:0;padding:8px 10px 4px;}
+  #feedLines{position:absolute;left:8px;right:8px;top:34px;bottom:6px;overflow:hidden;font-size:12.5px;line-height:1.45;}
   #feedLines div{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#c4d2e8;}
   #feedLines .tm{color:#5f7295;margin-right:6px;font-variant-numeric:tabular-nums;}
   #lanes{position:absolute;left:16px;top:644px;width:1888px;height:384px;}
@@ -31,18 +32,18 @@
   #controls button.on{background:#2c4a7a;}
   #seek{flex:1;accent-color:#4a90e2;}
   .token{position:absolute;width:120px;text-align:center;}
-  .token .disc{width:34px;height:34px;border-radius:50%;margin:0 auto;display:flex;align-items:center;justify-content:center;
-    font-size:12px;font-weight:700;color:#0b0e14;border:2px solid rgba(255,255,255,.25);}
+  .token .disc{width:28px;height:28px;border-radius:50%;margin:0 auto;display:flex;align-items:center;justify-content:center;
+    font-size:11px;font-weight:700;color:#0b0e14;border:2px solid rgba(255,255,255,.25);}
   .token .nm{font-size:10px;color:#aebcd6;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
   .token .ct{font-size:10px;color:#e8d27a;font-variant-numeric:tabular-nums;}
   .token.win .disc{box-shadow:0 0 14px 4px #35d06a;border-color:#35d06a;}
   .token.lose .disc{box-shadow:0 0 14px 4px #e04848;border-color:#e04848;}
-  .task{position:absolute;width:130px;height:36px;border:1px solid #33436b;border-radius:6px;background:#131b2e;
-    font-size:10px;padding:3px 5px;box-sizing:border-box;transition:left .5s,top .5s;}
+  .task{position:absolute;width:130px;min-height:40px;border:1px solid #33436b;border-radius:6px;background:#131b2e;
+    font-size:10px;padding:3px 6px;box-sizing:border-box;transition:left .5s,top .5s;}
   .task .tid{font-weight:700;color:#8fa3c8;}
-  .task .ttl{color:#aebcd6;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-  .task.claimed{border-width:2px;}
-  .task.done{background:#10341d;border-color:#35d06a;width:44px;height:20px;font-size:10px;padding:1px 4px;color:#7be495;}
+  .task .ttl{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;color:#aebcd6;white-space:normal;line-height:1.2;max-height:24px;overflow:hidden;}
+  .task.claimed{width:44px;height:20px;min-height:0;border-width:2px;padding:1px 4px;}
+  .task.done{background:#10341d;border-color:#35d06a;width:44px;height:20px;min-height:0;font-size:10px;padding:1px 4px;color:#7be495;}
   #err{position:absolute;left:0;top:0;width:1920px;background:#a02020;color:#fff;font-size:14px;padding:6px 12px;display:none;z-index:99;}
   .chromeless #controls{display:none;}
   .chromeless .task{transition:none !important;}
@@ -337,14 +338,14 @@ const tokenEls = {}, anchors = {};
 function layoutMachine(panelId, list, x0) {
   list.forEach((a, i) => {
     const col = i % 2, row = (i / 2) | 0;
-    const x = x0 + 14 + col * 122, y = 116 + row * 62;
+    const x = x0 + 14 + col * 122, y = 116 + row * 64;
     const el = document.createElement("div");
     el.className = "token"; el.style.left = x + "px"; el.style.top = y + "px";
     el.innerHTML = `<div class="disc" style="background:${a.color}">${(a.icon || "??").slice(0,2).toUpperCase()}</div>
       <div class="nm">${esc(a.name)}</div><div class="ct">0</div>`;
     stage.appendChild(el);
     tokenEls[a.id] = el;
-    anchors[a.id] = { x: x + 8, y: y + 40 };
+    anchors[a.id] = { x: x + 76, y: y + 2 };
   });
 }
 layoutMachine("machineL", laneOrder.filter(a => a.machine === "ASUS-GEI" && a.id !== OPERATOR), 16);
@@ -352,8 +353,8 @@ layoutMachine("machineR", laneOrder.filter(a => a.machine === "WORKSTATION-LG"),
 
 /* ---------- task boxes ---------- */
 const taskEls = {}, taskPos = {};
-const GRID = { x: 318, y: 268, w: 130, h: 36, gx: 8, gy: 6, cols: 6 };
-const DONE = { x: 318, y: 566, w: 44, h: 20, g: 4, perRow: 17 };
+const GRID = { x: 318, y: 268, w: 130, h: 44, gx: 8, gy: 4, cols: 6 };
+const DONE = { x: 318, y: 560, w: 44, h: 20, g: 4, perRow: 17 };
 const taskIds = D.tasks.map(t => t.id);
 taskIds.forEach((id, i) => {
   const el = document.createElement("div");
@@ -503,9 +504,9 @@ function render() {
   }
 
   // tasks
-  let doneIdx = 0;
+  let doneIdx = 0, openIdx = 0;
   const claimStack = {};
-  taskIds.forEach((id, gi) => {
+  taskIds.forEach(id => {
     const g = taskAt(taskTL[id], nowMs);
     const el = taskEls[id];
     let x, y, cls;
@@ -513,12 +514,13 @@ function render() {
     else if (g.st === "claimed") {
       const k = (claimStack[g.agent] = (claimStack[g.agent] || 0) + 1) - 1;
       const an = anchors[g.agent] || { x: 900, y: 300 };
-      x = an.x + (k % 2) * 8; y = an.y + k * 40; cls = "task claimed";
+      x = an.x; y = an.y + k * 22; cls = "task claimed";
       el.style.borderColor = (byId[g.agent] || {}).color || "#888";
-    } else { const p = gridPos(gi); x = p.x; y = p.y; cls = "task"; }
+    } else { const p = gridPos(openIdx++); x = p.x; y = p.y; cls = "task"; }
     if (g.st !== "claimed") el.style.borderColor = "";
     if (g.st === "done") el.innerHTML = `<span class="tid">${id} &#10003;</span>`;
-    else if (el.classList.contains("done")) el.innerHTML = `<span class="tid">${id}</span> <span class="ttl">${esc(taskInfo[id])}</span>`;
+    else if (g.st === "claimed") { if (!el.classList.contains("claimed")) el.innerHTML = `<span class="tid">${id}</span>`; }
+    else if (el.classList.contains("done") || el.classList.contains("claimed")) el.innerHTML = `<span class="tid">${id}</span> <span class="ttl">${esc(taskInfo[id])}</span>`;
     const sig = cls + x + "," + y;
     if (taskPos[id] !== sig) {
       taskPos[id] = sig;
