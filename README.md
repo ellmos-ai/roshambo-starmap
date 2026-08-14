@@ -13,6 +13,10 @@ the CockroachDB × AWS Hackathon. The coordination mechanism under test is
 CockroachDB Cloud cluster. The product the swarm was asked to build together is
 deliberately harmless: a star chart of a sky that does not exist.
 
+> [!NOTE]
+> For AI assistants and research tools, [`llms.txt`](llms.txt) provides a compact project
+> map, claim boundaries, and the canonical entry points.
+
 ## Watch the run happen
 
 The field run is not just numbers — you can **replay it**:

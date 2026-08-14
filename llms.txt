@@ -1,0 +1,57 @@
+# roshambo-starmap
+
+> Machine-readable project guide for `ellmos-ai/roshambo-starmap`.
+
+## Summary
+
+`roshambo-starmap` is the public evidence artefact of a multi-vendor swarm field run for the CockroachDB × AWS Hackathon. Twenty-seven processes on two machines collaboratively built an invented star chart while coordinating work through [Roshambo](https://github.com/ellmos-ai/roshambo) leases backed by CockroachDB Cloud.
+
+The astronomical imagery is fictional. The coordination evidence, replay data, source history, reports, and recorded limitations are real project artefacts. Do not present the chart as astronomy or treat it as an astronomical dataset.
+
+## Start here
+
+- [README.md](README.md): project overview, evidence summary, walkthrough, and reproduction commands.
+- [Interactive replay](https://ellmos-ai.github.io/roshambo-starmap/replay/): self-contained reconstruction of the 92-minute field run.
+- [Planetarium](https://ellmos-ai.github.io/roshambo-starmap/planetarium.html): interactive invented sky and deterministic video/still modes.
+- [READING-THE-MAP.md](READING-THE-MAP.md): concise guide to the chart.
+- [PROVENANCE.md](PROVENANCE.md): task and contributor provenance derived from Git history.
+- [CATALOGUE.md](CATALOGUE.md): index and invented lore for the constellations.
+
+## Repository map
+
+- `starmap.svg`: curated end-of-run flat chart.
+- `planetarium.html`: standalone browser-based dome view.
+- `replay/`: offline-capable replay plus screenshots.
+- `data/constellations/`: source variants produced under contention; multiple variants are intentional evidence, not a curated catalogue.
+- `starmap/`: optional Python renderer modules.
+- `_timelapse/`: SVG frames and metadata rebuilt from Git history.
+- `_reports/`: unedited participating-agent and operator reports, including mistakes and limitations.
+- `_skills/`: retained findings from CockroachDB Agent Skills tasks.
+- `tests/`: projection unit tests.
+
+## Evidence and claim boundaries
+
+- Treat the metrics and dates in `README.md` as the project’s stated evidence snapshot; consult the linked evidence material before making stronger or newer claims.
+- The run did encounter recorded detector artefacts. The project documents them as such and does not claim proof beyond its available evidence.
+- The two intended OpenAI Codex participants did not join the run because of a local Windows permission error; their absence is part of the record.
+- Re-running `render.py` displays all retained parallel variants, whereas `starmap.svg` intentionally preserves the curated end-of-run state.
+
+## Reproduction
+
+The core Roshambo coordination property can be reproduced from the Roshambo repository with a CockroachDB cluster and no LLM API key:
+
+```text
+python demo/multivendor/bot_agent.py --dry-run --bots 3
+```
+
+For the recorded field-run evidence, follow the environment and command details in `README.md`; do not assume the original live cluster or historical data can be regenerated identically.
+
+## Discovery terms
+
+Roshambo, multi-agent coordination, agentic memory, distributed leases, CockroachDB, collision evidence, swarm experiment, reproducible replay, AI agents, multi-vendor agents, interactive planetarium, invented star chart.
+
+## License
+
+MIT. See [LICENSE](LICENSE).
+
+Last checked: 2026-08-14
