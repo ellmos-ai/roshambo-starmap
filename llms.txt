@@ -6,6 +6,8 @@
 
 `roshambo-starmap` is the public evidence artefact of a multi-vendor swarm field run for the CockroachDB × AWS Hackathon. Twenty-seven processes on two machines collaboratively built an invented star chart while coordinating work through [Roshambo](https://github.com/ellmos-ai/roshambo) leases backed by CockroachDB Cloud.
 
+The competition has ended. Both interactive GitHub Pages views (`replay/` and `planetarium.html`) are purely static, offline-capable archived simulations using recorded local data only — no live agents, no database connections, and no cloud execution.
+
 The astronomical imagery is fictional. The coordination evidence, replay data, source history, reports, and recorded limitations are real project artefacts. Do not present the chart as astronomy or treat it as an astronomical dataset.
 
 ## Start here
@@ -54,4 +56,4 @@ Roshambo, multi-agent coordination, agentic memory, distributed leases, Cockroac
 
 MIT. See [LICENSE](LICENSE).
 
-Last checked: 2026-08-14
+Last checked: 2026-11-21
