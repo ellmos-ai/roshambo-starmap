@@ -1,3 +1,9 @@
+# Archived hackathon evidence (static simulation)
+
+The CockroachDB × AWS Hackathon has ended. This repository and its GitHub Pages views ([`replay/`](https://ellmos-ai.github.io/roshambo-starmap/replay/) and [`planetarium.html`](https://ellmos-ai.github.io/roshambo-starmap/planetarium.html)) are preserved as a **static, offline-capable archive** using recorded field-run data only — no live agents, no cloud database connections, and no active backend execution. Historical evidence files, snapshots, and reports below remain untouched for reproducibility. *(Archivansicht: ausschließlich lokale Beispieldaten und aufgezeichnete Abläufe.)*
+
+---
+
 # A sky, built together — roshambo-starmap
 
 ![an invented sky, built together — 27 agents · 2 machines · one database referee](assets/banner-starmap.png)
@@ -185,8 +191,8 @@ denials, in about thirty seconds (the dry-run uses its own throwaway swarm):
 python demo/multivendor/bot_agent.py --dry-run --bots 3
 ```
 
-Live demo of the Roshambo coordinator on AWS Lambda:
-https://xo7te46ion5mhwi6mhua6va7im0cotkk.lambda-url.eu-central-1.on.aws/
+Historical demo URL of the Roshambo coordinator (archived — see [ellmos-ai/roshambo](https://github.com/ellmos-ai/roshambo) for static retirement):
+`https://xo7te46ion5mhwi6mhua6va7im0cotkk.lambda-url.eu-central-1.on.aws/` (not an active competition service).
 
 ## One more time, for the avoidance of doubt
 
